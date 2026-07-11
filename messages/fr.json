@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "Profil",
+    "projects": "Projets",
+    "cv": "CV",
+    "blog": "Articles",
+    "contact": "Contact",
+    "downloadCv": "Telecharger CV"
+  },
+  "actions": {
+    "viewProjects": "Voir les projets",
+    "contact": "Contact",
+    "print": "Imprimer / PDF",
+    "downloadOriginal": "Telecharger l'ancien CV",
+    "missingLink": "Ajouter le lien",
+    "details": "Details"
+  },
+  "sections": {
+    "featured": "Projets principaux",
+    "skills": "Competences",
+    "education": "Formation",
+    "experience": "Experience",
+    "research": "Interets de recherche",
+    "capabilities": "Capacites",
+    "evidence": "Sources et elements manquants"
+  }
+}
