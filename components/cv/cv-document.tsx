@@ -45,7 +45,6 @@ export function CvDocument() {
           />
           <div className="cv-heading">
             <h1>{profile.name}</h1>
-            <p className="cv-role">{localize(profile.displayRole, language)}</p>
             <address className="cv-contact">
               <span className="cv-contact-row">
                 <span>
