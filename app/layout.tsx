@@ -77,6 +77,20 @@ const personJsonLd = {
   ],
 };
 
+const themeInitScript = `
+(() => {
+  try {
+    const stored = window.localStorage.getItem("portfolio-theme");
+    const theme = stored === "dark" || stored === "light"
+      ? stored
+      : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    document.documentElement.dataset.theme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "dark";
+  }
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
