@@ -35,7 +35,6 @@ yarn-error.log*
 
 # private/local generated assets
 /public/cv/*.pdf
-/public/images/oualid-ait-alla.jpg
 
 # vercel
 .vercel

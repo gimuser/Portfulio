@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Globe2, Mail, MapPin, Printer } from "lucide-react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
@@ -34,9 +35,14 @@ export function CvDocument() {
 
       <article className="cv-sheet">
         <header className="cv-header">
-          <div className="cv-photo cv-photo-placeholder" aria-label={`${profile.name} initials`}>
-            OA
-          </div>
+          <Image
+            className="cv-photo"
+            src="/images/oualid-ait-alla.jpg"
+            alt={`${profile.name} portrait`}
+            width={110}
+            height={138}
+            priority
+          />
           <div className="cv-heading">
             <h1>{profile.name}</h1>
             <p className="cv-role">{localize(profile.displayRole, language)}</p>
