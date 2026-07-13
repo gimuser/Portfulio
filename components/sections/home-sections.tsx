@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, FileWarning, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { ProjectCard } from "@/components/projects/project-card";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { capabilities, researchInterests } from "@/data/research";
-import { certifications } from "@/data/certifications";
 import { education, experience, profile } from "@/data/profile";
-import { missingProjectMaterials, projects } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 import { useLanguage } from "@/components/layout/language-provider";
 import { localize } from "@/utils/localize";
@@ -182,21 +181,6 @@ export function HomeSections() {
                 </span>
               ))}
             </div>
-          </div>
-          <div className="warning-panel" id="missing-links">
-            <FileWarning size={24} />
-            <h3>{language === "en" ? "Materials to add next" : "Elements a ajouter"}</h3>
-            <p>
-              {language === "en"
-                ? "These items can be added when their repositories, notebooks, reports, screenshots, or metrics are ready."
-                : "Ces elements peuvent etre ajoutes quand leurs depots, notebooks, rapports, captures ou metriques sont prets."}
-            </p>
-            <ul>
-              {missingProjectMaterials.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-              {certifications.length === 0 ? <li>Certificates and credential URLs</li> : null}
-            </ul>
           </div>
         </div>
       </section>
