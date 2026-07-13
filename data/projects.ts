@@ -17,10 +17,10 @@ export const projects: Project[] = [
     title: "BachelorAI Tutor",
     year: "2026",
     category: "RAG",
-    status: { en: "Private GitHub project", fr: "Projet GitHub prive" },
+    status: { en: "Private GitHub project", fr: "Projet GitHub privé" },
     summary: {
       en: "Full-stack educational RAG assistant for bachelor/licence students, with course-grounded answers, semester/module selection, uploads, saved answers, and admin workflows.",
-      fr: "Assistant educatif RAG full-stack pour etudiants de licence, avec reponses ancrees dans les cours, selection semestre/module, uploads, reponses sauvegardees et workflows admin.",
+      fr: "Assistant éducatif RAG full-stack pour étudiants de licence, avec réponses ancrées dans les cours, sélection semestre/module, uploads, réponses sauvegardées et workflows admin.",
     },
     problem: {
       en: "Students need help understanding course material without receiving hallucinated answers that drift away from their actual modules and files.",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     status: { en: "Public GitHub project", fr: "Projet GitHub public" },
     summary: {
       en: "Full-stack protected AI chat application for thoughtful questions about Islam, with conversation history, model selection, and safety-oriented prompt guards.",
-      fr: "Application full-stack de chat IA protege pour questions sur l'Islam, avec historique, selection de modele et garde-fous de prompt.",
+      fr: "Application full-stack de chat IA protégé pour questions sur l'Islam, avec historique, sélection de modèle et garde-fous de prompt.",
     },
     problem: {
       en: "Religious question-answering needs careful boundaries, transparent uncertainty, and protection against invented references or unsafe personal guidance.",
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     status: { en: "Public GitHub project", fr: "Projet GitHub public" },
     summary: {
       en: "Secure affiliate commerce starter built with Next.js, Prisma, Argon2id authentication, multilingual UI labels, checkout integration points, and local recommendation logic.",
-      fr: "Starter e-commerce d'affiliation securise avec Next.js, Prisma, authentification Argon2id, libelles multilingues, points d'integration checkout et recommandations locales.",
+      fr: "Starter e-commerce d'affiliation sécurisé avec Next.js, Prisma, authentification Argon2id, libellés multilingues, points d'intégration checkout et recommandations locales.",
     },
     problem: {
       en: "Affiliate storefronts need trustworthy authentication, compliant outbound tracking, product discovery, checkout extension points, and security basics before production launch.",
@@ -220,10 +220,10 @@ export const projects: Project[] = [
     title: "Car Price Prediction System",
     year: "2025",
     category: "Data Science",
-    status: { en: "Completed academic project", fr: "Projet academique termine" },
+    status: { en: "Completed academic project", fr: "Projet académique terminé" },
     summary: {
       en: "Machine-learning regression project for estimating car prices from structured vehicle attributes.",
-      fr: "Projet de regression en machine learning pour estimer les prix de voitures a partir d'attributs structures.",
+      fr: "Projet de régression en machine learning pour estimer les prix de voitures à partir d'attributs structurés.",
     },
     problem: {
       en: "Car prices depend on multiple interacting factors such as brand, model, year, mileage, and engine specifications. The project turns those factors into a predictive workflow.",
@@ -286,10 +286,10 @@ export const projects: Project[] = [
     title: "Image Classification with PyTorch",
     year: "2025",
     category: "Machine Learning",
-    status: { en: "Completed academic project", fr: "Projet academique termine" },
+    status: { en: "Completed academic project", fr: "Projet académique terminé" },
     summary: {
       en: "Deep-learning image classification project built with PyTorch and labeled image datasets.",
-      fr: "Projet de classification d'images en deep learning developpe avec PyTorch et des donnees image etiquetees.",
+      fr: "Projet de classification d'images en deep learning développé avec PyTorch et des données image étiquetées.",
     },
     problem: {
       en: "Image classification requires learning patterns from labeled visual data and evaluating how well a neural network generalizes to unseen examples.",

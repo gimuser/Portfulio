@@ -18,7 +18,7 @@ export function CvDocument() {
   const languageLevels =
     language === "en"
       ? ["Arabic: Native", "English: Intermediate", "French: Intermediate", "Spanish: Beginner"]
-      : ["Arabe: langue maternelle", "Anglais: intermediaire", "Francais: intermediaire", "Espagnol: debutant"];
+      : ["Arabe : langue maternelle", "Anglais : intermédiaire", "Français : intermédiaire", "Espagnol : débutant"];
   const cvSkillGroups = skillGroups.filter(
     (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
   );
@@ -79,8 +79,8 @@ export function CvDocument() {
           <p>{localize(profile.shortProfile, language)}</p>
           <p>{localize(profile.value, language)}</p>
           <p className="cv-meta-line">
-            <strong>{language === "en" ? "Nationality" : "Nationalite"}:</strong>{" "}
-            {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilite"}:</strong>{" "}
+            <strong>{language === "en" ? "Nationality" : "Nationalité"}:</strong>{" "}
+            {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilité"}:</strong>{" "}
             {localize(profile.mobility, language)}
           </p>
         </section>
@@ -106,7 +106,7 @@ export function CvDocument() {
         </section>
 
         <section>
-          <h2>{language === "en" ? "Technical Skills" : "Competences techniques"}</h2>
+          <h2>{language === "en" ? "Technical Skills" : "Compétences techniques"}</h2>
           <div className="cv-skill-grid">
             {cvSkillGroups.map((group) => (
               <p key={group.title.en}>
@@ -117,7 +117,7 @@ export function CvDocument() {
         </section>
 
         <section>
-          <h2>{language === "en" ? "Selected Projects" : "Projets selectionnes"}</h2>
+          <h2>{language === "en" ? "Selected Projects" : "Projets sélectionnés"}</h2>
           <div className="cv-list">
             {selectedProjects.map((project) => (
               <div className="cv-entry" key={project.slug}>
@@ -134,7 +134,7 @@ export function CvDocument() {
 
         <section className="cv-two">
           <div>
-            <h2>{language === "en" ? "Project Experience" : "Experience projets"}</h2>
+            <h2>{language === "en" ? "Project Experience" : "Expérience projets"}</h2>
             {experience.map((item) => (
               <div key={`${item.year}-${item.title.en}`} className="cv-mini">
                 <div className="cv-entry-heading">
@@ -166,7 +166,7 @@ export function CvDocument() {
                 <strong>{certification.name}</strong>, {certification.organization}
               </p>
             ))}
-            <h2>{language === "en" ? "Interests" : "Centres d'interet"}</h2>
+            <h2>{language === "en" ? "Interests" : "Centres d'intérêt"}</h2>
             {profile.interests.map((interest) => (
               <p key={interest.en}>{localize(interest, language)}</p>
             ))}

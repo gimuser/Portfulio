@@ -15,14 +15,14 @@
     "print": "Imprimer / PDF",
     "downloadOriginal": "Ouvrir CV",
     "missingLink": "Ajouter le lien",
-    "details": "Details"
+    "details": "Détails"
   },
   "sections": {
     "featured": "Projets principaux",
-    "skills": "Competences",
+    "skills": "Compétences",
     "education": "Formation",
-    "experience": "Experience",
-    "research": "Interets de recherche",
-    "capabilities": "Capacites"
+    "experience": "Expérience",
+    "research": "Intérêts de recherche",
+    "capabilities": "Capacités"
   }
 }

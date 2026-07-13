@@ -5,19 +5,19 @@ export const profile = {
   cvName: "AIT ALLA Oualid",
   displayRole: {
     en: "Master's Student in Data Science & Information Systems Security",
-    fr: "Etudiant en master Data Science & Securite des Systemes d'Information",
+    fr: "Étudiant en master Data Science & Sécurité des Systèmes d'Information",
   },
   shortProfile: {
     en: "Master's student in Data Science and Information Systems Security, passionate about artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
-    fr: "Etudiant en master Data Science et Securite des Systemes d'Information, passionne par l'intelligence artificielle, le machine learning, l'IA generative, l'analyse de donnees, l'automatisation et les systemes intelligents securises.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, passionné par l'intelligence artificielle, le machine learning, l'IA générative, l'analyse de données, l'automatisation et les systèmes intelligents sécurisés.",
   },
   value: {
     en: "I combine data science, Python development, machine learning fundamentals, data visualization thinking, cybersecurity awareness, and practical project-based learning.",
-    fr: "Je combine la data science, le developpement Python, les bases du machine learning, l'analyse visuelle des donnees, la sensibilite cybersecurite et l'apprentissage par projets pratiques.",
+    fr: "Je combine la data science, le développement Python, les bases du machine learning, l'analyse visuelle des données, la sensibilité cybersécurité et l'apprentissage par projets pratiques.",
   },
   institution: {
     en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
-    fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
+    fr: "Université Sultan Moulay Slimane, Faculté Polydisciplinaire de Beni Mellal",
   },
   email: "oualidaitalla18@gmail.com",
   location: "Beni Mellal, Morocco",
@@ -29,7 +29,7 @@ export const profile = {
   },
   mobility: {
     en: "Morocco, remote and hybrid opportunities",
-    fr: "Maroc, opportunites a distance et hybrides",
+    fr: "Maroc, opportunités à distance et hybrides",
   },
   phone: "+212 609 831 277",
   whatsapp: {
@@ -39,20 +39,20 @@ export const profile = {
   } satisfies ProfileLink,
   availability: {
     en: "Open to internships, academic research projects, collaborations, and suitable junior opportunities.",
-    fr: "Ouvert aux stages, projets de recherche academiques, collaborations et opportunites junior adaptees.",
+    fr: "Ouvert aux stages, projets de recherche académiques, collaborations et opportunités junior adaptées.",
   },
   interests: [
     {
       en: "Applied AI and generative AI prototyping",
-      fr: "Prototypage en IA appliquee et IA generative",
+      fr: "Prototypage en IA appliquée et IA générative",
     },
     {
       en: "Cybersecurity labs and secure system design",
-      fr: "Labs cybersecurite et conception de systemes securises",
+      fr: "Labs cybersécurité et conception de systèmes sécurisés",
     },
     {
       en: "Data visualization and business intelligence",
-      fr: "Visualisation de donnees et business intelligence",
+      fr: "Visualisation de données et business intelligence",
     },
     {
       en: "Multilingual AI for Arabic, French, and English users",
@@ -92,12 +92,12 @@ export const education: EducationItem[] = [
     year: "2026",
     title: {
       en: "Master's student in Data Science and Information Systems Security",
-      fr: "Master Data Science et Securite des Systemes d'Information",
+      fr: "Master Data Science et Sécurité des Systèmes d'Information",
     },
     institution: profile.institution,
     details: {
       en: "Graduate studies focused on data science, artificial intelligence, cybersecurity, and secure information systems.",
-      fr: "Formation de master axee sur la data science, l'intelligence artificielle, la cybersecurite et les systemes d'information securises.",
+      fr: "Formation de master axée sur la data science, l'intelligence artificielle, la cybersécurité et les systèmes d'information sécurisés.",
     },
     source: "User-provided profile",
   },
@@ -105,15 +105,15 @@ export const education: EducationItem[] = [
     year: "2025",
     title: {
       en: "Bachelor's in Data Science & Information Systems Security",
-      fr: "Licence en Data Science et Securite des Systemes d'Information",
+      fr: "Licence en Data Science et Sécurité des Systèmes d'Information",
     },
     institution: {
       en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
-      fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
+      fr: "Université Sultan Moulay Slimane, Faculté Polydisciplinaire de Beni Mellal",
     },
     details: {
       en: "Coursework includes data science, AI, database systems, network security, cybersecurity, cryptography, machine learning fundamentals, information systems security, Python, SQL, C, and HTML5.",
-      fr: "Cours en data science, IA, bases de donnees, securite reseau, cybersecurite, cryptographie, bases du machine learning, securite des systemes d'information, Python, SQL, C et HTML5.",
+      fr: "Cours en data science, IA, bases de données, sécurité réseau, cybersécurité, cryptographie, bases du machine learning, sécurité des systèmes d'information, Python, SQL, C et HTML5.",
     },
     source: "User-provided profile",
   },
@@ -121,15 +121,15 @@ export const education: EducationItem[] = [
     year: "2024",
     title: {
       en: "Undergraduate Diploma in Mathematics & Computer Science (DEUG)",
-      fr: "DEUG en Mathematiques et Informatique",
+      fr: "DEUG en Mathématiques et Informatique",
     },
     institution: {
       en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
-      fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
+      fr: "Université Sultan Moulay Slimane, Faculté Polydisciplinaire de Beni Mellal",
     },
     details: {
       en: "Coursework included linear algebra, calculus, probability and statistics, discrete mathematics, CMS, database fundamentals, algorithms, and computer systems.",
-      fr: "Cours suivis: algebre lineaire, calcul, probabilites et statistiques, mathematiques discretes, CMS, bases de donnees, algorithmes et systemes informatiques.",
+      fr: "Cours suivis : algèbre linéaire, calcul, probabilités et statistiques, mathématiques discrètes, CMS, bases de données, algorithmes et systèmes informatiques.",
     },
     source: "User-provided profile",
   },
@@ -137,7 +137,7 @@ export const education: EducationItem[] = [
     year: "2023",
     title: {
       en: "High School Diploma, Mathematical Sciences",
-      fr: "Baccalaureat, Sciences Mathematiques",
+      fr: "Baccalauréat, Sciences Mathématiques",
     },
     institution: {
       en: "Al Massira, Azilal",
@@ -145,7 +145,7 @@ export const education: EducationItem[] = [
     },
     details: {
       en: "Mathematics, physics, computer science basics, and statistics.",
-      fr: "Mathematiques, physique, bases de l'informatique et statistiques.",
+      fr: "Mathématiques, physique, bases de l'informatique et statistiques.",
     },
     source: "CV",
   },
@@ -153,7 +153,7 @@ export const education: EducationItem[] = [
     year: "2022",
     title: {
       en: "High School Diploma, Physical Sciences",
-      fr: "Baccalaureat, Sciences Physiques",
+      fr: "Baccalauréat, Sciences Physiques",
     },
     institution: {
       en: "Al Massira, Azilal",
@@ -161,7 +161,7 @@ export const education: EducationItem[] = [
     },
     details: {
       en: "Mathematics, mechanics, electricity, and scientific fundamentals.",
-      fr: "Mathematiques, mecanique, electricite et bases scientifiques.",
+      fr: "Mathématiques, mécanique, électricité et bases scientifiques.",
     },
     source: "CV",
   },
@@ -184,20 +184,20 @@ export const experience: ExperienceItem[] = [
     },
     title: {
       en: "Academic machine-learning project work",
-      fr: "Projets academiques en machine learning",
+      fr: "Projets académiques en machine learning",
     },
     context: {
       en: "Academic and personal projects, not employment experience.",
-      fr: "Projets academiques et personnels, non presentes comme experience professionnelle.",
+      fr: "Projets académiques et personnels, non présentés comme expérience professionnelle.",
     },
     bullets: [
       {
         en: "Built a car price prediction system using data cleaning, feature engineering, EDA, and regression model evaluation.",
-        fr: "Developpement d'un systeme de prediction des prix de voitures avec nettoyage de donnees, feature engineering, EDA et evaluation de modeles de regression.",
+        fr: "Développement d'un système de prédiction des prix de voitures avec nettoyage de données, feature engineering, EDA et évaluation de modèles de régression.",
       },
       {
         en: "Built and tested an image-classification model with PyTorch and labeled image datasets.",
-        fr: "Developpement et test d'un modele de classification d'images avec PyTorch et des jeux de donnees etiquetes.",
+        fr: "Développement et test d'un modèle de classification d'images avec PyTorch et des jeux de données étiquetés.",
       },
     ],
   },
@@ -217,16 +217,16 @@ export const experience: ExperienceItem[] = [
     },
     title: {
       en: "Cybersecurity learning project",
-      fr: "Projet d'apprentissage en cybersecurite",
+      fr: "Projet d'apprentissage en cybersécurité",
     },
     context: {
       en: "Controlled, ethical security testing environment.",
-      fr: "Environnement de test controle et ethique.",
+      fr: "Environnement de test contrôlé et éthique.",
     },
     bullets: [
       {
         en: "Studied Android device security testing with Kali Linux and Metasploit and proposed mitigation techniques.",
-        fr: "Etude de tests de securite Android avec Kali Linux et Metasploit, avec proposition de techniques de mitigation.",
+        fr: "Étude de tests de sécurité Android avec Kali Linux et Metasploit, avec proposition de techniques de mitigation.",
       },
     ],
   },
@@ -246,16 +246,16 @@ export const experience: ExperienceItem[] = [
     },
     title: {
       en: "Web development project",
-      fr: "Projet de developpement web",
+      fr: "Projet de développement web",
     },
     context: {
       en: "Academic information-system project.",
-      fr: "Projet academique de systeme d'information.",
+      fr: "Projet académique de système d'information.",
     },
     bullets: [
       {
         en: "Developed a PHP hotel management system with room management, reservations, user handling, and database persistence.",
-        fr: "Developpement d'un systeme de gestion d'hotel en PHP avec gestion des chambres, reservations, utilisateurs et persistance en base de donnees.",
+        fr: "Développement d'un système de gestion d'hôtel en PHP avec gestion des chambres, réservations, utilisateurs et persistance en base de données.",
       },
     ],
   },
