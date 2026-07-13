@@ -1409,7 +1409,7 @@ img {
   font-size: 2.05rem;
   font-weight: 800;
   line-height: 1.05;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-role {
@@ -1477,6 +1477,11 @@ img {
 .cv-sheet h3,
 .cv-sheet p {
   margin: 0 0 0.2rem;
+}
+
+.cv-meta-line {
+  margin-top: 0.25rem;
+  color: #222222;
 }
 
 .cv-sheet p,

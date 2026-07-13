@@ -2,6 +2,7 @@ import type { EducationItem, ExperienceItem, ProfileLink } from "@/types/content
 
 export const profile = {
   name: "Oualid Ait Alla",
+  cvName: "AIT ALLA Oualid",
   displayRole: {
     en: "Master's Student in Data Science & Information Systems Security",
     fr: "Etudiant en master Data Science & Securite des Systemes d'Information",
@@ -21,6 +22,14 @@ export const profile = {
   email: "oualidaitalla18@gmail.com",
   location: "Beni Mellal, Morocco",
   preciseLocationFromCv: "Mghila, Beni Mellal, Morocco",
+  nationality: {
+    en: "Moroccan",
+    fr: "Marocaine",
+  },
+  mobility: {
+    en: "Morocco, remote and hybrid opportunities",
+    fr: "Maroc, opportunites a distance et hybrides",
+  },
   phone: "+212 609 831 277",
   whatsapp: {
     label: "WhatsApp",
@@ -31,6 +40,24 @@ export const profile = {
     en: "Open to internships, academic research projects, collaborations, and suitable junior opportunities.",
     fr: "Ouvert aux stages, projets de recherche academiques, collaborations et opportunites junior adaptees.",
   },
+  interests: [
+    {
+      en: "Applied AI and generative AI prototyping",
+      fr: "Prototypage en IA appliquee et IA generative",
+    },
+    {
+      en: "Cybersecurity labs and secure system design",
+      fr: "Labs cybersecurite et conception de systemes securises",
+    },
+    {
+      en: "Data visualization and business intelligence",
+      fr: "Visualisation de donnees et business intelligence",
+    },
+    {
+      en: "Multilingual AI for Arabic, French, and English users",
+      fr: "IA multilingue pour utilisateurs arabophones, francophones et anglophones",
+    },
+  ],
   roles: [
     "Data Science Student",
     "Future Data Scientist",
@@ -142,6 +169,18 @@ export const education: EducationItem[] = [
 export const experience: ExperienceItem[] = [
   {
     year: "2025",
+    period: {
+      en: "January 2025 - June 2025",
+      fr: "Janvier 2025 - Juin 2025",
+    },
+    duration: {
+      en: "6 months",
+      fr: "6 mois",
+    },
+    location: {
+      en: "Beni Mellal, Morocco",
+      fr: "Beni Mellal, Maroc",
+    },
     title: {
       en: "Academic machine-learning project work",
       fr: "Projets academiques en machine learning",
@@ -163,6 +202,18 @@ export const experience: ExperienceItem[] = [
   },
   {
     year: "2024",
+    period: {
+      en: "March 2024 - May 2024",
+      fr: "Mars 2024 - Mai 2024",
+    },
+    duration: {
+      en: "3 months",
+      fr: "3 mois",
+    },
+    location: {
+      en: "Beni Mellal, Morocco",
+      fr: "Beni Mellal, Maroc",
+    },
     title: {
       en: "Cybersecurity learning project",
       fr: "Projet d'apprentissage en cybersecurite",
@@ -180,6 +231,18 @@ export const experience: ExperienceItem[] = [
   },
   {
     year: "2023",
+    period: {
+      en: "March 2023 - June 2023",
+      fr: "Mars 2023 - Juin 2023",
+    },
+    duration: {
+      en: "4 months",
+      fr: "4 mois",
+    },
+    location: {
+      en: "Beni Mellal, Morocco",
+      fr: "Beni Mellal, Maroc",
+    },
     title: {
       en: "Web development project",
       fr: "Projet de developpement web",

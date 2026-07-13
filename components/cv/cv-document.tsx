@@ -44,7 +44,7 @@ export function CvDocument() {
             priority
           />
           <div className="cv-heading">
-            <h1>{profile.name}</h1>
+            <h1>{profile.cvName}</h1>
             <address className="cv-contact">
               <span className="cv-contact-row">
                 <span>
@@ -78,6 +78,11 @@ export function CvDocument() {
           <h2>{language === "en" ? "Profile" : "Profil"}</h2>
           <p>{localize(profile.shortProfile, language)}</p>
           <p>{localize(profile.value, language)}</p>
+          <p className="cv-meta-line">
+            <strong>{language === "en" ? "Nationality" : "Nationalite"}:</strong>{" "}
+            {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilite"}:</strong>{" "}
+            {localize(profile.mobility, language)}
+          </p>
         </section>
 
         <section>
@@ -134,8 +139,14 @@ export function CvDocument() {
               <div key={`${item.year}-${item.title.en}`} className="cv-mini">
                 <div className="cv-entry-heading">
                   <strong>{localize(item.title, language)}</strong>
-                  <strong>{item.year}</strong>
+                  <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                 </div>
+                {item.location && item.duration ? (
+                  <p className="cv-muted">
+                    {localize(item.location, language)} | {localize(item.duration, language)}
+                  </p>
+                ) : null}
+                <small>{localize(item.context, language)}</small>
                 <ul>
                   {item.bullets.map((bullet) => (
                     <li key={bullet.en}>{localize(bullet, language)}</li>
@@ -154,6 +165,10 @@ export function CvDocument() {
               <p key={certification.name}>
                 <strong>{certification.name}</strong>, {certification.organization}
               </p>
+            ))}
+            <h2>{language === "en" ? "Interests" : "Centres d'interet"}</h2>
+            {profile.interests.map((interest) => (
+              <p key={interest.en}>{localize(interest, language)}</p>
             ))}
           </div>
         </section>

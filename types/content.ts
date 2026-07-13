@@ -29,6 +29,9 @@ export type EducationItem = {
 
 export type ExperienceItem = {
   year: string;
+  period?: LocalizedText;
+  duration?: LocalizedText;
+  location?: LocalizedText;
   title: LocalizedText;
   context: LocalizedText;
   bullets: LocalizedText[];
