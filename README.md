@@ -1,22 +1,10 @@
-# Oualid Ait Alla Portfolio
+# Portfolio Website
 
-Modern personal portfolio and CV website for Oualid Ait Alla, built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
+Modern personal portfolio and CV website built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## Source Material
+## Project Content
 
-The portfolio uses Oualid Ait Alla's profile details and repositories from the GitHub account `gimuser`. Unsupported project claims are not presented as completed work.
-
-Current profile details:
-
-- Name: Oualid Ait Alla
-- Email: oualidaitalla18@gmail.com
-- Location: Beni Mellal, Morocco
-- LinkedIn: https://www.linkedin.com/in/aitalla-oualid-9797132bb/
-- GitHub: https://github.com/gimuser
-- Languages: Arabic native, English intermediate, French intermediate, Spanish beginner
-- Education entries: 2026 Master's student in Data Science & Information Systems Security, 2025 Bachelor's in Data Science & Information Systems Security, 2024 DEUG Mathematics & Computer Science, 2023 Mathematical Sciences high school diploma, 2022 Physical Sciences high school diploma
-- Academic projects: Car Price Prediction System, Hotel Management System (PHP), Image Classification with PyTorch, Android Device Security Testing
-- GitHub projects: BachelorAI Tutor, Islamic AI Chat, Maison Global Store
+Portfolio content is stored in local data files so profile, education, skills, projects, links, and translations can be updated without changing the page structure.
 
 ## Missing Placeholders
 
@@ -26,7 +14,6 @@ Replace these before publishing:
 - `[ADD LIVE DEMO URL]`
 - Certificates and credential links
 - Project repositories, screenshots, notebooks, reports, and metrics
-- Optional public phone number decision
 - Production domain in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`
 
 ## Development
@@ -53,8 +40,6 @@ npm run build
 ```
 
 The script builds the Docker image and serves the production Next.js app at `http://localhost:3000`. If port `3000` is already busy, it automatically uses the next free port and prints the correct URL.
-
-If `.env.local` exists, `run_project.sh` passes it to the Docker container at runtime. Secrets are not copied into the Docker image.
 
 To stop the portfolio container:
 
@@ -116,19 +101,19 @@ This app uses the Next.js App Router and is best deployed on Vercel or Netlify. 
 
 ## Environment Variables
 
-The contact form sends mail from a server action through SMTP. For Gmail delivery, create a Google App Password and keep these values in `.env.local`:
+The contact form sends mail from a server action through SMTP. Configure these only in private runtime environment variables in your hosting provider dashboard:
 
 ```bash
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_USER=oualidaitalla18@gmail.com
-SMTP_PASS=your-google-app-password
-CONTACT_FROM_EMAIL=oualidaitalla18@gmail.com
-CONTACT_TO_EMAIL=oualidaitalla18@gmail.com
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=
+SMTP_USER=
+SMTP_PASS=
+CONTACT_FROM_EMAIL=
+CONTACT_TO_EMAIL=
 ```
 
-Do not commit `.env.local`. The form validates input on the server, uses a honeypot field, rate limits submissions, and sends visitor emails through `replyTo` rather than trusting visitor-controlled sender headers.
+Do not commit secrets. The form validates input on the server, uses a honeypot field, rate limits submissions, and sends visitor emails through `replyTo` rather than trusting visitor-controlled sender headers.
 
 After replacing `SMTP_PASS`, send a real delivery test:
 
