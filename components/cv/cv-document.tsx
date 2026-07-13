@@ -47,10 +47,10 @@ export function CvDocument() {
             <h1>{profile.cvName}</h1>
             <address className="cv-contact">
               <span className="cv-contact-row">
-                <span>
+                <a href={profile.locationMapHref}>
                   <MapPin className="cv-contact-icon" size={10} strokeWidth={2.2} />
                   {profile.location}
-                </span>
+                </a>
                 <a href={`mailto:${profile.email}`}>
                   <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
                   {profile.email}

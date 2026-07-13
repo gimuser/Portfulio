@@ -37,10 +37,10 @@ export function HomeSections() {
             <p className="eyebrow">Current profile</p>
             <h3>{localize(profile.displayRole, language)}</h3>
             <p>{localize(profile.institution, language)}</p>
-            <span>
+            <a href={profile.locationMapHref} target="_blank" rel="noreferrer">
               <MapPin size={16} />
               {profile.location}
-            </span>
+            </a>
           </Reveal>
         </div>
       </section>

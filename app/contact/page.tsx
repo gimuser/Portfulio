@@ -43,7 +43,7 @@ export default function ContactPage() {
                   <strong>{profile.email}</strong>
                 </span>
               </a>
-              <span className="contact-method contact-method-location">
+              <a className="contact-method contact-method-location" href={profile.locationMapHref} target="_blank" rel="noreferrer">
                 <span className="contact-method-icon">
                   <MapPin size={18} />
                 </span>
@@ -51,7 +51,7 @@ export default function ContactPage() {
                   <small>Location</small>
                   <strong>{profile.location}</strong>
                 </span>
-              </span>
+              </a>
               <a className="contact-method contact-method-website" href={profile.links.website.href} target="_blank" rel="noreferrer">
                 <span className="contact-method-icon">
                   <Globe2 size={18} />

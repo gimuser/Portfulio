@@ -458,7 +458,8 @@ img {
   line-height: 1.7;
 }
 
-.info-panel span {
+.info-panel span,
+.info-panel a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

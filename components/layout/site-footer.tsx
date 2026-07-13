@@ -25,10 +25,10 @@ export function SiteFooter() {
             <Mail size={16} />
             {profile.email}
           </a>
-          <span>
+          <a href={profile.locationMapHref} target="_blank" rel="noreferrer">
             <MapPin size={16} />
             {profile.location}
-          </span>
+          </a>
         </div>
       </div>
     </footer>

@@ -21,6 +21,7 @@ export const profile = {
   },
   email: "oualidaitalla18@gmail.com",
   location: "Beni Mellal, Morocco",
+  locationMapHref: "https://www.google.com/maps/search/?api=1&query=Beni%20Mellal%2C%20Morocco",
   preciseLocationFromCv: "Mghila, Beni Mellal, Morocco",
   nationality: {
     en: "Moroccan",
