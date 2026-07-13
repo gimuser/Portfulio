@@ -14,9 +14,5 @@ export function LinkStatus({ link }: { link: ProfileLink }) {
     );
   }
 
-  return (
-    <span className="missing-link" aria-label={`${link.label} missing`}>
-      {link.label}: {link.href}
-    </span>
-  );
+  return null;
 }
