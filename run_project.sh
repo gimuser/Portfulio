@@ -21,6 +21,7 @@ Optional environment variables:
 
 If PORT is already busy, the script automatically uses the next free port.
 The Next.js server inside Docker uses that same selected port, so the logs match the browser URL.
+The container starts in the background. Stop it with ./run_project.sh stop.
 USAGE
   exit 0
 fi
@@ -85,9 +86,15 @@ if [[ -f "$ENV_FILE" ]]; then
   ENV_ARGS=(--env-file "$ENV_FILE")
 fi
 
-docker run --rm \
+CONTAINER_ID="$(docker run -d --rm \
   --name "$CONTAINER_NAME" \
   "${ENV_ARGS[@]}" \
   -e "PORT=${HOST_PORT}" \
   -p "${HOST_PORT}:${HOST_PORT}" \
-  "$IMAGE_NAME"
+  "$IMAGE_NAME")"
+
+echo "Portfolio started in the background."
+echo "URL: http://localhost:${HOST_PORT}"
+echo "Container: ${CONTAINER_NAME} (${CONTAINER_ID:0:12})"
+echo "Stop it with: ./run_project.sh stop"
+echo "View logs with: docker logs -f ${CONTAINER_NAME}"

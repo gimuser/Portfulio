@@ -39,7 +39,13 @@ npm run build
 ./run_project.sh
 ```
 
-The script builds the Docker image and serves the production Next.js app at `http://localhost:3000`. If port `3000` is already busy, it automatically uses the next free port and prints the correct URL.
+The script builds the Docker image and starts the production Next.js app in the background at `http://localhost:3000`. If port `3000` is already busy, it automatically uses the next free port and prints the correct URL.
+
+The terminal does not stay attached to the container. To follow logs manually:
+
+```bash
+docker logs -f oualid-portfolio
+```
 
 To stop the portfolio container:
 
