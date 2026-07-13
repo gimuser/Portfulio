@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
+import { CareerVisionSection } from "@/components/sections/career-vision-section";
 import { ProjectCard } from "@/components/projects/project-card";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -43,6 +44,8 @@ export function HomeSections() {
           </Reveal>
         </div>
       </section>
+
+      <CareerVisionSection />
 
       <section className="section section-alt">
         <div className="container">
