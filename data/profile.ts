@@ -8,12 +8,12 @@ export const profile = {
     fr: "Étudiant en master Data Science & Sécurité des Systèmes d'Information",
   },
   shortProfile: {
-    en: "Master's student in Data Science and Information Systems Security, passionate about artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
-    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, passionné par l'intelligence artificielle, le machine learning, l'IA générative, l'analyse de données, l'automatisation et les systèmes intelligents sécurisés.",
+    en: "I am a Master's student in Data Science and Information Systems Security, passionate about artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
+    fr: "Je suis étudiant en master Data Science et Sécurité des Systèmes d'Information, passionné par l'intelligence artificielle, le machine learning, l'IA générative, l'analyse de données, l'automatisation et les systèmes intelligents sécurisés.",
   },
   value: {
-    en: "I combine data science, Python development, machine learning fundamentals, data visualization thinking, cybersecurity awareness, and practical project-based learning.",
-    fr: "Je combine la data science, le développement Python, les bases du machine learning, l'analyse visuelle des données, la sensibilité cybersécurité et l'apprentissage par projets pratiques.",
+    en: "I have practical foundations in data science, Python development, machine learning, data visualization, cybersecurity, and project-based software development.",
+    fr: "J'ai des bases pratiques en data science, développement Python, machine learning, visualisation de données, cybersécurité et développement logiciel par projets.",
   },
   institution: {
     en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
@@ -187,17 +187,17 @@ export const experience: ExperienceItem[] = [
       fr: "Projets académiques en machine learning",
     },
     context: {
-      en: "Academic and personal projects, not employment experience.",
-      fr: "Projets académiques et personnels, non présentés comme expérience professionnelle.",
+      en: "I completed these academic and personal projects as practical engineering work, not as employment experience.",
+      fr: "J'ai réalisé ces projets académiques et personnels comme travaux pratiques d'ingénierie, sans les présenter comme une expérience salariée.",
     },
     bullets: [
       {
-        en: "Built a car price prediction system using data cleaning, feature engineering, EDA, and regression model evaluation.",
-        fr: "Développement d'un système de prédiction des prix de voitures avec nettoyage de données, feature engineering, EDA et évaluation de modèles de régression.",
+        en: "I built a car price prediction system using data cleaning, feature engineering, EDA, and regression model evaluation.",
+        fr: "J'ai développé un système de prédiction des prix de voitures avec nettoyage de données, feature engineering, EDA et évaluation de modèles de régression.",
       },
       {
-        en: "Built and tested an image-classification model with PyTorch and labeled image datasets.",
-        fr: "Développement et test d'un modèle de classification d'images avec PyTorch et des jeux de données étiquetés.",
+        en: "I built and tested an image-classification model with PyTorch and labeled image datasets.",
+        fr: "J'ai développé et testé un modèle de classification d'images avec PyTorch et des jeux de données étiquetés.",
       },
     ],
   },
@@ -220,13 +220,13 @@ export const experience: ExperienceItem[] = [
       fr: "Projet d'apprentissage en cybersécurité",
     },
     context: {
-      en: "Controlled, ethical security testing environment.",
-      fr: "Environnement de test contrôlé et éthique.",
+      en: "I worked in a controlled, ethical security testing environment.",
+      fr: "J'ai travaillé dans un environnement de test contrôlé et éthique.",
     },
     bullets: [
       {
-        en: "Studied Android device security testing with Kali Linux and Metasploit and proposed mitigation techniques.",
-        fr: "Étude de tests de sécurité Android avec Kali Linux et Metasploit, avec proposition de techniques de mitigation.",
+        en: "I studied Android device security testing with Kali Linux and Metasploit and proposed mitigation techniques.",
+        fr: "J'ai étudié les tests de sécurité Android avec Kali Linux et Metasploit et proposé des techniques de mitigation.",
       },
     ],
   },
@@ -249,13 +249,13 @@ export const experience: ExperienceItem[] = [
       fr: "Projet de développement web",
     },
     context: {
-      en: "Academic information-system project.",
-      fr: "Projet académique de système d'information.",
+      en: "I completed this academic information-system project to practice database-backed web development.",
+      fr: "J'ai réalisé ce projet académique de système d'information pour pratiquer le développement web avec base de données.",
     },
     bullets: [
       {
-        en: "Developed a PHP hotel management system with room management, reservations, user handling, and database persistence.",
-        fr: "Développement d'un système de gestion d'hôtel en PHP avec gestion des chambres, réservations, utilisateurs et persistance en base de données.",
+        en: "I developed a PHP hotel management system with room management, reservations, user handling, and database persistence.",
+        fr: "J'ai développé un système de gestion d'hôtel en PHP avec gestion des chambres, réservations, utilisateurs et persistance en base de données.",
       },
     ],
   },

@@ -125,7 +125,7 @@ export function CvDocument() {
                   <h3>{project.title}</h3>
                   <strong>{project.year}</strong>
                 </div>
-                <p>{localize(project.summary, language)}</p>
+                <p>{localize(project.cvSummary ?? project.summary, language)}</p>
                 <small>{project.technologies.join(", ")}</small>
               </div>
             ))}

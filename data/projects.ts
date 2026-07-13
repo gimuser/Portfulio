@@ -22,6 +22,10 @@ export const projects: Project[] = [
       en: "Full-stack educational RAG assistant for bachelor/licence students, with course-grounded answers, semester/module selection, uploads, saved answers, and admin workflows.",
       fr: "Assistant éducatif RAG full-stack pour étudiants de licence, avec réponses ancrées dans les cours, sélection semestre/module, uploads, réponses sauvegardées et workflows admin.",
     },
+    cvSummary: {
+      en: "I built a full-stack educational RAG assistant that helps bachelor/licence students ask questions based on their course documents, modules, and uploaded resources.",
+      fr: "J'ai développé un assistant éducatif RAG full-stack qui aide les étudiants de licence à poser des questions à partir de leurs cours, modules et ressources importées.",
+    },
     problem: {
       en: "Students need help understanding course material without receiving hallucinated answers that drift away from their actual modules and files.",
       fr: "Les etudiants ont besoin d'aide pour comprendre les cours sans recevoir de reponses hallucinees ou deconnectees de leurs modules et fichiers reels.",
@@ -91,6 +95,10 @@ export const projects: Project[] = [
       en: "Full-stack protected AI chat application for thoughtful questions about Islam, with conversation history, model selection, and safety-oriented prompt guards.",
       fr: "Application full-stack de chat IA protégé pour questions sur l'Islam, avec historique, sélection de modèle et garde-fous de prompt.",
     },
+    cvSummary: {
+      en: "I built a protected full-stack AI chat application with authentication, conversation history, model selection, and safety-oriented prompt controls.",
+      fr: "J'ai développé une application full-stack de chat IA protégé avec authentification, historique des conversations, sélection de modèle et contrôles de sécurité des prompts.",
+    },
     problem: {
       en: "Religious question-answering needs careful boundaries, transparent uncertainty, and protection against invented references or unsafe personal guidance.",
       fr: "Le question-reponse religieux demande des limites claires, une incertitude transparente et une protection contre les references inventees ou conseils personnels dangereux.",
@@ -157,6 +165,10 @@ export const projects: Project[] = [
     summary: {
       en: "Secure affiliate commerce starter built with Next.js, Prisma, Argon2id authentication, multilingual UI labels, checkout integration points, and local recommendation logic.",
       fr: "Starter e-commerce d'affiliation sécurisé avec Next.js, Prisma, authentification Argon2id, libellés multilingues, points d'intégration checkout et recommandations locales.",
+    },
+    cvSummary: {
+      en: "I developed a secure affiliate commerce starter with authentication, product discovery, checkout extension points, multilingual labels, and local recommendations.",
+      fr: "J'ai développé un starter e-commerce d'affiliation sécurisé avec authentification, découverte produit, points d'extension checkout, libellés multilingues et recommandations locales.",
     },
     problem: {
       en: "Affiliate storefronts need trustworthy authentication, compliant outbound tracking, product discovery, checkout extension points, and security basics before production launch.",
@@ -225,6 +237,10 @@ export const projects: Project[] = [
       en: "Machine-learning regression project for estimating car prices from structured vehicle attributes.",
       fr: "Projet de régression en machine learning pour estimer les prix de voitures à partir d'attributs structurés.",
     },
+    cvSummary: {
+      en: "I worked on a machine-learning regression project to estimate car prices from structured vehicle data such as brand, year, mileage, and engine specifications.",
+      fr: "J'ai travaillé sur un projet de régression en machine learning pour estimer les prix de voitures à partir de données structurées comme la marque, l'année, le kilométrage et les caractéristiques moteur.",
+    },
     problem: {
       en: "Car prices depend on multiple interacting factors such as brand, model, year, mileage, and engine specifications. The project turns those factors into a predictive workflow.",
       fr: "Les prix des voitures dependent de plusieurs facteurs comme la marque, le modele, l'annee, le kilometrage et les caracteristiques moteur. Le projet transforme ces facteurs en workflow predictif.",
@@ -290,6 +306,10 @@ export const projects: Project[] = [
     summary: {
       en: "Deep-learning image classification project built with PyTorch and labeled image datasets.",
       fr: "Projet de classification d'images en deep learning développé avec PyTorch et des données image étiquetées.",
+    },
+    cvSummary: {
+      en: "I built and tested a PyTorch image-classification model using labeled image datasets and a neural-network training workflow.",
+      fr: "J'ai développé et testé un modèle de classification d'images avec PyTorch en utilisant des jeux de données étiquetés et un workflow d'entraînement de réseau neuronal.",
     },
     problem: {
       en: "Image classification requires learning patterns from labeled visual data and evaluating how well a neural network generalizes to unseen examples.",

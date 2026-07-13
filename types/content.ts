@@ -53,6 +53,7 @@ export type Project = {
   category: ProjectCategory;
   status: LocalizedText;
   summary: LocalizedText;
+  cvSummary?: LocalizedText;
   problem: LocalizedText;
   objectives: LocalizedText[];
   role: LocalizedText;
