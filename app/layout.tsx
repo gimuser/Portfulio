@@ -18,7 +18,7 @@ const siteDescription =
   "Portfolio of Oualid Ait Alla, a master's student in Data Science and Information Systems Security in Morocco, focused on AI, machine learning, data analytics, Python, and secure intelligent systems.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(profile.links.website.href),
   title: {
     default: `${profile.name} | Data Science, AI & Security Portfolio`,
     template: `%s | ${profile.name}`,

@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { capabilities, researchInterests } from "@/data/research";
 import { certifications } from "@/data/certifications";
 import { education, experience, profile } from "@/data/profile";
-import { missingProjectEvidence, projects } from "@/data/projects";
+import { missingProjectMaterials, projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 import { useLanguage } from "@/components/layout/language-provider";
 import { localize } from "@/utils/localize";
@@ -29,8 +29,8 @@ export function HomeSections() {
             />
             <p className="body-large">
               {language === "en"
-                ? "I am building a profile at the intersection of data science, machine learning, Python development, and secure intelligent systems. My current goal is to turn academic foundations into credible project evidence for internships, research work, and junior opportunities."
-                : "Je construis un profil a l'intersection de la data science, du machine learning, du developpement Python et des systemes intelligents securises. Mon objectif actuel est de transformer les bases academiques en preuves de projets solides pour stages, recherche et opportunites junior."}
+                ? "I am building a profile at the intersection of data science, machine learning, Python development, and secure intelligent systems. My current goal is to turn academic foundations into strong portfolio projects for internships, research work, and junior opportunities."
+                : "Je construis un profil a l'intersection de la data science, du machine learning, du developpement Python et des systemes intelligents securises. Mon objectif actuel est de transformer les bases academiques en projets solides pour stages, recherche et opportunites junior."}
             </p>
           </Reveal>
           <Reveal className="info-panel" delay={0.1}>
@@ -49,11 +49,11 @@ export function HomeSections() {
         <div className="container">
           <SectionHeading
             eyebrow="Projects"
-            title={language === "en" ? "Featured CV-backed work" : "Projets confirmes par le CV"}
+            title={language === "en" ? "Featured project work" : "Projets selectionnes"}
             description={
               language === "en"
-                ? "Only verified work is presented as completed. Missing repositories and metrics are clearly marked."
-                : "Seuls les travaux verifies sont presentes comme termines. Les depots et metriques manquants sont indiques clairement."
+                ? "A concise selection of AI, data science, full-stack, and security projects."
+                : "Une selection concise de projets IA, data science, full-stack et securite."
             }
           />
           <div className="project-grid">
@@ -74,11 +74,11 @@ export function HomeSections() {
         <div className="container">
           <SectionHeading
             eyebrow="Skills"
-            title={language === "en" ? "Skills organized by evidence" : "Competences organisees par preuves"}
+            title={language === "en" ? "Technical skills" : "Competences techniques"}
             description={
               language === "en"
-                ? "No invented percentages. Each group explains why the skill appears on the portfolio."
-                : "Aucun pourcentage invente. Chaque groupe explique la source de la competence."
+                ? "Core tools and capabilities used across projects, coursework, and learning work."
+                : "Outils et capacites utilises dans les projets, les cours et l'apprentissage."
             }
           />
           <div className="skill-grid">
@@ -92,7 +92,6 @@ export function HomeSections() {
                     </span>
                   ))}
                 </div>
-                <p>{localize(group.evidence, language)}</p>
               </Reveal>
             ))}
           </div>
@@ -107,8 +106,8 @@ export function HomeSections() {
               title={language === "en" ? "Academic timeline" : "Parcours academique"}
               description={
                 language === "en"
-                  ? "The timeline keeps old-CV dates intact and flags missing institution details."
-                  : "La chronologie conserve les dates de l'ancien CV et signale les etablissements manquants."
+                  ? "The timeline keeps academic dates clear and flags missing institution details."
+                  : "La chronologie garde les dates academiques claires et signale les etablissements manquants."
               }
             />
           </div>
@@ -189,11 +188,11 @@ export function HomeSections() {
             <h3>{language === "en" ? "Materials to add next" : "Elements a ajouter"}</h3>
             <p>
               {language === "en"
-                ? "The workspace contained only the old CV, so these requested items were not presented as verified case studies."
-                : "Le workspace contenait seulement l'ancien CV, donc ces elements demandes ne sont pas presentes comme etudes de cas verifiees."}
+                ? "These items can be added when their repositories, notebooks, reports, screenshots, or metrics are ready."
+                : "Ces elements peuvent etre ajoutes quand leurs depots, notebooks, rapports, captures ou metriques sont prets."}
             </p>
             <ul>
-              {missingProjectEvidence.map((item) => (
+              {missingProjectMaterials.map((item) => (
                 <li key={item}>{item}</li>
               ))}
               {certifications.length === 0 ? <li>Certificates and credential URLs</li> : null}

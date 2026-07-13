@@ -8,23 +8,32 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "pdf:cv": "node scripts/print-cv-with-chromium.mjs"
+    "pdf:cv": "node scripts/print-cv-with-chromium.mjs",
+    "pdf:cv:en": "CV_LANG=en node scripts/print-cv-with-chromium.mjs",
+    "pdf:cv:fr": "CV_LANG=fr node scripts/print-cv-with-chromium.mjs",
+    "pdf:cv:all": "CV_LANG=all node scripts/print-cv-with-chromium.mjs",
+    "test:contact-email": "node scripts/test-contact-email.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",
     "next": "16.2.10",
+    "nodemailer": "^9.0.3",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Download, Menu, Moon, Sun, X } from "lucide-react";
+import { FileText, Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import en from "@/messages/en.json";
 import fr from "@/messages/fr.json";
@@ -80,7 +80,7 @@ export function SiteHeader() {
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <Link className="button button-small" href="/cv">
-            <Download size={16} />
+            <FileText size={16} />
             {t.nav.downloadCv}
           </Link>
         </div>

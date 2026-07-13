@@ -73,7 +73,6 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <CaseList title="Challenges" items={project.challenges.map((item) => item.en)} />
           <CaseList title="Solutions Implemented" items={project.solutions.map((item) => item.en)} />
           <CaseList title="Lessons Learned" items={project.lessons.map((item) => item.en)} />
-          <CaseBlock title="Evidence Note" body={project.evidence.en} />
         </div>
       </section>
     </div>

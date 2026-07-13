@@ -2,30 +2,30 @@
 
 Modern personal portfolio and CV website for Oualid Ait Alla, built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## Verified Source Material
+## Source Material
 
-The original workspace contained `CV.pdf`. The portfolio now also uses repositories from the authenticated GitHub account `gimuser`. Unsupported project claims are not presented as completed work.
+The portfolio uses Oualid Ait Alla's profile details and repositories from the GitHub account `gimuser`. Unsupported project claims are not presented as completed work.
 
-Extracted from the old CV:
+Current profile details:
 
 - Name: Oualid Ait Alla
 - Email: oualidaitalla18@gmail.com
-- Location: Mghila, Beni Mellal, Morocco
+- Location: Beni Mellal, Morocco
+- LinkedIn: https://www.linkedin.com/in/aitalla-oualid-9797132bb/
+- GitHub: https://github.com/gimuser
 - Languages: Arabic native, English intermediate, French intermediate, Spanish beginner
-- Education entries: 2025 Data Science & Information Systems Security, 2024 DEUG Mathematics & Computer Science, 2023 Mathematical Sciences high school diploma, 2022 Physical Sciences high school diploma
-- CV projects: Car Price Prediction System, Hotel Management System (PHP), Image Classification with PyTorch, Android Device Security Testing
+- Education entries: 2026 Master's student in Data Science & Information Systems Security, 2025 Bachelor's in Data Science & Information Systems Security, 2024 DEUG Mathematics & Computer Science, 2023 Mathematical Sciences high school diploma, 2022 Physical Sciences high school diploma
+- Academic projects: Car Price Prediction System, Hotel Management System (PHP), Image Classification with PyTorch, Android Device Security Testing
 - GitHub projects: BachelorAI Tutor, Islamic AI Chat, Maison Global Store
 
 ## Missing Placeholders
 
 Replace these before publishing:
 
-- `[ADD LINKEDIN URL]`
-- project-specific GitHub URLs for older CV-only projects, if those repositories exist
+- project-specific GitHub URLs for older academic projects, if those repositories exist
 - `[ADD LIVE DEMO URL]`
-- `[ADD INSTITUTION]`
 - Certificates and credential links
-- Project repositories, screenshots, notebooks, reports, and verified metrics
+- Project repositories, screenshots, notebooks, reports, and metrics
 - Optional public phone number decision
 - Production domain in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`
 
@@ -46,18 +46,35 @@ npm run typecheck
 npm run build
 ```
 
+## Run With Docker
+
+```bash
+./run_project.sh
+```
+
+The script builds the Docker image and serves the production Next.js app at `http://localhost:3000`. If port `3000` is already busy, it automatically uses the next free port and prints the correct URL.
+
+If `.env.local` exists, `run_project.sh` passes it to the Docker container at runtime. Secrets are not copied into the Docker image.
+
+To stop the portfolio container:
+
+```bash
+./run_project.sh stop
+```
+
 ## CV PDF
 
 The `/cv` page is print-friendly and supports English/French switching in the browser.
+For the public website, `/cv` is the safe default: visitors can view the CV and use browser print/save-as-PDF without needing a committed PDF file.
 
-To generate a modern PDF locally:
+To generate both English and French PDFs locally:
 
 ```bash
 npm run dev
-npm run pdf:cv
+npm run pdf:cv:all
 ```
 
-The script prints `http://localhost:3000/cv` to `public/cv/oualid-ait-alla-modern-cv.pdf` using local Chromium. You can also open `/cv` and use the `Print / Save PDF` button.
+The script prints `/cv?lang=en` and `/cv?lang=fr` to local files under `public/cv/` using Chromium. These generated PDF files are ignored by Git and should stay local/private unless you intentionally decide to publish them. The default `npm run pdf:cv` command generates the English PDF.
 
 ## Content Updates
 
@@ -71,7 +88,7 @@ The script prints `http://localhost:3000/cv` to `public/cv/oualid-ait-alla-moder
 ## Adding a Project
 
 1. Add a new object to `data/projects.ts`.
-2. Provide only verified technologies, results, links, and dataset information.
+2. Provide only supported technologies, results, links, and dataset information.
 3. Add screenshots or project assets under `public/projects/`.
 4. Run `npm run lint` and `npm run build`.
 
@@ -99,4 +116,22 @@ This app uses the Next.js App Router and is best deployed on Vercel or Netlify. 
 
 ## Environment Variables
 
-No environment variables are required for the current static portfolio. Add email/contact form secrets only on the server side when integrating a real mail provider.
+The contact form sends mail from a server action through SMTP. For Gmail delivery, create a Google App Password and keep these values in `.env.local`:
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=oualidaitalla18@gmail.com
+SMTP_PASS=your-google-app-password
+CONTACT_FROM_EMAIL=oualidaitalla18@gmail.com
+CONTACT_TO_EMAIL=oualidaitalla18@gmail.com
+```
+
+Do not commit `.env.local`. The form validates input on the server, uses a honeypot field, rate limits submissions, and sends visitor emails through `replyTo` rather than trusting visitor-controlled sender headers.
+
+After replacing `SMTP_PASS`, send a real delivery test:
+
+```bash
+npm run test:contact-email
+```

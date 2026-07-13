@@ -15,17 +15,18 @@ export const profile = {
     fr: "Je combine la data science, le developpement Python, les bases du machine learning, l'analyse visuelle des donnees, la sensibilite cybersecurite et l'apprentissage par projets pratiques.",
   },
   institution: {
-    en: "Sultan Moulay Slimane University, Morocco",
-    fr: "Universite Sultan Moulay Slimane, Maroc",
+    en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
+    fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
   },
   email: "oualidaitalla18@gmail.com",
   location: "Beni Mellal, Morocco",
   preciseLocationFromCv: "Mghila, Beni Mellal, Morocco",
-  phoneFromCv: "+2126 09 83 12 77",
-  publicContactNote: {
-    en: "Phone number found in the old CV is intentionally not shown on public website sections. Add it to the printable CV only if you want it published.",
-    fr: "Le numero de telephone trouve dans l'ancien CV n'est pas affiche dans les sections publiques. Ajoutez-le au CV imprimable uniquement si vous souhaitez le publier.",
-  },
+  phone: "+212 609 831 277",
+  whatsapp: {
+    label: "WhatsApp",
+    href: "https://wa.me/212609831277",
+    status: "available",
+  } satisfies ProfileLink,
   availability: {
     en: "Open to internships, academic research projects, collaborations, and suitable junior opportunities.",
     fr: "Ouvert aux stages, projets de recherche academiques, collaborations et opportunites junior adaptees.",
@@ -40,10 +41,15 @@ export const profile = {
     "Information Systems Security Student",
   ],
   links: {
+    website: {
+      label: "Portfolio",
+      href: "https://oualid-ait-alla.vercel.app",
+      status: "available",
+    } satisfies ProfileLink,
     linkedin: {
       label: "LinkedIn",
-      href: "[ADD LINKEDIN URL]",
-      status: "missing",
+      href: "https://www.linkedin.com/in/aitalla-oualid-9797132bb/",
+      status: "available",
     } satisfies ProfileLink,
     github: {
       label: "GitHub",
@@ -55,15 +61,15 @@ export const profile = {
 
 export const education: EducationItem[] = [
   {
-    year: "Current",
+    year: "2026",
     title: {
       en: "Master's student in Data Science and Information Systems Security",
       fr: "Master Data Science et Securite des Systemes d'Information",
     },
     institution: profile.institution,
     details: {
-      en: "Current profile supplied in the project brief. Add exact start and expected graduation dates before publishing.",
-      fr: "Profil actuel fourni dans le brief du projet. Ajoutez les dates exactes de debut et de fin prevue avant publication.",
+      en: "Graduate studies focused on data science, artificial intelligence, cybersecurity, and secure information systems.",
+      fr: "Formation de master axee sur la data science, l'intelligence artificielle, la cybersecurite et les systemes d'information securises.",
     },
     source: "User-provided profile",
   },
@@ -74,14 +80,14 @@ export const education: EducationItem[] = [
       fr: "Licence en Data Science et Securite des Systemes d'Information",
     },
     institution: {
-      en: "[ADD INSTITUTION]",
-      fr: "[AJOUTER L'ETABLISSEMENT]",
+      en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
+      fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
     },
     details: {
-      en: "Coursework from the CV includes data science, AI, database systems, network security, cybersecurity, cryptography, machine learning fundamentals, information systems security, Python, SQL, C, and HTML5.",
-      fr: "Le CV mentionne des cours en data science, IA, bases de donnees, securite reseau, cybersecurite, cryptographie, bases du machine learning, securite des systemes d'information, Python, SQL, C et HTML5.",
+      en: "Coursework includes data science, AI, database systems, network security, cybersecurity, cryptography, machine learning fundamentals, information systems security, Python, SQL, C, and HTML5.",
+      fr: "Cours en data science, IA, bases de donnees, securite reseau, cybersecurite, cryptographie, bases du machine learning, securite des systemes d'information, Python, SQL, C et HTML5.",
     },
-    source: "CV",
+    source: "User-provided profile",
   },
   {
     year: "2024",
@@ -90,14 +96,14 @@ export const education: EducationItem[] = [
       fr: "DEUG en Mathematiques et Informatique",
     },
     institution: {
-      en: "[ADD INSTITUTION]",
-      fr: "[AJOUTER L'ETABLISSEMENT]",
+      en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
+      fr: "Universite Sultan Moulay Slimane, Faculte Polydisciplinaire de Beni Mellal",
     },
     details: {
       en: "Coursework included linear algebra, calculus, probability and statistics, discrete mathematics, CMS, database fundamentals, algorithms, and computer systems.",
       fr: "Cours suivis: algebre lineaire, calcul, probabilites et statistiques, mathematiques discretes, CMS, bases de donnees, algorithmes et systemes informatiques.",
     },
-    source: "CV",
+    source: "User-provided profile",
   },
   {
     year: "2023",
@@ -141,8 +147,8 @@ export const experience: ExperienceItem[] = [
       fr: "Projets academiques en machine learning",
     },
     context: {
-      en: "CV-backed academic and personal projects, not employment experience.",
-      fr: "Projets academiques et personnels valides par le CV, non presentes comme experience professionnelle.",
+      en: "Academic and personal projects, not employment experience.",
+      fr: "Projets academiques et personnels, non presentes comme experience professionnelle.",
     },
     bullets: [
       {
@@ -162,8 +168,8 @@ export const experience: ExperienceItem[] = [
       fr: "Projet d'apprentissage en cybersecurite",
     },
     context: {
-      en: "Controlled, ethical security testing environment described in the CV.",
-      fr: "Environnement de test controle et ethique decrit dans le CV.",
+      en: "Controlled, ethical security testing environment.",
+      fr: "Environnement de test controle et ethique.",
     },
     bullets: [
       {

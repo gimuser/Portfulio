@@ -1,7 +1,8 @@
 "use client";
 
-import { Download, Printer } from "lucide-react";
+import { Globe2, Mail, MapPin, Printer } from "lucide-react";
 import { useLanguage } from "@/components/layout/language-provider";
+import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
 import { education, experience, profile } from "@/data/profile";
 import { projects } from "@/data/projects";
@@ -11,6 +12,16 @@ import { localize } from "@/utils/localize";
 export function CvDocument() {
   const { language } = useLanguage();
   const printPage = () => window.print();
+  const cleanUrl = (href: string) => href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const isPlaceholder = (value: string) => value.includes("[ADD") || value.includes("[AJOUTER");
+  const languageLevels =
+    language === "en"
+      ? ["Arabic: Native", "English: Intermediate", "French: Intermediate", "Spanish: Beginner"]
+      : ["Arabe: langue maternelle", "Anglais: intermediaire", "Francais: intermediaire", "Espagnol: debutant"];
+  const cvSkillGroups = skillGroups.filter(
+    (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
+  );
+  const selectedProjects = projects.slice(0, 5);
 
   return (
     <div className="cv-page" id="content">
@@ -19,27 +30,43 @@ export function CvDocument() {
           <Printer size={18} />
           {language === "en" ? "Print / Save PDF" : "Imprimer / PDF"}
         </button>
-        <a className="button button-secondary" href="/cv/oualid-ait-alla-modern-cv.pdf" download>
-          <Download size={18} />
-          {language === "en" ? "Download modern PDF" : "Telecharger le PDF moderne"}
-        </a>
-        <a className="button button-ghost" href="/cv/oualid-ait-alla-original-cv.pdf" download>
-          {language === "en" ? "Original CV" : "Ancien CV"}
-        </a>
       </div>
 
       <article className="cv-sheet">
         <header className="cv-header">
-          <div>
-            <h1>{profile.name}</h1>
-            <p>{localize(profile.displayRole, language)}</p>
+          <div className="cv-photo cv-photo-placeholder" aria-label={`${profile.name} initials`}>
+            OA
           </div>
-          <address>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            <span>{profile.location}</span>
-            <span>{language === "en" ? "LinkedIn: [ADD LINKEDIN URL]" : "LinkedIn : [AJOUTER URL LINKEDIN]"}</span>
-            <span>GitHub: {profile.links.github.href}</span>
-          </address>
+          <div className="cv-heading">
+            <h1>{profile.name}</h1>
+            <p className="cv-role">{localize(profile.displayRole, language)}</p>
+            <address className="cv-contact">
+              <span className="cv-contact-row">
+                <span>
+                  <MapPin className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                  {profile.location}
+                </span>
+                <a href={`mailto:${profile.email}`}>
+                  <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                  {profile.email}
+                </a>
+                <a href={profile.links.website.href}>
+                  <Globe2 className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                  {cleanUrl(profile.links.website.href)}
+                </a>
+              </span>
+              <span className="cv-contact-row">
+                <a href={profile.links.linkedin.href}>
+                  <SocialIcon name="linkedin" size={10} />
+                  {cleanUrl(profile.links.linkedin.href)}
+                </a>
+                <a href={profile.links.github.href}>
+                  <SocialIcon name="github" size={10} />
+                  {cleanUrl(profile.links.github.href)}
+                </a>
+              </span>
+            </address>
+          </div>
         </header>
 
         <section>
@@ -51,43 +78,45 @@ export function CvDocument() {
         <section>
           <h2>{language === "en" ? "Education" : "Formation"}</h2>
           <div className="cv-list">
-            {education.map((item) => (
-              <div className="cv-row" key={`${item.year}-${item.title.en}`}>
-                <strong>{item.year}</strong>
-                <div>
-                  <h3>{localize(item.title, language)}</h3>
-                  <p>{localize(item.institution, language)}</p>
+            {education.map((item) => {
+              const institution = localize(item.institution, language);
+
+              return (
+                <div className="cv-entry" key={`${item.year}-${item.title.en}`}>
+                  <div className="cv-entry-heading">
+                    <h3>{localize(item.title, language)}</h3>
+                    <strong>{item.year}</strong>
+                  </div>
+                  {!isPlaceholder(institution) ? <p className="cv-muted">{institution}</p> : null}
                   <small>{localize(item.details, language)}</small>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         <section>
           <h2>{language === "en" ? "Technical Skills" : "Competences techniques"}</h2>
           <div className="cv-skill-grid">
-            {skillGroups
-              .filter((group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages")
-              .map((group) => (
-                <p key={group.title.en}>
-                  <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
-                </p>
-              ))}
+            {cvSkillGroups.map((group) => (
+              <p key={group.title.en}>
+                <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
+              </p>
+            ))}
           </div>
         </section>
 
         <section>
-          <h2>{language === "en" ? "Projects" : "Projets"}</h2>
+          <h2>{language === "en" ? "Selected Projects" : "Projets selectionnes"}</h2>
           <div className="cv-list">
-            {projects.map((project) => (
-              <div className="cv-row" key={project.slug}>
-                <strong>{project.year}</strong>
-                <div>
+            {selectedProjects.map((project) => (
+              <div className="cv-entry" key={project.slug}>
+                <div className="cv-entry-heading">
                   <h3>{project.title}</h3>
-                  <p>{localize(project.summary, language)}</p>
-                  <small>{project.technologies.join(", ")}</small>
+                  <strong>{project.year}</strong>
                 </div>
+                <p>{localize(project.summary, language)}</p>
+                <small>{project.technologies.join(", ")}</small>
               </div>
             ))}
           </div>
@@ -98,9 +127,10 @@ export function CvDocument() {
             <h2>{language === "en" ? "Project Experience" : "Experience projets"}</h2>
             {experience.map((item) => (
               <div key={`${item.year}-${item.title.en}`} className="cv-mini">
-                <strong>
-                  {item.year} - {localize(item.title, language)}
-                </strong>
+                <div className="cv-entry-heading">
+                  <strong>{localize(item.title, language)}</strong>
+                  <strong>{item.year}</strong>
+                </div>
                 <ul>
                   {item.bullets.map((bullet) => (
                     <li key={bullet.en}>{localize(bullet, language)}</li>
@@ -111,14 +141,15 @@ export function CvDocument() {
           </div>
           <div>
             <h2>{language === "en" ? "Languages" : "Langues"}</h2>
-            <p>Arabic: Native</p>
-            <p>English: Intermediate</p>
-            <p>French: Intermediate</p>
-            <p>Spanish: Beginner</p>
-            <h2>{language === "en" ? "Certifications" : "Certifications"}</h2>
-            {certifications.length === 0 ? (
-              <p>{language === "en" ? "[ADD CERTIFICATIONS]" : "[AJOUTER CERTIFICATIONS]"}</p>
-            ) : null}
+            {languageLevels.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
+            {certifications.length > 0 ? <h2>{language === "en" ? "Certifications" : "Certifications"}</h2> : null}
+            {certifications.map((certification) => (
+              <p key={certification.name}>
+                <strong>{certification.name}</strong>, {certification.organization}
+              </p>
+            ))}
           </div>
         </section>
       </article>

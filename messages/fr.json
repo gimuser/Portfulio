@@ -6,13 +6,13 @@
     "cv": "CV",
     "blog": "Articles",
     "contact": "Contact",
-    "downloadCv": "Telecharger CV"
+    "downloadCv": "Voir CV"
   },
   "actions": {
     "viewProjects": "Voir les projets",
     "contact": "Contact",
     "print": "Imprimer / PDF",
-    "downloadOriginal": "Telecharger l'ancien CV",
+    "downloadOriginal": "Ouvrir CV",
     "missingLink": "Ajouter le lien",
     "details": "Details"
   },
@@ -23,6 +23,6 @@
     "experience": "Experience",
     "research": "Interets de recherche",
     "capabilities": "Capacites",
-    "evidence": "Sources et elements manquants"
+    "evidence": "Elements a ajouter"
   }
 }

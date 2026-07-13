@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Code2, Download, Mail, Network } from "lucide-react";
+import { ArrowRight, FileText, Mail } from "lucide-react";
 import { AnimatedRoles } from "@/components/sections/animated-roles";
+import { SocialIcon } from "@/components/ui/social-icons";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/components/layout/language-provider";
@@ -35,8 +36,8 @@ export function Hero() {
               <ArrowRight size={18} />
             </Link>
             <Link className="button button-secondary" href="/cv">
-              <Download size={18} />
-              {language === "en" ? "Download CV" : "Telecharger CV"}
+              <FileText size={18} />
+              {language === "en" ? "View CV" : "Voir CV"}
             </Link>
             <Link className="button button-ghost" href="/contact">
               <Mail size={18} />
@@ -44,28 +45,24 @@ export function Hero() {
             </Link>
           </div>
           <div className="social-placeholders" aria-label="Social links">
-            <span>
-              <Network size={16} />
-              {profile.links.linkedin.href}
-            </span>
-            <span>
-              <Code2 size={16} />
-              {profile.links.github.href}
-            </span>
+            <a href={profile.links.linkedin.href} target="_blank" rel="noreferrer">
+              <SocialIcon name="linkedin" />
+              {profile.links.linkedin.label}
+            </a>
+            <a href={profile.links.github.href} target="_blank" rel="noreferrer">
+              <SocialIcon name="github" />
+              {profile.links.github.href.replace("https://", "")}
+            </a>
           </div>
         </div>
-        <div className="hero-panel" aria-label="Verified profile highlights">
+        <div className="hero-panel" aria-label="Profile highlights">
           <div>
             <span className="metric-value">{projects.length}</span>
-            <span>Verified GitHub + CV projects</span>
-          </div>
-          <div>
-            <span className="metric-value">2025</span>
-            <span>Latest verified project year</span>
+            <span>Portfolio projects</span>
           </div>
           <div>
             <span className="metric-value">EN / FR</span>
-            <span>Bilingual CV-ready content</span>
+            <span>Bilingual profile content</span>
           </div>
         </div>
       </div>

@@ -6,13 +6,13 @@
     "cv": "CV",
     "blog": "Insights",
     "contact": "Contact",
-    "downloadCv": "Download CV"
+    "downloadCv": "View CV"
   },
   "actions": {
     "viewProjects": "View projects",
     "contact": "Contact",
     "print": "Print / Save PDF",
-    "downloadOriginal": "Download original CV",
+    "downloadOriginal": "Open CV",
     "missingLink": "Add link",
     "details": "Details"
   },
@@ -23,6 +23,6 @@
     "experience": "Experience",
     "research": "Research Interests",
     "capabilities": "Capabilities",
-    "evidence": "Evidence & Missing Materials"
+    "evidence": "Materials to Add"
   }
 }

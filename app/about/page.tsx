@@ -19,16 +19,16 @@ export default function AboutPage() {
             visualization thinking, and information systems security.
           </p>
           <p>
-            My work is currently project-based and academic. The strongest verified items in this workspace are
-            machine-learning, image-classification, cybersecurity, and web information-system projects from the
-            previous CV. I am available for internships, research projects, collaboration, and suitable junior
-            opportunities where I can keep learning while contributing carefully.
+            My work is currently project-based and academic, with a focus on machine learning, image
+            classification, cybersecurity, and web information systems. I am available for internships, research
+            projects, collaboration, and suitable junior opportunities where I can keep learning while contributing
+            carefully.
           </p>
         </div>
       </section>
       <section className="section section-alt">
         <div className="container">
-          <SectionHeading eyebrow="Education" title="Verified academic record" />
+          <SectionHeading eyebrow="Education" title="Academic record" />
           <div className="timeline">
             {education.map((item) => (
               <article className="timeline-item" key={`${item.year}-${item.title.en}`}>

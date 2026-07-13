@@ -76,8 +76,8 @@ export const projects: Project[] = [
     github: { label: "GitHub private repo", href: "https://github.com/gimuser/bachlor-ai-tutor", status: "available" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
     evidence: {
-      en: "Verified from private GitHub repository README, package manifests, Express route registration, RAG service, vector store service, and ingestion script.",
-      fr: "Confirme par le README du depot GitHub prive, les manifests package, les routes Express, le service RAG, le vector store et le script d'ingestion.",
+      en: "Based on the private GitHub repository README, package manifests, Express route registration, RAG service, vector store service, and ingestion script.",
+      fr: "Base sur le README du depot GitHub prive, les manifests package, les routes Express, le service RAG, le vector store et le script d'ingestion.",
     },
     visualTone: "blue",
   },
@@ -143,8 +143,8 @@ export const projects: Project[] = [
     github: { label: "GitHub", href: "https://github.com/gimuser/repos-islamic_ai_chat", status: "available" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
     evidence: {
-      en: "Verified from public GitHub README, backend/frontend package manifests, Express routes, chat controller, provider service, and prompt guard utility.",
-      fr: "Confirme par le README public GitHub, les manifests backend/frontend, les routes Express, le controller chat, le service provider et l'utilitaire prompt guard.",
+      en: "Based on the public GitHub README, backend/frontend package manifests, Express routes, chat controller, provider service, and prompt guard utility.",
+      fr: "Base sur le README public GitHub, les manifests backend/frontend, les routes Express, le controller chat, le service provider et l'utilitaire prompt guard.",
     },
     visualTone: "violet",
   },
@@ -210,8 +210,8 @@ export const projects: Project[] = [
     github: { label: "GitHub", href: "https://github.com/gimuser/global-affiliate-store", status: "available" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
     evidence: {
-      en: "Verified from public GitHub README, package manifest, Prisma schema, auth helper, recommendation service, checkout route, and recommendations route.",
-      fr: "Confirme par le README public GitHub, package manifest, schema Prisma, helper auth, service recommendation, route checkout et route recommendations.",
+      en: "Based on the public GitHub README, package manifest, Prisma schema, auth helper, recommendation service, checkout route, and recommendations route.",
+      fr: "Base sur le README public GitHub, package manifest, schema Prisma, helper auth, service recommendation, route checkout et route recommendations.",
     },
     visualTone: "green",
   },
@@ -235,8 +235,8 @@ export const projects: Project[] = [
       { en: "Train and evaluate regression models using Python libraries.", fr: "Entrainer et evaluer des modeles de regression avec des bibliotheques Python." },
     ],
     role: {
-      en: "Student developer responsible for the end-to-end ML workflow described in the CV.",
-      fr: "Etudiant developpeur responsable du workflow ML de bout en bout decrit dans le CV.",
+      en: "Student developer responsible for the end-to-end ML workflow.",
+      fr: "Etudiant developpeur responsable du workflow ML de bout en bout.",
     },
     technologies: ["Python", "Data cleaning", "EDA", "Feature engineering", "Regression models"],
     dataset: {
@@ -255,16 +255,16 @@ export const projects: Project[] = [
       { en: "Regression model comparison described without unsupported metrics.", fr: "Comparaison de modeles de regression sans metriques non confirmees." },
     ],
     approach: {
-      en: "Classical supervised machine learning regression approach. The CV confirms Python libraries but does not name specific algorithms or performance values.",
-      fr: "Approche de regression supervisee classique. Le CV confirme l'utilisation de bibliotheques Python mais ne precise pas les algorithmes ni les performances.",
+      en: "Classical supervised machine learning regression approach. The project uses Python libraries without naming specific algorithms or performance values.",
+      fr: "Approche de regression supervisee classique. Le projet utilise des bibliotheques Python sans preciser les algorithmes ni les performances.",
     },
     results: {
-      en: "The project produced trained and evaluated regression models. No verified numerical results were found in the workspace.",
-      fr: "Le projet a produit des modeles de regression entraines et evalues. Aucune valeur numerique verifiee n'a ete trouvee dans le workspace.",
+      en: "The project produced trained and evaluated regression models. Numerical result files were not present in the workspace.",
+      fr: "Le projet a produit des modeles de regression entraines et evalues. Les fichiers de resultats numeriques n'etaient pas presents dans le workspace.",
     },
     challenges: [
       { en: "Handling multiple vehicle attributes with different data types.", fr: "Gerer plusieurs attributs vehicules avec des types de donnees differents." },
-      { en: "Avoiding unsupported claims about accuracy or business impact.", fr: "Eviter les affirmations non verifiees sur la precision ou l'impact business." },
+      { en: "Avoiding unsupported claims about accuracy or business impact.", fr: "Eviter les affirmations non appuyees sur la precision ou l'impact business." },
     ],
     solutions: [
       { en: "Used data cleaning, EDA, and feature engineering before model training.", fr: "Utilisation du nettoyage de donnees, de l'EDA et du feature engineering avant l'entrainement." },
@@ -276,8 +276,8 @@ export const projects: Project[] = [
     github: { label: "GitHub", href: "[ADD GITHUB URL]", status: "missing" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
     evidence: {
-      en: "Verified from the old CV. No repository, notebook, report, screenshots, or model metrics were available in the workspace.",
-      fr: "Confirme par l'ancien CV. Aucun depot, notebook, rapport, capture ou metrique modele n'etait disponible dans le workspace.",
+      en: "Repository, notebook, report, screenshots, and model metrics can be added when available.",
+      fr: "Depot, notebook, rapport, captures et metriques modele peuvent etre ajoutes lorsqu'ils sont disponibles.",
     },
     visualTone: "blue",
   },
@@ -325,21 +325,21 @@ export const projects: Project[] = [
       fr: "Classification deep learning avec PyTorch. Le transfer learning, les plateformes cloud et les architectures exactes ne sont pas confirmes par les fichiers disponibles.",
     },
     results: {
-      en: "The model was trained and tested on labeled image datasets. Verified accuracy, loss curves, and confusion matrices were not found in the workspace.",
-      fr: "Le modele a ete entraine et teste sur des images etiquetees. Aucune accuracy, courbe de perte ou matrice de confusion verifiee n'a ete trouvee.",
+      en: "The model was trained and tested on labeled image datasets. Accuracy, loss curves, and confusion matrices can be added when available.",
+      fr: "Le modele a ete entraine et teste sur des images etiquetees. L'accuracy, les courbes de perte et les matrices de confusion peuvent etre ajoutees lorsqu'elles sont disponibles.",
     },
     challenges: [
-      { en: "Working from a CV summary without notebook-level implementation details.", fr: "Travailler a partir d'un resume CV sans details de notebook." },
+      { en: "Working from a project summary without notebook-level implementation details.", fr: "Travailler a partir d'un resume projet sans details de notebook." },
     ],
     solutions: [
-      { en: "Documented the verified PyTorch and deep-learning scope, then left metrics and architecture as update targets.", fr: "Documentation du perimetre confirme PyTorch/deep learning, puis conservation des metriques et architecture comme elements a ajouter." },
+      { en: "Documented the PyTorch and deep-learning scope, then left metrics and architecture as update targets.", fr: "Documentation du perimetre PyTorch/deep learning, puis conservation des metriques et architecture comme elements a ajouter." },
     ],
     lessons: [
       { en: "Image ML portfolios are stronger when they show sample inputs, evaluation plots, and model limitations.", fr: "Un portfolio de ML image est plus fort avec exemples d'entree, graphiques d'evaluation et limites du modele." },
     ],
     github: { label: "GitHub", href: "[ADD GITHUB URL]", status: "missing" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
-    evidence: { en: "Verified from the old CV only.", fr: "Confirme uniquement par l'ancien CV." },
+    evidence: { en: "Repository, notebook, and report can be added when available.", fr: "Depot, notebook et rapport peuvent etre ajoutes lorsqu'ils sont disponibles." },
     visualTone: "violet",
   },
   {
@@ -367,8 +367,8 @@ export const projects: Project[] = [
     },
     technologies: ["Kali Linux", "Metasploit", "Android security", "Mitigation analysis"],
     dataset: {
-      en: "No dataset. The CV describes controlled device security testing.",
-      fr: "Aucun jeu de donnees. Le CV decrit des tests de securite sur appareil controle.",
+      en: "No dataset. The project describes controlled device security testing.",
+      fr: "Aucun jeu de donnees. Le projet decrit des tests de securite sur appareil controle.",
     },
     workflow: [
       { en: "Controlled lab setup", fr: "Mise en place controlee" },
@@ -399,7 +399,7 @@ export const projects: Project[] = [
     ],
     github: { label: "Repository", href: "[ADD REPOSITORY OR REPORT URL]", status: "missing" },
     demo: { label: "Report", href: "[ADD REPORT LINK]", status: "missing" },
-    evidence: { en: "Verified from the old CV only.", fr: "Confirme uniquement par l'ancien CV." },
+    evidence: { en: "Repository or report can be added when available.", fr: "Depot ou rapport peuvent etre ajoutes lorsqu'ils sont disponibles." },
     visualTone: "green",
   },
   {
@@ -427,8 +427,8 @@ export const projects: Project[] = [
     },
     technologies: ["PHP", "Database", "HTML5", "Information systems"],
     dataset: {
-      en: "Application data for rooms, reservations, and users. Database engine was not specified in the CV.",
-      fr: "Donnees applicatives pour chambres, reservations et utilisateurs. Le moteur de base de donnees n'est pas precise dans le CV.",
+      en: "Application data for rooms, reservations, and users. Database engine was not specified in the project material.",
+      fr: "Donnees applicatives pour chambres, reservations et utilisateurs. Le moteur de base de donnees n'est pas precise dans les elements du projet.",
     },
     workflow: [
       { en: "User actions", fr: "Actions utilisateur" },
@@ -447,8 +447,8 @@ export const projects: Project[] = [
       fr: "Application de systeme d'information PHP classique avec persistance en base de donnees.",
     },
     results: {
-      en: "Implemented the core management features described in the CV. No screenshots or deployment link were available.",
-      fr: "Implementation des fonctionnalites principales decrites dans le CV. Aucune capture ou URL de deploiement n'etait disponible.",
+      en: "Implemented the core management features in the project scope. No screenshots or deployment link were available.",
+      fr: "Implementation des fonctionnalites principales du projet. Aucune capture ou URL de deploiement n'etait disponible.",
     },
     challenges: [
       { en: "Coordinating application state with persistent database records.", fr: "Coordonner l'etat applicatif avec les enregistrements persistants." },
@@ -461,14 +461,14 @@ export const projects: Project[] = [
     ],
     github: { label: "GitHub", href: "[ADD GITHUB URL]", status: "missing" },
     demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
-    evidence: { en: "Verified from the old CV only.", fr: "Confirme uniquement par l'ancien CV." },
+    evidence: { en: "Repository or screenshots can be added when available.", fr: "Depot ou captures peuvent etre ajoutes lorsqu'ils sont disponibles." },
     visualTone: "amber",
   },
 ];
 
-export const missingProjectEvidence = [
+export const missingProjectMaterials = [
   "URL-Detect Pro malicious URL classifier",
   "Cyberattack data visualization dashboard",
   "Spam/ham, sentiment, or other ML notebooks",
-  "Screenshots, notebooks, reports, model metrics, and live demos for older CV-only projects",
+  "Screenshots, notebooks, reports, model metrics, and live demos for older academic projects",
 ];
