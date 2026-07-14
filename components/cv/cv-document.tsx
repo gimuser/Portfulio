@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Globe2, Mail, MapPin, Printer } from "lucide-react";
+import { Check, Copy, Download, Globe2, Mail, MapPin, Printer } from "lucide-react";
+import { useState } from "react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
@@ -12,9 +13,28 @@ import { localize } from "@/utils/localize";
 
 export function CvDocument() {
   const { language } = useLanguage();
+  const [copied, setCopied] = useState(false);
   const printPage = () => window.print();
   const cleanUrl = (href: string) => href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const isPlaceholder = (value: string) => value.includes("[ADD") || value.includes("[AJOUTER");
+  const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}/cv?lang=${language}`;
+  const shareSubject = `${profile.name} CV`;
+  const shareText =
+    language === "en"
+      ? `Here is ${profile.name}'s CV: ${cvShareUrl}`
+      : `Voici le CV de ${profile.name} : ${cvShareUrl}`;
+  const encodedShareUrl = encodeURIComponent(cvShareUrl);
+  const encodedShareText = encodeURIComponent(shareText);
+  const encodedShareSubject = encodeURIComponent(shareSubject);
+  const copyCvLink = async () => {
+    if (!navigator.clipboard) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(cvShareUrl);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
   const languageLevels =
     language === "en"
       ? ["Arabic: Native", "English: Intermediate", "French: Intermediate", "Spanish: Beginner"]
@@ -174,11 +194,54 @@ export function CvDocument() {
         </section>
       </article>
 
-      <div className="cv-floating-download no-print">
+      <div className="cv-floating-actions no-print" aria-label={language === "en" ? "CV actions" : "Actions CV"}>
         <button className="button button-secondary" type="button" onClick={printPage}>
           <Download size={18} />
           <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
         </button>
+        <div className="cv-share-links" aria-label={language === "en" ? "Share CV links" : "Liens de partage du CV"}>
+          <button
+            className="cv-share-action"
+            type="button"
+            onClick={copyCvLink}
+            title={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
+            aria-label={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
+          >
+            {copied ? <Check size={17} /> : <Copy size={17} />}
+            <span>{copied ? (language === "en" ? "Copied" : "Copié") : language === "en" ? "Copy link" : "Copier"}</span>
+          </button>
+          <a
+            className="cv-share-action"
+            href={`https://wa.me/?text=${encodedShareText}`}
+            target="_blank"
+            rel="noreferrer"
+            title={language === "en" ? "Share CV on WhatsApp" : "Partager le CV sur WhatsApp"}
+            aria-label={language === "en" ? "Share CV on WhatsApp" : "Partager le CV sur WhatsApp"}
+          >
+            <SocialIcon name="whatsapp" size={17} />
+            <span>WhatsApp</span>
+          </a>
+          <a
+            className="cv-share-action"
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
+            target="_blank"
+            rel="noreferrer"
+            title={language === "en" ? "Share CV on LinkedIn" : "Partager le CV sur LinkedIn"}
+            aria-label={language === "en" ? "Share CV on LinkedIn" : "Partager le CV sur LinkedIn"}
+          >
+            <SocialIcon name="linkedin" size={17} />
+            <span>LinkedIn</span>
+          </a>
+          <a
+            className="cv-share-action"
+            href={`mailto:?subject=${encodedShareSubject}&body=${encodedShareText}`}
+            title={language === "en" ? "Share CV by email" : "Partager le CV par email"}
+            aria-label={language === "en" ? "Share CV by email" : "Partager le CV par email"}
+          >
+            <Mail size={17} />
+            <span>Email</span>
+          </a>
+        </div>
       </div>
     </div>
   );
