@@ -1368,6 +1368,21 @@ img {
   gap: 0.7rem;
 }
 
+.cv-bottom-download {
+  width: min(900px, calc(100% - 2rem));
+  margin: 1.25rem auto 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.cv-bottom-download p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .cv-sheet {
   width: min(900px, calc(100% - 2rem));
   margin-inline: auto;

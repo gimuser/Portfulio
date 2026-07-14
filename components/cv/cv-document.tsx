@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Globe2, Mail, MapPin, Printer } from "lucide-react";
+import { Download, Globe2, Mail, MapPin, Printer } from "lucide-react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
@@ -173,6 +173,18 @@ export function CvDocument() {
           </div>
         </section>
       </article>
+
+      <div className="cv-bottom-download no-print">
+        <button className="button button-secondary" type="button" onClick={printPage}>
+          <Download size={18} />
+          {language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}
+        </button>
+        <p>
+          {language === "en"
+            ? "Choose Save as PDF in the print dialog."
+            : "Choisissez Enregistrer au format PDF dans la fenêtre d'impression."}
+        </p>
+      </div>
     </div>
   );
 }
