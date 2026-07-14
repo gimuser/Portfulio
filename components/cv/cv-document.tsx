@@ -42,7 +42,7 @@ export function CvDocument() {
   const cvSkillGroups = skillGroups.filter(
     (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
   );
-  const selectedProjects = projects.slice(0, 3);
+  const selectedProjects = projects.slice(0, 4);
 
   return (
     <div className="cv-page" id="content">
