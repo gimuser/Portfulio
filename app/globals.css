@@ -1370,16 +1370,17 @@ img {
 
 .cv-floating-download {
   position: fixed;
-  right: max(1rem, calc((100vw - 1180px) / 2));
+  left: calc(50% + 450px + 1rem);
   bottom: 1.25rem;
   z-index: 35;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   pointer-events: none;
 }
 
 .cv-floating-download .button {
   pointer-events: auto;
+  white-space: nowrap;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
 }
 
@@ -1690,6 +1691,28 @@ img {
   }
 }
 
+@media (max-width: 1350px) {
+  .cv-floating-download {
+    left: calc(50% + min(450px, calc((100vw - 6rem) / 2)) + 0.45rem);
+  }
+
+  .cv-floating-download .button {
+    width: 44px;
+    min-width: 44px;
+    padding-inline: 0;
+    overflow: hidden;
+  }
+
+  .cv-floating-download .button span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 680px) {
   .nav-shell {
     min-height: 68px;
@@ -1824,13 +1847,24 @@ img {
   }
 
   .cv-floating-download {
+    left: 0.75rem;
     right: 0.75rem;
     bottom: 0.75rem;
-    left: 0.75rem;
   }
 
   .cv-floating-download .button {
     width: 100%;
+    min-width: 0;
+    padding-inline: 1rem;
+  }
+
+  .cv-floating-download .button span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }
 

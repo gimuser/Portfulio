@@ -177,7 +177,7 @@ export function CvDocument() {
       <div className="cv-floating-download no-print">
         <button className="button button-secondary" type="button" onClick={printPage}>
           <Download size={18} />
-          {language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}
+          <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
         </button>
       </div>
     </div>
