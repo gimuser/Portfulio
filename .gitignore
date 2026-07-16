@@ -35,6 +35,7 @@ yarn-error.log*
 
 # private/local generated assets
 /public/cv/*.pdf
+!/public/cv/Oualid_Ait_Alla_ATS_CV.pdf
 
 # vercel
 .vercel

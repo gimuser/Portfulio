@@ -4,6 +4,7 @@ import { spawnSync } from "node:child_process";
 
 const requestedLanguage = process.env.CV_LANG === "fr" || process.env.CV_LANG === "all" ? process.env.CV_LANG : "en";
 const languages = requestedLanguage === "all" ? ["en", "fr"] : [requestedLanguage];
+const cvKind = process.env.CV_KIND === "ats" ? "ats" : "modern";
 const legacyEnglishOut = resolve("public/cv/oualid-ait-alla-modern-cv.pdf");
 
 const candidates = [process.env.CHROMIUM_PATH, "/usr/bin/chromium", "/usr/bin/chromium-browser", "/usr/bin/google-chrome"].filter(Boolean);
@@ -15,7 +16,8 @@ if (!chromium) {
 }
 
 function cvUrl(language) {
-  const target = new URL(process.env.CV_URL ?? "http://localhost:3000/cv");
+  const path = cvKind === "ats" ? "/ats-cv" : "/cv";
+  const target = new URL(process.env.CV_URL ?? `http://localhost:3000${path}`);
   target.searchParams.set("lang", language);
   return target.toString();
 }
@@ -23,7 +25,13 @@ function cvUrl(language) {
 let exitStatus = 0;
 
 for (const language of languages) {
-  const out = resolve(`public/cv/oualid-ait-alla-modern-cv-${language}.pdf`);
+  const out = resolve(
+    cvKind === "ats"
+      ? language === "en"
+        ? "public/cv/Oualid_Ait_Alla_ATS_CV.pdf"
+        : `public/cv/Oualid_Ait_Alla_ATS_CV-${language}.pdf`
+      : `public/cv/oualid-ait-alla-modern-cv-${language}.pdf`,
+  );
   mkdirSync(dirname(out), { recursive: true });
 
   const result = spawnSync(
@@ -46,7 +54,7 @@ for (const language of languages) {
     break;
   }
 
-  if (language === "en") {
+  if (cvKind === "modern" && language === "en") {
     copyFileSync(out, legacyEnglishOut);
   }
 }

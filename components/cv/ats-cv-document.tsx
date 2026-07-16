@@ -1,0 +1,325 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowLeft, Download, Printer } from "lucide-react";
+import { useLanguage } from "@/components/layout/language-provider";
+import { certifications } from "@/data/certifications";
+import { atsProfessionalSummary, cvLanguages } from "@/data/cv";
+import { education, experience, profile } from "@/data/profile";
+import { projects } from "@/data/projects";
+import { skillGroups } from "@/data/skills";
+import type { Language, ProfileLink, Project } from "@/types/content";
+import { localize } from "@/utils/localize";
+
+type ProjectTextListKey = "objectives" | "features" | "solutions";
+
+const atsLabels = {
+  en: {
+    back: "Back to CV",
+    print: "Print / Save PDF",
+    download: "Download ATS CV",
+    languageSelector: "ATS CV language selector",
+    contact: {
+      email: "Email",
+      phone: "Phone",
+      portfolio: "Portfolio",
+      linkedin: "LinkedIn",
+      github: "GitHub",
+    },
+    sections: {
+      summary: "Professional Summary",
+      education: "Education",
+      skills: "Technical Skills",
+      projects: "Selected Projects",
+      experience: "Academic and Personal Project Experience",
+      certifications: "Certifications and Training",
+      languages: "Languages",
+    },
+    technologies: "Technologies",
+    links: "Links",
+  },
+  fr: {
+    back: "Retour au CV",
+    print: "Imprimer / Enregistrer en PDF",
+    download: "Télécharger le CV ATS",
+    languageSelector: "Sélecteur de langue du CV ATS",
+    contact: {
+      email: "Email",
+      phone: "Téléphone",
+      portfolio: "Portfolio",
+      linkedin: "LinkedIn",
+      github: "GitHub",
+    },
+    sections: {
+      summary: "Profil professionnel",
+      education: "Formation",
+      skills: "Compétences techniques",
+      projects: "Projets sélectionnés",
+      experience: "Expérience de projets académiques et personnels",
+      certifications: "Certifications et formations",
+      languages: "Langues",
+    },
+    technologies: "Technologies",
+    links: "Liens",
+  },
+} as const;
+
+const selectedProjectCount = 4;
+
+const projectBulletSources: Record<string, [ProjectTextListKey, number][]> = {
+  "bachelor-ai-tutor": [["objectives", 1]],
+  "islamic-ai-chat": [["objectives", 1]],
+  "maison-global-store": [["features", 2]],
+  "car-price-prediction-system": [["objectives", 1]],
+};
+
+function isAvailableLink(link: ProfileLink) {
+  return link.status === "available" && !link.href.includes("[ADD");
+}
+
+function getProjectBullets(project: Project, language: Language) {
+  const fallbackSources: [ProjectTextListKey, number][] = project.features
+    .slice(0, 1)
+    .map((_, index) => ["features", index]);
+  const sources = projectBulletSources[project.slug] ?? fallbackSources;
+  const bullets: string[] = [];
+
+  for (const [key, index] of sources) {
+    const text = project[key][index];
+    if (text) {
+      bullets.push(localize(text, language));
+    }
+  }
+
+  return bullets;
+}
+
+function formatLanguageLevel(language: Language, name: string, level: string) {
+  return language === "fr" ? `${name} : ${level}` : `${name}: ${level}`;
+}
+
+export function AtsCvDocument() {
+  const { language, setLanguage } = useLanguage();
+  const labels = atsLabels[language];
+  const printPage = () => window.print();
+  const technicalSkillGroups = skillGroups.filter(
+    (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
+  );
+  const selectedProjects = projects.slice(0, selectedProjectCount);
+  const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
+  const contactItems = [
+    {
+      key: "location",
+      text: location,
+      href: profile.locationMapHref,
+      label: location,
+    },
+    {
+      key: "email",
+      text: `${labels.contact.email}: ${profile.email}`,
+      href: `mailto:${profile.email}`,
+      label: `${labels.contact.email}: ${profile.email}`,
+    },
+    {
+      key: "phone",
+      text: `${labels.contact.phone}: ${profile.phone}`,
+      href: `tel:${profile.phone.replace(/\s+/g, "")}`,
+      label: `${labels.contact.phone}: ${profile.phone}`,
+    },
+    {
+      key: "portfolio",
+      text: `${labels.contact.portfolio}: ${profile.links.website.href}`,
+      href: profile.links.website.href,
+      label: `${labels.contact.portfolio}: ${profile.links.website.href}`,
+    },
+    {
+      key: "linkedin",
+      text: `${labels.contact.linkedin}: ${profile.links.linkedin.href}`,
+      href: profile.links.linkedin.href,
+      label: `${labels.contact.linkedin}: ${profile.links.linkedin.href}`,
+    },
+    {
+      key: "github",
+      text: `${labels.contact.github}: ${profile.links.github.href}`,
+      href: profile.links.github.href,
+      label: `${labels.contact.github}: ${profile.links.github.href}`,
+    },
+  ];
+
+  return (
+    <div className="ats-cv-route" id="content">
+      <div className="ats-cv-controls no-print">
+        <Link
+          className="button button-ghost"
+          href={`/cv?lang=${language}`}
+          aria-label={language === "en" ? "Back to portfolio CV" : "Retour au CV portfolio"}
+        >
+          <ArrowLeft size={18} />
+          {labels.back}
+        </Link>
+        <button className="button" type="button" onClick={printPage}>
+          <Printer size={18} />
+          {labels.print}
+        </button>
+        <a
+          className="button button-secondary"
+          href="/cv/Oualid_Ait_Alla_ATS_CV.pdf"
+          download
+          aria-label={
+            language === "en"
+              ? "Download Oualid Ait Alla ATS-friendly CV PDF"
+              : "Télécharger le CV ATS de Oualid Ait Alla au format PDF"
+          }
+        >
+          <Download size={18} />
+          {labels.download}
+        </a>
+        <div className="segmented ats-cv-language" aria-label={labels.languageSelector}>
+          <button type="button" className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>
+            EN
+          </button>
+          <button type="button" className={language === "fr" ? "active" : ""} onClick={() => setLanguage("fr")}>
+            FR
+          </button>
+        </div>
+      </div>
+
+      <article className="ats-cv-page" aria-label={`${profile.name} ATS CV`}>
+        <header className="ats-cv-header">
+          <h1>{profile.name}</h1>
+          <p className="ats-cv-title">{localize(profile.displayRole, language)}</p>
+          <address className="ats-cv-contact">
+            {contactItems.map((item) => (
+              <span key={item.key}>
+                <a href={item.href} aria-label={item.label}>
+                  {item.text}
+                </a>
+              </span>
+            ))}
+          </address>
+        </header>
+
+        <section className="ats-cv-section">
+          <h2>{labels.sections.summary}</h2>
+          <p>{localize(atsProfessionalSummary, language)}</p>
+        </section>
+
+        <section className="ats-cv-section">
+          <h2>{labels.sections.education}</h2>
+          <div className="ats-cv-list">
+            {education.map((item) => (
+              <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
+                <div className="ats-cv-entry-heading">
+                  <h3>{localize(item.title, language)}</h3>
+                  <strong>{item.year}</strong>
+                </div>
+                <p>{localize(item.institution, language)}</p>
+                {item.source === "User-provided profile" ? (
+                  <p className="ats-cv-detail">{localize(item.details, language)}</p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="ats-cv-section">
+          <h2>{labels.sections.skills}</h2>
+          <div className="ats-cv-skill-list">
+            {technicalSkillGroups.map((group) => (
+              <p key={group.title.en}>
+                <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section className="ats-cv-section">
+          <h2>{labels.sections.projects}</h2>
+          <div className="ats-cv-list">
+            {selectedProjects.map((project) => {
+              const projectLinks = [project.github, project.demo].filter(isAvailableLink);
+
+              return (
+                <div className="ats-cv-entry" key={project.slug}>
+                  <div className="ats-cv-entry-heading">
+                    <h3>{project.title}</h3>
+                    <strong>{project.year}</strong>
+                  </div>
+                  <p>
+                    <strong>{labels.technologies}:</strong> {project.technologies.join(", ")}
+                  </p>
+                  <ul>
+                    {getProjectBullets(project, language).map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  {projectLinks.length > 0 ? (
+                    <p className="ats-cv-links">
+                      <strong>{labels.links}:</strong>{" "}
+                      {projectLinks.map((link, index) => (
+                        <span key={link.href}>
+                          {index > 0 ? " | " : ""}
+                          <a href={link.href}>{link.href}</a>
+                        </span>
+                      ))}
+                    </p>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="ats-cv-section">
+          <h2>{labels.sections.experience}</h2>
+          <div className="ats-cv-list">
+            {experience.map((item) => (
+              <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
+                <div className="ats-cv-entry-heading">
+                  <h3>{localize(item.title, language)}</h3>
+                  <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+                </div>
+                {item.location && item.duration ? (
+                  <p>
+                    {localize(item.location, language)} | {localize(item.duration, language)}
+                  </p>
+                ) : null}
+                <ul>
+                  {item.bullets.slice(0, 1).map((bullet) => (
+                    <li key={bullet.en}>{localize(bullet, language)}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {certifications.length > 0 ? (
+          <section className="ats-cv-section">
+            <h2>{labels.sections.certifications}</h2>
+            <div className="ats-cv-list">
+              {certifications.map((certification) => (
+                <div className="ats-cv-entry" key={certification.name}>
+                  <div className="ats-cv-entry-heading">
+                    <h3>{certification.name}</h3>
+                    <strong>{certification.date}</strong>
+                  </div>
+                  <p>{certification.organization}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="ats-cv-section ats-cv-compact-section">
+          <h2>{labels.sections.languages}</h2>
+          <p>
+            {cvLanguages
+              .map((item) => formatLanguageLevel(language, localize(item.name, language), localize(item.level, language)))
+              .join(" | ")}
+          </p>
+        </section>
+      </article>
+    </div>
+  );
+}
