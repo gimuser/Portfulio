@@ -12,6 +12,7 @@
     "pdf:cv:en": "CV_LANG=en node scripts/print-cv-with-chromium.mjs",
     "pdf:cv:fr": "CV_LANG=fr node scripts/print-cv-with-chromium.mjs",
     "pdf:cv:all": "CV_LANG=all node scripts/print-cv-with-chromium.mjs",
+    "pdf:ats": "CV_KIND=ats CV_LANG=en node scripts/print-cv-with-chromium.mjs",
     "test:contact-email": "node scripts/test-contact-email.mjs"
   },
   "dependencies": {

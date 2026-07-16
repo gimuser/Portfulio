@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Check, Copy, Download, Globe2, Mail, MapPin, Printer } from "lucide-react";
+import Link from "next/link";
+import { Check, Copy, Download, FileText, Globe2, Mail, MapPin, Printer } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
+import { cvLanguages } from "@/data/cv";
 import { education, experience, profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
@@ -35,10 +37,11 @@ export function CvDocument() {
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
-  const languageLevels =
+  const languageLevels = cvLanguages.map((item) =>
     language === "en"
-      ? ["Arabic: Native", "English: Intermediate", "French: Intermediate", "Spanish: Beginner"]
-      : ["Arabe : langue maternelle", "Anglais : intermédiaire", "Français : intermédiaire", "Espagnol : débutant"];
+      ? `${localize(item.name, language)}: ${localize(item.level, language)}`
+      : `${localize(item.name, language)} : ${localize(item.level, language)}`,
+  );
   const cvSkillGroups = skillGroups.filter(
     (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
   );
@@ -51,6 +54,10 @@ export function CvDocument() {
           <Printer size={18} />
           {language === "en" ? "Print / Save PDF" : "Imprimer / PDF"}
         </button>
+        <Link className="button button-ghost" href="/ats-cv" aria-label="Open Oualid Ait Alla ATS-friendly CV">
+          <FileText size={18} />
+          My ATS CV
+        </Link>
       </div>
 
       <article className="cv-sheet">
