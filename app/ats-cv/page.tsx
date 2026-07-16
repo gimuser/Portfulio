@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AtsCvDocument } from "@/components/cv/ats-cv-document";
+import { CvDocument } from "@/components/cv/cv-document";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function AtsCvPage() {
-  return <AtsCvDocument />;
+  return <CvDocument variant="ats" />;
 }

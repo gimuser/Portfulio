@@ -1597,42 +1597,6 @@ img {
   padding-left: 1rem;
 }
 
-.ats-cv-route {
-  min-height: calc(100vh - 76px);
-  padding: 2rem 0 4rem;
-  background: #f3f4f6;
-  color: #111111;
-}
-
-.ats-cv-controls {
-  width: min(210mm, calc(100% - 2rem));
-  margin: 0 auto 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.ats-cv-controls .button-ghost {
-  background: #ffffff;
-  border-color: #cbd5e1;
-  color: #111111;
-}
-
-.ats-cv-controls .button-ghost:hover,
-.ats-cv-controls .button-ghost:focus-visible {
-  border-color: #64748b;
-}
-
-.ats-cv-language {
-  margin-left: auto;
-  background: #ffffff;
-}
-
-.ats-cv-language button {
-  color: #303a42;
-}
-
 .ats-cv-page {
   width: min(210mm, calc(100% - 2rem));
   min-height: 297mm;
@@ -2082,31 +2046,6 @@ img {
     white-space: normal;
   }
 
-  .ats-cv-route {
-    padding: 1rem 0 2rem;
-  }
-
-  .ats-cv-controls {
-    width: calc(100% - 1rem);
-    align-items: stretch;
-  }
-
-  .ats-cv-controls .button,
-  .ats-cv-controls button {
-    width: 100%;
-  }
-
-  .ats-cv-language {
-    width: 100%;
-    margin-left: 0;
-    justify-content: center;
-  }
-
-  .ats-cv-language button {
-    width: auto;
-    flex: 1;
-  }
-
   .ats-cv-page {
     width: calc(100% - 1rem);
     min-height: auto;
@@ -2273,11 +2212,6 @@ img {
 
   .cv-sheet h2 {
     break-after: avoid;
-  }
-
-  .ats-cv-route {
-    padding: 0;
-    background: #ffffff !important;
   }
 
   .ats-cv-page {

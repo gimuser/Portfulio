@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Copy, Download, FileText, Globe2, Mail, MapPin, Printer } from "lucide-react";
 import { useState } from "react";
+import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
@@ -13,21 +14,35 @@ import { projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 import { localize } from "@/utils/localize";
 
-export function CvDocument() {
+type CvDocumentProps = {
+  variant?: "portfolio" | "ats";
+};
+
+export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const printPage = () => window.print();
   const cleanUrl = (href: string) => href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const isPlaceholder = (value: string) => value.includes("[ADD") || value.includes("[AJOUTER");
-  const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}/cv?lang=${language}`;
-  const shareSubject = `${profile.name} CV`;
+  const isAts = variant === "ats";
+  const activeCvName = isAts ? (language === "en" ? "ATS CV" : "CV ATS") : "CV";
+  const activeCvPath = isAts ? "/ats-cv" : "/cv";
+  const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}${activeCvPath}?lang=${language}`;
+  const shareSubject = `${profile.name} ${activeCvName}`;
   const shareText =
     language === "en"
-      ? `Here is ${profile.name}'s CV: ${cvShareUrl}`
-      : `Voici le CV de ${profile.name} : ${cvShareUrl}`;
+      ? `Here is ${profile.name}'s ${activeCvName}: ${cvShareUrl}`
+      : `Voici le ${activeCvName} de ${profile.name} : ${cvShareUrl}`;
   const encodedShareUrl = encodeURIComponent(cvShareUrl);
   const encodedShareText = encodeURIComponent(shareText);
   const encodedShareSubject = encodeURIComponent(shareSubject);
+  const toggleCvHref = `${isAts ? "/cv" : "/ats-cv"}?lang=${language}`;
+  const toggleCvLabel = isAts ? (language === "en" ? "Portfolio CV" : "CV Portfolio") : "My ATS CV";
+  const toggleCvAriaLabel = isAts
+    ? language === "en"
+      ? "Open Oualid Ait Alla portfolio CV"
+      : "Ouvrir le CV portfolio de Oualid Ait Alla"
+    : "Open Oualid Ait Alla ATS-friendly CV";
   const copyCvLink = async () => {
     if (!navigator.clipboard) {
       return;
@@ -54,13 +69,16 @@ export function CvDocument() {
           <Printer size={18} />
           {language === "en" ? "Print / Save PDF" : "Imprimer / PDF"}
         </button>
-        <Link className="button button-ghost" href="/ats-cv" aria-label="Open Oualid Ait Alla ATS-friendly CV">
+        <Link className="button button-ghost" href={toggleCvHref} aria-label={toggleCvAriaLabel}>
           <FileText size={18} />
-          My ATS CV
+          {toggleCvLabel}
         </Link>
       </div>
 
-      <article className="cv-sheet">
+      {isAts ? (
+        <AtsCvDocument />
+      ) : (
+        <article className="cv-sheet">
         <header className="cv-header">
           <Image
             className="cv-photo"
@@ -199,20 +217,43 @@ export function CvDocument() {
             ))}
           </div>
         </section>
-      </article>
+        </article>
+      )}
 
-      <div className="cv-floating-actions no-print" aria-label={language === "en" ? "CV actions" : "Actions CV"}>
-        <button className="button button-secondary" type="button" onClick={printPage}>
-          <Download size={18} />
-          <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
-        </button>
-        <div className="cv-share-links" aria-label={language === "en" ? "Share CV links" : "Liens de partage du CV"}>
+      <div
+        className="cv-floating-actions no-print"
+        aria-label={language === "en" ? `${activeCvName} actions` : `Actions ${activeCvName}`}
+      >
+        {isAts ? (
+          <a
+            className="button button-secondary"
+            href="/cv/Oualid_Ait_Alla_ATS_CV.pdf"
+            download
+            aria-label={
+              language === "en"
+                ? "Download Oualid Ait Alla ATS-friendly CV PDF"
+                : "Télécharger le CV ATS de Oualid Ait Alla au format PDF"
+            }
+          >
+            <Download size={18} />
+            <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
+          </a>
+        ) : (
+          <button className="button button-secondary" type="button" onClick={printPage}>
+            <Download size={18} />
+            <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
+          </button>
+        )}
+        <div
+          className="cv-share-links"
+          aria-label={language === "en" ? `Share ${activeCvName} links` : `Liens de partage ${activeCvName}`}
+        >
           <button
             className="cv-share-action"
             type="button"
             onClick={copyCvLink}
-            title={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
-            aria-label={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
+            title={language === "en" ? `Copy ${activeCvName} link` : `Copier le lien ${activeCvName}`}
+            aria-label={language === "en" ? `Copy ${activeCvName} link` : `Copier le lien ${activeCvName}`}
           >
             {copied ? <Check size={17} /> : <Copy size={17} />}
             <span>{copied ? (language === "en" ? "Copied" : "Copié") : language === "en" ? "Copy link" : "Copier"}</span>
@@ -222,8 +263,8 @@ export function CvDocument() {
             href={`https://wa.me/?text=${encodedShareText}`}
             target="_blank"
             rel="noreferrer"
-            title={language === "en" ? "Share CV on WhatsApp" : "Partager le CV sur WhatsApp"}
-            aria-label={language === "en" ? "Share CV on WhatsApp" : "Partager le CV sur WhatsApp"}
+            title={language === "en" ? `Share ${activeCvName} on WhatsApp` : `Partager le ${activeCvName} sur WhatsApp`}
+            aria-label={language === "en" ? `Share ${activeCvName} on WhatsApp` : `Partager le ${activeCvName} sur WhatsApp`}
           >
             <SocialIcon name="whatsapp" size={17} />
             <span>WhatsApp</span>
@@ -233,8 +274,8 @@ export function CvDocument() {
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
             target="_blank"
             rel="noreferrer"
-            title={language === "en" ? "Share CV on LinkedIn" : "Partager le CV sur LinkedIn"}
-            aria-label={language === "en" ? "Share CV on LinkedIn" : "Partager le CV sur LinkedIn"}
+            title={language === "en" ? `Share ${activeCvName} on LinkedIn` : `Partager le ${activeCvName} sur LinkedIn`}
+            aria-label={language === "en" ? `Share ${activeCvName} on LinkedIn` : `Partager le ${activeCvName} sur LinkedIn`}
           >
             <SocialIcon name="linkedin" size={17} />
             <span>LinkedIn</span>
@@ -242,8 +283,8 @@ export function CvDocument() {
           <a
             className="cv-share-action"
             href={`mailto:?subject=${encodedShareSubject}&body=${encodedShareText}`}
-            title={language === "en" ? "Share CV by email" : "Partager le CV par email"}
-            aria-label={language === "en" ? "Share CV by email" : "Partager le CV par email"}
+            title={language === "en" ? `Share ${activeCvName} by email` : `Partager le ${activeCvName} par email`}
+            aria-label={language === "en" ? `Share ${activeCvName} by email` : `Partager le ${activeCvName} par email`}
           >
             <Mail size={17} />
             <span>Email</span>
