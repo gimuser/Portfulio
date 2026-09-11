@@ -28,7 +28,8 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const activeCvName = isAts ? (language === "en" ? "ATS CV" : "CV ATS") : "CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
   const pdfKind = isAts ? "ATS_CV" : "CV";
-  const pdfUrl = `/cv/Oualid_Ait_Alla_${pdfKind}_${language.toUpperCase()}.pdf`;
+  const pdfLanguageCode = language === "fr" ? "FR" : "EN";
+  const pdfUrl = `/downloads/Oualid_Ait_Alla_${pdfKind}_${pdfLanguageCode}.pdf`;
   const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}${activeCvPath}?lang=${language}`;
   const shareSubject = `${profile.name} ${activeCvName}`;
   const shareText =
