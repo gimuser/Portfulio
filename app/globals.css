@@ -2216,6 +2216,18 @@ img {
     line-height: 1.23;
   }
 
+  .ats-cv-page[data-language="fr"] {
+    font-size: 7.8pt;
+    line-height: 1.16;
+  }
+
+  .ats-cv-page[data-language="fr"] .ats-cv-entry-heading h3,
+  .ats-cv-page[data-language="fr"] .ats-cv-entry-heading strong,
+  .ats-cv-page[data-language="fr"] .ats-cv-section h2,
+  .ats-cv-page[data-language="fr"] .ats-cv-title {
+    letter-spacing: -0.01em;
+  }
+
   .ats-cv-header {
     padding-bottom: 0.3rem;
     margin-bottom: 0.38rem;

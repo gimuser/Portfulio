@@ -74,11 +74,14 @@ function formatLanguageLevel(language: Language, name: string, level: string) {
 
 export function AtsCvDocument() {
   const { language } = useLanguage();
+  const isFrench = language === "fr";
   const labels = atsLabels[language];
   const technicalSkillGroups = skillGroups
     .filter((group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages")
     .sort((first, second) => atsSkillGroupPriority.indexOf(first.title.en) - atsSkillGroupPriority.indexOf(second.title.en));
-  const selectedProjects = projects.slice(0, selectedProjectCount);
+  const selectedProjects = projects.slice(0, isFrench ? 3 : selectedProjectCount);
+  const visibleExperience = isFrench ? experience.slice(0, 2) : experience;
+  const showCertifications = !isFrench && certifications.length > 0;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactItems = [
     {
@@ -120,7 +123,7 @@ export function AtsCvDocument() {
   ];
 
   return (
-    <article className="ats-cv-page" aria-label={`${profile.name} ATS CV`}>
+    <article className="ats-cv-page" data-language={language} aria-label={`${profile.name} ATS CV`}>
       <header className="ats-cv-header">
         <h1>{profile.name}</h1>
         <p className="ats-cv-title">{localize(profile.displayRole, language)}</p>
@@ -190,7 +193,7 @@ export function AtsCvDocument() {
       <section className="ats-cv-section">
         <h2>{labels.sections.experience}</h2>
         <div className="ats-cv-list">
-          {experience.map((item) => (
+          {visibleExperience.map((item) => (
             <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
               <div className="ats-cv-entry-heading">
                 <h3>{localize(item.title, language)}</h3>
@@ -211,7 +214,7 @@ export function AtsCvDocument() {
         </div>
       </section>
 
-      {certifications.length > 0 ? (
+      {showCertifications ? (
         <section className="ats-cv-section">
           <h2>{labels.sections.certifications}</h2>
           <div className="ats-cv-list">
