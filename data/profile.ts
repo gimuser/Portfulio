@@ -8,12 +8,12 @@ export const profile = {
     fr: "Étudiant en master IA & Data Science | Machine Learning, IA Générative & RAG",
   },
   shortProfile: {
-    en: "Master's student in Data Science and Information Systems Security with practical project experience in artificial intelligence, machine learning, generative AI, RAG, data analytics, backend/API development, and secure intelligent systems.",
-    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, avec une expérience pratique acquise à travers des projets en intelligence artificielle, machine learning, IA générative, RAG, analyse de données, développement backend/API et systèmes intelligents sécurisés.",
+    en: "Master's student in Data Science and Information Systems Security with hands-on project experience in Artificial Intelligence, Machine Learning, Generative AI, RAG, data analysis, backend/API development, and secure intelligent systems.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, avec une expérience pratique sur des projets en Intelligence Artificielle, Machine Learning, IA générative, RAG, analyse de données, développement backend/API et systèmes intelligents sécurisés.",
   },
   value: {
-    en: "Building practical skills in AI, machine learning, data science, Python, APIs, data visualization, cybersecurity, and full-stack development through academic and personal projects oriented toward AI and data-driven products.",
-    fr: "Développement de compétences pratiques en IA, machine learning, data science, Python, API, visualisation de données, cybersécurité et développement full-stack à travers des projets académiques et personnels orientés vers les produits IA et pilotés par les données.",
+    en: "Building practical skills in AI, Machine Learning, Data Science, Python, SQL, APIs, data visualization, cybersecurity, and full-stack development through academic and personal projects focused on data-driven and AI-powered solutions.",
+    fr: "Développement de compétences pratiques en IA, Machine Learning, Data Science, Python, SQL, API, visualisation de données, cybersécurité et développement full-stack à travers des projets académiques et personnels axés sur des solutions pilotées par les données et l'IA.",
   },
   institution: {
     en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
