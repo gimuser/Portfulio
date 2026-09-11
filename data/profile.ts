@@ -4,12 +4,12 @@ export const profile = {
   name: "Oualid Ait Alla",
   cvName: "AIT ALLA Oualid",
   displayRole: {
-    en: "AI & Data Science Master's Student | Machine Learning, Generative AI & RAG",
-    fr: "Étudiant en master IA & Data Science | Machine Learning, IA Générative & RAG",
+    en: "AI & Data Science Master's Student | Machine Learning (ML), Generative AI & Retrieval-Augmented Generation (RAG)",
+    fr: "Étudiant en master IA & Data Science | Machine Learning (ML), IA Générative & Génération augmentée par récupération (RAG)",
   },
   shortProfile: {
-    en: "Master's student in Data Science and Information Systems Security with hands-on experience in machine learning, generative AI, RAG, data analytics, APIs, and secure application development. Developed AI assistants, document-grounded RAG applications, reinforcement learning systems, and full-stack applications. Seeking an internship in AI, data science, machine learning, or generative AI.",
-    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information avec une expérience pratique en machine learning, IA générative, RAG, analyse de données, API et développement d'applications sécurisées. J'ai développé des assistants IA, des applications RAG fondées sur des documents, des systèmes d'apprentissage par renforcement et des applications full-stack. Recherche un stage en IA, data science, machine learning ou IA générative.",
+    en: "Master's student in Data Science and Information Systems Security with hands-on experience in Artificial Intelligence (AI), Machine Learning (ML), Generative Artificial Intelligence (GenAI), Retrieval-Augmented Generation (RAG), data analytics, APIs, and secure application development. Developed AI assistants, document-grounded RAG applications, reinforcement learning systems, and full-stack applications. Seeking an internship in Artificial Intelligence, Data Science, Machine Learning, or Generative AI.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information avec une expérience pratique en intelligence artificielle (IA), apprentissage automatique (Machine Learning, ML), intelligence artificielle générative (Generative AI, GenAI), génération augmentée par récupération (Retrieval-Augmented Generation, RAG), analyse de données, API et développement d'applications sécurisées. J'ai développé des assistants IA, des applications RAG fondées sur des documents, des systèmes d'apprentissage par renforcement et des applications full-stack. Recherche un stage en intelligence artificielle, data science, machine learning ou IA générative.",
   },
   value: {
     en: "Building practical skills in AI, Machine Learning, Data Science, Python, SQL, APIs, data visualization, cybersecurity, and full-stack development through academic and personal projects focused on data-driven and AI-powered solutions.",

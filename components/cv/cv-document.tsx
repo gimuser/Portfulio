@@ -99,35 +99,6 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
           <div className="cv-heading">
             <h1>{profile.name}</h1>
             <p className="cv-role">{localize(profile.displayRole, language)}</p>
-            <address className="cv-contact">
-              <span className="cv-contact-row">
-                <a href={profile.locationMapHref}>
-                  <MapPin className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                  {profile.location}
-                </a>
-                <a href={`mailto:${profile.email}`}>
-                  <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                  {profile.email}
-                </a>
-                <a href={`tel:${profile.phone.replace(/\s+/g, "")}`}>
-                  {profile.phone}
-                </a>
-              </span>
-              <span className="cv-contact-row">
-                <a href={profile.links.website.href}>
-                  <Globe2 className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                  {cleanUrl(profile.links.website.href)}
-                </a>
-                <a href={profile.links.linkedin.href}>
-                  <SocialIcon name="linkedin" size={10} />
-                  {cleanUrl(profile.links.linkedin.href)}
-                </a>
-                <a href={profile.links.github.href}>
-                  <SocialIcon name="github" size={10} />
-                  {cleanUrl(profile.links.github.href)}
-                </a>
-              </span>
-            </address>
           </div>
         </header>
 
@@ -139,6 +110,45 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
             {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilité"}:</strong>{" "}
             {localize(profile.mobility, language)}
           </p>
+        </section>
+
+        <section>
+          <h2>{language === "en" ? "Contact Information" : "Coordonnées"}</h2>
+          <div className="cv-contact-block">
+            <p>
+              <a href={profile.locationMapHref}>
+                <MapPin className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                {profile.location}
+              </a>
+            </p>
+            <p>
+              <a href={`mailto:${profile.email}`}>
+                <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                {profile.email}
+              </a>
+            </p>
+            <p>
+              <a href={`tel:${profile.phone.replace(/\s+/g, "")}`}>{profile.phone}</a>
+            </p>
+            <p>
+              <a href={profile.links.website.href}>
+                <Globe2 className="cv-contact-icon" size={10} strokeWidth={2.2} />
+                {cleanUrl(profile.links.website.href)}
+              </a>
+            </p>
+            <p>
+              <a href={profile.links.linkedin.href}>
+                <SocialIcon name="linkedin" size={10} />
+                {cleanUrl(profile.links.linkedin.href)}
+              </a>
+            </p>
+            <p>
+              <a href={profile.links.github.href}>
+                <SocialIcon name="github" size={10} />
+                {cleanUrl(profile.links.github.href)}
+              </a>
+            </p>
+          </div>
         </section>
 
         <section>
@@ -246,7 +256,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
           }
         >
           <Download size={18} />
-          <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
+          <span>{language === "en" ? "Download CV PDF" : "Télécharger CV PDF"}</span>
         </a>
         <div
           className="cv-share-links"

@@ -130,6 +130,7 @@ img {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -137,6 +138,7 @@ img {
   align-items: center;
   gap: 0.75rem;
   min-width: max-content;
+  flex-shrink: 0;
 }
 
 .brand-mark {
@@ -1462,6 +1464,23 @@ img {
   text-align: center;
 }
 
+.cv-contact-block {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.cv-contact-block p {
+  margin: 0;
+}
+
+.cv-contact-block a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #111111;
+  text-decoration: none;
+}
+
 .cv-header h1 {
   margin: 0;
   color: #111111;
@@ -1592,13 +1611,13 @@ img {
 
 .cv-skill-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.18rem 0.9rem;
 }
 
 .cv-two {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
@@ -1655,22 +1674,18 @@ img {
   font-weight: 700;
 }
 
-.ats-cv-contact {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.12rem 0.36rem;
-  margin: 0;
-  color: #222222;
-  font-style: normal;
-  font-size: 0.68rem;
-  line-height: 1.35;
+.ats-cv-contact-block {
+  display: grid;
+  gap: 0.08rem;
 }
 
-.ats-cv-contact span:not(:last-child)::after {
-  content: "|";
-  margin-left: 0.36rem;
-  color: #555555;
+.ats-cv-contact-block p {
+  margin: 0;
+}
+
+.ats-cv-contact-block a {
+  color: #111111;
+  text-decoration: underline;
 }
 
 .ats-cv-section {
@@ -1793,8 +1808,27 @@ img {
 }
 
 @media (max-width: 980px) {
+  .nav-shell {
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+  }
+
+  .brand {
+    min-width: 0;
+    max-width: calc(100% - 72px);
+  }
+
+  .brand strong {
+    font-size: 0.96rem;
+  }
+
+  .brand small {
+    font-size: 0.7rem;
+  }
+
   .menu-button {
     display: inline-grid;
+    margin-left: auto;
   }
 
   .nav-links {
@@ -1810,10 +1844,20 @@ img {
     background: var(--surface-strong);
     padding: 0.75rem;
     box-shadow: var(--shadow);
+    z-index: 80;
   }
 
   .nav-links.is-open {
     display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.8rem 0.85rem;
+  }
+
+  .nav-actions {
+    margin-left: auto;
   }
 
   .nav-actions .button-small {
@@ -1885,8 +1929,29 @@ img {
 }
 
 @media (max-width: 680px) {
+  .site-header {
+    min-height: 64px;
+  }
+
   .nav-shell {
-    min-height: 68px;
+    min-height: 64px;
+    width: min(100%, calc(100% - 0.75rem));
+  }
+
+  .brand {
+    max-width: calc(100% - 52px);
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    font-size: 0.78rem;
+  }
+
+  .brand strong {
+    font-size: 0.85rem;
+    line-height: 1.1;
+    white-space: nowrap;
   }
 
   .brand small,
@@ -1895,7 +1960,16 @@ img {
   }
 
   .nav-links {
-    top: 68px;
+    top: 64px;
+  }
+
+  .nav-actions {
+    gap: 0.35rem;
+  }
+
+  .icon-button {
+    width: 36px;
+    height: 36px;
   }
 
   .hero {
@@ -2082,6 +2156,28 @@ img {
   .ats-cv-entry-heading strong {
     text-align: left;
     white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-shell {
+    gap: 0.4rem;
+  }
+
+  .brand {
+    max-width: calc(100% - 48px);
+  }
+
+  .brand strong {
+    font-size: 0.78rem;
+  }
+
+  .nav-actions {
+    margin-left: 0;
+  }
+
+  .button-small {
+    display: none;
   }
 }
 

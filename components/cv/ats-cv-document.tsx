@@ -128,20 +128,24 @@ export function AtsCvDocument() {
       <header className="ats-cv-header">
         <h1>{profile.name}</h1>
         <p className="ats-cv-title">{localize(profile.displayRole, language)}</p>
-        <address className="ats-cv-contact">
-          {contactItems.map((item) => (
-            <span key={item.key}>
-              <a href={item.href} aria-label={item.label}>
-                {item.text}
-              </a>
-            </span>
-          ))}
-        </address>
       </header>
 
       <section className="ats-cv-section">
         <h2>{labels.sections.summary}</h2>
         <p>{localize(atsProfessionalSummary, language)}</p>
+      </section>
+
+      <section className="ats-cv-section">
+        <h2>{language === "fr" ? "Coordonnées" : "Contact Information"}</h2>
+        <div className="ats-cv-contact-block">
+          {contactItems.map((item) => (
+            <p key={item.key}>
+              <a href={item.href} aria-label={item.label}>
+                {item.text}
+              </a>
+            </p>
+          ))}
+        </div>
       </section>
 
       <section className="ats-cv-section">
