@@ -89,8 +89,21 @@ The script prints `/cv?lang=en` and `/cv?lang=fr` to local files under `public/c
 
 1. Push the repository to GitHub.
 2. Import the project in Vercel.
-3. Use the default Next.js settings.
-4. Add a production domain and update metadata URLs.
+3. Keep the default Next.js framework settings.
+4. Set the production domain and update metadata URLs in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`.
+5. Add the following private environment variables in Vercel Project Settings > Environment Variables:
+
+```bash
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=
+SMTP_USER=
+SMTP_PASS=
+CONTACT_FROM_EMAIL=
+CONTACT_TO_EMAIL=
+```
+
+The repository also includes a `vercel.json` file and a `.env.example` file to make the Vercel setup explicit and reproducible.
 
 ### Netlify
 
