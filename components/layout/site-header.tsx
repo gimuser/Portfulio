@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FileText, Menu, Moon, Sun, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import en from "@/messages/en.json";
 import fr from "@/messages/fr.json";
 import { useLanguage } from "@/components/layout/language-provider";
@@ -22,12 +23,42 @@ const navItems = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const t = messages[language];
+  const isCvPage = pathname === "/cv" || pathname === "/ats-cv";
+
+  useEffect(() => {
+    if (!isCvPage) {
+      setIsVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const nearBottom =
+        window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 24;
+
+      if (currentScrollY > lastScrollY && (nearBottom || currentScrollY > 160)) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isCvPage, lastScrollY]);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isCvPage ? (isVisible ? "is-visible" : "is-hidden") : ""}`}>
       <a className="skip-link" href="#content">
         Skip to content
       </a>

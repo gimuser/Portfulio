@@ -107,6 +107,20 @@ img {
   border-bottom: 1px solid var(--line);
   background: color-mix(in srgb, var(--bg) 84%, transparent);
   backdrop-filter: blur(18px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+.site-header.is-hidden {
+  opacity: 0;
+  transform: translateY(-110%);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-header.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 .nav-shell {

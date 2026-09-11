@@ -81,6 +81,7 @@ export function AtsCvDocument() {
     .sort((first, second) => atsSkillGroupPriority.indexOf(first.title.en) - atsSkillGroupPriority.indexOf(second.title.en));
   const selectedProjects = projects.slice(0, isFrench ? 3 : selectedProjectCount);
   const visibleExperience = isFrench ? experience.slice(0, 2) : experience;
+  const visibleEducation = education.slice(0, 1);
   const showCertifications = !isFrench && certifications.length > 0;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactItems = [
@@ -146,7 +147,7 @@ export function AtsCvDocument() {
       <section className="ats-cv-section">
         <h2>{labels.sections.education}</h2>
         <div className="ats-cv-list">
-          {education.map((item) => (
+          {visibleEducation.map((item) => (
               <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
                 <div className="ats-cv-entry-heading">
                   <h3>{localize(item.title, language)}</h3>

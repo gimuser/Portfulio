@@ -64,6 +64,11 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
     (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
   );
   const selectedProjects = projects.slice(0, 4);
+  const visibleEducation = education.slice(0, 1);
+  const cvSummaryText =
+    language === "en"
+      ? "Master's student in Data Science and Information Systems Security with hands-on experience in machine learning, generative AI, RAG, data analytics, APIs, and secure application development. Developed AI assistants, document-grounded RAG applications, reinforcement learning systems, and full-stack applications. Seeking an internship in AI, data science, machine learning, or generative AI."
+      : "Étudiant en master Data Science et Sécurité des Systèmes d'Information avec une expérience pratique en machine learning, IA générative, RAG, analyse de données, API et développement d'applications sécurisées. J'ai développé des assistants IA, des applications RAG fondées sur des documents, des systèmes d'apprentissage par renforcement et des applications full-stack. Recherche un stage en IA, data science, machine learning ou IA générative.";
 
   return (
     <div className="cv-page" id="content">
@@ -92,7 +97,8 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
             priority
           />
           <div className="cv-heading">
-            <h1>{profile.cvName}</h1>
+            <h1>{profile.name}</h1>
+            <p className="cv-role">{localize(profile.displayRole, language)}</p>
             <address className="cv-contact">
               <span className="cv-contact-row">
                 <a href={profile.locationMapHref}>
@@ -103,12 +109,15 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
                   <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
                   {profile.email}
                 </a>
+                <a href={`tel:${profile.phone.replace(/\s+/g, "")}`}>
+                  {profile.phone}
+                </a>
+              </span>
+              <span className="cv-contact-row">
                 <a href={profile.links.website.href}>
                   <Globe2 className="cv-contact-icon" size={10} strokeWidth={2.2} />
                   {cleanUrl(profile.links.website.href)}
                 </a>
-              </span>
-              <span className="cv-contact-row">
                 <a href={profile.links.linkedin.href}>
                   <SocialIcon name="linkedin" size={10} />
                   {cleanUrl(profile.links.linkedin.href)}
@@ -124,8 +133,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
 
         <section>
           <h2>{language === "en" ? "Profile" : "Profil"}</h2>
-          <p>{localize(profile.shortProfile, language)}</p>
-          <p>{localize(profile.value, language)}</p>
+          <p>{cvSummaryText}</p>
           <p className="cv-meta-line">
             <strong>{language === "en" ? "Nationality" : "Nationalité"}:</strong>{" "}
             {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilité"}:</strong>{" "}
@@ -136,7 +144,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
         <section>
           <h2>{language === "en" ? "Education" : "Formation"}</h2>
           <div className="cv-list">
-            {education.map((item) => {
+            {visibleEducation.map((item) => {
               const institution = localize(item.institution, language);
 
               return (
