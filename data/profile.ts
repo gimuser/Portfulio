@@ -8,12 +8,12 @@ export const profile = {
     fr: "Étudiant en master Data Science & Sécurité des Systèmes d'Information",
   },
   shortProfile: {
-    en: "I am a Master's student in Data Science and Information Systems Security, passionate about artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
-    fr: "Je suis étudiant en master Data Science et Sécurité des Systèmes d'Information, passionné par l'intelligence artificielle, le machine learning, l'IA générative, l'analyse de données, l'automatisation et les systèmes intelligents sécurisés.",
+    en: "Master's student in Data Science and Information Systems Security with hands-on project experience in artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, avec une expérience pratique acquise au travers de projets en intelligence artificielle, machine learning, IA générative, analyse de données, automatisation et systèmes intelligents sécurisés.",
   },
   value: {
-    en: "I have practical foundations in data science, Python development, machine learning, data visualization, cybersecurity, and project-based software development.",
-    fr: "J'ai des bases pratiques en data science, développement Python, machine learning, visualisation de données, cybersécurité et développement logiciel par projets.",
+    en: "Developing practical skills in data science, Python development, machine learning, data visualization, cybersecurity, and full-stack software development through academic and personal projects.",
+    fr: "Développement de compétences pratiques en data science, développement Python, machine learning, visualisation de données, cybersécurité et développement logiciel full-stack au travers de projets académiques et personnels.",
   },
   institution: {
     en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
@@ -90,14 +90,18 @@ export const profile = {
 export const education: EducationItem[] = [
   {
     year: "2026",
+    period: {
+      en: "Sep 2025 – Oct 2027 (expected)",
+      fr: "Sept. 2025 – Oct. 2027 (en cours)",
+    },
     title: {
       en: "Master's student in Data Science and Information Systems Security",
-      fr: "Master Data Science et Sécurité des Systèmes d'Information",
+      fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information",
     },
     institution: profile.institution,
     details: {
-      en: "Graduate studies focused on data science, artificial intelligence, cybersecurity, and secure information systems.",
-      fr: "Formation de master axée sur la data science, l'intelligence artificielle, la cybersécurité et les systèmes d'information sécurisés.",
+      en: "Currently pursuing graduate studies focused on data science, artificial intelligence, cybersecurity, and secure information systems. Degree expected October 2027.",
+      fr: "Master actuellement en cours, axé sur la data science, l'intelligence artificielle, la cybersécurité et les systèmes d'information sécurisés. Diplôme prévu en octobre 2027.",
     },
     source: "User-provided profile",
   },
@@ -112,8 +116,8 @@ export const education: EducationItem[] = [
       fr: "Université Sultan Moulay Slimane, Faculté Polydisciplinaire de Beni Mellal",
     },
     details: {
-      en: "Coursework includes data science, AI, database systems, network security, cybersecurity, cryptography, machine learning fundamentals, information systems security, Python, SQL, C, and HTML5.",
-      fr: "Cours en data science, IA, bases de données, sécurité réseau, cybersécurité, cryptographie, bases du machine learning, sécurité des systèmes d'information, Python, SQL, C et HTML5.",
+      en: "Coursework included data science, AI, database systems, network security, cybersecurity, cryptography, machine learning fundamentals, information systems security, Python, SQL, C, and HTML5.",
+      fr: "Formation couvrant la data science, l'IA, les bases de données, la sécurité réseau, la cybersécurité, la cryptographie, les fondamentaux du machine learning, la sécurité des systèmes d'information, Python, SQL, C et HTML5.",
     },
     source: "User-provided profile",
   },
@@ -129,7 +133,7 @@ export const education: EducationItem[] = [
     },
     details: {
       en: "Coursework included linear algebra, calculus, probability and statistics, discrete mathematics, CMS, database fundamentals, algorithms, and computer systems.",
-      fr: "Cours suivis : algèbre linéaire, calcul, probabilités et statistiques, mathématiques discrètes, CMS, bases de données, algorithmes et systèmes informatiques.",
+      fr: "Formation couvrant l'algèbre linéaire, l'analyse, les probabilités et statistiques, les mathématiques discrètes, les CMS, les bases de données, les algorithmes et les systèmes informatiques.",
     },
     source: "User-provided profile",
   },
@@ -183,21 +187,21 @@ export const experience: ExperienceItem[] = [
       fr: "Beni Mellal, Maroc",
     },
     title: {
-      en: "Academic machine-learning project work",
-      fr: "Projets académiques en machine learning",
+      en: "Academic Machine Learning Projects",
+      fr: "Projets académiques de machine learning",
     },
     context: {
-      en: "I completed these academic and personal projects as practical engineering work, not as employment experience.",
-      fr: "J'ai réalisé ces projets académiques et personnels comme travaux pratiques d'ingénierie, sans les présenter comme une expérience salariée.",
+      en: "Completed as academic and personal engineering projects; this work is not presented as employment experience.",
+      fr: "Réalisés dans le cadre de projets académiques et personnels ; ils ne constituent pas une expérience salariée.",
     },
     bullets: [
       {
-        en: "I built a car price prediction system using data cleaning, feature engineering, EDA, and regression model evaluation.",
-        fr: "J'ai développé un système de prédiction des prix de voitures avec nettoyage de données, feature engineering, EDA et évaluation de modèles de régression.",
+        en: "Developed a car price prediction workflow using data cleaning, exploratory analysis, feature engineering, and regression-model evaluation.",
+        fr: "Développement d'un workflow de prédiction des prix de voitures avec nettoyage des données, analyse exploratoire, feature engineering et évaluation de modèles de régression.",
       },
       {
-        en: "I built and tested an image-classification model with PyTorch and labeled image datasets.",
-        fr: "J'ai développé et testé un modèle de classification d'images avec PyTorch et des jeux de données étiquetés.",
+        en: "Built and tested an image-classification workflow with PyTorch and labeled image datasets.",
+        fr: "Développement et test d'un workflow de classification d'images avec PyTorch et des jeux de données étiquetés.",
       },
     ],
   },
@@ -220,13 +224,13 @@ export const experience: ExperienceItem[] = [
       fr: "Projet d'apprentissage en cybersécurité",
     },
     context: {
-      en: "I worked in a controlled, ethical security testing environment.",
-      fr: "J'ai travaillé dans un environnement de test contrôlé et éthique.",
+      en: "Completed in a controlled, ethical security-testing environment.",
+      fr: "Réalisé dans un environnement de test contrôlé et éthique.",
     },
     bullets: [
       {
-        en: "I studied Android device security testing with Kali Linux and Metasploit and proposed mitigation techniques.",
-        fr: "J'ai étudié les tests de sécurité Android avec Kali Linux et Metasploit et proposé des techniques de mitigation.",
+        en: "Studied Android device security testing with Kali Linux and Metasploit, then documented mitigation approaches.",
+        fr: "Étude des tests de sécurité Android avec Kali Linux et Metasploit, puis documentation de pistes de mitigation.",
       },
     ],
   },
@@ -245,17 +249,17 @@ export const experience: ExperienceItem[] = [
       fr: "Beni Mellal, Maroc",
     },
     title: {
-      en: "Web development project",
-      fr: "Projet de développement web",
+      en: "Academic Web Development Project",
+      fr: "Projet académique de développement web",
     },
     context: {
-      en: "I completed this academic information-system project to practice database-backed web development.",
-      fr: "J'ai réalisé ce projet académique de système d'information pour pratiquer le développement web avec base de données.",
+      en: "Completed to practise database-backed web development in an information-systems context.",
+      fr: "Réalisé pour mettre en pratique le développement web adossé à une base de données dans un contexte de système d'information.",
     },
     bullets: [
       {
-        en: "I developed a PHP hotel management system with room management, reservations, user handling, and database persistence.",
-        fr: "J'ai développé un système de gestion d'hôtel en PHP avec gestion des chambres, réservations, utilisateurs et persistance en base de données.",
+        en: "Developed a PHP hotel management application supporting room management, reservations, user handling, and database persistence.",
+        fr: "Développement d'une application PHP de gestion hôtelière couvrant la gestion des chambres, les réservations, les utilisateurs et la persistance des données.",
       },
     ],
   },

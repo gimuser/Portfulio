@@ -26,8 +26,8 @@ export const skillGroups: SkillGroup[] = [
     },
   },
   {
-    title: { en: "Data Science", fr: "Data science" },
-    items: ["Data cleaning", "Feature engineering", "Exploratory data analysis", "Regression modeling"],
+    title: { en: "Data Science & Analytics", fr: "Data science et analyse de données" },
+    items: ["Data analytics", "Data cleaning", "Data visualization", "Feature engineering", "Exploratory data analysis", "Regression modeling"],
     evidence: {
       en: "Used in the car price prediction project.",
       fr: "Utilisé dans le projet de prédiction des prix de voitures.",
@@ -66,7 +66,7 @@ export const skillGroups: SkillGroup[] = [
     },
   },
   {
-    title: { en: "Databases & Information Systems", fr: "Bases de données et systèmes d'information" },
+    title: { en: "Data Management & Information Systems", fr: "Gestion des données et systèmes d'information" },
     items: ["MongoDB", "Mongoose", "Prisma", "SQLite", "Database fundamentals", "Information systems", "Big data fundamentals"],
     evidence: {
       en: "Used across coursework, the hotel management system, and GitHub projects using MongoDB/Mongoose and Prisma/SQLite.",

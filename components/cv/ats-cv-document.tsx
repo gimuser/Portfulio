@@ -6,10 +6,8 @@ import { atsProfessionalSummary, cvLanguages } from "@/data/cv";
 import { education, experience, profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
-import type { Language, ProfileLink, Project } from "@/types/content";
+import type { Language, Project } from "@/types/content";
 import { localize } from "@/utils/localize";
-
-type ProjectTextListKey = "objectives" | "features" | "solutions";
 
 const atsLabels = {
   en: {
@@ -25,12 +23,11 @@ const atsLabels = {
       education: "Education",
       skills: "Technical Skills",
       projects: "Selected Projects",
-      experience: "Academic and Personal Project Experience",
+      experience: "Academic and Personal Projects",
       certifications: "Certifications and Training",
       languages: "Languages",
     },
     technologies: "Technologies",
-    links: "Links",
   },
   fr: {
     contact: {
@@ -45,43 +42,30 @@ const atsLabels = {
       education: "Formation",
       skills: "Compétences techniques",
       projects: "Projets sélectionnés",
-      experience: "Expérience de projets académiques et personnels",
+      experience: "Projets académiques et personnels",
       certifications: "Certifications et formations",
       languages: "Langues",
     },
     technologies: "Technologies",
-    links: "Liens",
   },
 } as const;
 
 const selectedProjectCount = 4;
 
-const projectBulletSources: Record<string, [ProjectTextListKey, number][]> = {
-  "bachelor-ai-tutor": [["objectives", 1]],
-  "islamic-ai-chat": [["objectives", 1]],
-  "maison-global-store": [["features", 2]],
-  "car-price-prediction-system": [["objectives", 1]],
-};
+const atsSkillGroupPriority = [
+  "Generative AI and RAG",
+  "Machine Learning & AI",
+  "Data Science & Analytics",
+  "Data Management & Information Systems",
+  "Backend and APIs",
+  "Programming",
+  "Frontend",
+  "Cybersecurity",
+  "Mathematics for ML",
+];
 
-function isAvailableLink(link: ProfileLink) {
-  return link.status === "available" && !link.href.includes("[ADD");
-}
-
-function getProjectBullets(project: Project, language: Language) {
-  const fallbackSources: [ProjectTextListKey, number][] = project.features
-    .slice(0, 1)
-    .map((_, index) => ["features", index]);
-  const sources = projectBulletSources[project.slug] ?? fallbackSources;
-  const bullets: string[] = [];
-
-  for (const [key, index] of sources) {
-    const text = project[key][index];
-    if (text) {
-      bullets.push(localize(text, language));
-    }
-  }
-
-  return bullets;
+function getAtsProjectSummary(project: Project, language: Language) {
+  return localize(project.atsSummary ?? project.cvSummary ?? project.summary, language);
 }
 
 function formatLanguageLevel(language: Language, name: string, level: string) {
@@ -91,9 +75,9 @@ function formatLanguageLevel(language: Language, name: string, level: string) {
 export function AtsCvDocument() {
   const { language } = useLanguage();
   const labels = atsLabels[language];
-  const technicalSkillGroups = skillGroups.filter(
-    (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
-  );
+  const technicalSkillGroups = skillGroups
+    .filter((group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages")
+    .sort((first, second) => atsSkillGroupPriority.indexOf(first.title.en) - atsSkillGroupPriority.indexOf(second.title.en));
   const selectedProjects = projects.slice(0, selectedProjectCount);
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactItems = [
@@ -160,16 +144,14 @@ export function AtsCvDocument() {
         <h2>{labels.sections.education}</h2>
         <div className="ats-cv-list">
           {education.map((item) => (
-            <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
-              <div className="ats-cv-entry-heading">
-                <h3>{localize(item.title, language)}</h3>
-                <strong>{item.year}</strong>
+              <div className="ats-cv-entry" key={`${item.year}-${item.title.en}`}>
+                <div className="ats-cv-entry-heading">
+                  <h3>{localize(item.title, language)}</h3>
+                  <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+                </div>
+                <p>{localize(item.institution, language)}</p>
+                {item.period ? <p className="ats-cv-detail">{localize(item.details, language)}</p> : null}
               </div>
-              <p>{localize(item.institution, language)}</p>
-              {item.source === "User-provided profile" ? (
-                <p className="ats-cv-detail">{localize(item.details, language)}</p>
-              ) : null}
-            </div>
           ))}
         </div>
       </section>
@@ -189,33 +171,16 @@ export function AtsCvDocument() {
         <h2>{labels.sections.projects}</h2>
         <div className="ats-cv-list">
           {selectedProjects.map((project) => {
-            const projectLinks = [project.github, project.demo].filter(isAvailableLink);
-
             return (
               <div className="ats-cv-entry" key={project.slug}>
                 <div className="ats-cv-entry-heading">
                   <h3>{project.title}</h3>
                   <strong>{project.year}</strong>
                 </div>
+                <p>{getAtsProjectSummary(project, language)}</p>
                 <p>
                   <strong>{labels.technologies}:</strong> {project.technologies.join(", ")}
                 </p>
-                <ul>
-                  {getProjectBullets(project, language).map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-                {projectLinks.length > 0 ? (
-                  <p className="ats-cv-links">
-                    <strong>{labels.links}:</strong>{" "}
-                    {projectLinks.map((link, index) => (
-                      <span key={link.href}>
-                        {index > 0 ? " | " : ""}
-                        <a href={link.href}>{link.href}</a>
-                      </span>
-                    ))}
-                  </p>
-                ) : null}
               </div>
             );
           })}

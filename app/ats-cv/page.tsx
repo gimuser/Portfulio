@@ -1,13 +1,48 @@
 import type { Metadata } from "next";
 import { CvDocument } from "@/components/cv/cv-document";
+import { LanguageProvider } from "@/components/layout/language-provider";
 import { profile } from "@/data/profile";
+import type { Language } from "@/types/content";
 
-export const metadata: Metadata = {
-  title: `ATS CV | ${profile.name}`,
-  description:
-    "ATS-friendly CV of Oualid Ait Alla, Master's student in Data Science and Information Systems Security.",
+export const dynamic = "force-dynamic";
+
+type AtsCvPageProps = {
+  searchParams: Promise<{ lang?: string | string[] }>;
 };
 
-export default function AtsCvPage() {
-  return <CvDocument variant="ats" />;
+function getInitialLanguage(lang: string | string[] | undefined): Language {
+  const value = Array.isArray(lang) ? lang[0] : lang;
+  return value === "fr" ? "fr" : "en";
+}
+
+export async function generateMetadata({ searchParams }: AtsCvPageProps): Promise<Metadata> {
+  const { lang } = await searchParams;
+  const language = getInitialLanguage(lang);
+
+  return {
+    title: `ATS CV | ${profile.name}`,
+    description:
+      language === "fr"
+        ? "CV ATS d'Oualid Ait Alla, étudiant en master Data Science et Sécurité des Systèmes d'Information."
+        : "ATS-friendly CV of Oualid Ait Alla, Master's student in Data Science and Information Systems Security.",
+    openGraph: {
+      locale: language === "fr" ? "fr_FR" : "en_US",
+      title: language === "fr" ? `CV ATS | ${profile.name}` : `ATS CV | ${profile.name}`,
+      description:
+        language === "fr"
+          ? "CV ATS d'Oualid Ait Alla adapté au filtrage en français."
+          : "ATS-friendly CV of Oualid Ait Alla.",
+    },
+  };
+}
+
+export default async function AtsCvPage({ searchParams }: AtsCvPageProps) {
+  const { lang } = await searchParams;
+  const initialLanguage = getInitialLanguage(lang);
+
+  return (
+    <LanguageProvider initialLanguage={initialLanguage}>
+      <CvDocument variant="ats" />
+    </LanguageProvider>
+  );
 }

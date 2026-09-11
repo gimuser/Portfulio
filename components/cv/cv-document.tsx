@@ -27,6 +27,8 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const isAts = variant === "ats";
   const activeCvName = isAts ? (language === "en" ? "ATS CV" : "CV ATS") : "CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
+  const pdfKind = isAts ? "ATS_CV" : "CV";
+  const pdfUrl = `/cv/Oualid_Ait_Alla_${pdfKind}_${language.toUpperCase()}.pdf`;
   const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}${activeCvPath}?lang=${language}`;
   const shareSubject = `${profile.name} ${activeCvName}`;
   const shareText =
@@ -140,7 +142,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
                 <div className="cv-entry" key={`${item.year}-${item.title.en}`}>
                   <div className="cv-entry-heading">
                     <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.year}</strong>
+                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
                   {!isPlaceholder(institution) ? <p className="cv-muted">{institution}</p> : null}
                   <small>{localize(item.details, language)}</small>
@@ -179,7 +181,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
 
         <section className="cv-two">
           <div>
-            <h2>{language === "en" ? "Project Experience" : "Expérience projets"}</h2>
+            <h2>{language === "en" ? "Academic & Personal Projects" : "Projets académiques et personnels"}</h2>
             {experience.map((item) => (
               <div key={`${item.year}-${item.title.en}`} className="cv-mini">
                 <div className="cv-entry-heading">
@@ -224,26 +226,19 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
         className="cv-floating-actions no-print"
         aria-label={language === "en" ? `${activeCvName} actions` : `Actions ${activeCvName}`}
       >
-        {isAts ? (
-          <a
-            className="button button-secondary"
-            href="/cv/Oualid_Ait_Alla_ATS_CV.pdf"
-            download
-            aria-label={
-              language === "en"
-                ? "Download Oualid Ait Alla ATS-friendly CV PDF"
-                : "Télécharger le CV ATS de Oualid Ait Alla au format PDF"
-            }
-          >
-            <Download size={18} />
-            <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
-          </a>
-        ) : (
-          <button className="button button-secondary" type="button" onClick={printPage}>
-            <Download size={18} />
-            <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
-          </button>
-        )}
+        <a
+          className="button button-secondary"
+          href={pdfUrl}
+          download
+          aria-label={
+            language === "en"
+              ? `Download Oualid Ait Alla ${isAts ? "ATS-friendly " : ""}CV PDF`
+              : `Télécharger le ${isAts ? "CV ATS" : "CV"} de Oualid Ait Alla au format PDF`
+          }
+        >
+          <Download size={18} />
+          <span>{language === "en" ? "Download CV PDF" : "Télécharger le CV PDF"}</span>
+        </a>
         <div
           className="cv-share-links"
           aria-label={language === "en" ? `Share ${activeCvName} links` : `Liens de partage ${activeCvName}`}

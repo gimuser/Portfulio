@@ -13,6 +13,80 @@ export const projectCategories: ("All" | ProjectCategory)[] = [
 
 export const projects: Project[] = [
   {
+    slug: "soar-rl-agent",
+    title: "SOAR RL Agent",
+    year: "2026",
+    category: "Cybersecurity",
+    status: { en: "Collaborative public GitHub project", fr: "Projet GitHub public collaboratif" },
+    summary: {
+      en: "Reinforcement-learning SOAR project for autonomous alert triage, human-in-the-loop SOC operations, and analyst-workload optimization.",
+      fr: "Projet SOAR d'apprentissage par renforcement pour le triage autonome des alertes, les opérations SOC avec intervention humaine et l'optimisation de la charge des analystes.",
+    },
+    cvSummary: {
+      en: "Contributed to a collaborative SOAR reinforcement-learning project for alert triage and human-in-the-loop SOC operations. The system combines a FastAPI backend, data pipeline, RL environment, reward system, SOC simulation, web interface, training and test data, documentation, automation scripts, and tests.",
+      fr: "Contribution à un projet SOAR collaboratif d'apprentissage par renforcement pour le triage des alertes et les opérations SOC avec intervention humaine. Le système associe un backend FastAPI, un pipeline de données, un environnement RL, un système de récompense, une simulation SOC, une interface web, des données d'entraînement et de test, de la documentation, des scripts d'automatisation et des tests.",
+    },
+    atsSummary: {
+      en: "Contributed to a collaborative SOAR reinforcement-learning project with a FastAPI backend, data pipeline, RL environment, reward system, SOC simulation, web interface, and automated tests.",
+      fr: "Contribution à un projet SOAR collaboratif d'apprentissage par renforcement avec backend FastAPI, pipeline de données, environnement RL, système de récompense, simulation SOC, interface web et tests automatisés.",
+    },
+    problem: {
+      en: "SOC teams need a structured way to triage alerts while retaining human oversight for sensitive decisions and analyst-workload management.",
+      fr: "Les équipes SOC ont besoin d'un moyen structuré de trier les alertes tout en conservant une supervision humaine pour les décisions sensibles et la gestion de la charge des analystes.",
+    },
+    objectives: [
+      { en: "Model alert-triage decisions in a reinforcement-learning environment.", fr: "Modéliser les décisions de triage des alertes dans un environnement d'apprentissage par renforcement." },
+      { en: "Support SOC simulation, reward design, data preparation, and human-in-the-loop workflows.", fr: "Prendre en charge la simulation SOC, la conception du système de récompense, la préparation des données et les workflows avec intervention humaine." },
+      { en: "Expose operational status, alerts, and metrics through a web interface and API.", fr: "Exposer l'état opérationnel, les alertes et les métriques via une interface web et une API." },
+    ],
+    role: {
+      en: "PM and reinforcement-learning contributor in a seven-person collaborative project, with work organized across dedicated agent, data-pipeline, environment, reward-system, API, database/monitoring, and frontend streams.",
+      fr: "Contributeur PM et apprentissage par renforcement dans un projet collaboratif de sept personnes, organisé autour de volets dédiés à l'agent, au pipeline de données, à l'environnement, au système de récompense, à l'API, à la base de données/au monitoring et au frontend.",
+    },
+    technologies: ["Python", "FastAPI", "TypeScript", "Reinforcement Learning", "SOAR", "SOC simulation", "Docker Compose", "Automated testing"],
+    dataset: {
+      en: "Repository training and test data, including alert-oriented data files used by the project pipeline.",
+      fr: "Données d'entraînement et de test du dépôt, y compris des fichiers orientés alertes utilisés par le pipeline du projet.",
+    },
+    workflow: [
+      { en: "Alert data preparation", fr: "Préparation des données d'alertes" },
+      { en: "SOC environment simulation", fr: "Simulation de l'environnement SOC" },
+      { en: "RL decision and reward loop", fr: "Boucle de décision et de récompense RL" },
+      { en: "API and web-interface monitoring", fr: "Monitoring via l'API et l'interface web" },
+    ],
+    features: [
+      { en: "FastAPI backend, data pipeline, RL environment, reward system, and SOC simulation structure.", fr: "Structure comprenant backend FastAPI, pipeline de données, environnement RL, système de récompense et simulation SOC." },
+      { en: "Web interface for alert, metric, and system-status visibility.", fr: "Interface web de visualisation des alertes, des métriques et de l'état du système." },
+      { en: "Docker-based local setup, technical documentation, automation helpers, and automated tests.", fr: "Configuration locale avec Docker, documentation technique, helpers d'automatisation et tests automatisés." },
+    ],
+    approach: {
+      en: "Collaborative SOAR architecture that combines an RL agent and reward loop with data preparation, SOC simulation, backend services, monitoring, and a human-in-the-loop operating model.",
+      fr: "Architecture SOAR collaborative associant agent RL et boucle de récompense à la préparation des données, à la simulation SOC, aux services backend, au monitoring et à un modèle d'intervention humaine.",
+    },
+    results: {
+      en: "Established a documented, modular project structure for autonomous alert triage and SOC operations. Repository materials do not provide validated production-performance metrics.",
+      fr: "Mise en place d'une structure de projet documentée et modulaire pour le triage autonome des alertes et les opérations SOC. Les éléments du dépôt ne fournissent pas de métriques de performance validées en production.",
+    },
+    challenges: [
+      { en: "Balancing automation with analyst oversight in security operations.", fr: "Équilibrer l'automatisation et la supervision des analystes dans les opérations de sécurité." },
+      { en: "Coordinating data, environment, reward, backend, monitoring, and frontend responsibilities across a team.", fr: "Coordonner les responsabilités liées aux données, à l'environnement, au système de récompense, au backend, au monitoring et au frontend au sein d'une équipe." },
+    ],
+    solutions: [
+      { en: "Separated work into focused streams with shared documentation, automation helpers, and test coverage.", fr: "Séparation du travail en volets ciblés avec documentation partagée, helpers d'automatisation et couverture de tests." },
+      { en: "Framed the system around human-in-the-loop SOC operations instead of fully unsupervised security decisions.", fr: "Conception du système autour d'opérations SOC avec intervention humaine plutôt que de décisions de sécurité entièrement non supervisées." },
+    ],
+    lessons: [
+      { en: "Security automation benefits from modular architecture, traceable workflows, and explicit human review points.", fr: "L'automatisation de la sécurité bénéficie d'une architecture modulaire, de workflows traçables et de points de revue humaine explicites." },
+    ],
+    github: { label: "GitHub", href: "https://github.com/gimuser/RL_Agent", status: "available" },
+    demo: { label: "Live demo", href: "[ADD LIVE DEMO URL]", status: "missing" },
+    evidence: {
+      en: "Based on the public project README, repository structure, language breakdown, and Docker-based local-run documentation.",
+      fr: "Basé sur le README public, la structure du dépôt, la répartition des langages et la documentation d'exécution locale avec Docker.",
+    },
+    visualTone: "green",
+  },
+  {
     slug: "bachelor-ai-tutor",
     title: "BachelorAI Tutor",
     year: "2026",
@@ -23,8 +97,12 @@ export const projects: Project[] = [
       fr: "Assistant éducatif RAG full-stack pour étudiants de licence, avec réponses ancrées dans les cours, sélection semestre/module, uploads, réponses sauvegardées et workflows admin.",
     },
     cvSummary: {
-      en: "I built a full-stack educational RAG assistant that helps bachelor/licence students ask questions based on their course documents, modules, and uploaded resources.",
-      fr: "J'ai développé un assistant éducatif RAG full-stack qui aide les étudiants de licence à poser des questions à partir de leurs cours, modules et ressources importées.",
+      en: "Built a full-stack educational RAG assistant that gives bachelor's students a conversational way to consult course material. The application ingests course and user-uploaded documents, retrieves relevant content by semester and module, and uses Ollama to produce answers grounded in the retrieved sources. It combines a React/Vite frontend, an Express API, MongoDB, embeddings, and a local vector store to make course information easier to access while limiting unsupported answers.",
+      fr: "Développé un assistant éducatif RAG full-stack qui permet aux étudiants en licence de consulter leurs supports de cours par conversation. L'application ingère les documents des cours et les fichiers importés par les utilisateurs, retrouve le contenu pertinent selon le semestre et le module, puis utilise Ollama pour produire des réponses fondées sur les sources récupérées. Elle associe un frontend React/Vite, une API Express, MongoDB, des embeddings et un vector store local afin de faciliter l'accès aux informations de cours tout en limitant les réponses non étayées.",
+    },
+    atsSummary: {
+      en: "Built a RAG educational assistant that indexes course and uploaded documents by semester and module, retrieves relevant sources, and returns course-grounded answers.",
+      fr: "Développé un assistant éducatif RAG qui indexe les documents de cours et les fichiers importés par semestre et module, retrouve les sources pertinentes et fournit des réponses fondées sur les cours.",
     },
     problem: {
       en: "Students need help understanding course material without receiving hallucinated answers that drift away from their actual modules and files.",
@@ -96,8 +174,12 @@ export const projects: Project[] = [
       fr: "Application full-stack de chat IA protégé pour questions sur l'Islam, avec historique, sélection de modèle et garde-fous de prompt.",
     },
     cvSummary: {
-      en: "I built a protected full-stack AI chat application with authentication, conversation history, model selection, and safety-oriented prompt controls.",
-      fr: "J'ai développé une application full-stack de chat IA protégé avec authentification, historique des conversations, sélection de modèle et contrôles de sécurité des prompts.",
+      en: "Built a full-stack AI chat application for questions about Islam, with safeguards appropriate to a sensitive subject. The application combines a React/Vite frontend, an Express API, MongoDB conversation storage, configurable OpenAI, OpenRouter, and Ollama providers, and JWT authentication. It preserves conversation history and applies prompt-injection checks and safe HTML handling before responses are displayed.",
+      fr: "Développé une application full-stack de chat IA pour les questions relatives à l'islam, avec des garde-fous adaptés à la sensibilité du sujet. L'application associe un frontend React/Vite, une API Express, le stockage des conversations dans MongoDB, des fournisseurs configurables OpenAI, OpenRouter et Ollama, ainsi qu'une authentification JWT. Elle conserve l'historique des échanges et applique des contrôles contre les injections de prompt ainsi qu'un traitement HTML sécurisé avant l'affichage des réponses.",
+    },
+    atsSummary: {
+      en: "Built a full-stack AI chat application with authentication, stored conversation history, configurable AI providers, and prompt-injection checks for a sensitive question-and-answering context.",
+      fr: "Développé une application full-stack de chat IA avec authentification, historique des conversations, fournisseurs IA configurables et contrôles contre les injections de prompt pour un contexte de questions-réponses sensible.",
     },
     problem: {
       en: "Religious question-answering needs careful boundaries, transparent uncertainty, and protection against invented references or unsafe personal guidance.",
@@ -167,8 +249,12 @@ export const projects: Project[] = [
       fr: "Starter e-commerce d'affiliation sécurisé avec Next.js, Prisma, authentification Argon2id, libellés multilingues, points d'intégration checkout et recommandations locales.",
     },
     cvSummary: {
-      en: "I developed a secure affiliate commerce starter with authentication, product discovery, checkout extension points, multilingual labels, and local recommendations.",
-      fr: "J'ai développé un starter e-commerce d'affiliation sécurisé avec authentification, découverte produit, points d'extension checkout, libellés multilingues et recommandations locales.",
+      en: "Developed a secure affiliate-commerce starter for product discovery, authentication, local recommendations, and checkout extension points. Built with Next.js, TypeScript, Prisma, and SQLite, it validates server-side requests, uses Argon2id to protect passwords, and structures product, order, and session data. The project establishes a practical security and data-management foundation before live payment or affiliate integrations.",
+      fr: "Développé un starter e-commerce d'affiliation sécurisé pour la découverte de produits, l'authentification, les recommandations locales et les points d'extension du checkout. Réalisé avec Next.js, TypeScript, Prisma et SQLite, il valide les requêtes côté serveur, utilise Argon2id pour protéger les mots de passe et structure les données de produits, de commandes et de sessions. Le projet établit une base concrète de sécurité et de gestion des données avant toute intégration de paiement ou d'affiliation en production.",
+    },
+    atsSummary: {
+      en: "Developed a secure affiliate-commerce starter with product discovery, authentication, local recommendations, checkout extension points, and server-side validation.",
+      fr: "Développé un starter e-commerce d'affiliation sécurisé avec découverte de produits, authentification, recommandations locales, points d'extension du checkout et validation côté serveur.",
     },
     problem: {
       en: "Affiliate storefronts need trustworthy authentication, compliant outbound tracking, product discovery, checkout extension points, and security basics before production launch.",
@@ -238,8 +324,12 @@ export const projects: Project[] = [
       fr: "Projet de régression en machine learning pour estimer les prix de voitures à partir d'attributs structurés.",
     },
     cvSummary: {
-      en: "I worked on a machine-learning regression project to estimate car prices from structured vehicle data such as brand, year, mileage, and engine specifications.",
-      fr: "J'ai travaillé sur un projet de régression en machine learning pour estimer les prix de voitures à partir de données structurées comme la marque, l'année, le kilométrage et les caractéristiques moteur.",
+      en: "Developed a machine-learning regression workflow to estimate car prices from structured vehicle data, including brand, model, year, mileage, and engine specifications. Using Python, the project applies data cleaning, exploratory data analysis, feature engineering, and regression-model evaluation to prepare and model the data without unsupported performance claims.",
+      fr: "Développé un workflow de régression en machine learning pour estimer les prix de voitures à partir de données véhicules structurées, notamment la marque, le modèle, l'année, le kilométrage et les caractéristiques moteur. Réalisé en Python, le projet applique le nettoyage des données, l'analyse exploratoire, le feature engineering et l'évaluation de modèles de régression afin de préparer et modéliser les données sans avancer de performances non vérifiées.",
+    },
+    atsSummary: {
+      en: "Developed a Python regression workflow for estimating car prices from structured vehicle data through data cleaning, exploratory analysis, feature engineering, and model evaluation.",
+      fr: "Développé un workflow de régression en Python pour estimer les prix de voitures à partir de données véhicules structurées, avec nettoyage des données, analyse exploratoire, feature engineering et évaluation de modèles.",
     },
     problem: {
       en: "Car prices depend on multiple interacting factors such as brand, model, year, mileage, and engine specifications. The project turns those factors into a predictive workflow.",
@@ -308,8 +398,8 @@ export const projects: Project[] = [
       fr: "Projet de classification d'images en deep learning développé avec PyTorch et des données image étiquetées.",
     },
     cvSummary: {
-      en: "I built and tested a PyTorch image-classification model using labeled image datasets and a neural-network training workflow.",
-      fr: "J'ai développé et testé un modèle de classification d'images avec PyTorch en utilisant des jeux de données étiquetés et un workflow d'entraînement de réseau neuronal.",
+      en: "Built and tested a PyTorch image-classification model using labeled image datasets and a neural-network training workflow.",
+      fr: "Développé et testé un modèle de classification d'images avec PyTorch en utilisant des jeux de données étiquetés et un workflow d'entraînement de réseau neuronal.",
     },
     problem: {
       en: "Image classification requires learning patterns from labeled visual data and evaluating how well a neural network generalizes to unseen examples.",

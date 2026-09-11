@@ -11,10 +11,6 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 const languageChangeEvent = "portfolio-language-change";
 
-function getServerLanguage(): Language {
-  return "en";
-}
-
 function getClientLanguage(): Language {
   if (typeof window === "undefined") {
     return "en";
@@ -37,7 +33,14 @@ function subscribeToLanguage(callback: () => void) {
   };
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({
+  children,
+  initialLanguage = "en",
+}: {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}) {
+  const getServerLanguage = useCallback(() => initialLanguage, [initialLanguage]);
   const language = useSyncExternalStore(subscribeToLanguage, getClientLanguage, getServerLanguage);
 
   useEffect(() => {

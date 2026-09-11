@@ -21,6 +21,7 @@ export type SkillGroup = {
 
 export type EducationItem = {
   year: string;
+  period?: LocalizedText;
   title: LocalizedText;
   institution: LocalizedText;
   details: LocalizedText;
@@ -54,6 +55,7 @@ export type Project = {
   status: LocalizedText;
   summary: LocalizedText;
   cvSummary?: LocalizedText;
+  atsSummary?: LocalizedText;
   problem: LocalizedText;
   objectives: LocalizedText[];
   role: LocalizedText;
