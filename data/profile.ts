@@ -4,16 +4,16 @@ export const profile = {
   name: "Oualid Ait Alla",
   cvName: "AIT ALLA Oualid",
   displayRole: {
-    en: "Master's Student in Data Science & Information Systems Security",
-    fr: "Étudiant en master Data Science & Sécurité des Systèmes d'Information",
+    en: "AI & Data Science Master's Student | Machine Learning, Generative AI & RAG",
+    fr: "Étudiant en master IA & Data Science | Machine Learning, IA Générative & RAG",
   },
   shortProfile: {
-    en: "Master's student in Data Science and Information Systems Security with hands-on project experience in artificial intelligence, machine learning, generative AI, data analytics, automation, and secure intelligent systems.",
-    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, avec une expérience pratique acquise au travers de projets en intelligence artificielle, machine learning, IA générative, analyse de données, automatisation et systèmes intelligents sécurisés.",
+    en: "Master's student in Data Science and Information Systems Security with practical project experience in artificial intelligence, machine learning, generative AI, RAG, data analytics, backend/API development, and secure intelligent systems.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information, avec une expérience pratique acquise à travers des projets en intelligence artificielle, machine learning, IA générative, RAG, analyse de données, développement backend/API et systèmes intelligents sécurisés.",
   },
   value: {
-    en: "Developing practical skills in data science, Python development, machine learning, data visualization, cybersecurity, and full-stack software development through academic and personal projects.",
-    fr: "Développement de compétences pratiques en data science, développement Python, machine learning, visualisation de données, cybersécurité et développement logiciel full-stack au travers de projets académiques et personnels.",
+    en: "Building practical skills in AI, machine learning, data science, Python, APIs, data visualization, cybersecurity, and full-stack development through academic and personal projects oriented toward AI and data-driven products.",
+    fr: "Développement de compétences pratiques en IA, machine learning, data science, Python, API, visualisation de données, cybersécurité et développement full-stack à travers des projets académiques et personnels orientés vers les produits IA et pilotés par les données.",
   },
   institution: {
     en: "Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal",
