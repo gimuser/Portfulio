@@ -33,13 +33,13 @@ const skillGroupPriority = [
 ];
 
 const skillItemOverrides: Record<string, string[]> = {
-  "Generative AI and RAG": ["Retrieval-Augmented Generation (RAG)", "Embeddings", "Vector search", "Ollama", "OpenAI API", "OpenRouter", "Document parsing"],
-  "Machine Learning & AI": ["Machine learning fundamentals", "Artificial intelligence", "PyTorch", "Deep learning fundamentals", "Image classification"],
-  "Data Science & Analytics": ["Data cleaning", "Exploratory data analysis", "Feature engineering", "Regression modeling", "Data visualization"],
-  "Programming": ["Python", "SQL", "TypeScript", "JavaScript", "C"],
-  "Backend and APIs": ["Node.js", "Express", "REST APIs", "Next.js API routes"],
-  "Data Management & Information Systems": ["MongoDB", "Mongoose", "Prisma", "SQLite", "Database fundamentals"],
-  "Cybersecurity": ["Information systems security", "Network security", "Cryptography", "Input validation", "Rate limiting"],
+  "Generative AI and RAG": ["Retrieval-Augmented Generation (RAG)","Embeddings","Vector search","LLM integration","Prompt engineering","Ollama","OpenAI API","OpenRouter","Document processing","Structured output validation","Constrained generation","Model quantization","Document parsing"],
+  "Machine Learning & AI": ["Machine learning","Artificial intelligence","PyTorch","Deep learning","Model evaluation","Image classification"],
+  "Data Science & Analytics": ["Data cleaning","Exploratory data analysis","Feature engineering","Regression modeling","Data visualization","Scientific research","Scientific paper reading"],
+  "Programming": ["Python","SQL","TypeScript","JavaScript","C"],
+  "Backend and APIs": ["Node.js","Express","REST APIs","Next.js API routes"],
+  "Data Management & Information Systems": ["MongoDB","Mongoose","Prisma","SQLite","Database fundamentals","JSON schema validation"],
+  "Cybersecurity": ["Information systems security","Network security","Cryptography","Input validation","Rate limiting"],
 };
 
 function getProjectSummary(project: Project, language: Language) {
