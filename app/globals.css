@@ -2689,7 +2689,7 @@ img {
     page: ats-cv;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     width: auto;
     min-height: 283mm;
     height: auto;
