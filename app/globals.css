@@ -2834,7 +2834,9 @@ img {
 
   .cv-page:has(> .cv-sheet) > .cv-sheet {
     width: 100%;
-    min-height: 0;
+    min-height: 287mm;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     border: 0;
@@ -2848,7 +2850,7 @@ img {
 
   /* Preserve the header dimensions; tune only the content beneath it. */
   .cv-page:has(> .cv-sheet) > .cv-sheet > section {
-    margin-top: 0.62rem;
+    margin-top: auto;
     font-size: 9pt;
     break-inside: auto;
     page-break-inside: auto;
