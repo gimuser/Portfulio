@@ -497,7 +497,8 @@ img {
   padding: 1.2rem;
 }
 
-.card-meta {  display: flex;
+.card-meta {
+  display: flex;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 0.8rem;
@@ -996,7 +997,8 @@ img {
   content: "";
   position: absolute;
   top: 22px;
-  left: 7%;  right: 7%;
+  left: 7%;
+  right: 7%;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
   opacity: 0.55;
@@ -1495,7 +1497,8 @@ img {
 }
 
 .cv-contact {
-  display: flex;  flex-direction: column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.2rem;
   margin-top: 0.45rem;
@@ -1994,7 +1997,8 @@ img {
   .project-grid,
   .skill-grid,
   .case-grid,
-  .career-timeline,  .career-roadmap,
+  .career-timeline,
+  .career-roadmap,
   .contact-methods,
   .cv-skill-grid,
   .cv-two,
