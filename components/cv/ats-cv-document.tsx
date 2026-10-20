@@ -24,7 +24,7 @@ const atsLabels = {
       education: "Education",
       skills: "Technical Skills",
       projects: "Selected Projects",
-      experience: "Additional Projects",
+      experience: "Additional Academic Project",
       certifications: "Certifications and Training",
       languages: "Languages",
     },
@@ -45,7 +45,7 @@ const atsLabels = {
       education: "Formation",
       skills: "Compétences techniques",
       projects: "Projets sélectionnés",
-      experience: "Projets complémentaires",
+      experience: "Projet académique complémentaire",
       certifications: "Certifications et formations",
       languages: "Langues",
     },
@@ -100,33 +100,39 @@ export function AtsCvDocument() {
     .map((slug) => projects.find((project) => project.slug === slug))
     .filter((project): project is Project => Boolean(project));
   const visibleEducation = education.slice(0, 3);
-  const visibleExperience = experience.slice(0, 2);
+  const visibleExperience = experience.filter((item) => item.title.en === "Cybersecurity learning project");
   const showCertifications = certifications.length > 0;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
-  const contactItems = [
-    { key: "location", text: location, href: profile.locationMapHref },
-    { key: "email", text: labels.contact.email + ": " + profile.email, href: "mailto:" + profile.email },
-    { key: "phone", text: labels.contact.phone + ": " + profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
-    { key: "portfolio", text: labels.contact.portfolio + ": " + profile.links.website.href, href: profile.links.website.href },
-    { key: "linkedin", text: labels.contact.linkedin + ": " + profile.links.linkedin.href, href: profile.links.linkedin.href },
-    { key: "github", text: labels.contact.github + ": " + profile.links.github.href, href: profile.links.github.href },
+  const contactRows = [
+    [
+      { key: "location", text: location, href: profile.locationMapHref },
+      { key: "email", text: labels.contact.email + ": " + profile.email, href: "mailto:" + profile.email },
+      { key: "phone", text: labels.contact.phone + ": " + profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
+    ],
+    [{ key: "portfolio", text: profile.links.website.href, href: profile.links.website.href }],
+    [
+      { key: "linkedin", text: profile.links.linkedin.href, href: profile.links.linkedin.href },
+      { key: "github", text: profile.links.github.href, href: profile.links.github.href },
+    ],
   ];
 
   return (
     <article className="ats-cv-page" data-language={language} aria-label={profile.name + " ATS CV"}>
       <header className="ats-cv-header">
         <h1>{profile.name}</h1>
-        <p className="ats-cv-title">
-          {language === "fr" ? "Ingénieur IA / Machine Learning | Data Scientist" : "AI / Machine Learning Engineer | Data Scientist"}
-        </p>
+        <p className="ats-cv-title">{localize(profile.displayRole, language)}</p>
       </header>
 
       <section className="ats-cv-section">
         <h2>{labels.sections.contact ?? (language === "fr" ? "Coordonnées" : "Contact Information")}</h2>
         <div className="ats-cv-contact-block">
-          {contactItems.map((item) => (
-            <p key={item.key}>
-              <a href={item.href}>{item.text}</a>
+          {contactRows.map((row, rowIndex) => (
+            <p key={rowIndex}>
+              {row.map((item, itemIndex) => (
+                <span key={item.key}>
+                  {itemIndex > 0 ? " | " : ""}<a href={item.href}>{item.text}</a>
+                </span>
+              ))}
             </p>
           ))}
         </div>
@@ -147,7 +153,6 @@ export function AtsCvDocument() {
                 <strong>{item.period ? localize(item.period, language) : item.year}</strong>
               </div>
               <p>{localize(item.institution, language)}</p>
-              <p className="ats-cv-detail">{localize(item.details, language)}</p>
             </div>
           ))}
         </div>
@@ -175,7 +180,7 @@ export function AtsCvDocument() {
               </div>
               <p>{getAtsProjectSummary(project, language)}</p>
               <p><strong>{labels.technologies}:</strong> {project.technologies.join(", ")}</p>
-              {project.github.status === "available" && !project.github.href.includes("[ADD") ? (
+              {project.github.status === "available" && project.status.en.toLowerCase().includes("public") && !project.github.href.includes("[ADD") ? (
                 <p><strong>{labels.projectLink}:</strong> {project.github.href}</p>
               ) : null}
             </div>
