@@ -9,7 +9,7 @@ GitHub : https://github.com/gimuser
 
 ## Profil professionnel
 
-Étudiant en master Data Science et Sécurité des Systèmes d’Information, orienté IA, avec une expérience de projet en machine learning, IA générative, génération augmentée par récupération (RAG) et développement d’applications sécurisées. J’ai développé un assistant éducatif fondé sur les supports de cours et contribué à un projet collaboratif d’apprentissage par renforcement pour le triage des alertes de sécurité. Je recherche un stage en ingénierie IA, machine learning ou data science afin d’appliquer mes compétences à des projets concrets et de continuer à développer mon expertise.
+Étudiant en master Data Science et Sécurité des Systèmes d’Information, avec une expérience professionnelle en tant que stagiaire ingénieur en intelligence artificielle chez SPORTScore SAS. Expérience de projet en machine learning, IA générative, RAG et développement d’applications sécurisées, notamment un assistant éducatif fondé sur les supports de cours et un projet collaboratif d’apprentissage par renforcement pour le triage des alertes de sécurité.
 
 ## Formation
 
@@ -32,6 +32,12 @@ Université Sultan Moulay Slimane, Faculté Polydisciplinaire de Béni Mellal
 - **Backend et API :** Node.js, Express, API REST, routes API Next.js.
 - **Gestion des données :** MongoDB, Mongoose, Prisma, SQLite, fondamentaux des bases de données.
 - **Cybersécurité :** sécurité des systèmes d’information, sécurité réseau, cryptographie, validation des entrées, limitation du débit des requêtes.
+
+## Expérience professionnelle
+
+**Stagiaire ingénieur en intelligence artificielle — SPORTScore SAS** | 14 août 2026 – 14 octobre 2026  
+Paris, France | 2 mois  
+Participation à des travaux et projets en intelligence artificielle, mobilisant des compétences d’analyse et contribuant à la résolution de problématiques concrètes en environnement professionnel.
 
 ## Projets sélectionnés
 
