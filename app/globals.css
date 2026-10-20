@@ -2816,3 +2816,78 @@ img {
     display: none !important;
   }
 }
+
+
+/* Portfolio CV print layout: keep the original header untouched and use the A4 page more naturally. */
+@media print {
+  @page cv-portfolio {
+    size: A4;
+    margin: 5mm;
+  }
+
+  .cv-page:has(> .cv-sheet) {
+    page: cv-portfolio;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cv-page:has(> .cv-sheet) > .cv-sheet {
+    width: 100%;
+    min-height: 287mm;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 8pt;
+    line-height: 1.2;
+    color: #111;
+    background: #fff;
+  }
+
+  /* Preserve the header dimensions; tune only the content beneath it. */
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section {
+    margin-top: 0.48rem;
+    font-size: 8pt;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section h2 {
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.1rem;
+    font-size: 8.4pt;
+    line-height: 1.12;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-entry {
+    margin-bottom: 0.22rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-entry-heading {
+    gap: 0.4rem;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-entry-heading > strong:last-child {
+    font-size: 7.5pt;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-sheet section p,
+  .cv-page:has(> .cv-sheet) .cv-sheet section li,
+  .cv-page:has(> .cv-sheet) .cv-sheet section small {
+    line-height: 1.2;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-list {
+    gap: 0.24rem;
+  }
+
+  .cv-page:has(> .cv-sheet) .cv-skill-grid {
+    gap: 0.14rem 0.5rem;
+  }
+}
