@@ -9,7 +9,7 @@ GitHub: https://github.com/gimuser
 
 ## Professional Summary
 
-AI-focused Master's student in Data Science and Information Systems Security, with project experience in machine learning, generative AI, retrieval-augmented generation (RAG), and secure application development. Built a document-grounded educational AI assistant and contributed to a collaborative reinforcement-learning project for security alert triage. Seeking an internship in AI Engineering, Machine Learning, or Data Science to apply my skills to practical projects and continue developing my expertise.
+AI-focused Master’s student in Data Science and Information Systems Security with professional internship experience as an AI Engineering Intern at SPORTScore SAS. Project experience includes machine learning, generative AI, retrieval-augmented generation (RAG), and secure application development, including a document-grounded educational AI assistant and a collaborative reinforcement-learning project for security alert triage.
 
 ## Education
 
@@ -32,6 +32,12 @@ Sultan Moulay Slimane University, Polydisciplinary Faculty of Beni Mellal
 - **Backend and APIs:** Node.js, Express, REST APIs, Next.js API routes.
 - **Data Management:** MongoDB, Mongoose, Prisma, SQLite, database fundamentals.
 - **Cybersecurity:** information systems security, network security, cryptography, input validation, rate limiting.
+
+## Professional Experience
+
+**AI Engineering Intern — SPORTScore SAS** | 14 August 2026 – 14 October 2026  
+Paris, France | 2 months  
+Participated in AI-related projects and technical work, applying analytical skills and contributing to practical problem-solving in a professional environment.
 
 ## Selected Projects
 
