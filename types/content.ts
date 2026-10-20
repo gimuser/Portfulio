@@ -34,6 +34,7 @@ export type ExperienceItem = {
   duration?: LocalizedText;
   location?: LocalizedText;
   title: LocalizedText;
+  organization?: string;
   context: LocalizedText;
   bullets: LocalizedText[];
 };
