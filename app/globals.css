@@ -2674,8 +2674,8 @@ img {
 
 @media print {
   /*
-   * ATS CV print layout: use readable type and balanced spacing while targeting one A4 page.
-   * The page remains content-driven; no fixed height or clipping is applied.
+   * Balance the ATS CV vertically on A4 without stretching individual sections.
+   * min-height creates the printable area; centering applies only when content is shorter.
    */
   @page ats-cv {
     size: A4;
@@ -2684,8 +2684,11 @@ img {
 
   .ats-cv-page {
     page: ats-cv;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: auto;
-    min-height: 0;
+    min-height: 283mm;
     height: auto;
     margin: 0;
     padding: 0;
@@ -2702,6 +2705,7 @@ img {
   }
 
   .ats-cv-header {
+    flex: 0 0 auto;
     padding-bottom: 0.3rem;
     margin-bottom: 0.36rem;
   }
@@ -2729,6 +2733,7 @@ img {
 
   .ats-cv-section,
   .ats-cv-compact-section {
+    flex: 0 0 auto;
     margin-top: 0.32rem;
     break-inside: auto;
     page-break-inside: auto;
