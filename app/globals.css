@@ -2671,98 +2671,99 @@ img {
   }
 }
 
+
 @media print {
   @page ats-cv {
     size: A4;
-    margin: 7mm;
+    margin: 6mm;
   }
 
   .ats-cv-page {
     page: ats-cv;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block;
     width: auto;
-    min-height: 283mm;
+    min-height: 0;
+    height: auto;
     margin: 0;
     padding: 0;
     box-shadow: none;
-    font-size: 9.2pt;
-    line-height: 1.22;
+    font-size: 8.4pt;
+    line-height: 1.12;
     color: #111111;
   }
 
   .ats-cv-page[data-language="fr"] {
-    font-size: 9.2pt;
-    line-height: 1.22;
+    font-size: 8.2pt;
+    line-height: 1.1;
   }
 
   .ats-cv-header {
-    padding-bottom: 0.35rem;
-    margin: 0;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
   }
 
   .ats-cv-header h1 {
-    font-size: 19pt;
-    line-height: 1.08;
-    margin-bottom: 0.12rem;
+    font-size: 16pt;
+    line-height: 1.04;
+    margin-bottom: 0.08rem;
   }
 
   .ats-cv-title {
-    margin: 0.1rem 0 0.16rem;
-    line-height: 1.2;
+    margin: 0.05rem 0 0.1rem;
+    line-height: 1.1;
   }
 
   .ats-cv-contact-block p {
-    margin: 0;
-    line-height: 1.2;
+    margin-bottom: 0.03rem;
+    line-height: 1.08;
   }
 
   .ats-cv-section,
   .ats-cv-compact-section {
-    margin-top: 0;
+    margin-top: 0.2rem;
     break-inside: auto;
     page-break-inside: auto;
   }
 
   .ats-cv-section h2 {
-    margin: 0 0 0.12rem;
-    padding-bottom: 0.06rem;
-    font-size: 8.8pt;
-    line-height: 1.15;
+    margin-bottom: 0.07rem;
+    padding-bottom: 0.025rem;
+    font-size: 8pt;
+    line-height: 1.05;
     break-after: avoid;
     page-break-after: avoid;
   }
 
   .ats-cv-entry-heading {
-    margin-bottom: 0.04rem;
+    gap: 0.25rem;
+    margin-bottom: 0.025rem;
   }
 
   .ats-cv-entry-heading h3 {
-    font-size: 9pt;
-    line-height: 1.2;
+    font-size: 8.2pt;
+    line-height: 1.08;
   }
 
   .ats-cv-entry-heading strong {
-    font-size: 8.4pt;
-    line-height: 1.2;
+    font-size: 7.8pt;
+    line-height: 1.08;
   }
 
   .ats-cv-page p,
   .ats-cv-page li {
     margin-top: 0;
-    margin-bottom: 0.08rem;
-    line-height: 1.22;
+    margin-bottom: 0.035rem;
+    line-height: 1.1;
   }
 
   .ats-cv-page ul {
-    margin: 0.06rem 0 0.08rem;
-    padding-left: 0.95rem;
+    margin: 0.025rem 0 0.035rem;
+    padding-left: 0.85rem;
   }
 
   .ats-cv-list,
   .ats-cv-skill-list {
-    gap: 0.12rem;
+    gap: 0.04rem;
   }
 
   .ats-cv-entry {
