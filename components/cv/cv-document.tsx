@@ -158,9 +158,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               <address className="cv-contact">
                 {contactRows.map((row, rowIndex) => (
                   <span className="cv-contact-row" key={rowIndex}>
-                    {row.map((item, itemIndex) => (
+                    {row.map((item) => (
                       <a key={item.key} href={item.href}>
-                        {itemIndex > 0 ? " | " : ""}
                         {item.text}
                       </a>
                     ))}
