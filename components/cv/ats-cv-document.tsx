@@ -19,6 +19,7 @@ const atsLabels = {
       github: "GitHub",
     },
     sections: {
+      contact: "Contact Information",
       summary: "Professional Summary",
       education: "Education",
       skills: "Technical Skills",
@@ -39,6 +40,7 @@ const atsLabels = {
       github: "GitHub",
     },
     sections: {
+      contact: "Coordonnées",
       summary: "Profil professionnel",
       education: "Formation",
       skills: "Compétences techniques",
