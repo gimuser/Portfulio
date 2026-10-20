@@ -1,18 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Check, Copy, Download, FileText, Globe2, Mail, MapPin, Printer } from "lucide-react";
+import { Check, Copy, Download, Mail, Printer } from "lucide-react";
 import { useState } from "react";
 import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
-import { certifications } from "@/data/certifications";
-import { cvLanguages } from "@/data/cv";
-import { education, experience, profile } from "@/data/profile";
-import { projects } from "@/data/projects";
-import { skillGroups } from "@/data/skills";
-import { localize } from "@/utils/localize";
+import { profile } from "@/data/profile";
 
 type CvDocumentProps = {
   variant?: "portfolio" | "ats";
@@ -21,284 +15,85 @@ type CvDocumentProps = {
 export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
-  const printPage = () => window.print();
-  const cleanUrl = (href: string) => href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-  const isPlaceholder = (value: string) => value.includes("[ADD") || value.includes("[AJOUTER");
   const isAts = variant === "ats";
-  const activeCvName = isAts ? (language === "en" ? "ATS CV" : "CV ATS") : "CV";
+  const activeCvName = "ATS CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
-  const pdfKind = isAts ? "ATS_CV" : "CV";
   const pdfLanguageCode = language === "fr" ? "FR" : "EN";
-  const pdfUrl = `/downloads/Oualid_Ait_Alla_${pdfKind}_${pdfLanguageCode}.pdf`;
-  const cvShareUrl = `${profile.links.website.href.replace(/\/$/, "")}${activeCvPath}?lang=${language}`;
-  const shareSubject = `${profile.name} ${activeCvName}`;
-  const shareText =
-    language === "en"
-      ? `Here is ${profile.name}'s ${activeCvName}: ${cvShareUrl}`
-      : `Voici le ${activeCvName} de ${profile.name} : ${cvShareUrl}`;
+  const pdfUrl = "/downloads/Oualid_Ait_Alla_ATS_CV_" + pdfLanguageCode + ".pdf";
+  const cvShareUrl = profile.links.website.href.replace(/\/$/, "") + activeCvPath + "?lang=" + language;
+  const shareSubject = profile.name + " " + activeCvName;
+  const shareText = language === "en"
+    ? "Here is " + profile.name + "'s " + activeCvName + ": " + cvShareUrl
+    : "Voici le " + activeCvName + " de " + profile.name + " : " + cvShareUrl;
   const encodedShareUrl = encodeURIComponent(cvShareUrl);
   const encodedShareText = encodeURIComponent(shareText);
   const encodedShareSubject = encodeURIComponent(shareSubject);
-  const toggleCvHref = `${isAts ? "/cv" : "/ats-cv"}?lang=${language}`;
-  const toggleCvLabel = isAts ? (language === "en" ? "Portfolio CV" : "CV Portfolio") : "My ATS CV";
-  const toggleCvAriaLabel = isAts
-    ? language === "en"
-      ? "Open Oualid Ait Alla portfolio CV"
-      : "Ouvrir le CV portfolio de Oualid Ait Alla"
-    : "Open Oualid Ait Alla ATS-friendly CV";
   const copyCvLink = async () => {
-    if (!navigator.clipboard) {
-      return;
-    }
-
+    if (!navigator.clipboard) return;
     await navigator.clipboard.writeText(cvShareUrl);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
-  const languageLevels = cvLanguages.map((item) =>
-    language === "en"
-      ? `${localize(item.name, language)}: ${localize(item.level, language)}`
-      : `${localize(item.name, language)} : ${localize(item.level, language)}`,
-  );
-  const cvSkillGroups = skillGroups.filter(
-    (group) => group.title.en !== "Professional Skills" && group.title.en !== "Languages",
-  );
-  const selectedProjects = projects.slice(0, 4);
-  const visibleEducation = education.slice(0, 1);
-  const cvSummaryText =
-    language === "en"
-      ? "Master's student in Data Science and Information Systems Security with hands-on experience in machine learning, generative AI, RAG, data analytics, APIs, and secure application development. Developed AI assistants, document-grounded RAG applications, reinforcement learning systems, and full-stack applications. Seeking an internship in AI, data science, machine learning, or generative AI."
-      : "Étudiant en master Data Science et Sécurité des Systèmes d'Information avec une expérience pratique en machine learning, IA générative, RAG, analyse de données, API et développement d'applications sécurisées. J'ai développé des assistants IA, des applications RAG fondées sur des documents, des systèmes d'apprentissage par renforcement et des applications full-stack. Recherche un stage en IA, data science, machine learning ou IA générative.";
 
   return (
     <div className="cv-page" id="content">
       <div className="cv-controls no-print">
-        <button className="button" type="button" onClick={printPage}>
+        <button className="button" type="button" onClick={() => window.print()}>
           <Printer size={18} />
-          {language === "en" ? "Print / Save PDF" : "Imprimer / PDF"}
+          {language === "en" ? "Print / Save PDF" : "Imprimer / Enregistrer en PDF"}
         </button>
-        <Link className="button button-ghost" href={toggleCvHref} aria-label={toggleCvAriaLabel}>
-          <FileText size={18} />
-          {toggleCvLabel}
-        </Link>
       </div>
 
-      {isAts ? (
-        <AtsCvDocument />
-      ) : (
-        <article className="cv-sheet">
-        <header className="cv-header">
-          <Image
-            className="cv-photo"
-            src="/images/oualid-ait-alla.jpg"
-            alt={`${profile.name} portrait`}
-            width={110}
-            height={138}
-            priority
-          />
-          <div className="cv-heading">
-            <h1>{profile.name}</h1>
-            <p className="cv-role">{localize(profile.displayRole, language)}</p>
-          </div>
-        </header>
+      <AtsCvDocument />
 
-        <section>
-          <h2>{language === "en" ? "Profile" : "Profil"}</h2>
-          <p>{cvSummaryText}</p>
-          <p className="cv-meta-line">
-            <strong>{language === "en" ? "Nationality" : "Nationalité"}:</strong>{" "}
-            {localize(profile.nationality, language)} | <strong>{language === "en" ? "Mobility" : "Mobilité"}:</strong>{" "}
-            {localize(profile.mobility, language)}
-          </p>
-        </section>
-
-        <section>
-          <h2>{language === "en" ? "Contact Information" : "Coordonnées"}</h2>
-          <div className="cv-contact-block">
-            <p>
-              <a href={profile.locationMapHref}>
-                <MapPin className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                {profile.location}
-              </a>
-            </p>
-            <p>
-              <a href={`mailto:${profile.email}`}>
-                <Mail className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                {profile.email}
-              </a>
-            </p>
-            <p>
-              <a href={`tel:${profile.phone.replace(/\s+/g, "")}`}>{profile.phone}</a>
-            </p>
-            <p>
-              <a href={profile.links.website.href}>
-                <Globe2 className="cv-contact-icon" size={10} strokeWidth={2.2} />
-                {cleanUrl(profile.links.website.href)}
-              </a>
-            </p>
-            <p>
-              <a href={profile.links.linkedin.href}>
-                <SocialIcon name="linkedin" size={10} />
-                {cleanUrl(profile.links.linkedin.href)}
-              </a>
-            </p>
-            <p>
-              <a href={profile.links.github.href}>
-                <SocialIcon name="github" size={10} />
-                {cleanUrl(profile.links.github.href)}
-              </a>
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <h2>{language === "en" ? "Education" : "Formation"}</h2>
-          <div className="cv-list">
-            {visibleEducation.map((item) => {
-              const institution = localize(item.institution, language);
-
-              return (
-                <div className="cv-entry" key={`${item.year}-${item.title.en}`}>
-                  <div className="cv-entry-heading">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  {!isPlaceholder(institution) ? <p className="cv-muted">{institution}</p> : null}
-                  <small>{localize(item.details, language)}</small>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        <section>
-          <h2>{language === "en" ? "Technical Skills" : "Compétences techniques"}</h2>
-          <div className="cv-skill-grid">
-            {cvSkillGroups.map((group) => (
-              <p key={group.title.en}>
-                <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
-              </p>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2>{language === "en" ? "Selected Projects" : "Projets sélectionnés"}</h2>
-          <div className="cv-list">
-            {selectedProjects.map((project) => (
-              <div className="cv-entry" key={project.slug}>
-                <div className="cv-entry-heading">
-                  <h3>{project.title}</h3>
-                  <strong>{project.year}</strong>
-                </div>
-                <p>{localize(project.cvSummary ?? project.summary, language)}</p>
-                <small>{project.technologies.join(", ")}</small>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="cv-two">
-          <div>
-            <h2>{language === "en" ? "Academic & Personal Projects" : "Projets académiques et personnels"}</h2>
-            {experience.map((item) => (
-              <div key={`${item.year}-${item.title.en}`} className="cv-mini">
-                <div className="cv-entry-heading">
-                  <strong>{localize(item.title, language)}</strong>
-                  <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                </div>
-                {item.location && item.duration ? (
-                  <p className="cv-muted">
-                    {localize(item.location, language)} | {localize(item.duration, language)}
-                  </p>
-                ) : null}
-                <small>{localize(item.context, language)}</small>
-                <ul>
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet.en}>{localize(bullet, language)}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div>
-            <h2>{language === "en" ? "Languages" : "Langues"}</h2>
-            {languageLevels.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
-            {certifications.length > 0 ? <h2>{language === "en" ? "Certifications" : "Certifications"}</h2> : null}
-            {certifications.map((certification) => (
-              <p key={certification.name}>
-                <strong>{certification.name}</strong>, {certification.organization}
-              </p>
-            ))}
-            <h2>{language === "en" ? "Interests" : "Centres d'intérêt"}</h2>
-            {profile.interests.map((interest) => (
-              <p key={interest.en}>{localize(interest, language)}</p>
-            ))}
-          </div>
-        </section>
-        </article>
-      )}
-
-      <div
-        className="cv-floating-actions no-print"
-        aria-label={language === "en" ? `${activeCvName} actions` : `Actions ${activeCvName}`}
-      >
+      <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
         <a
           className="button button-secondary"
           href={pdfUrl}
           download
-          aria-label={
-            language === "en"
-              ? `Download Oualid Ait Alla ${isAts ? "ATS-friendly " : ""}CV PDF`
-              : `Télécharger le ${isAts ? "CV ATS" : "CV"} de Oualid Ait Alla au format PDF`
-          }
+          aria-label={language === "en" ? "Download ATS CV PDF" : "Télécharger le CV ATS en PDF"}
         >
           <Download size={18} />
-          <span>{language === "en" ? "Download CV PDF" : "Télécharger CV PDF"}</span>
+          <span>{language === "en" ? "Download ATS CV PDF" : "Télécharger le CV ATS en PDF"}</span>
         </a>
-        <div
-          className="cv-share-links"
-          aria-label={language === "en" ? `Share ${activeCvName} links` : `Liens de partage ${activeCvName}`}
-        >
+        <div className="cv-share-links" aria-label={language === "en" ? "Share ATS CV links" : "Partager le CV ATS"}>
           <button
             className="cv-share-action"
             type="button"
             onClick={copyCvLink}
-            title={language === "en" ? `Copy ${activeCvName} link` : `Copier le lien ${activeCvName}`}
-            aria-label={language === "en" ? `Copy ${activeCvName} link` : `Copier le lien ${activeCvName}`}
+            title={language === "en" ? "Copy ATS CV link" : "Copier le lien du CV ATS"}
+            aria-label={language === "en" ? "Copy ATS CV link" : "Copier le lien du CV ATS"}
           >
             {copied ? <Check size={17} /> : <Copy size={17} />}
             <span>{copied ? (language === "en" ? "Copied" : "Copié") : language === "en" ? "Copy link" : "Copier"}</span>
           </button>
           <a
             className="cv-share-action"
-            href={`https://wa.me/?text=${encodedShareText}`}
+            href={"https://wa.me/?text=" + encodedShareText}
             target="_blank"
             rel="noreferrer"
-            title={language === "en" ? `Share ${activeCvName} on WhatsApp` : `Partager le ${activeCvName} sur WhatsApp`}
-            aria-label={language === "en" ? `Share ${activeCvName} on WhatsApp` : `Partager le ${activeCvName} sur WhatsApp`}
+            title="Share ATS CV on WhatsApp"
+            aria-label="Share ATS CV on WhatsApp"
           >
             <SocialIcon name="whatsapp" size={17} />
             <span>WhatsApp</span>
           </a>
           <a
             className="cv-share-action"
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
+            href={"https://www.linkedin.com/sharing/share-offsite/?url=" + encodedShareUrl}
             target="_blank"
             rel="noreferrer"
-            title={language === "en" ? `Share ${activeCvName} on LinkedIn` : `Partager le ${activeCvName} sur LinkedIn`}
-            aria-label={language === "en" ? `Share ${activeCvName} on LinkedIn` : `Partager le ${activeCvName} sur LinkedIn`}
+            title="Share ATS CV on LinkedIn"
+            aria-label="Share ATS CV on LinkedIn"
           >
             <SocialIcon name="linkedin" size={17} />
             <span>LinkedIn</span>
           </a>
           <a
             className="cv-share-action"
-            href={`mailto:?subject=${encodedShareSubject}&body=${encodedShareText}`}
-            title={language === "en" ? `Share ${activeCvName} by email` : `Partager le ${activeCvName} par email`}
-            aria-label={language === "en" ? `Share ${activeCvName} by email` : `Partager le ${activeCvName} par email`}
+            href={"mailto:?subject=" + encodedShareSubject + "&body=" + encodedShareText}
+            title="Share ATS CV by email"
+            aria-label="Share ATS CV by email"
           >
             <Mail size={17} />
             <span>Email</span>
