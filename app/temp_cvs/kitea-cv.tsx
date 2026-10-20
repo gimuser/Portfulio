@@ -212,16 +212,16 @@ export function KiteaCv() {
           html,body { background:#fff!important; color:#111!important; }
           .kitea-cv-page { padding:0!important; margin:0!important; }
           .kitea-controls,.cv-controls,.cv-floating-actions,.site-header,.footer { display:none!important; }
-          .kitea-cv-sheet { width:100%!important; max-width:none!important; min-height:281mm!important; box-sizing:border-box!important; display:flex!important; flex-direction:column!important; justify-content:space-between!important; margin:0!important; padding:0!important; box-shadow:none!important; border:0!important; font-size:7.5pt!important; line-height:1.16!important; }
-          .kitea-cv-sheet .cv-header { gap:7mm!important; margin-bottom:2mm!important; padding-bottom:2mm!important; }
+          .kitea-cv-sheet { width:100%!important; max-width:none!important; min-height:281mm!important; box-sizing:border-box!important; display:block!important; margin:0!important; padding:0!important; box-shadow:none!important; border:0!important; font-size:8.3pt!important; line-height:1.23!important; }
+          .kitea-cv-sheet .cv-header { gap:7mm!important; margin-bottom:2.5mm!important; padding-bottom:2.5mm!important; }
           .kitea-cv-sheet .cv-photo { width:25mm!important; height:31mm!important; }
-          .kitea-cv-sheet .cv-header h1 { font-size:17pt!important; }
-          .kitea-cv-sheet .cv-contact { font-size:6.2pt!important; }
-          .kitea-cv-sheet section { margin-top:1mm!important; }
-          .kitea-cv-sheet h2 { font-size:8pt!important; margin-bottom:1mm!important; padding-bottom:.5mm!important; }
-          .kitea-cv-sheet h3 { font-size:7.4pt!important; }
-          .kitea-cv-sheet p,.kitea-cv-sheet small { line-height:1.15!important; }
-          .kitea-cv-sheet .cv-list { gap:1mm!important; }
+          .kitea-cv-sheet .cv-header h1 { font-size:18pt!important; }
+          .kitea-cv-sheet .cv-contact { font-size:6.8pt!important; }
+          .kitea-cv-sheet section { margin-top:2.2mm!important; }
+          .kitea-cv-sheet h2 { font-size:8.8pt!important; margin-bottom:1.2mm!important; padding-bottom:.6mm!important; }
+          .kitea-cv-sheet h3 { font-size:8.1pt!important; line-height:1.2!important; }
+          .kitea-cv-sheet p,.kitea-cv-sheet small { line-height:1.22!important; }
+          .kitea-cv-sheet .cv-list { gap:1.3mm!important; }
           .kitea-cv-sheet section,.kitea-cv-sheet .cv-entry { break-inside:avoid; }
           .kitea-cv-sheet a { color:#175a9b!important; text-decoration:underline!important; }
         }
