@@ -19,7 +19,6 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const activeCvName = "ATS CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
   const pdfLanguageCode = language === "fr" ? "FR" : "EN";
-  const pdfUrl = "/downloads/Oualid_Ait_Alla_ATS_CV_" + pdfLanguageCode + ".pdf";
   const cvShareUrl = profile.links.website.href.replace(/\/$/, "") + activeCvPath + "?lang=" + language;
   const shareSubject = profile.name + " " + activeCvName;
   const shareText = language === "en"
@@ -47,15 +46,15 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
       <AtsCvDocument />
 
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
-        <a
+        <button
           className="button button-secondary"
-          href={pdfUrl}
-          download
-          aria-label={language === "en" ? "Download ATS CV PDF" : "Télécharger le CV ATS en PDF"}
+          type="button"
+          onClick={() => window.print()}
+          aria-label={language === "en" ? "Save current ATS CV as PDF" : "Enregistrer le CV ATS actuel en PDF"}
         >
           <Download size={18} />
-          <span>{language === "en" ? "Download ATS CV PDF" : "Télécharger le CV ATS en PDF"}</span>
-        </a>
+          <span>{language === "en" ? "Save ATS CV as PDF" : "Enregistrer le CV ATS en PDF"}</span>
+        </button>
         <div className="cv-share-links" aria-label={language === "en" ? "Share ATS CV links" : "Partager le CV ATS"}>
           <button
             className="cv-share-action"
