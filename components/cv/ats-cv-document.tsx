@@ -24,7 +24,8 @@ const atsLabels = {
       education: "Education",
       skills: "Technical Skills",
       projects: "Selected Projects",
-      experience: "Additional Academic Project",
+      professionalExperience: "Professional Experience",
+      academicProject: "Additional Academic Project",
       certifications: "Certifications and Training",
       languages: "Languages",
     },
@@ -45,7 +46,8 @@ const atsLabels = {
       education: "Formation",
       skills: "Compétences techniques",
       projects: "Projets sélectionnés",
-      experience: "Projet académique complémentaire",
+      professionalExperience: "Expérience professionnelle",
+      academicProject: "Projet académique complémentaire",
       certifications: "Certifications et formations",
       languages: "Langues",
     },
@@ -100,6 +102,7 @@ export function AtsCvDocument() {
     .map((slug) => projects.find((project) => project.slug === slug))
     .filter((project): project is Project => Boolean(project));
   const visibleEducation = education.slice(0, 3);
+  const professionalExperience = experience.filter((item) => item.title.en === "AI Engineering Intern");
   const visibleExperience = experience.filter((item) => item.title.en === "Cybersecurity learning project");
   const showCertifications = certifications.length > 0;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
@@ -170,6 +173,24 @@ export function AtsCvDocument() {
       </section>
 
       <section className="ats-cv-section">
+        <h2>{labels.sections.professionalExperience}</h2>
+        <div className="ats-cv-list">
+          {professionalExperience.map((item) => (
+            <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
+              <div className="ats-cv-entry-heading">
+                <h3>{localize(item.title, language)}</h3>
+                <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+              </div>
+              {item.organization ? <p><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
+              <ul>
+                {item.bullets.slice(0, 1).map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="ats-cv-section">
         <h2>{labels.sections.projects}</h2>
         <div className="ats-cv-list">
           {selectedProjects.map((project) => (
@@ -189,7 +210,7 @@ export function AtsCvDocument() {
       </section>
 
       <section className="ats-cv-section">
-        <h2>{labels.sections.experience}</h2>
+        <h2>{labels.sections.academicProject}</h2>
         <div className="ats-cv-list">
           {visibleExperience.map((item) => (
             <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
