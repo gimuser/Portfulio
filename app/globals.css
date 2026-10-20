@@ -2834,37 +2834,37 @@ img {
 
   .cv-page:has(> .cv-sheet) > .cv-sheet {
     width: 100%;
-    min-height: 287mm;
+    min-height: 0;
     margin: 0;
     padding: 0;
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    font-size: 8pt;
-    line-height: 1.2;
+    font-size: 9pt;
+    line-height: 1.25;
     color: #111;
     background: #fff;
   }
 
   /* Preserve the header dimensions; tune only the content beneath it. */
   .cv-page:has(> .cv-sheet) > .cv-sheet > section {
-    margin-top: 0.48rem;
-    font-size: 8pt;
+    margin-top: 0.62rem;
+    font-size: 9pt;
     break-inside: auto;
     page-break-inside: auto;
   }
 
   .cv-page:has(> .cv-sheet) > .cv-sheet > section h2 {
-    margin-bottom: 0.2rem;
-    padding-bottom: 0.1rem;
-    font-size: 8.4pt;
-    line-height: 1.12;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.12rem;
+    font-size: 9pt;
+    line-height: 1.15;
     break-after: avoid;
     page-break-after: avoid;
   }
 
   .cv-page:has(> .cv-sheet) .cv-entry {
-    margin-bottom: 0.22rem;
+    margin-bottom: 0.3rem;
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -2874,20 +2874,20 @@ img {
   }
 
   .cv-page:has(> .cv-sheet) .cv-entry-heading > strong:last-child {
-    font-size: 7.5pt;
+    font-size: 8pt;
   }
 
   .cv-page:has(> .cv-sheet) .cv-sheet section p,
   .cv-page:has(> .cv-sheet) .cv-sheet section li,
   .cv-page:has(> .cv-sheet) .cv-sheet section small {
-    line-height: 1.2;
+    line-height: 1.25;
   }
 
   .cv-page:has(> .cv-sheet) .cv-list {
-    gap: 0.24rem;
+    gap: 0.3rem;
   }
 
   .cv-page:has(> .cv-sheet) .cv-skill-grid {
-    gap: 0.14rem 0.5rem;
+    gap: 0.18rem 0.5rem;
   }
 }
