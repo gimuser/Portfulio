@@ -2682,29 +2682,7 @@ img {
     margin: 7mm;
   }
 
-  /* Apply the same balanced A4 print geometry to the visual portfolio CV. */
-  @page cv-sheet {
-    size: A4;
-    margin: 7mm;
-  }
 
-  .cv-sheet {
-    page: cv-sheet;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: auto;
-    min-height: 283mm;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-  }
-
-  .cv-sheet > .cv-header,
-  .cv-sheet > section {
-    flex: 0 0 auto;
-  }
 
   .ats-cv-page {
     page: ats-cv;
@@ -2837,4 +2815,5 @@ img {
     display: none !important;
   }
 }
+
 
