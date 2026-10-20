@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Check, Copy, Download, Mail, Printer } from "lucide-react";
 import { useState } from "react";
 import { AtsCvDocument } from "@/components/cv/ats-cv-document";
@@ -18,7 +17,6 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const isAts = variant === "ats";
   const activeCvName = "ATS CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
-  const pdfLanguageCode = language === "fr" ? "FR" : "EN";
   const cvShareUrl = profile.links.website.href.replace(/\/$/, "") + activeCvPath + "?lang=" + language;
   const shareSubject = profile.name + " " + activeCvName;
   const shareText = language === "en"
