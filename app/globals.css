@@ -3010,3 +3010,88 @@ img {
     page-break-inside: avoid !important;
   }
 }
+
+/* ATS print sizing follows the proven visual-CV PDF rhythm. */
+@media print {
+  /* Keep every ATS language/version on one A4 page while using its printable area. */
+  .ats-cv-page {
+    zoom: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.28 !important;
+    box-sizing: border-box !important;
+  }
+
+  .ats-cv-header {
+    padding-bottom: 0.55rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .ats-cv-header h1 {
+    font-size: 19pt !important;
+    line-height: 1.08 !important;
+    margin-bottom: 0.18rem !important;
+  }
+
+  .ats-cv-title {
+    font-size: 10pt !important;
+    line-height: 1.25 !important;
+    margin-top: 0.18rem !important;
+  }
+
+  .ats-cv-section {
+    margin-top: 0.58rem !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .ats-cv-section h2 {
+    margin-bottom: 0.22rem !important;
+    padding-bottom: 0.1rem !important;
+    font-size: 9.5pt !important;
+    line-height: 1.2 !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .ats-cv-entry-heading {
+    margin-bottom: 0.1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .ats-cv-entry-heading h3 {
+    font-size: 9.8pt !important;
+    line-height: 1.22 !important;
+  }
+
+  .ats-cv-entry-heading strong {
+    font-size: 9.2pt !important;
+    line-height: 1.22 !important;
+  }
+
+  .ats-cv-page p,
+  .ats-cv-page li {
+    margin-top: 0 !important;
+    margin-bottom: 0.12rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .ats-cv-page ul {
+    margin: 0.1rem 0 0.16rem !important;
+    padding-left: 1rem !important;
+  }
+
+  .ats-cv-list,
+  .ats-cv-skill-list {
+    gap: 0.22rem !important;
+  }
+
+  .ats-cv-entry {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+
