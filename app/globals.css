@@ -2671,25 +2671,120 @@ img {
   }
 }
 
+
 @media print {
+  /*
+   * ATS CV print geometry:
+   * A4 height = 297 mm. With 4 mm top/bottom margins, the usable height is 289 mm.
+   * Keep this override print-only so the on-screen ATS layout and content remain unchanged.
+   */
   @page ats-cv {
     size: A4;
-    margin: 8mm;
+    margin: 4mm;
   }
 
   .ats-cv-page {
     page: ats-cv;
     width: auto;
+    min-height: 0;
+    height: auto;
     margin: 0;
     padding: 0;
     box-shadow: none;
-    font-size: 8.5pt;
-    line-height: 1.18;
+    font-size: 7.7pt;
+    line-height: 1.04;
+    color: #111111;
+    overflow: visible;
   }
 
   .ats-cv-page[data-language="fr"] {
-    font-size: 8.5pt;
-    line-height: 1.18;
+    font-size: 7.5pt;
+    line-height: 1.03;
+  }
+
+  .ats-cv-header {
+    padding-bottom: 0.12rem;
+    margin-bottom: 0.14rem;
+  }
+
+  .ats-cv-header h1 {
+    font-size: 14pt;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .ats-cv-title {
+    margin: 0.04rem 0 0.06rem;
+    font-size: 8pt;
+    line-height: 1.02;
+  }
+
+  .ats-cv-contact-block {
+    gap: 0;
+  }
+
+  .ats-cv-contact-block p {
+    margin: 0;
+    line-height: 1.02;
+  }
+
+  .ats-cv-section,
+  .ats-cv-compact-section {
+    margin-top: 0.12rem;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .ats-cv-section h2 {
+    margin: 0 0 0.035rem;
+    padding-bottom: 0.02rem;
+    font-size: 7.5pt;
+    line-height: 1.02;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .ats-cv-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .ats-cv-entry-heading {
+    margin-bottom: 0;
+    line-height: 1.02;
+  }
+
+  .ats-cv-entry-heading h3 {
+    font-size: 7.7pt;
+    line-height: 1.02;
+  }
+
+  .ats-cv-entry-heading strong {
+    font-size: 7.2pt;
+    line-height: 1.02;
+  }
+
+  .ats-cv-page p,
+  .ats-cv-page li {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.04;
+  }
+
+  .ats-cv-page ul {
+    margin: 0.025rem 0 0.035rem;
+    padding-left: 0.78rem;
+  }
+
+  .ats-cv-list,
+  .ats-cv-skill-list {
+    gap: 0.035rem;
+  }
+
+  .ats-cv-page a {
+    color: #111111;
+    text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .ats-cv-page[data-language="fr"] .ats-cv-entry-heading h3,
@@ -2699,34 +2794,15 @@ img {
     letter-spacing: normal;
   }
 
-  .ats-cv-header {
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.28rem;
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
   }
 
-  .ats-cv-header h1 {
-    font-size: 17pt;
-  }
-
-  .ats-cv-section {
-    margin-top: 0.28rem;
-  }
-
-  .ats-cv-section h2 {
-    margin-bottom: 0.08rem;
-    font-size: 8.2pt;
-  }
-
-  .ats-cv-entry-heading h3 {
-    font-size: 8.4pt;
-  }
-
-  .ats-cv-entry-heading strong {
-    font-size: 7.9pt;
-  }
-
-  .ats-cv-list,
-  .ats-cv-skill-list {
-    gap: 0.1rem;
+  .site-header,
+  .footer,
+  .no-print {
+    display: none !important;
   }
 }
