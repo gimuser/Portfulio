@@ -81,6 +81,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         education: "Formation",
         skills: "Compétences techniques",
         projects: "Projets sélectionnés",
+        professionalExperience: "Expérience professionnelle",
         extraProject: "Projet académique complémentaire",
         certifications: "Certifications et formations",
         languages: "Langues",
@@ -96,6 +97,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         education: "Education",
         skills: "Technical Skills",
         projects: "Selected Projects",
+        professionalExperience: "Professional Experience",
         extraProject: "Additional Academic Project",
         certifications: "Certifications and Training",
         languages: "Languages",
@@ -111,6 +113,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
     .map((slug) => projects.find((project) => project.slug === slug))
     .filter((project): project is Project => Boolean(project));
   const visibleEducation = education.slice(0, 3);
+  const professionalExperience = experience.filter((item) => item.title.en === "AI Engineering Intern");
   const visibleExperience = experience.filter((item) => item.title.en === "Cybersecurity learning project");
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
@@ -196,6 +199,22 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                 <p key={group.title.en}>
                   <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
                 </p>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2>{labels.professionalExperience}</h2>
+            <div className="cv-list">
+              {professionalExperience.map((item) => (
+                <div className="cv-entry" key={item.year + "-" + item.title.en}>
+                  <div className="cv-entry-heading">
+                    <h3>{localize(item.title, language)}</h3>
+                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+                  </div>
+                  {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
+                  {item.bullets.slice(0, 1).map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
+                </div>
               ))}
             </div>
           </section>
