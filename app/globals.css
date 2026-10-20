@@ -2893,3 +2893,20 @@ img {
     gap: 0.18rem 0.5rem;
   }
 }
+
+
+/* Make CV hyperlinks visibly clickable on screen; retain neutral print styling. */
+.cv-sheet a,
+.ats-cv-page a {
+  color: #1683c5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media print {
+  .cv-sheet a,
+  .ats-cv-page a {
+    color: #111111;
+    text-decoration: none;
+  }
+}
