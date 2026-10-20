@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Copy, Download, FileText, Mail, Printer } from "lucide-react";
+import { Check, Copy, Download, FileText, Mail } from "lucide-react";
 import { useState } from "react";
 import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
@@ -73,7 +73,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
   const labels = language === "fr"
     ? {
-        print: "Imprimer / Enregistrer en PDF",
+        print: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
         openOther: isAts ? "Voir le CV visuel" : "Voir le CV ATS",
         save: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
         contact: "Coordonnées",
@@ -89,7 +89,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         projectLink: "Projet",
       }
     : {
-        print: "Print / Save PDF",
+        print: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
         openOther: isAts ? "View visual CV" : "View ATS CV",
         save: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
         contact: "Contact Information",
@@ -133,7 +133,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
     <div className="cv-page" id="content">
       <div className="cv-controls no-print">
         <button className="button" type="button" onClick={() => window.print()}>
-          <Printer size={18} />
+          <Download size={18} />
           {labels.print}
         </button>
         <Link className="button button-ghost" href={isAts ? "/cv?lang=" + language : "/ats-cv?lang=" + language}>
