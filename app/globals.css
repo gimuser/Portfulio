@@ -2884,66 +2884,66 @@ img {
 
   /* Visual CV: keep its existing design, scaled to stay on one A4 page. */
   .cv-sheet {
-    zoom: 0.88 !important;
-    width: 113.636% !important;
+    zoom: 1 !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 8pt !important;
-    line-height: 1.16 !important;
+    font-size: 9.6pt !important;
+    line-height: 1.24 !important;
     box-shadow: none !important;
     break-after: avoid-page !important;
     page-break-after: avoid !important;
   }
 
   .cv-sheet section {
-    margin-top: 0.34rem !important;
+    margin-top: 0.52rem !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
 
   .cv-sheet h2 {
-    margin-bottom: 0.12rem !important;
-    padding-bottom: 0.06rem !important;
-    font-size: 7.6pt !important;
-    line-height: 1.1 !important;
+    margin-bottom: 0.2rem !important;
+    padding-bottom: 0.09rem !important;
+    font-size: 9pt !important;
+    line-height: 1.16 !important;
     break-after: avoid !important;
     page-break-after: avoid !important;
   }
 
   .cv-sheet h3 {
-    margin-bottom: 0.08rem !important;
-    font-size: 7.7pt !important;
-    line-height: 1.12 !important;
+    margin-bottom: 0.12rem !important;
+    font-size: 9.2pt !important;
+    line-height: 1.18 !important;
   }
 
   .cv-sheet p,
   .cv-sheet li,
   .cv-sheet small {
-    margin-bottom: 0.06rem !important;
-    line-height: 1.16 !important;
+    margin-bottom: 0.1rem !important;
+    line-height: 1.24 !important;
   }
 
   .cv-list {
-    gap: 0.16rem !important;
+    gap: 0.28rem !important;
   }
 
   /* ATS CV: single-column text stays selectable and parser-friendly. */
   .ats-cv-page {
-    zoom: 0.80 !important;
-    width: 125% !important;
+    zoom: 1 !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 9pt !important;
-    line-height: 1.12 !important;
+    font-size: 9.6pt !important;
+    line-height: 1.22 !important;
     box-shadow: none !important;
     break-after: avoid-page !important;
     page-break-after: avoid !important;
   }
 
   .ats-cv-header {
-    padding-bottom: 0.2rem !important;
-    margin-bottom: 0.22rem !important;
+    padding-bottom: 0.38rem !important;
+    margin-bottom: 0.38rem !important;
   }
 
   .ats-cv-header h1 {
@@ -2959,16 +2959,16 @@ img {
   }
 
   .ats-cv-section {
-    margin-top: 0.22rem !important;
+    margin-top: 0.42rem !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
 
   .ats-cv-section h2 {
-    margin: 0 0 0.07rem !important;
-    padding-bottom: 0.04rem !important;
-    font-size: 8pt !important;
-    line-height: 1.08 !important;
+    margin: 0 0 0.14rem !important;
+    padding-bottom: 0.07rem !important;
+    font-size: 9pt !important;
+    line-height: 1.15 !important;
     break-after: avoid !important;
     page-break-after: avoid !important;
   }
@@ -2979,30 +2979,30 @@ img {
   }
 
   .ats-cv-entry-heading h3 {
-    font-size: 8.1pt !important;
-    line-height: 1.08 !important;
+    font-size: 9.2pt !important;
+    line-height: 1.16 !important;
   }
 
   .ats-cv-entry-heading strong {
-    font-size: 7.6pt !important;
-    line-height: 1.08 !important;
+    font-size: 8.7pt !important;
+    line-height: 1.16 !important;
   }
 
   .ats-cv-page p,
   .ats-cv-page li {
     margin-top: 0 !important;
-    margin-bottom: 0.04rem !important;
-    line-height: 1.12 !important;
+    margin-bottom: 0.09rem !important;
+    line-height: 1.22 !important;
   }
 
   .ats-cv-page ul {
-    margin: 0.03rem 0 0.05rem !important;
-    padding-left: 0.85rem !important;
+    margin: 0.08rem 0 0.12rem !important;
+    padding-left: 0.95rem !important;
   }
 
   .ats-cv-list,
   .ats-cv-skill-list {
-    gap: 0.07rem !important;
+    gap: 0.16rem !important;
   }
 
   .ats-cv-entry {
