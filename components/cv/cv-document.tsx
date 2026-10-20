@@ -15,7 +15,7 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
   const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const isAts = variant === "ats";
-  const activeCvName = "ATS CV";
+  const activeCvName = isAts ? (language === "fr" ? "CV ATS" : "ATS CV") : "CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
   const cvShareUrl = profile.links.website.href.replace(/\/$/, "") + activeCvPath + "?lang=" + language;
   const shareSubject = profile.name + " " + activeCvName;
@@ -51,15 +51,15 @@ export function CvDocument({ variant = "portfolio" }: CvDocumentProps) {
           aria-label={language === "en" ? "Save current ATS CV as PDF" : "Enregistrer le CV ATS actuel en PDF"}
         >
           <Download size={18} />
-          <span>{language === "en" ? "Save ATS CV as PDF" : "Enregistrer le CV ATS en PDF"}</span>
+          <span>{language === "en" ? "Save CV as PDF" : "Enregistrer le CV en PDF"}</span>
         </button>
-        <div className="cv-share-links" aria-label={language === "en" ? "Share ATS CV links" : "Partager le CV ATS"}>
+        <div className="cv-share-links" aria-label={language === "en" ? "Share CV links" : "Partager le CV"}>
           <button
             className="cv-share-action"
             type="button"
             onClick={copyCvLink}
-            title={language === "en" ? "Copy ATS CV link" : "Copier le lien du CV ATS"}
-            aria-label={language === "en" ? "Copy ATS CV link" : "Copier le lien du CV ATS"}
+            title={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
+            aria-label={language === "en" ? "Copy CV link" : "Copier le lien du CV"}
           >
             {copied ? <Check size={17} /> : <Copy size={17} />}
             <span>{copied ? (language === "en" ? "Copied" : "Copié") : language === "en" ? "Copy link" : "Copier"}</span>
