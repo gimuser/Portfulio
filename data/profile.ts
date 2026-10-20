@@ -4,12 +4,12 @@ export const profile = {
   name: "Oualid Ait Alla",
   cvName: "AIT ALLA Oualid",
   displayRole: {
-    en: "AI & Data Science Master's Student | Machine Learning (ML), Generative AI & Retrieval-Augmented Generation (RAG)",
-    fr: "Étudiant en master IA & Data Science | Machine Learning (ML), IA Générative & Génération augmentée par récupération (RAG)",
+    en: "AI / Machine Learning Engineer | Data Scientist",
+    fr: "Ingénieur IA / Machine Learning | Data Scientist",
   },
   shortProfile: {
-    en: "Master's student in Data Science and Information Systems Security with hands-on experience in Artificial Intelligence (AI), Machine Learning (ML), Generative Artificial Intelligence (GenAI), Retrieval-Augmented Generation (RAG), data analytics, APIs, and secure application development. Developed AI assistants, document-grounded RAG applications, reinforcement learning systems, and full-stack applications. Seeking an internship in Artificial Intelligence, Data Science, Machine Learning, or Generative AI.",
-    fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information avec une expérience pratique en intelligence artificielle (IA), apprentissage automatique (Machine Learning, ML), intelligence artificielle générative (Generative AI, GenAI), génération augmentée par récupération (Retrieval-Augmented Generation, RAG), analyse de données, API et développement d'applications sécurisées. J'ai développé des assistants IA, des applications RAG fondées sur des documents, des systèmes d'apprentissage par renforcement et des applications full-stack. Recherche un stage en intelligence artificielle, data science, machine learning ou IA générative.",
+    en: "AI-focused Master's student in Data Science and Information Systems Security, with project experience in machine learning, generative AI, retrieval-augmented generation (RAG), and secure application development. Built document-grounded AI applications and contributed to a collaborative reinforcement-learning project for security alert triage. Seeking an internship in AI Engineering, Machine Learning, or Data Science to apply my skills to practical projects and continue developing my expertise.",
+    fr: "Étudiant en master Data Science et Sécurité des Systèmes d’Information, orienté IA, avec une expérience de projets en machine learning, IA générative, génération augmentée par récupération (RAG) et développement d’applications sécurisées. Réalisé des applications d’IA fondées sur des documents et contribué à un projet collaboratif d’apprentissage par renforcement pour le triage des alertes de sécurité. Recherche un stage en ingénierie IA, machine learning ou data science pour appliquer mes compétences à des projets concrets et approfondir mon expertise.",
   },
   value: {
     en: "Building practical skills in AI, Machine Learning, Data Science, Python, SQL, APIs, data visualization, cybersecurity, and full-stack development through academic and personal projects focused on data-driven and AI-powered solutions.",
@@ -89,19 +89,19 @@ export const profile = {
 
 export const education: EducationItem[] = [
   {
-    year: "2026",
+    year: "2027",
     period: {
       en: "Sep 2025 – Oct 2027 (expected)",
-      fr: "Sept. 2025 – Oct. 2027 (en cours)",
+      fr: "Sept. 2025 – Oct. 2027 (prévu)",
     },
     title: {
-      en: "Master's student in Data Science and Information Systems Security",
-      fr: "Étudiant en master Data Science et Sécurité des Systèmes d'Information",
+      en: "Master’s Degree in Data Science and Information Systems Security (in progress)",
+      fr: "Master Data Science et Sécurité des Systèmes d’Information (en cours)",
     },
     institution: profile.institution,
     details: {
-      en: "Currently pursuing graduate studies focused on data science, artificial intelligence, cybersecurity, and secure information systems. Degree expected October 2027.",
-      fr: "Master actuellement en cours, axé sur la data science, l'intelligence artificielle, la cybersécurité et les systèmes d'information sécurisés. Diplôme prévu en octobre 2027.",
+      en: "Focus: data science, artificial intelligence, cybersecurity, and secure information systems.",
+      fr: "Axes : data science, intelligence artificielle, cybersécurité et systèmes d’information sécurisés.",
     },
     source: "User-provided profile",
   },
