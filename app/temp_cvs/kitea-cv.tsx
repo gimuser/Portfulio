@@ -212,7 +212,8 @@ export function KiteaCv() {
           html,body { background:#fff!important; color:#111!important; }
           .kitea-cv-page { padding:0!important; margin:0!important; }
           .kitea-controls,.cv-controls,.cv-floating-actions,.site-header,.footer { display:none!important; }
-          .kitea-cv-sheet { width:100%!important; max-width:none!important; min-height:281mm!important; box-sizing:border-box!important; display:block!important; margin:0!important; padding:0!important; box-shadow:none!important; border:0!important; font-size:8.3pt!important; line-height:1.23!important; }
+          .kitea-cv-sheet { width:100%!important; max-width:none!important; min-height:281mm!important; box-sizing:border-box!important; display:flex!important; flex-direction:column!important; justify-content:flex-start!important; margin:0!important; padding:0!important; box-shadow:none!important; border:0!important; font-size:8.3pt!important; line-height:1.23!important; }
+          .kitea-cv-sheet > section:last-child { margin-top:auto!important; padding-top:2.2mm!important; }
           .kitea-cv-sheet .cv-header { gap:7mm!important; margin-bottom:2.5mm!important; padding-bottom:2.5mm!important; }
           .kitea-cv-sheet .cv-photo { width:25mm!important; height:31mm!important; }
           .kitea-cv-sheet .cv-header h1 { font-size:18pt!important; }
