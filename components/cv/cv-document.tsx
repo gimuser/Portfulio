@@ -73,7 +73,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
   const labels = language === "fr"
     ? {
-        print: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
+        print: isAts ? "Imprimer / Enregistrer" : "Imprimer / Enregistrer",
         openOther: isAts ? "Voir le CV visuel" : "Voir le CV ATS",
         save: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
         contact: "Coordonnées",
@@ -89,7 +89,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         projectLink: "Projet",
       }
     : {
-        print: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
+        print: "Print / Save",
         openOther: isAts ? "View visual CV" : "View ATS CV",
         save: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
         contact: "Contact Information",
