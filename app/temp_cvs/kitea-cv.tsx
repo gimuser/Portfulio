@@ -19,7 +19,7 @@ export function KiteaCv() {
 
   const contactRows = [
     [
-      { key: "location", text: "Béni Mellal, Maroc", href: profile.locationMapHref },
+      { key: "location", text: language === "fr" ? "Béni Mellal, Maroc" : "Beni Mellal, Morocco", href: profile.locationMapHref },
       { key: "email", text: profile.email, href: "mailto:" + profile.email },
       { key: "phone", text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
@@ -74,13 +74,7 @@ export function KiteaCv() {
         <section>
           <h2>{language === "fr" ? "Profil professionnel" : "Professional Summary"}</h2>
           <p>
-            Étudiant en dernière année de Master Data Science et Sécurité des Systèmes
-            d’Information à l’Université Sultan Moulay Slimane, avec une expérience de
-            stage en ingénierie IA et des projets en analyse de données, machine learning
-            et applications numériques. Profil analytique, rigoureux et curieux, à l’aise
-            avec la structuration de l’information et la résolution de problèmes. Souhaite
-            contribuer aux équipes informatique, systèmes d’information, digitales ou
-            support de KITEA.
+            {language === "fr" ? "Étudiant en dernière année de Master Data Science et Sécurité des Systèmes d’Information à l’Université Sultan Moulay Slimane, avec une expérience de stage en ingénierie IA et des projets en analyse de données, machine learning et applications numériques. Profil analytique, rigoureux et curieux, souhaitant contribuer aux équipes informatique, systèmes d’information, digitales ou support de KITEA." : "Final-year Master’s student in Data Science and Information Systems Security at Sultan Moulay Slimane University, with AI engineering internship experience and projects in data analysis, machine learning, and digital applications. Analytical, detail-oriented, and curious, seeking to contribute to KITEA’s IT, information systems, digital, or support teams."}
           </p>
         </section>
 
@@ -99,16 +93,14 @@ export function KiteaCv() {
                 <h3>{language === "fr" ? "Licence en Data Science et Sécurité des Systèmes d’Information" : "Bachelor’s in Data Science and Information Systems Security"}</h3>
                 <strong>2025</strong>
               </div>
-              <p className="cv-muted">
-                Université Sultan Moulay Slimane · Faculté Polydisciplinaire de Béni Mellal
-              </p>
+              <p className="cv-muted">{language === "fr" ? "Université Sultan Moulay Slimane · Faculté Polydisciplinaire de Béni Mellal" : "Sultan Moulay Slimane University · Polydisciplinary Faculty of Beni Mellal"}</p>
             </div>
             <div className="cv-entry">
               <div className="cv-entry-heading">
                 <h3>{language === "fr" ? "DEUG Mathématiques et Informatique" : "DEUG in Mathematics and Computer Science"}</h3>
                 <strong>2024</strong>
               </div>
-              <p className="cv-muted">Université Sultan Moulay Slimane</p>
+              <p className="cv-muted">{language === "fr" ? "Université Sultan Moulay Slimane" : "Sultan Moulay Slimane University"}</p>
             </div>
           </div>
         </section>
@@ -140,7 +132,7 @@ export function KiteaCv() {
               <strong>{language === "fr" ? "IA & automatisation" : "AI & Automation"}:</strong> {language === "fr" ? "Machine learning, PyTorch, intégration de LLM, RAG, prompt engineering, traitement de documents, quantification de modèles et validation structurée des sorties." : "Machine learning, PyTorch, LLM integration, RAG, prompt engineering, document processing, model quantization, and structured output validation."}
             </p>
             <p>
-              <strong>Méthodes de travail :</strong> recherche scientifique, lecture
+              <strong>{language === "fr" ? "Méthodes de travail" : "Research & Collaboration"}:</strong> recherche scientifique, lecture
               d’articles techniques, documentation, résolution de problèmes et
               collaboration sur des projets.
             </p>
@@ -168,7 +160,7 @@ export function KiteaCv() {
               <p>
                 {language === "fr" ? "Assistant éducatif qui retrouve des passages pertinents dans des supports de cours et génère des réponses fondées sur les documents fournis." : "Educational assistant that retrieves relevant passages from course materials and generates answers grounded in the provided documents."}
               </p>
-              <small><strong>Technologies :</strong> TypeScript, React, Node.js, MongoDB, RAG, Ollama</small>
+              <small><strong>{language === "fr" ? "Technologies" : "Technologies"}:</strong> TypeScript, React, Node.js, MongoDB, RAG, Ollama</small>
             </div>
             <div className="cv-entry">
               <div className="cv-entry-heading">
@@ -178,7 +170,7 @@ export function KiteaCv() {
               <p>
                 {language === "fr" ? "Projet collaboratif d’apprentissage par renforcement visant à soutenir le triage d’alertes et la répartition des décisions dans un workflow SOC." : "Collaborative reinforcement-learning project designed to support security alert triage and decision allocation in a SOC workflow."}
               </p>
-              <small><strong>Technologies :</strong> Python, FastAPI, TypeScript, apprentissage par renforcement</small>
+              <small><strong>{language === "fr" ? "Technologies" : "Technologies"}:</strong> Python, FastAPI, TypeScript, {language === "fr" ? "apprentissage par renforcement" : "reinforcement learning"}</small>
             </div>
           </div>
         </section>
