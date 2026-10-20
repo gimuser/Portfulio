@@ -61,6 +61,16 @@ const selectedProjectSlugs = [
   "car-price-prediction-system",
 ];
 
+const atsSkillGroupPriority = [
+  "Generative AI and RAG",
+  "Machine Learning & AI",
+  "Data Science & Analytics",
+  "Programming",
+  "Backend and APIs",
+  "Data Management & Information Systems",
+  "Cybersecurity",
+];
+
 const atsSkillItemOverrides: Record<string, string[]> = {
   "Generative AI and RAG": ["Retrieval-Augmented Generation (RAG)", "Embeddings", "Vector search", "Ollama", "OpenAI API", "OpenRouter", "Document parsing"],
   "Machine Learning & AI": ["Machine learning fundamentals", "Artificial intelligence", "PyTorch", "Deep learning fundamentals", "Image classification"],
@@ -84,7 +94,8 @@ export function AtsCvDocument() {
   const labels = atsLabels[language];
   const technicalSkillGroups = skillGroups
     .filter((group) => Object.prototype.hasOwnProperty.call(atsSkillItemOverrides, group.title.en))
-    .map((group) => ({ ...group, items: atsSkillItemOverrides[group.title.en] }));
+    .map((group) => ({ ...group, items: atsSkillItemOverrides[group.title.en] }))
+    .sort((first, second) => atsSkillGroupPriority.indexOf(first.title.en) - atsSkillGroupPriority.indexOf(second.title.en));
   const selectedProjects = selectedProjectSlugs
     .map((slug) => projects.find((project) => project.slug === slug))
     .filter((project): project is Project => Boolean(project));
