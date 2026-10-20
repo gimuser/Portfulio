@@ -173,6 +173,36 @@ export const education: EducationItem[] = [
 
 export const experience: ExperienceItem[] = [
   {
+    year: "2026",
+    period: {
+      en: "14 August 2026 – 14 October 2026",
+      fr: "14 août 2026 – 14 octobre 2026",
+    },
+    duration: {
+      en: "2 months",
+      fr: "2 mois",
+    },
+    location: {
+      en: "Paris, France",
+      fr: "Paris, France",
+    },
+    title: {
+      en: "AI Engineering Intern",
+      fr: "Stagiaire ingénieur en intelligence artificielle",
+    },
+    organization: "SPORTScore SAS",
+    context: {
+      en: "Professional internship in artificial intelligence, as confirmed by the internship certificate.",
+      fr: "Stage professionnel en intelligence artificielle, conformément à l’attestation de stage.",
+    },
+    bullets: [
+      {
+        en: "Participated in AI-related projects and technical work, applying analytical skills and contributing to practical problem-solving in a professional environment.",
+        fr: "Participation à des travaux et projets en intelligence artificielle, mobilisant des compétences d’analyse et contribuant à la résolution de problématiques concrètes en environnement professionnel.",
+      },
+    ],
+  },
+  {
     year: "2025",
     period: {
       en: "January 2025 - June 2025",
