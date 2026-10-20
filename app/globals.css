@@ -2674,7 +2674,7 @@ img {
 @media print {
   @page ats-cv {
     size: A4;
-    margin: 8mm;
+    margin: 7mm;
   }
 
   .ats-cv-page {
@@ -2683,50 +2683,86 @@ img {
     margin: 0;
     padding: 0;
     box-shadow: none;
-    font-size: 8.5pt;
-    line-height: 1.18;
+    font-size: 9.6pt;
+    line-height: 1.25;
+    color: #111111;
   }
 
   .ats-cv-page[data-language="fr"] {
-    font-size: 8.5pt;
-    line-height: 1.18;
-  }
-
-  .ats-cv-page[data-language="fr"] .ats-cv-entry-heading h3,
-  .ats-cv-page[data-language="fr"] .ats-cv-entry-heading strong,
-  .ats-cv-page[data-language="fr"] .ats-cv-section h2,
-  .ats-cv-page[data-language="fr"] .ats-cv-title {
-    letter-spacing: normal;
+    font-size: 9.6pt;
+    line-height: 1.25;
   }
 
   .ats-cv-header {
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.28rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.48rem;
   }
 
   .ats-cv-header h1 {
-    font-size: 17pt;
+    font-size: 20pt;
+    line-height: 1.1;
+    margin-bottom: 0.18rem;
+  }
+
+  .ats-cv-title {
+    margin: 0.12rem 0 0.25rem;
+    line-height: 1.25;
+  }
+
+  .ats-cv-contact-block p {
+    margin-bottom: 0.14rem;
+    line-height: 1.24;
   }
 
   .ats-cv-section {
-    margin-top: 0.28rem;
+    margin-top: 0.48rem;
+    break-inside: auto;
+    page-break-inside: auto;
   }
 
   .ats-cv-section h2 {
-    margin-bottom: 0.08rem;
-    font-size: 8.2pt;
+    margin-bottom: 0.18rem;
+    padding-bottom: 0.08rem;
+    font-size: 9.4pt;
+    line-height: 1.18;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .ats-cv-entry-heading {
+    gap: 0.45rem;
+    margin-bottom: 0.1rem;
   }
 
   .ats-cv-entry-heading h3 {
-    font-size: 8.4pt;
+    font-size: 9.7pt;
+    line-height: 1.22;
   }
 
   .ats-cv-entry-heading strong {
-    font-size: 7.9pt;
+    font-size: 9.2pt;
+    line-height: 1.22;
+  }
+
+  .ats-cv-page p,
+  .ats-cv-page li {
+    margin-top: 0;
+    margin-bottom: 0.14rem;
+    line-height: 1.25;
+  }
+
+  .ats-cv-page ul {
+    margin: 0.12rem 0 0.2rem;
+    padding-left: 1rem;
   }
 
   .ats-cv-list,
   .ats-cv-skill-list {
-    gap: 0.1rem;
+    gap: 0.22rem;
+  }
+
+  .ats-cv-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
