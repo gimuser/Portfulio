@@ -123,7 +123,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
       { key: "phone", text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
     [
-      { key: "portfolio", text: profile.links.website.href.replace(/^https?:\/\//, ""), href: profile.links.website.href },
+      { key: "portfolio", text: language === "fr" ? "Portfolio" : "Portfolio", href: profile.links.website.href },
       { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\//, ""), href: profile.links.linkedin.href },
       { key: "github", text: profile.links.github.href.replace(/^https?:\/\//, ""), href: profile.links.github.href },
     ],
