@@ -112,7 +112,7 @@ export function AtsCvDocument() {
       { key: "email", text: labels.contact.email + ": " + profile.email, href: "mailto:" + profile.email },
       { key: "phone", text: labels.contact.phone + ": " + profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
-    [{ key: "portfolio", text: profile.links.website.href, href: profile.links.website.href }],
+    [{ key: "portfolio", text: labels.contact.portfolio + ": " + (language === "fr" ? "Portfolio" : "Website"), href: profile.links.website.href }],
     [
       { key: "linkedin", text: profile.links.linkedin.href, href: profile.links.linkedin.href },
       { key: "github", text: profile.links.github.href, href: profile.links.github.href },
