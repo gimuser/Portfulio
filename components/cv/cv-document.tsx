@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Copy, Download, FileText } from "lucide-react";
+import { Check, Copy, Download, FileText, Mail } from "lucide-react";
 import { useState } from "react";
 import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
@@ -319,14 +319,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           </a>
           <a
             className="cv-share-action"
-            href={"https://twitter.com/intent/tweet?text=" + encodedShareText}
-            target="_blank"
-            rel="noreferrer"
-            title="Share CV on X"
-            aria-label="Share CV on X"
+            href={"mailto:?subject=" + encodedShareSubject + "&body=" + encodedShareText}
+            title="Share CV by email"
+            aria-label="Share CV by email"
           >
-            <SocialIcon name="x" size={17} />
-            <span>X</span>
+            <Mail size={17} />
+            <span>Email</span>
           </a>
         </div>
       </div>
