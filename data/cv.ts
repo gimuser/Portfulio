@@ -113,15 +113,15 @@ export const cvSkills: CvSkillGroup[] = [
   {
     title: { en: "Databases", fr: "Bases de données" },
     items: {
-      en: "SQL, NoSQL, MongoDB, Mongoose, SQLite, Prisma",
+      en: "SQL, NoSQL, MongoDB, Mongoose",
       fr: "SQL, NoSQL, MongoDB, Mongoose, SQLite, Prisma",
     },
   },
   {
     title: { en: "Software Engineering", fr: "Génie logiciel" },
     items: {
-      en: "Python, TypeScript, JavaScript, C, FastAPI, Node.js, Express, React, REST APIs, Docker, UML and design patterns",
-      fr: "Python, TypeScript, JavaScript, C, FastAPI, Node.js, Express, React, API REST, Docker, UML et design patterns",
+      en: "Python, TypeScript, JavaScript, C, FastAPI, Node.js, Express, React, Docker",
+      fr: "Python, TypeScript, JavaScript, C, FastAPI, Node.js, Express, React, Docker",
     },
   },
   {
