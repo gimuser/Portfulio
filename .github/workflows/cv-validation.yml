@@ -50,6 +50,7 @@ jobs:
           test -n "$CHROMIUM_PATH"
           npm run pdf:cv:all
           npm run pdf:ats:all
+          page_failure=0
           for pdf in \
             public/cv/Oualid_Ait_Alla_CV.pdf \
             public/cv/Oualid_Ait_Alla_CV_FR.pdf \
@@ -57,7 +58,7 @@ jobs:
             public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf; do
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
             echo "$pdf: $pages page(s)"
-            test "$pages" = "1"
+            if [ "$pages" != "1" ]; then page_failure=1; fi
           done
           python - <<'PY'
           import re
@@ -122,6 +123,7 @@ jobs:
               )
               print(f"{pdf}: title -> date -> organization reading order verified")
           PY
+          test "$page_failure" = "0"
 
 
       - name: Upload generated CV PDFs
