@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteDescription =
-  "Portfolio of Oualid Ait Alla, a master's student in Data Science and Information Systems Security in Morocco, focused on AI, machine learning, data analytics, Python, and secure intelligent systems.";
+  "Portfolio of AIT ALLA Oualid, a master's student in Data Science and Information Systems Security in Morocco, focused on AI, machine learning, data analytics, Python, and secure intelligent systems.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.links.website.href),
