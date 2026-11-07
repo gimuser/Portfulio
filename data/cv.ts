@@ -19,6 +19,7 @@ export type CvExperience = {
   title: LocalizedText;
   organization?: string;
   location?: LocalizedText;
+  duration?: LocalizedText;
   bullets: LocalizedText[];
 };
 
@@ -132,6 +133,7 @@ export const cvProfessionalExperience: CvExperience[] = [
     title: { en: "AI Engineering Intern", fr: "Stagiaire ingénieur en intelligence artificielle" },
     organization: "SPORTScore SAS",
     location: { en: "Paris, France", fr: "Paris, France" },
+    duration: { en: "2 months", fr: "2 mois" },
     bullets: [
       {
         en: "Contributed to artificial-intelligence engineering work in a professional environment.",
