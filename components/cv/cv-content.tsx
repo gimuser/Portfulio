@@ -192,14 +192,16 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
         .cv-simple p { margin: 0 0 .65mm; }
         .cv-simple-list { display: grid; gap: 1.2mm; }
         .cv-simple-entry { break-inside: avoid; page-break-inside: avoid; }
+        .cv-simple-entry > p, .cv-simple-entry > ul { padding-right: 32mm; }
         .cv-simple-entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; }
         .cv-simple-entry-heading h3 { min-width: 0; margin: 0; font-size: 9.5pt; line-height: 1.2; font-weight: 700; }
         .cv-simple-entry-heading strong { flex: 0 0 auto; white-space: nowrap; text-align: right; font-size: 9pt; font-weight: 400; }
         .cv-simple-organization { margin: 0; }
         .cv-simple-skills p { white-space: nowrap; font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; letter-spacing: -.08pt; margin: 0 0 .45mm; }
         .cv-simple ul { margin: .3mm 0 0; padding-left: 4.5mm; }
-        .cv-simple li { margin: 0 0 .35mm; padding: 0; }
-        .cv-simple-technologies { white-space: nowrap; font-size: 8.8pt; }
+        .cv-simple li { margin: 0 0 .35mm; padding: 0; white-space: nowrap; }
+        .cv-simple-entry > p:not(.cv-simple-technologies) { white-space: nowrap; }
+        .cv-simple-technologies { white-space: nowrap; font-size: 8.8pt; padding-right: 0 !important; }
         .cv-simple-ats .cv-simple-header { min-height: 0; }
         @media print {
           @page { size: A4; margin: 14mm; }
