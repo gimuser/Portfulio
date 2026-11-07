@@ -136,12 +136,12 @@ export const cvProfessionalExperience: CvExperience[] = [
     duration: { en: "2 months", fr: "2 mois" },
     bullets: [
       {
-        en: "Contributed to artificial-intelligence engineering work in a professional environment.",
-        fr: "Contribution à des travaux d’ingénierie en intelligence artificielle dans un environnement professionnel.",
+        en: "Contributed to AI-related projects and technical work in a professional environment.",
+        fr: "Contribution à des projets et travaux liés à l’IA dans un environnement professionnel.",
       },
       {
-        en: "Applied analytical thinking and technical problem-solving to assigned AI-related tasks.",
-        fr: "Mobilisation de capacités d’analyse et de résolution de problèmes techniques dans le cadre de tâches liées à l’IA.",
+        en: "Applied technical skills, analytical thinking, initiative, rigor, professionalism and autonomy to practical AI problem-solving.",
+        fr: "Mobilisation de compétences techniques, d’analyse, d’initiative, de rigueur, de professionnalisme et d’autonomie pour résoudre des problématiques concrètes en IA.",
       },
     ],
   },
