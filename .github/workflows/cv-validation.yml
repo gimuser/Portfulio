@@ -31,8 +31,7 @@ jobs:
         run: npm run build
       - name: Install Chromium and PDF utilities
         run: |
-          npx --yes playwright install --with-deps chromium
-          sudo apt-get update
+          npx --yes playwright install chromium
           sudo apt-get install -y poppler-utils
       - name: Start production server
         run: |
