@@ -26,7 +26,7 @@ let exitStatus = 0;
 
 for (const language of languages) {
   const out = resolve(
-    `public/cv/Oualid_Ait_Alla_${cvKind === "ats" ? "ATS_CV" : "CV"}_${language.toUpperCase()}.pdf`,
+    `public/cv/${cvKind === "ats" ? (language === "fr" ? "Oualid_Ait_Alla_ATS_CV_FR.pdf" : "Oualid_Ait_Alla_ATS_CV.pdf") : (language === "fr" ? "Oualid_Ait_Alla_CV_FR.pdf" : "Oualid_Ait_Alla_CV.pdf")}`,
   );
   mkdirSync(dirname(out), { recursive: true });
 
