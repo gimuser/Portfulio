@@ -3337,14 +3337,14 @@ img {
 }
 
 
-/* Final compact spacing: retain 9.5pt text and 1.25 leading while removing excess gaps. */
+/* Final compact spacing: retain the 9 pt minimum and compact leading while removing excess gaps. */
 @media print {
   .cv-photo {
     box-sizing: border-box !important;
     width: 26mm !important;
-    height: 32mm !important;
+    height: 30.6mm !important;
     max-width: 26mm !important;
-    max-height: 32mm !important;
+    max-height: 30.6mm !important;
     padding: 0 !important;
     border: 0 !important;
     object-fit: cover !important;
