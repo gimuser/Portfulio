@@ -3041,3 +3041,29 @@ img {
     height: auto !important;
   }
 }
+
+
+/* Final vertical balance: consistent, natural section rhythm that uses the A4 page. */
+.cv-page:has(> .cv-sheet) > .cv-sheet > section {
+  margin-top: 10.5pt !important;
+}
+.cv-page:has(> .cv-sheet) > .cv-sheet {
+  line-height: 1.36 !important;
+}
+.ats-cv-page .ats-cv-section {
+  margin-top: 10.5pt !important;
+}
+.ats-cv-page {
+  line-height: 1.36 !important;
+}
+.ats-cv-page[data-language="fr"] {
+  line-height: 1.28 !important;
+}
+@media print {
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section {
+    margin-top: 10.5pt !important;
+  }
+  .ats-cv-page .ats-cv-section {
+    margin-top: 10.5pt !important;
+  }
+}
