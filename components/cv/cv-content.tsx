@@ -73,7 +73,7 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
 
       <section className="cv-simple-section">
         <h2>{t.summary}</h2>
-        <p>{localize(cvProfessionalSummary, language)}</p>
+        <p className="cv-simple-summary">{localize(cvProfessionalSummary, language)}</p>
       </section>
 
       <section className="cv-simple-section">
@@ -179,6 +179,7 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
         .cv-simple-contact, .cv-simple-links { margin: 0 0 .5mm; font-size: 8.5pt; }
         .cv-simple a { color: #000; text-decoration: none; }
         .cv-simple-section { margin: 2.6mm 0 0; break-inside: auto; }
+        .cv-simple-summary { font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; line-height: 1.25; }
         .cv-simple-section h2 {
           margin: 0 0 1mm;
           padding: 0 0 .6mm;
@@ -200,7 +201,8 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
         .cv-simple-skills p { white-space: nowrap; font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; letter-spacing: -.08pt; margin: 0 0 .45mm; }
         .cv-simple ul { margin: .3mm 0 0; padding-left: 4.5mm; }
         .cv-simple li { margin: 0 0 .35mm; padding: 0; white-space: nowrap; }
-        .cv-simple-entry > p:not(.cv-simple-technologies) { white-space: nowrap; }
+        .cv-simple-entry > p:not(.cv-simple-technologies) { white-space: nowrap; font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; }
+        .cv-simple li { font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; }
         .cv-simple-technologies { white-space: nowrap; font-size: 8.8pt; padding-right: 0 !important; }
         .cv-simple-ats .cv-simple-header { min-height: 0; }
         @media print {
