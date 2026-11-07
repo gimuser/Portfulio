@@ -145,15 +145,17 @@ export const cvProfessionalExperience: CvExperience[] = [
   },
 ];
 
-export const cvAcademicProject: CvProject = {
-  slug: "android-device-security-testing",
-  title: { en: "Android Device Security Testing", fr: "Tests de sécurité d’un appareil Android" },
+export const cvAcademicProject: CvExperience = {
   year: "2024",
-  summary: {
-    en: "Studied Android device security and attack vectors in a controlled, ethical lab environment using Kali Linux and Metasploit, then documented defensive observations and mitigation approaches.",
-    fr: "Étude de la sécurité d’un appareil Android et de vecteurs d’attaque dans un environnement de laboratoire contrôlé et éthique avec Kali Linux et Metasploit, suivie de la documentation des observations défensives et des mesures de mitigation.",
-  },
-  technologies: ["Kali Linux", "Metasploit", "Android Security"],
+  period: { en: "March 2024 – May 2024", fr: "Mars 2024 – mai 2024" },
+  title: { en: "Android Device Security Testing", fr: "Tests de sécurité d’un appareil Android" },
+  location: { en: "Beni Mellal, Morocco", fr: "Béni Mellal, Maroc" },
+  bullets: [
+    {
+      en: "Studied Android device security and attack vectors in a controlled, ethical lab environment using Kali Linux and Metasploit, then documented defensive observations and mitigation approaches.",
+      fr: "Étude de la sécurité d’un appareil Android et de vecteurs d’attaque dans un environnement de laboratoire contrôlé et éthique avec Kali Linux et Metasploit, suivie de la documentation des observations défensives et des mesures de mitigation.",
+    },
+  ],
 };
 
 export const cvProjects: CvProject[] = [
