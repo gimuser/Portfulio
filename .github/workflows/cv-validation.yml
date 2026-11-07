@@ -51,7 +51,7 @@ jobs:
           npm run pdf:cv:all
           npm run pdf:ats:all
           for pdf in \
-            public/cv/Oualid_Ait_Alla_CV_EN.pdf \
+            public/cv/Oualid_Ait_Alla_CV.pdf \
             public/cv/Oualid_Ait_Alla_CV_FR.pdf \
             public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf \
             public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf; do
@@ -65,7 +65,7 @@ jobs:
           from pathlib import Path
 
           files = [
-              Path("public/cv/Oualid_Ait_Alla_CV_EN.pdf"),
+              Path("public/cv/Oualid_Ait_Alla_CV.pdf"),
               Path("public/cv/Oualid_Ait_Alla_CV_FR.pdf"),
               Path("public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf"),
               Path("public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf"),
@@ -75,6 +75,24 @@ jobs:
               assert extracted.strip(), f"No selectable text extracted from {pdf}"
               assert "AIT ALLA Oualid" in extracted, f"CV name missing from extracted text: {pdf}"
               print(f"{pdf}: selectable text verified ({len(extracted)} characters)")
+              lines = [line.strip() for line in extracted.splitlines() if line.strip()]
+              longest = max(lines, key=len)
+              print(f"{pdf}: longest extracted line = {len(longest)} characters")
+
+              if "ATS_CV" in pdf.name:
+                  print(f"{pdf}: photo = none (ATS version)")
+              else:
+                  image_listing = subprocess.check_output(["pdfimages", "-list", str(pdf)], text=True)
+                  image_rows = [line.split() for line in image_listing.splitlines()
+                                if len(line.split()) >= 14 and line.split()[2] == "image"]
+                  assert image_rows, f"Photo image not found in visual CV: {pdf}"
+                  photo = max(image_rows, key=lambda row: int(row[3]) * int(row[4]))
+                  width_mm = int(photo[3]) / float(photo[12]) * 25.4
+                  height_mm = int(photo[4]) / float(photo[13]) * 25.4
+                  print(f"{pdf}: embedded photo = {width_mm:.1f} x {height_mm:.1f} mm")
+                  assert abs(width_mm - 26) < 1.5 and abs(height_mm - 32) < 1.5, (
+                      f"Photo size is outside tolerance in {pdf}: {width_mm:.1f} x {height_mm:.1f} mm"
+                  )
 
               bbox = subprocess.check_output(["pdftotext", "-bbox", str(pdf), "-"], text=True)
               page = re.search(r'<page width="([0-9.]+)" height="([0-9.]+)">', bbox)
@@ -97,10 +115,22 @@ jobs:
               date_pos = folded.find(date.casefold(), title_pos + len(title))
               organization_pos = folded.find(organization.casefold(), date_pos + len(date))
               print(f"{pdf}: positions section={section_pos}, title={title_pos}, date={date_pos}, organization={organization_pos}")
-              if pdf.name == "Oualid_Ait_Alla_CV_EN.pdf":
+              if pdf.name == "Oualid_Ait_Alla_CV.pdf":
                   print("EXTRACTED TEXT:", " | ".join(extracted.split()))
               assert section_pos >= 0 and title_pos > section_pos and date_pos > title_pos and organization_pos > date_pos, (
                   f"Internship title/date/organization extraction order is incorrect in {pdf}"
               )
               print(f"{pdf}: title -> date -> organization reading order verified")
           PY
+
+
+      - name: Upload generated CV PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: |
+            public/cv/Oualid_Ait_Alla_CV.pdf
+            public/cv/Oualid_Ait_Alla_CV_FR.pdf
+            public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf
+            public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf
+          if-no-files-found: error
