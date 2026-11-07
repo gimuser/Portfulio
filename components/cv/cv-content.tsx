@@ -193,7 +193,7 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
         .cv-simple p { margin: 0 0 .65mm; }
         .cv-simple-list { display: grid; gap: 1.2mm; }
         .cv-simple-entry { break-inside: avoid; page-break-inside: avoid; }
-        .cv-simple-entry > p, .cv-simple-entry > ul { padding-right: 32mm; }
+        .cv-simple-entry > ul { padding-right: 32mm; }
         .cv-simple-entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; }
         .cv-simple-entry-heading h3 { min-width: 0; margin: 0; font-size: 9.5pt; line-height: 1.2; font-weight: 700; }
         .cv-simple-entry-heading strong { flex: 0 0 auto; white-space: nowrap; text-align: right; font-size: 9pt; font-weight: 400; }
