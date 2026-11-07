@@ -57,4 +57,40 @@ jobs:
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
             echo "$pdf: $pages page(s)"
             test "$pages" = "1"
+          python - <<'PY'
+          import re
+          import subprocess
+          from pathlib import Path
+
+          files = [
+              Path("public/cv/Oualid_Ait_Alla_CV_EN.pdf"),
+              Path("public/cv/Oualid_Ait_Alla_CV_FR.pdf"),
+              Path("public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf"),
+              Path("public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf"),
+          ]
+          for pdf in files:
+              extracted = subprocess.check_output(["pdftotext", str(pdf), "-"], text=True)
+              assert extracted.strip(), f"No selectable text extracted from {pdf}"
+              assert "AIT ALLA Oualid" in extracted, f"CV name missing from extracted text: {pdf}"
+              print(f"{pdf}: selectable text verified ({len(extracted)} characters)")
+
+              bbox = subprocess.check_output(["pdftotext", "-bbox", str(pdf), "-"], text=True)
+              page = re.search(r'<page width="([0-9.]+)" height="([0-9.]+)">', bbox)
+              words = re.findall(r'<word xMin="([0-9.]+)" yMin="([0-9.]+)" xMax="([0-9.]+)" yMax="([0-9.]+)">', bbox)
+              assert page and words, f"Could not inspect PDF text geometry: {pdf}"
+              page_height = float(page.group(2))
+              last_y = max(float(word[3]) for word in words)
+              print(f"{pdf}: last text baseline region ends {page_height - last_y:.1f}pt from page edge")
+
+          for pdf in files:
+              extracted = subprocess.check_output(["pdftotext", str(pdf), "-"], text=True)
+              if pdf.name.endswith("_EN.pdf"):
+                  title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
+              else:
+                  title, date, organization = "Stagiaire ingénieur", "Août 2026", "SPORTScore SAS"
+              assert extracted.index(title) < extracted.index(date) < extracted.index(organization), (
+                  f"Internship title/date/organization extraction order is incorrect in {pdf}"
+              )
+              print(f"{pdf}: title -> date -> organization reading order verified")
+          PY
           done
