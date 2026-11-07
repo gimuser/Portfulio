@@ -19,18 +19,18 @@ export async function generateMetadata({ searchParams }: CvPageProps): Promise<M
   const language = getInitialLanguage(lang);
 
   return {
-    title: language === "fr" ? "CV | Oualid Ait Alla" : "CV | Oualid Ait Alla",
+    title: language === "fr" ? "CV | AIT ALLA Oualid" : "CV | AIT ALLA Oualid",
     description:
       language === "fr"
-        ? "CV moderne et imprimable d'Oualid Ait Alla en français."
-        : "Modern print-friendly CV for Oualid Ait Alla in English and French.",
+        ? "CV d’AIT ALLA Oualid en ingénierie IA, data science et cybersécurité."
+        : "AI Engineering and Data Science CV of AIT ALLA Oualid.",
     openGraph: {
       locale: language === "fr" ? "fr_FR" : "en_US",
-      title: language === "fr" ? "CV de Oualid Ait Alla" : "Oualid Ait Alla CV",
+      title: language === "fr" ? "CV de AIT ALLA Oualid" : "AIT ALLA Oualid CV",
       description:
         language === "fr"
-          ? "CV moderne et imprimable d'Oualid Ait Alla."
-          : "Modern print-friendly CV for Oualid Ait Alla.",
+          ? "CV en ingénierie IA, IA générative et cybersécurité."
+          : "AI Engineering, Generative AI and Cybersecurity CV.",
     },
   };
 }
