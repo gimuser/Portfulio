@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Check, Copy, Download, FileText, Mail } from "lucide-react";
 import { useState } from "react";
+import { SocialIcon } from "@/components/ui/social-icons";
 import { CvContent } from "@/components/cv/cv-content";
 import { useLanguage } from "@/components/layout/language-provider";
 import { profile } from "@/data/profile";
