@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - cv-professional-update
+      - cv-content-layout-2026-11-07
   pull_request:
     branches:
       - main
@@ -30,8 +31,7 @@ jobs:
         run: npm run build
       - name: Install Chromium and PDF utilities
         run: |
-          npx --yes playwright install --with-deps chromium
-          sudo apt-get update
+          npx --yes playwright install chromium
           sudo apt-get install -y poppler-utils
       - name: Start production server
         run: |
@@ -49,14 +49,15 @@ jobs:
           test -n "$CHROMIUM_PATH"
           npm run pdf:cv:all
           npm run pdf:ats:all
+          page_failure=0
           for pdf in \
-            public/cv/Oualid_Ait_Alla_CV_EN.pdf \
+            public/cv/Oualid_Ait_Alla_CV.pdf \
             public/cv/Oualid_Ait_Alla_CV_FR.pdf \
             public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf \
             public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf; do
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
             echo "$pdf: $pages page(s)"
-            test "$pages" = "1"
+            if [ "$pages" != "1" ]; then page_failure=1; fi
           done
           python - <<'PY'
           import re
@@ -64,7 +65,7 @@ jobs:
           from pathlib import Path
 
           files = [
-              Path("public/cv/Oualid_Ait_Alla_CV_EN.pdf"),
+              Path("public/cv/Oualid_Ait_Alla_CV.pdf"),
               Path("public/cv/Oualid_Ait_Alla_CV_FR.pdf"),
               Path("public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf"),
               Path("public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf"),
@@ -74,6 +75,33 @@ jobs:
               assert extracted.strip(), f"No selectable text extracted from {pdf}"
               assert "AIT ALLA Oualid" in extracted, f"CV name missing from extracted text: {pdf}"
               print(f"{pdf}: selectable text verified ({len(extracted)} characters)")
+              lines = [line.strip() for line in extracted.splitlines() if line.strip()]
+              longest = max(lines, key=len)
+              print(f"{pdf}: longest extracted line = {len(longest)} characters")
+
+              if "ATS_CV" in pdf.name:
+                  print(f"{pdf}: photo = none (ATS version)")
+              else:
+                  image_listing = subprocess.check_output(["pdfimages", "-list", str(pdf)], text=True)
+                  image_rows = [line.split() for line in image_listing.splitlines()
+                                if len(line.split()) >= 14 and line.split()[2] == "image"]
+                  assert image_rows, f"Photo image not found in visual CV: {pdf}"
+                  photo = max(image_rows, key=lambda row: int(row[3]) * int(row[4]))
+                  width_mm = int(photo[3]) / float(photo[12]) * 25.4
+                  height_mm = int(photo[4]) / float(photo[13]) * 25.4
+                  print(f"{pdf}: visible photo box = 26.0 x 32.0 mm (CSS); embedded bitmap = {width_mm:.1f} x {height_mm:.1f} mm")
+                  assert abs(width_mm - 26) < 1.5, (
+                      f"Embedded photo width is outside tolerance in {pdf}: {width_mm:.1f} mm"
+                  )
+
+              if pdf.name == "Oualid_Ait_Alla_CV.pdf":
+                  page_count = int(subprocess.check_output(["pdfinfo", str(pdf)], text=True).split("Pages:")[1].splitlines()[0].strip())
+                  for page_number in range(1, page_count + 1):
+                      page_text = subprocess.check_output(
+                          ["pdftotext", "-f", str(page_number), "-l", str(page_number), str(pdf), "-"],
+                          text=True,
+                      )
+                      print(f"{pdf}: PAGE {page_number} TEXT:", " | ".join(page_text.split()))
 
               bbox = subprocess.check_output(["pdftotext", "-bbox", str(pdf), "-"], text=True)
               page = re.search(r'<page width="([0-9.]+)" height="([0-9.]+)">', bbox)
@@ -85,21 +113,38 @@ jobs:
 
           for pdf in files:
               extracted = subprocess.check_output(["pdftotext", str(pdf), "-"], text=True)
-              if pdf.name.endswith("_EN.pdf"):
-                  title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
+              is_french = "_FR.pdf" in pdf.name
+              if is_french:
+                  title, date, organization = "Stagiaire ingénieur", "août 2026", "SPORTScore SAS"
+                  section = "Expérience professionnelle"
               else:
-                  title, date, organization = "Stagiaire ingénieur", "Août 2026", "SPORTScore SAS"
-              section = "Professional Experience" if pdf.name.endswith("_EN.pdf") else "Expérience professionnelle"
-              folded = " ".join(extracted.casefold().split())
+                  title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
+                  section = "Professional Experience"
+              layout_extracted = subprocess.check_output(["pdftotext", "-layout", str(pdf), "-"], text=True)
+              folded = " ".join(layout_extracted.casefold().split())
               section_pos = folded.find(section.casefold())
               title_pos = folded.find(title.casefold(), section_pos + len(section))
               date_pos = folded.find(date.casefold(), title_pos + len(title))
               organization_pos = folded.find(organization.casefold(), date_pos + len(date))
               print(f"{pdf}: positions section={section_pos}, title={title_pos}, date={date_pos}, organization={organization_pos}")
-              if pdf.name == "Oualid_Ait_Alla_CV_EN.pdf":
+              if pdf.name == "Oualid_Ait_Alla_CV.pdf":
                   print("EXTRACTED TEXT:", " | ".join(extracted.split()))
               assert section_pos >= 0 and title_pos > section_pos and date_pos > title_pos and organization_pos > date_pos, (
                   f"Internship title/date/organization extraction order is incorrect in {pdf}"
               )
               print(f"{pdf}: title -> date -> organization reading order verified")
           PY
+          test "$page_failure" = "0"
+
+
+      - name: Upload generated CV PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: |
+            public/cv/Oualid_Ait_Alla_CV.pdf
+            public/cv/Oualid_Ait_Alla_CV_FR.pdf
+            public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf
+            public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf
+          if-no-files-found: error

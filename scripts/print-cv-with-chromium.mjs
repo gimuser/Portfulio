@@ -25,9 +25,12 @@ function cvUrl(language) {
 let exitStatus = 0;
 
 for (const language of languages) {
-  const out = resolve(
-    `public/cv/Oualid_Ait_Alla_${cvKind === "ats" ? "ATS_CV" : "CV"}_${language.toUpperCase()}.pdf`,
-  );
+  const outputName = cvKind === "ats"
+    ? `Oualid_Ait_Alla_ATS_CV_${language.toUpperCase()}.pdf`
+    : language === "en"
+      ? "Oualid_Ait_Alla_CV.pdf"
+      : "Oualid_Ait_Alla_CV_FR.pdf";
+  const out = resolve(`public/cv/${outputName}`);
   mkdirSync(dirname(out), { recursive: true });
 
   const result = spawnSync(
