@@ -152,6 +152,7 @@ export const cvAcademicProject: CvExperience = {
   period: { en: "March 2024 – May 2024", fr: "Mars 2024 – mai 2024" },
   title: { en: "Android Device Security Testing", fr: "Tests de sécurité d’un appareil Android" },
   location: { en: "Beni Mellal, Morocco", fr: "Béni Mellal, Maroc" },
+  duration: { en: "3 months", fr: "3 mois" },
   bullets: [
     {
       en: "Studied Android device security and attack vectors in a controlled, ethical lab environment using Kali Linux and Metasploit, then documented defensive observations and mitigation approaches.",
