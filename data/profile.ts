@@ -1,11 +1,11 @@
 import type { EducationItem, ExperienceItem, ProfileLink } from "@/types/content";
 
 export const profile = {
-  name: "Oualid Ait Alla",
+  name: "AIT ALLA Oualid",
   cvName: "AIT ALLA Oualid",
   displayRole: {
-    en: "AI / Machine Learning Engineer | Data Scientist",
-    fr: "Ingénieur IA / Machine Learning | Data Scientist",
+    en: "AI Engineering • Generative AI • Cybersecurity — From Data to Secure Intelligent Systems",
+    fr: "Ingénierie IA • IA générative • Cybersécurité — Des données aux systèmes intelligents sécurisés",
   },
   shortProfile: {
     en: "AI-focused Master’s student in Data Science and Information Systems Security with professional internship experience as an AI Engineering Intern at SPORTScore SAS. Project experience includes machine learning, generative AI, retrieval-augmented generation (RAG), and secure application development, including a document-grounded educational AI assistant and a collaborative reinforcement-learning project for security alert triage.",
