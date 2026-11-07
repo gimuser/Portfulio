@@ -20,6 +20,7 @@ export async function generateMetadata({ searchParams }: CvPageProps): Promise<M
 
   return {
     title: language === "fr" ? "CV | AIT ALLA Oualid" : "CV | AIT ALLA Oualid",
+    keywords: ["AIT ALLA Oualid", "AI Engineering", "Generative AI", "Data Science", "Machine Learning", "Cybersecurity", "RAG"],
     description:
       language === "fr"
         ? "CV d’AIT ALLA Oualid en ingénierie IA, data science et cybersécurité."
