@@ -3335,3 +3335,53 @@ img {
     line-height: 1.25 !important;
   }
 }
+
+
+/* Final compact spacing: retain 9.5pt text and 1.25 leading while removing excess gaps. */
+@media print {
+  .cv-photo {
+    box-sizing: border-box !important;
+    width: 26mm !important;
+    height: 32mm !important;
+    max-width: 26mm !important;
+    max-height: 32mm !important;
+    padding: 0 !important;
+    border: 0 !important;
+    object-fit: cover !important;
+  }
+
+  .cv-sheet section,
+  .ats-cv-page .ats-cv-section {
+    margin: 0.5pt 0 !important;
+  }
+
+  .cv-sheet h2,
+  .ats-cv-page .ats-cv-section h2 {
+    margin: 0 0 0.5pt !important;
+  }
+
+  .cv-sheet p,
+  .cv-sheet li,
+  .cv-sheet small,
+  .ats-cv-page p,
+  .ats-cv-page li {
+    margin-bottom: 0.5pt !important;
+  }
+
+  .cv-sheet ul,
+  .ats-cv-page ul {
+    margin: 0.5pt 0 !important;
+  }
+
+  .cv-list,
+  .ats-cv-list,
+  .cv-skill-grid,
+  .ats-cv-skill-list {
+    gap: 0.5pt !important;
+  }
+
+  .cv-entry,
+  .ats-cv-entry {
+    margin-bottom: 0.5pt !important;
+  }
+}
