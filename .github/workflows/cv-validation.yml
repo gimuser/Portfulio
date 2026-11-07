@@ -3,6 +3,7 @@ name: CV validation
 on:
   push:
     branches:
+      - main
       - cv-professional-update
   pull_request:
     branches:
@@ -27,3 +28,33 @@ jobs:
         run: npm run typecheck
       - name: Production build
         run: npm run build
+      - name: Install Chromium and PDF utilities
+        run: |
+          npx --yes playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Start production server
+        run: |
+          npm run start -- --hostname 127.0.0.1 > /tmp/next-start.log 2>&1 &
+          for attempt in {1..60}; do
+            if curl --fail --silent "http://127.0.0.1:3000/cv?lang=en" > /dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          curl --fail "http://127.0.0.1:3000/cv?lang=en" > /dev/null
+      - name: Generate and verify all four one-page PDFs
+        run: |
+          export CHROMIUM_PATH="$(find "$HOME/.cache/ms-playwright" -type f -name chrome -perm -u+x | head -n 1)"
+          test -n "$CHROMIUM_PATH"
+          npm run pdf:cv:all
+          npm run pdf:ats:all
+          for pdf in \
+            public/cv/Oualid_Ait_Alla_CV_EN.pdf \
+            public/cv/Oualid_Ait_Alla_CV_FR.pdf \
+            public/cv/Oualid_Ait_Alla_ATS_CV_EN.pdf \
+            public/cv/Oualid_Ait_Alla_ATS_CV_FR.pdf; do
+            pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+            echo "$pdf: $pages page(s)"
+            test "$pages" = "1"
+          done
