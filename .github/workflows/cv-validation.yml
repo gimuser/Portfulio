@@ -88,7 +88,10 @@ jobs:
                   title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
               else:
                   title, date, organization = "Stagiaire ingénieur", "Août 2026", "SPORTScore SAS"
-              assert extracted.index(title) < extracted.index(date) < extracted.index(organization), (
+              title_pos = extracted.find(title)
+              date_pos = extracted.find(date, title_pos + len(title))
+              organization_pos = extracted.find(organization, date_pos + len(date))
+              assert title_pos >= 0 and date_pos > title_pos and organization_pos > date_pos, (
                   f"Internship title/date/organization extraction order is incorrect in {pdf}"
               )
               print(f"{pdf}: title -> date -> organization reading order verified")
