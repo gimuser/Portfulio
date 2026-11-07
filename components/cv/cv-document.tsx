@@ -176,7 +176,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             <div className="cv-list">
               {professionalExperience.map((item) => (
                 <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading">
+                  <div className="cv-entry-heading cv-date-row">
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
@@ -192,7 +192,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             <div className="cv-list">
               {selectedProjects.map((project) => (
                 <div className="cv-entry" key={project.slug}>
-                  <div className="cv-entry-heading">
+                  <div className="cv-entry-heading cv-date-row">
                     <h3>{localize(project.title, language)}</h3>
                     <strong>{project.year}</strong>
                   </div>
@@ -230,7 +230,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               <div className="cv-list">
                 {certifications.map((certification) => (
                   <div className="cv-entry" key={certification.name}>
-                    <div className="cv-entry-heading">
+                    <div className="cv-entry-heading cv-date-row">
                       <h3>{certification.name}</h3>
                       <strong>{certification.date}</strong>
                     </div>
