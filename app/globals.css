@@ -3105,3 +3105,10 @@ img {
     margin-top: 10.5pt !important;
   }
 }
+
+
+/* French ATS text is denser; keep it readable while preserving the one-page limit. */
+.ats-cv-page[data-language="fr"] {
+  font-size: 8.6pt !important;
+  line-height: 1.2 !important;
+}
