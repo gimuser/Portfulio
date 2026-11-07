@@ -91,8 +91,8 @@ export const education: EducationItem[] = [
   {
     year: "2027",
     period: {
-      en: "Sep 2025 – Oct 2027 (expected)",
-      fr: "Sept. 2025 – Oct. 2027 (prévu)",
+      en: "Sep 2025 – Jul 2027 (expected)",
+      fr: "Sept. 2025 – Juil. 2027 (prévu)",
     },
     title: {
       en: "Master’s Degree in Data Science and Information Systems Security (in progress)",
