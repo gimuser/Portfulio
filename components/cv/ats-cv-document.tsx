@@ -54,7 +54,9 @@ const atsLabels = {
   },
 } as const;
 
-function getAtsProjectSummary(project: CvProject, language: Language) {\n  return localize(project.summary, language);\n}
+function getAtsProjectSummary(project: CvProject, language: Language) {
+  return localize(project.summary, language);
+}
 
 function formatLanguageLevel(language: Language, name: string, level: string) {
   return language === "fr" ? name + " : " + level : name + ": " + level;
@@ -119,7 +121,8 @@ export function AtsCvDocument() {
                 <h3>{localize(item.title, language)}</h3>
                 <strong>{item.period ? localize(item.period, language) : item.year}</strong>
               </div>
-              <p>{localize(item.institution, language)}</p>\n              <p>{localize(item.details, language)}</p>
+              <p>{localize(item.institution, language)}</p>
+              <p>{localize(item.details, language)}</p>
             </div>
           ))}
         </div>
@@ -147,7 +150,7 @@ export function AtsCvDocument() {
               </div>
               {item.organization ? <p><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
               <ul>
-                {item.bullets.slice(0, 1).map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}
+                {item.bullets.map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}
               </ul>
             </div>
           ))}
@@ -186,7 +189,7 @@ export function AtsCvDocument() {
                 <p>{localize(item.location, language)} | {localize(item.duration, language)}</p>
               ) : null}
               <ul>
-                {item.bullets.slice(0, 1).map((bullet) => (
+                {item.bullets.map((bullet) => (
                   <li key={bullet.en}>{localize(bullet, language)}</li>
                 ))}
               </ul>
