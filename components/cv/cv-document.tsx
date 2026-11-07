@@ -39,25 +39,6 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         openOther: isAts ? "View visual CV" : "View ATS CV",
         save: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
       };
-  const technicalSkillGroups = cvSkills;
-  const selectedProjects = cvProjects;
-  const visibleEducation = cvEducation;
-  const professionalExperience = cvProfessionalExperience;
-  const visibleExperience = [cvAcademicProject];
-  const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
-  const contactRows = [
-    [
-      { key: "location", text: location, href: profile.locationMapHref },
-      { key: "email", text: profile.email, href: "mailto:" + profile.email },
-      { key: "phone", text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
-    ],
-    [
-      { key: "portfolio", text: language === "fr" ? "Portfolio" : "Portfolio", href: profile.links.website.href },
-      { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\//, ""), href: profile.links.linkedin.href },
-      { key: "github", text: profile.links.github.href.replace(/^https?:\/\//, ""), href: profile.links.github.href },
-    ],
-  ];
-
   return (
     <div className="cv-page" id="content">
       <div className="cv-controls no-print">
