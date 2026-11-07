@@ -2910,3 +2910,134 @@ img {
     text-decoration: none;
   }
 }
+
+
+/* Final CV typography and aligned date rows: consistent in both formats and languages. */
+.cv-date-row {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.55rem;
+  width: 100%;
+}
+.cv-date-row h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+.cv-date-row .cv-date,
+.cv-date-row > strong:last-child {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+  text-align: right;
+  color: #222;
+  font-size: 8.2pt;
+  font-weight: 400;
+}
+.cv-tagline,
+.ats-cv-tagline {
+  margin: 0.12rem 0 0;
+  font-size: 7.2pt;
+  line-height: 1.15;
+  font-weight: 400;
+  color: #333;
+}
+.ats-cv-role {
+  margin: 0.2rem 0 0;
+  font-size: 10pt;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #111;
+}
+.ats-cv-entry-heading {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-bottom: 0.05rem;
+}
+.ats-cv-entry-heading h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: block !important;
+  margin: 0;
+}
+.ats-cv-entry-heading .cv-date {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-align: right;
+  color: #222;
+  font-size: 8.2pt;
+  font-weight: 400;
+  margin: 0;
+}
+.ats-cv-page .ats-cv-section {
+  margin-top: 5.2pt;
+}
+.ats-cv-page {
+  display: block !important;
+  min-height: 0 !important;
+  height: auto !important;
+  font-size: 9.35pt !important;
+  line-height: 1.27 !important;
+}
+.ats-cv-page[data-language="fr"] {
+  font-size: 9.1pt !important;
+  line-height: 1.23 !important;
+}
+.ats-cv-page .ats-cv-list,
+.ats-cv-page .ats-cv-skill-list {
+  gap: 0.2rem;
+}
+.ats-cv-page .ats-cv-entry {
+  margin-bottom: 0.12rem;
+}
+.ats-cv-page .ats-cv-section h2 {
+  margin-bottom: 0.18rem;
+}
+.ats-cv-page .ats-cv-page p,
+.ats-cv-page p,
+.ats-cv-page li {
+  line-height: inherit;
+}
+.cv-page:has(> .cv-sheet) > .cv-sheet > section {
+  margin-top: 5.2pt !important;
+}
+.cv-page:has(> .cv-sheet) > .cv-sheet {
+  justify-content: flex-start;
+  min-height: 287mm;
+  font-size: 9pt;
+  line-height: 1.28;
+}
+.cv-page:has(> .cv-sheet) .cv-list {
+  gap: 0.24rem;
+}
+.cv-page:has(> .cv-sheet) .cv-entry {
+  margin-bottom: 0.12rem;
+}
+.cv-page:has(> .cv-sheet) .cv-sheet section p,
+.cv-page:has(> .cv-sheet) .cv-sheet section li,
+.cv-page:has(> .cv-sheet) .cv-sheet section small {
+  line-height: 1.28;
+}
+@media print {
+  .cv-date-row .cv-date,
+  .cv-date-row > strong:last-child,
+  .ats-cv-entry-heading .cv-date {
+    font-size: 8.2pt !important;
+    font-weight: 400 !important;
+    color: #222 !important;
+    white-space: nowrap !important;
+  }
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section {
+    margin-top: 5.2pt !important;
+  }
+  .ats-cv-page {
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+}
