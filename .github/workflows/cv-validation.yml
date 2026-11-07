@@ -57,6 +57,7 @@ jobs:
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
             echo "$pdf: $pages page(s)"
             test "$pages" = "1"
+          done
           python - <<'PY'
           import re
           import subprocess
@@ -99,4 +100,3 @@ jobs:
               )
               print(f"{pdf}: title -> date -> organization reading order verified")
           PY
-          done
