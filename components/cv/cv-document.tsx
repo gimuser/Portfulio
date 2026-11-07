@@ -243,13 +243,13 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             color: #000 !important;
             box-shadow: none !important;
             font-size: 9pt !important;
-            line-height: 1.1 !important;
+            line-height: 1.05 !important;
           }
           .cv-sheet section, .ats-cv-section { margin-block: 0.5pt !important; }
           .cv-sheet h2, .ats-cv-section h2 {
             margin: 0 0 0.5pt !important;
             font-size: 9pt !important;
-            line-height: 1.1 !important;
+            line-height: 1.05 !important;
             break-after: avoid !important;
             page-break-after: avoid !important;
           }
@@ -257,14 +257,14 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .cv-sheet .cv-role, .ats-cv-role { font-size: 9pt !important; margin: 0 0 1pt !important; line-height: 1.12 !important; }
           .cv-tagline, .ats-cv-tagline { font-size: 8pt !important; margin: 0 0 2pt !important; line-height: 1.12 !important; }
           .cv-header { display: flex; align-items: center; gap: 7pt; margin: 0 0 4pt !important; padding: 0 !important; max-height: 36mm; }
-          .cv-photo { width: 26mm !important; height: 30.6mm !important; max-width: 26mm !important; max-height: 30.6mm !important; object-fit: cover !important; flex: 0 0 26mm; }
+          .cv-photo { width: 26mm !important; height: 32mm !important; max-width: 26mm !important; max-height: 32mm !important; object-fit: cover !important; flex: 0 0 26mm; }
           .cv-heading { min-width: 0; flex: 1 1 auto; }
           .cv-contact, .ats-cv-contact-block { display: grid; gap: 1pt; margin: 2pt 0 0 !important; font-size: 7.2pt !important; line-height: 1.15 !important; font-style: normal; }
           .cv-contact-row { display: flex; flex-wrap: wrap; gap: 0 6pt; }
           .cv-sheet p, .cv-sheet li, .cv-sheet small, .ats-cv-page p, .ats-cv-page li {
             margin: 0 0 0.5pt !important;
             font-size: 9pt !important;
-            line-height: 1.1 !important;
+            line-height: 1.05 !important;
             color: #000 !important;
           }
           .cv-sheet ul, .ats-cv-page ul { margin: 0.5pt 0 0.5pt !important; padding-left: 12pt !important; }
