@@ -3088,3 +3088,20 @@ img {
     margin-top: 12.4pt !important;
   }
 }
+
+
+/* Keep the visual CV on one A4 page while tightening the remaining bottom gap. */
+.cv-page:has(> .cv-sheet) > .cv-sheet > section {
+  margin-top: 12.5pt !important;
+}
+.ats-cv-page .ats-cv-section {
+  margin-top: 10.5pt !important;
+}
+@media print {
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section {
+    margin-top: 12.5pt !important;
+  }
+  .ats-cv-page .ats-cv-section {
+    margin-top: 10.5pt !important;
+  }
+}
