@@ -85,36 +85,22 @@ export const cvSkills: CvSkillGroup[] = [
   {
     title: { en: "AI and Machine Learning", fr: "IA et Machine Learning" },
     items: {
-      en: "Machine learning, deep learning, neural networks, model evaluation, feature engineering, optimization, exploratory data analysis (EDA), TensorFlow, PyTorch, reinforcement learning (DQN, DDQN)",
-      fr: "Machine learning, deep learning, réseaux de neurones, évaluation de modèles, feature engineering, optimisation, analyse exploratoire (EDA), TensorFlow, PyTorch, apprentissage par renforcement (DQN, DDQN)",
+      en: "Machine learning, deep learning, neural networks, model evaluation, feature engineering, optimization, EDA, TensorFlow, PyTorch, reinforcement learning, DQN, DDQN",
+      fr: "Machine learning, deep learning, réseaux de neurones, évaluation de modèles, feature engineering, optimisation, EDA, TensorFlow, PyTorch, apprentissage par renforcement, DQN, DDQN",
     },
   },
   {
-    title: { en: "Generative AI and Document Processing", fr: "IA générative et traitement documentaire" },
+    title: { en: "Generative AI and Data", fr: "IA générative et données" },
     items: {
-      en: "Prompt engineering, embeddings, LLM integration, RAG, Ollama, OpenAI API, OCR, vector indexing, document parsing, JSON Schema, structured-output validation, quantization",
-      fr: "Prompt engineering, embeddings, intégration de LLM, RAG, Ollama, API OpenAI, OCR, indexation vectorielle, analyse documentaire, JSON Schema, validation des sorties structurées, quantification",
+      en: "Prompt engineering, embeddings, LLM integration, RAG, Ollama, OpenAI API, OCR, vector indexing, document parsing, JSON Schema, structured-output validation, quantization, Pandas, SQL/NoSQL, MongoDB, data visualization, Power BI, SPSS, Excel",
+      fr: "Prompt engineering, embeddings, intégration de LLM, RAG, Ollama, API OpenAI, OCR, indexation vectorielle, analyse documentaire, JSON Schema, validation des sorties structurées, quantification, Pandas, SQL/NoSQL, MongoDB, visualisation de données, Power BI, SPSS, Excel",
     },
   },
   {
-    title: { en: "Software Engineering", fr: "Génie logiciel" },
+    title: { en: "Software Engineering and Cybersecurity", fr: "Génie logiciel et cybersécurité" },
     items: {
-      en: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose",
-      fr: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose",
-    },
-  },
-  {
-    title: { en: "Data and Databases", fr: "Données et bases de données" },
-    items: {
-      en: "SQL/NoSQL, MongoDB, Pandas, data visualization, Power BI, SPSS, Excel",
-      fr: "SQL/NoSQL, MongoDB, Pandas, visualisation de données, Power BI, SPSS, Excel",
-    },
-  },
-  {
-    title: { en: "Cybersecurity", fr: "Cybersécurité" },
-    items: {
-      en: "Cryptography, network security, firewalls, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
-      fr: "Cryptographie, sécurité réseau, pare-feu, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
+      en: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose, cryptography, network security, firewalls, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
+      fr: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose, cryptographie, sécurité réseau, pare-feu, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
     },
   },
 ];
