@@ -122,7 +122,7 @@ export function AtsCvDocument() {
                 <strong>{item.period ? localize(item.period, language) : item.year}</strong>
               </div>
               <p>{localize(item.institution, language)}</p>
-              <p>{localize(item.details, language)}</p>
+              <p className="ats-cv-education-details">{localize(item.details, language)}</p>
             </div>
           ))}
         </div>
@@ -180,19 +180,13 @@ export function AtsCvDocument() {
         <h2>{labels.sections.academicProject}</h2>
         <div className="ats-cv-list">
           {visibleExperience.map((item) => (
-            <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
-              <div className="ats-cv-entry-heading">
-                <h3>{localize(item.title, language)}</h3>
-                <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-              </div>
-              {item.location && item.duration ? (
-                <p>{localize(item.location, language)} | {localize(item.duration, language)}</p>
-              ) : null}
-              <ul>
-                {item.bullets.map((bullet) => (
-                  <li key={bullet.en}>{localize(bullet, language)}</li>
-                ))}
-              </ul>
+            <div className="ats-cv-entry ats-cv-academic-line" key={item.year + "-" + item.title.en}>
+              <p>
+                <strong>{localize(item.title, language)}</strong> | {item.period ? localize(item.period, language) : item.year}
+                {item.location ? " | " + localize(item.location, language) : ""}
+                {item.duration ? " | " + localize(item.duration, language) : ""}
+                {" — " + localize(item.bullets[0], language)}
+              </p>
             </div>
           ))}
         </div>
