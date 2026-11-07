@@ -3067,3 +3067,24 @@ img {
     margin-top: 10.5pt !important;
   }
 }
+
+
+/* Fine-tune the final baseline to sit close to the printable bottom margin. */
+.cv-page:has(> .cv-sheet) > .cv-sheet > section {
+  margin-top: 14.5pt !important;
+}
+.ats-cv-page .ats-cv-section {
+  margin-top: 12.4pt !important;
+}
+.ats-cv-page,
+.ats-cv-page[data-language="fr"] {
+  line-height: 1.36 !important;
+}
+@media print {
+  .cv-page:has(> .cv-sheet) > .cv-sheet > section {
+    margin-top: 14.5pt !important;
+  }
+  .ats-cv-page .ats-cv-section {
+    margin-top: 12.4pt !important;
+  }
+}
