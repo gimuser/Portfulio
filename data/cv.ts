@@ -7,11 +7,11 @@ export const cvLanguages: { name: LocalizedText; level: LocalizedText }[] = [
   },
   {
     name: { en: "English", fr: "Anglais" },
-    level: { en: "Intermediate", fr: "intermédiaire" },
+    level: { en: "B2", fr: "B2" },
   },
   {
     name: { en: "French", fr: "Français" },
-    level: { en: "Intermediate", fr: "intermédiaire" },
+    level: { en: "B2", fr: "B2" },
   },
   {
     name: { en: "Spanish", fr: "Espagnol" },
@@ -20,6 +20,6 @@ export const cvLanguages: { name: LocalizedText; level: LocalizedText }[] = [
 ];
 
 export const atsProfessionalSummary: LocalizedText = {
-  en: "Master’s student in Data Science and Information Systems Security with internship experience as an AI Engineering Intern at SPORTScore SAS, seeking internships in AI Engineering, Data Science, Generative AI, or intelligent document processing. Skills include machine learning, RAG, LLM integration, prompt engineering, model quantization, document parsing, structured-output validation, scientific research, and scientific paper review, alongside secure application development.",
-  fr: "Étudiant en master Data Science et Sécurité des Systèmes d’Information, ayant une expérience de stage en ingénierie IA chez SPORTScore SAS et à la recherche de stages en ingénierie IA, Data Science, IA générative ou traitement intelligent de documents. Compétences en machine learning, RAG, intégration de LLM, ingénierie de prompts, quantification de modèles, analyse de documents, validation de sorties structurées, recherche scientifique et lecture d’articles scientifiques, ainsi qu’en développement d’applications sécurisées.",
+  en: "Master’s student in Data Science and Information Systems Security at Sultan Moulay Slimane University, with professional internship experience in AI engineering at SPORTScore SAS. Focused on AI engineering, machine learning, generative AI, and secure intelligent systems, with practical work across LLM integration, RAG, prompt engineering, document processing, model quantization, structured-output validation, and scientific research.",
+  fr: "Étudiant en Master Data Science et Sécurité des Systèmes d’Information à l’Université Sultan Moulay Slimane, avec une expérience professionnelle en ingénierie IA chez SPORTScore SAS. Orienté vers l’ingénierie IA, le machine learning, l’IA générative et les systèmes intelligents sécurisés, avec des compétences pratiques en intégration de LLM, RAG, ingénierie de prompts, traitement documentaire, quantification de modèles, validation de sorties structurées et recherche scientifique.",
 };
