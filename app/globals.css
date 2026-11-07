@@ -3342,9 +3342,9 @@ img {
   .cv-photo {
     box-sizing: border-box !important;
     width: 26mm !important;
-    height: 30.6mm !important;
+    height: 32mm !important;
     max-width: 26mm !important;
-    max-height: 30.6mm !important;
+    max-height: 32mm !important;
     padding: 0 !important;
     border: 0 !important;
     object-fit: cover !important;
