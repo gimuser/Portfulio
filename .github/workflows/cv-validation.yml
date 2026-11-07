@@ -90,7 +90,7 @@ jobs:
               else:
                   title, date, organization = "Stagiaire ingénieur", "Août 2026", "SPORTScore SAS"
               section = "Professional Experience" if pdf.name.endswith("_EN.pdf") else "Expérience professionnelle"
-              folded = extracted.casefold()
+              folded = " ".join(extracted.casefold().split())
               section_pos = folded.find(section.casefold())
               title_pos = folded.find(title.casefold(), section_pos + len(section))
               date_pos = folded.find(date.casefold(), title_pos + len(title))
