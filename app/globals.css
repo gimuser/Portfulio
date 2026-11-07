@@ -3112,3 +3112,226 @@ img {
   font-size: 8.6pt !important;
   line-height: 1.2 !important;
 }
+
+
+/* CV rewrite: consistent A4 print geometry and entry structure for both formats. */
+@page cv-portfolio {
+  size: A4;
+  margin: 12mm;
+}
+
+@page ats-cv {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .cv-page,
+  .cv-page:has(> .cv-sheet) {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cv-page:has(> .cv-sheet) > .cv-sheet {
+    page: cv-portfolio;
+    display: block !important;
+    width: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9.5pt !important;
+    line-height: 1.25 !important;
+  }
+
+  .cv-photo {
+    width: 26mm !important;
+    height: 32mm !important;
+    max-width: 26mm !important;
+    max-height: 32mm !important;
+    object-fit: cover !important;
+    flex: 0 0 26mm !important;
+  }
+
+  .cv-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7pt !important;
+    max-height: 36mm !important;
+    margin: 0 0 4pt !important;
+    padding: 0 !important;
+  }
+
+  .cv-heading {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .cv-sheet h1,
+  .ats-cv-header h1 {
+    margin: 0 0 1pt !important;
+    font-size: 15pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .cv-role,
+  .ats-cv-role {
+    margin: 0 0 1pt !important;
+    font-size: 9.5pt !important;
+    line-height: 1.12 !important;
+    font-weight: 700 !important;
+  }
+
+  .cv-tagline,
+  .ats-cv-tagline {
+    margin: 0 0 2pt !important;
+    font-size: 8pt !important;
+    line-height: 1.12 !important;
+    font-weight: 400 !important;
+  }
+
+  .cv-contact,
+  .ats-cv-contact-block {
+    display: grid !important;
+    gap: 1pt !important;
+    margin: 2pt 0 0 !important;
+    font-size: 7.2pt !important;
+    line-height: 1.15 !important;
+    font-style: normal !important;
+  }
+
+  .cv-contact-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0 6pt !important;
+  }
+
+  .cv-sheet section,
+  .ats-cv-page .ats-cv-section {
+    margin: 2.2pt 0 !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    font-size: 9.5pt !important;
+  }
+
+  .cv-sheet h2,
+  .ats-cv-page .ats-cv-section h2 {
+    margin: 0 0 1.5pt !important;
+    padding: 0 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.1 !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .cv-sheet p,
+  .cv-sheet li,
+  .cv-sheet small,
+  .ats-cv-page p,
+  .ats-cv-page li {
+    margin: 0 0 1.3pt !important;
+    padding: 0 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.25 !important;
+    color: #000 !important;
+  }
+
+  .cv-sheet ul,
+  .ats-cv-page ul {
+    margin: 1pt 0 1.5pt !important;
+    padding-left: 12pt !important;
+  }
+
+  .cv-date-row,
+  .ats-cv-entry-heading {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    gap: 6pt !important;
+    width: 100% !important;
+    margin-bottom: 0.5pt !important;
+  }
+
+  .cv-date-row h3,
+  .ats-cv-entry-heading h3 {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.2 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .cv-date-row .cv-date,
+  .ats-cv-entry-heading .cv-date {
+    flex: 0 0 auto !important;
+    margin: 0 0 0 auto !important;
+    white-space: nowrap !important;
+    text-align: right !important;
+    font-size: 8.2pt !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+  }
+
+  .cv-education-details,
+  .ats-cv-education-details {
+    white-space: pre-line !important;
+  }
+
+  .cv-list,
+  .ats-cv-list,
+  .cv-skill-grid,
+  .ats-cv-skill-list {
+    display: grid !important;
+    gap: 1.5pt !important;
+  }
+
+  .cv-entry,
+  .ats-cv-entry {
+    margin: 0 0 1pt !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cv-sheet a,
+  .ats-cv-page a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  .cv-controls,
+  .cv-floating-actions,
+  .no-print,
+  .site-header,
+  .footer {
+    display: none !important;
+  }
+
+  .ats-cv-page {
+    page: ats-cv;
+    display: block !important;
+    width: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9.5pt !important;
+    line-height: 1.25 !important;
+  }
+}
