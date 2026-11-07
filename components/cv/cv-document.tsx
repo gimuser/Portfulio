@@ -89,7 +89,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
       { key: "phone", text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
     [
-      { key: "portfolio", text: language === "fr" ? "Portfolio" : "Portfolio", href: profile.links.website.href },
+      { key: "portfolio", text: profile.links.website.href.replace(/^https?:\\/\\//, ""), href: profile.links.website.href },
       { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\//, ""), href: profile.links.linkedin.href },
       { key: "github", text: profile.links.github.href.replace(/^https?:\/\//, ""), href: profile.links.github.href },
     ],
@@ -123,7 +123,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             />
             <div className="cv-heading">
               <h1>{profile.cvName}</h1>
-              <p className="cv-role">{localize(profile.displayRole, language)}</p>
+              <p className="cv-role">{language === "fr" ? "Ingénieur IA / Machine Learning | Data Scientist" : "AI / Machine Learning Engineer | Data Scientist"}</p>
+              <p className="cv-tagline">{localize(profile.displayRole, language)}</p>
               <address className="cv-contact">
                 {contactRows.map((row, rowIndex) => (
                   <span className="cv-contact-row" key={rowIndex}>
@@ -148,7 +149,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             <div className="cv-list">
               {visibleEducation.map((item) => (
                 <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading">
+                  <div className="cv-entry-heading cv-date-row">
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
@@ -179,7 +180,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                  {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
+                  {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}</p> : null}
                   {item.bullets.map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
                 </div>
               ))}
@@ -211,12 +212,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               <div className="cv-list">
                 {visibleExperience.map((item) => (
                   <div key={item.year + "-" + item.title.en} className="cv-entry cv-academic-line">
-                    <p>
-                      <strong>{localize(item.title, language)}</strong> | {item.period ? localize(item.period, language) : item.year}
-                      {item.location ? " | " + localize(item.location, language) : ""}
-                      {item.duration ? " | " + localize(item.duration, language) : ""}
-                      {" — " + localize(item.bullets[0], language)}
-                    </p>
+                    <div className="cv-entry-heading cv-date-row">
+                      <h3>{localize(item.title, language)}</h3>
+                      <strong>{localize(item.period, language)}</strong>
+                    </div>
+                    <p className="cv-muted">{localize(item.location ?? { en: "", fr: "" }, language)}</p>
+                    <p>{localize(item.bullets[0], language)}</p>
                   </div>
                 ))}
               </div>
