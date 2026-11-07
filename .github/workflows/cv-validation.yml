@@ -95,6 +95,15 @@ jobs:
                       f"Photo size is outside tolerance in {pdf}: {width_mm:.1f} x {height_mm:.1f} mm"
                   )
 
+              if pdf.name == "Oualid_Ait_Alla_CV.pdf":
+                  page_count = int(subprocess.check_output(["pdfinfo", str(pdf)], text=True).split("Pages:")[1].splitlines()[0].strip())
+                  for page_number in range(1, page_count + 1):
+                      page_text = subprocess.check_output(
+                          ["pdftotext", "-f", str(page_number), "-l", str(page_number), str(pdf), "-"],
+                          text=True,
+                      )
+                      print(f"{pdf}: PAGE {page_number} TEXT:", " | ".join(page_text.split()))
+
               bbox = subprocess.check_output(["pdftotext", "-bbox", str(pdf), "-"], text=True)
               page = re.search(r'<page width="([0-9.]+)" height="([0-9.]+)">', bbox)
               words = re.findall(r'<word xMin="([0-9.]+)" yMin="([0-9.]+)" xMax="([0-9.]+)" yMax="([0-9.]+)">', bbox)
@@ -105,12 +114,15 @@ jobs:
 
           for pdf in files:
               extracted = subprocess.check_output(["pdftotext", str(pdf), "-"], text=True)
-              if pdf.name.endswith("_EN.pdf"):
-                  title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
+              is_french = "_FR.pdf" in pdf.name
+              if is_french:
+                  title, date, organization = "Stagiaire ingénieur", "août 2026", "SPORTScore SAS"
+                  section = "Expérience professionnelle"
               else:
-                  title, date, organization = "Stagiaire ingénieur", "Août 2026", "SPORTScore SAS"
-              section = "Professional Experience" if pdf.name.endswith("_EN.pdf") else "Expérience professionnelle"
-              folded = " ".join(extracted.casefold().split())
+                  title, date, organization = "AI Engineering Intern", "Aug 2026", "SPORTScore SAS"
+                  section = "Professional Experience"
+              layout_extracted = subprocess.check_output(["pdftotext", "-layout", str(pdf), "-"], text=True)
+              folded = " ".join(layout_extracted.casefold().split())
               section_pos = folded.find(section.casefold())
               title_pos = folded.find(title.casefold(), section_pos + len(section))
               date_pos = folded.find(date.casefold(), title_pos + len(title))
@@ -127,6 +139,7 @@ jobs:
 
 
       - name: Upload generated CV PDFs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cv-pdfs
