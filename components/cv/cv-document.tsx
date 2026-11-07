@@ -8,43 +8,12 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvLanguages } from "@/data/cv";
-import { education, experience, profile } from "@/data/profile";
-import { projects } from "@/data/projects";
-import { skillGroups } from "@/data/skills";
-import type { Language, Project } from "@/types/content";
+import { atsProfessionalSummary, cvAcademicProject, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { profile } from "@/data/profile";
+import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
 
-const selectedProjectSlugs = [
-  "soar-rl-agent",
-  "bachelor-ai-tutor",
-  "islamic-ai-chat",
-  "car-price-prediction-system",
-];
-
-const skillGroupPriority = [
-  "Generative AI and RAG",
-  "Machine Learning & AI",
-  "Data Science & Analytics",
-  "Programming",
-  "Backend and APIs",
-  "Data Management & Information Systems",
-  "Cybersecurity",
-];
-
-const skillItemOverrides: Record<string, string[]> = {
-  "Generative AI and RAG": ["Retrieval-Augmented Generation (RAG)","Embeddings","Vector search","LLM integration","Prompt engineering","Ollama","OpenAI API","OpenRouter","Document processing","Structured output validation","Constrained generation","Model quantization","Document parsing"],
-  "Machine Learning & AI": ["Machine learning","Artificial intelligence","PyTorch","Deep learning","Model evaluation","Image classification"],
-  "Data Science & Analytics": ["Data cleaning","Exploratory data analysis","Feature engineering","Regression modeling","Data visualization","Scientific research","Scientific paper reading"],
-  "Programming": ["Python","SQL","TypeScript","JavaScript","C"],
-  "Backend and APIs": ["Node.js","Express","REST APIs","Next.js API routes"],
-  "Data Management & Information Systems": ["MongoDB","Mongoose","Prisma","SQLite","Database fundamentals","JSON schema validation"],
-  "Cybersecurity": ["Information systems security","Network security","Cryptography","Input validation","Rate limiting"],
-};
-
-function getProjectSummary(project: Project, language: Language) {
-  return localize(project.atsSummary ?? project.cvSummary ?? project.summary, language);
-}
+function getProjectSummary(project: CvProject, language: Language) {\n  return localize(project.summary, language);\n}
 
 function formatLanguageLevel(language: Language, name: string, level: string) {
   return language === "fr" ? name + " : " + level : name + ": " + level;
@@ -105,16 +74,11 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         projectLink: "Project",
       };
 
-  const technicalSkillGroups = skillGroups
-    .filter((group) => Object.prototype.hasOwnProperty.call(skillItemOverrides, group.title.en))
-    .map((group) => ({ ...group, items: skillItemOverrides[group.title.en] }))
-    .sort((first, second) => skillGroupPriority.indexOf(first.title.en) - skillGroupPriority.indexOf(second.title.en));
-  const selectedProjects = selectedProjectSlugs
-    .map((slug) => projects.find((project) => project.slug === slug))
-    .filter((project): project is Project => Boolean(project));
-  const visibleEducation = education.slice(0, 3);
-  const professionalExperience = experience.filter((item) => item.title.en === "AI Engineering Intern");
-  const visibleExperience = experience.filter((item) => item.title.en === "Cybersecurity learning project");
+  const technicalSkillGroups = cvSkills;
+  const selectedProjects = cvProjects;
+  const visibleEducation = cvEducation;
+  const professionalExperience = cvProfessionalExperience;
+  const visibleExperience = [cvAcademicProject];
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
     [
@@ -186,7 +150,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>
+                  <p className="cv-muted">{localize(item.institution, language)}</p>\n                  <p>{localize(item.details, language)}</p>
                 </div>
               ))}
             </div>
@@ -197,7 +161,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             <div className="cv-skill-grid">
               {technicalSkillGroups.map((group) => (
                 <p key={group.title.en}>
-                  <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
+                  <strong>{localize(group.title, language)}:</strong> {localize(group.items, language)}
                 </p>
               ))}
             </div>
@@ -225,13 +189,13 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               {selectedProjects.map((project) => (
                 <div className="cv-entry" key={project.slug}>
                   <div className="cv-entry-heading">
-                    <h3>{project.title}</h3>
+                    <h3>{localize(project.title, language)}</h3>
                     <strong>{project.year}</strong>
                   </div>
                   <p>{getProjectSummary(project, language)}</p>
                   <small><strong>{labels.technologies}:</strong> {project.technologies.join(", ")}</small>
-                  {project.github.status === "available" && project.status.en.toLowerCase().includes("public") && !project.github.href.includes("[ADD") ? (
-                    <p><small><strong>{labels.projectLink}:</strong> {project.github.href}</small></p>
+                  {project.github ? (
+                    <p><small><strong>{labels.projectLink}:</strong> {project.github}</small></p>
                   ) : null}
                 </div>
               ))}
