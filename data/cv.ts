@@ -49,8 +49,8 @@ export const cvEducation: CvEducation[] = [
     },
     institution: masterInstitution,
     details: {
-      en: "Year 1 average 14.54/20 (Semester 1: 15.66/20). Grades: Advanced ML 17.35/20; UML & Design Patterns 18/20; IoT Communication Technologies 16.65/20; Advanced Python 16.01/20; NoSQL 15.62/20. Coursework: Deep Learning, Reinforcement Learning, Advanced Data Analysis, Web Application Security.",
-      fr: "Moyenne de 1re année : 14,54/20 (S1 : 15,66/20). Notes : ML avancé 17,35/20 ; UML & Design Patterns 18/20 ; Technologies de communication IoT 16,65/20 ; Python avancé 16,01/20 ; NoSQL 15,62/20. Cours : Deep Learning, Reinforcement Learning, analyse avancée des données, sécurité des applications web.",
+      en: "Year 1 average: 14.54/20 (Semester 1: 15.66/20).\nGrades: Advanced ML 17.35/20; UML & Design Patterns 18/20; IoT Communication Technologies 16.65/20; Advanced Python 16.01/20; NoSQL 15.62/20.\nCoursework: Deep Learning, Reinforcement Learning, Advanced Data Analysis, Web Application Security.",
+      fr: "Moyenne de 1re année : 14,54/20 (S1 : 15,66/20).\nNotes : ML avancé 17,35/20 ; UML & Design Patterns 18/20 ; Technologies de communication IoT 16,65/20 ; Python avancé 16,01/20 ; NoSQL 15,62/20.\nCours : Deep Learning, Reinforcement Learning, analyse avancée des données, sécurité des applications web.",
     },
   },
   {
@@ -172,6 +172,7 @@ export const cvProjects: CvProject[] = [
       fr: "Agent RL collaboratif pour le triage des alertes et les workflows SOC avec intervention humaine.",
     },
     technologies: ["Python", "FastAPI", "RL", "SOAR", "Docker"],
+    github: "https://github.com/gimuser/RL_Agent",
   },
   {
     slug: "bachelor-ai-tutor",
@@ -207,7 +208,7 @@ export const cvProjects: CvProject[] = [
 
 export const cvLanguages: { name: LocalizedText; level: LocalizedText }[] = [
   { name: { en: "Arabic", fr: "Arabe" }, level: { en: "Native", fr: "langue maternelle" } },
-  { name: { en: "English", fr: "Anglais" }, level: { en: "Intermediate", fr: "intermédiaire" } },
+  { name: { en: "English", fr: "Anglais" }, level: { en: "B2", fr: "B2" } },
   { name: { en: "French", fr: "Français" }, level: { en: "B2", fr: "B2" } },
   { name: { en: "Spanish", fr: "Espagnol" }, level: { en: "Beginner", fr: "débutant" } },
 ];
