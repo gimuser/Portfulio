@@ -269,7 +269,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         .cv-entry, .ats-cv-entry { break-inside: avoid; page-break-inside: avoid; }
         .cv-list, .ats-cv-list { gap: 4pt; }
         @media print {
-          @page { size: A4; margin: 8mm; }
+          @page { size: A4; margin: 7mm; }
           html, body { background: #fff !important; color: #000 !important; }
           .cv-page { background: #fff !important; color: #000 !important; }
           .cv-sheet, .ats-cv-page {
@@ -283,19 +283,19 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             background: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
-            font-size: 8.4pt !important;
-            line-height: 1.13 !important;
-          }
-          .cv-sheet section, .ats-cv-section { margin-block: 3.5pt !important; }
-          .cv-sheet h2, .ats-cv-section h2 {
-            margin: 0 0 3pt !important;
-            font-size: 8.8pt !important;
+            font-size: 9pt !important;
             line-height: 1.1 !important;
+          }
+          .cv-sheet section, .ats-cv-section { margin-block: 2.5pt !important; }
+          .cv-sheet h2, .ats-cv-section h2 {
+            margin: 0 0 2pt !important;
+            font-size: 9.4pt !important;
+            line-height: 1.08 !important;
             break-after: avoid !important;
             page-break-after: avoid !important;
           }
           .cv-entry, .ats-cv-entry {
-            margin-bottom: 2pt !important;
+            margin-bottom: 1pt !important;
             break-inside: avoid !important;
             page-break-inside: avoid !important;
           }
@@ -303,8 +303,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .ats-cv-page p, .ats-cv-page li {
             margin-top: 0 !important;
             margin-bottom: 2pt !important;
-            font-size: 8.3pt !important;
-            line-height: 1.13 !important;
+            font-size: 9pt !important;
+            line-height: 1.1 !important;
             color: #000 !important;
           }
           .cv-sheet a, .ats-cv-page a { color: #000 !important; text-decoration: none !important; }
@@ -330,12 +330,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .ats-cv-header h1 { font-size: 14pt !important; }
           .cv-header { gap: 6pt !important; }
           .cv-sheet h1 { font-size: 14pt !important; line-height: 1.05 !important; margin: 0 0 2pt !important; }
-          .cv-sheet .cv-role { font-size: 8.6pt !important; margin-bottom: 2pt !important; }
+          .cv-sheet .cv-role { font-size: 9pt !important; margin-bottom: 1pt !important; }
           .cv-contact, .ats-cv-contact-block { font-size: 7.2pt !important; line-height: 1.1 !important; }
           .cv-sheet .cv-contact-row { gap: 5pt !important; }
           .cv-sheet .cv-entry-heading, .ats-cv-entry-heading { display: flex !important; justify-content: space-between !important; align-items: baseline !important; gap: 8pt !important; width: 100% !important; }
-          .cv-sheet .cv-entry-heading h3, .ats-cv-entry-heading h3 { margin: 0 !important; font-size: 8.4pt !important; line-height: 1.1 !important; }
-          .cv-sheet .cv-entry-heading strong, .ats-cv-entry-heading strong { margin-left: auto !important; white-space: nowrap !important; text-align: right !important; font-size: 8.1pt !important; line-height: 1.1 !important; }
+          .cv-sheet .cv-entry-heading h3, .ats-cv-entry-heading h3 { margin: 0 !important; font-size: 9pt !important; line-height: 1.08 !important; }
+          .cv-sheet .cv-entry-heading strong, .ats-cv-entry-heading strong { margin-left: auto !important; white-space: nowrap !important; text-align: right !important; font-size: 9pt !important; line-height: 1.08 !important; }
           .cv-education-details, .ats-cv-education-details { white-space: pre-line !important; }
           .cv-sheet .cv-academic-line { margin-bottom: 0 !important; }
           .cv-sheet .cv-academic-line p { margin: 0 !important; }
@@ -343,11 +343,11 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .cv-sheet .cv-skill-grid p, .ats-cv-skill-list p { margin-bottom: 1pt !important; }
           .cv-sheet .cv-header { margin-bottom: 3pt !important; }
           .cv-sheet .cv-photo { max-width: 18mm !important; }
-          .ats-cv-section { margin-block: 3.5pt !important; }
+          .ats-cv-section { margin-block: 2.5pt !important; }
           .ats-cv-entry-heading strong { flex-shrink: 0 !important; }
           .ats-cv-page .ats-cv-contact-block p { margin-bottom: 1pt !important; }
-          .ats-cv-page ul { margin: 1pt 0 2pt !important; padding-left: 10pt !important; }
-          .ats-cv-page li { margin-bottom: 0.5pt !important; }
+          .ats-cv-page ul { margin: 0.5pt 0 1pt !important; padding-left: 9pt !important; }
+          .ats-cv-page li { margin-bottom: 0 !important; }
         }
       `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
