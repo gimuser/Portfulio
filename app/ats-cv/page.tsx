@@ -23,15 +23,15 @@ export async function generateMetadata({ searchParams }: AtsCvPageProps): Promis
     title: `ATS CV | ${profile.name}`,
     description:
       language === "fr"
-        ? "CV ATS d'Oualid Ait Alla, étudiant en master Data Science et Sécurité des Systèmes d'Information, orienté ingénierie IA et machine learning."
-        : "ATS-friendly CV of Oualid Ait Alla, a Master's student targeting AI and machine learning engineering internships.",
+        ? "CV ATS d'AIT ALLA Oualid, étudiant en master Data Science et Sécurité des Systèmes d'Information, orienté ingénierie IA et machine learning."
+        : "ATS-friendly AI Engineering, Generative AI and Data Science CV of AIT ALLA Oualid.",
     openGraph: {
       locale: language === "fr" ? "fr_FR" : "en_US",
       title: language === "fr" ? `CV ATS | ${profile.name}` : `ATS CV | ${profile.name}`,
       description:
         language === "fr"
-          ? "CV ATS d'Oualid Ait Alla adapté au filtrage en français."
-          : "ATS-friendly CV of Oualid Ait Alla.",
+          ? "CV ATS d'AIT ALLA Oualid adapté au filtrage en français."
+          : "ATS-friendly CV of AIT ALLA Oualid.",
     },
   };
 }
