@@ -136,12 +136,20 @@ export const cvProfessionalExperience: CvExperience[] = [
     duration: { en: "2 months", fr: "2 mois" },
     bullets: [
       {
-        en: "Contributed to AI-related projects and technical work in a professional environment.",
-        fr: "Contribution à des projets et travaux liés à l’IA dans un environnement professionnel.",
+        en: "Contributed to an LLM-based document-processing workflow combining OCR, document parsing and indexing for retrieval.",
+        fr: "Contribution à un workflow de traitement documentaire basé sur les LLM, combinant l’OCR, l’analyse des documents et leur indexation pour la recherche.",
       },
       {
-        en: "Applied technical skills, analytical thinking, initiative, rigor, professionalism and autonomy to practical AI problem-solving.",
-        fr: "Mobilisation de compétences techniques, d’analyse, d’initiative, de rigueur, de professionnalisme et d’autonomie pour résoudre des problématiques concrètes en IA.",
+        en: "Implemented structured-output validation (JSON schema) and constrained generation to make LLM outputs reliable and machine-readable.",
+        fr: "Mise en place de la validation des sorties structurées (schéma JSON) et de la génération contrainte afin de rendre les sorties des LLM fiables et exploitables par machine.",
+      },
+      {
+        en: "Applied model quantization to run language models efficiently.",
+        fr: "Application de la quantification de modèles pour exécuter efficacement des modèles de langage.",
+      },
+      {
+        en: "Tested and evaluated pipeline outputs and worked autonomously on concrete AI problems in a professional team environment.",
+        fr: "Test et évaluation des sorties du pipeline, avec un travail autonome sur des problématiques concrètes d’IA au sein d’une équipe professionnelle.",
       },
     ],
   },
