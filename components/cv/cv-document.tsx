@@ -1,25 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Check, Copy, Download, FileText, Mail } from "lucide-react";
 import { useState } from "react";
-import { AtsCvDocument } from "@/components/cv/ats-cv-document";
+import { CvContent } from "@/components/cv/cv-content";
 import { useLanguage } from "@/components/layout/language-provider";
-import { SocialIcon } from "@/components/ui/social-icons";
-import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvAcademicProject, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
-import type { Language } from "@/types/content";
-import { localize } from "@/utils/localize";
-
-function getProjectSummary(project: CvProject, language: Language) {
-  return localize(project.summary, language);
-}
-
-function formatLanguageLevel(language: Language, name: string, level: string) {
-  return language === "fr" ? name + " : " + level : name + ": " + level;
-}
 
 export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | "ats" }) {
   const { language } = useLanguage();
@@ -44,38 +30,15 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
   const labels = language === "fr"
     ? {
-        print: isAts ? "Imprimer / Enregistrer" : "Imprimer / Enregistrer",
+        print: "Imprimer / Enregistrer",
         openOther: isAts ? "Voir le CV visuel" : "Voir le CV ATS",
         save: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
-        contact: "Coordonnées",
-        summary: "Profil professionnel",
-        education: "Formation",
-        skills: "Compétences techniques",
-        projects: "Projets sélectionnés",
-        professionalExperience: "Expérience professionnelle",
-        extraProject: "Projet académique complémentaire",
-        certifications: "Certifications et formations",
-        languages: "Langues",
-        technologies: "Technologies",
-        projectLink: "Projet",
       }
     : {
         print: "Print / Save",
         openOther: isAts ? "View visual CV" : "View ATS CV",
         save: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
-        contact: "Contact Information",
-        summary: "Professional Summary",
-        education: "Education",
-        skills: "Technical Skills",
-        projects: "Selected Projects",
-        professionalExperience: "Professional Experience",
-        extraProject: "Additional Academic Project",
-        certifications: "Certifications and Training",
-        languages: "Languages",
-        technologies: "Technologies",
-        projectLink: "Project",
       };
-
   const technicalSkillGroups = cvSkills;
   const selectedProjects = cvProjects;
   const visibleEducation = cvEducation;
@@ -108,148 +71,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         </Link>
       </div>
 
-      {isAts ? (
-        <AtsCvDocument />
-      ) : (
-        <article className="cv-sheet">
-          <header className="cv-header">
-            <Image
-              className="cv-photo"
-              src="/images/oualid-ait-alla.jpg"
-              alt={profile.name + " portrait"}
-              width={110}
-              height={138}
-              priority
-            />
-            <div className="cv-heading">
-              <h1>{profile.cvName}</h1>
-              <p className="cv-role">{localize(profile.displayRole, language)}</p>
-              <address className="cv-contact">
-                {contactRows.map((row, rowIndex) => (
-                  <span className="cv-contact-row" key={rowIndex}>
-                    {row.map((item) => (
-                      <a key={item.key} href={item.href}>
-                        {item.text}
-                      </a>
-                    ))}
-                  </span>
-                ))}
-              </address>
-            </div>
-          </header>
-
-          <section>
-            <h2>{labels.summary}</h2>
-            <p>{localize(atsProfessionalSummary, language)}</p>
-          </section>
-
-          <section>
-            <h2>{labels.education}</h2>
-            <div className="cv-list">
-              {visibleEducation.map((item) => (
-                <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>
-                  <p className="cv-education-details">{localize(item.details, language)}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2>{labels.skills}</h2>
-            <div className="cv-skill-grid">
-              {technicalSkillGroups.map((group) => (
-                <p key={group.title.en}>
-                  <strong>{localize(group.title, language)}:</strong> {localize(group.items, language)}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2>{labels.professionalExperience}</h2>
-            <div className="cv-list">
-              {professionalExperience.map((item) => (
-                <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
-                  {item.bullets.map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2>{labels.projects}</h2>
-            <div className="cv-list">
-              {selectedProjects.map((project) => (
-                <div className="cv-entry" key={project.slug}>
-                  <div className="cv-entry-heading">
-                    <h3>{localize(project.title, language)}</h3>
-                    <strong>{project.year}</strong>
-                  </div>
-                  <p>{getProjectSummary(project, language)}</p>
-                  <small><strong>{labels.technologies}:</strong> {project.technologies.join(", ")}</small>
-                  {project.github ? (
-                    <p><small><strong>{labels.projectLink}:</strong> {project.github}</small></p>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {visibleExperience.length > 0 ? (
-            <section>
-              <h2>{labels.extraProject}</h2>
-              <div className="cv-list">
-                {visibleExperience.map((item) => (
-                  <div key={item.year + "-" + item.title.en} className="cv-entry cv-academic-line">
-                    <p>
-                      <strong>{localize(item.title, language)}</strong> | {item.period ? localize(item.period, language) : item.year}
-                      {item.location ? " | " + localize(item.location, language) : ""}
-                      {item.duration ? " | " + localize(item.duration, language) : ""}
-                      {" — " + localize(item.bullets[0], language)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          {certifications.length > 0 ? (
-            <section>
-              <h2>{labels.certifications}</h2>
-              <div className="cv-list">
-                {certifications.map((certification) => (
-                  <div className="cv-entry" key={certification.name}>
-                    <div className="cv-entry-heading">
-                      <h3>{certification.name}</h3>
-                      <strong>{certification.date}</strong>
-                    </div>
-                    <p>{certification.organization}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          <section>
-            <h2>{labels.languages}</h2>
-            <p>
-              {cvLanguages
-                .map((item) => formatLanguageLevel(language, localize(item.name, language), localize(item.level, language)))
-                .join(" | ")}
-            </p>
-          </section>
-        </article>
-      )}
+      <CvContent showPhoto={!isAts} />
 
       <style jsx global>{`
         :root { --cv-space-unit: 4px; }
