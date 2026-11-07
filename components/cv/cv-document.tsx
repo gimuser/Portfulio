@@ -254,29 +254,82 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
       )}
 
       <style jsx global>{`
-        :root { --cv-space-unit: 0.25rem; }
-        .cv-sheet, .ats-cv-page { font-family: Arial, Helvetica, sans-serif; }
-        .cv-sheet section, .ats-cv-section { margin-block: calc(var(--cv-space-unit) * 1.5); }
-        .cv-sheet h2, .ats-cv-section h2 { margin: 0 0 calc(var(--cv-space-unit) * 0.5); font-size: 0.82rem; line-height: 1.15; break-after: avoid; page-break-after: avoid; }
+        :root { --cv-space-unit: 4px; }
+        .cv-sheet, .ats-cv-page {
+          font-family: Arial, Helvetica, sans-serif;
+          color: #000;
+          background: #fff;
+          box-shadow: none;
+        }
+        .cv-sheet section, .ats-cv-section { margin-block: 7pt; }
+        .cv-sheet h2, .ats-cv-section h2 {
+          margin: 0 0 3pt;
+          line-height: 1.15;
+          break-after: avoid;
+          page-break-after: avoid;
+        }
         .cv-entry, .ats-cv-entry { break-inside: avoid; page-break-inside: avoid; }
-        .cv-list, .ats-cv-list { gap: var(--cv-space-unit); }
+        .cv-list, .ats-cv-list { gap: 4pt; }
         @media print {
-          @page { size: A4; margin: 5mm; }
-          .cv-sheet { font-size: 7.5pt; line-height: 1.13; }
-          .cv-sheet section { margin-block: var(--cv-space-unit); }
-          .cv-sheet h2 { font-size: 8pt; margin-bottom: calc(var(--cv-space-unit) * 0.5); }
-          .cv-entry { margin-bottom: calc(var(--cv-space-unit) * 0.5); }
-          .cv-sheet p, .cv-sheet li, .cv-sheet small { line-height: 1.12; }
-          .ats-cv-page { width: auto; min-height: 0; height: auto; display: block; font-size: 7.2pt !important; line-height: 1.08 !important; }
-          .ats-cv-section, .ats-cv-compact-section { margin-top: calc(var(--cv-space-unit) * 0.5) !important; break-inside: auto; page-break-inside: auto; }
-          .ats-cv-section h2 { font-size: 7.6pt !important; margin-bottom: calc(var(--cv-space-unit) * 0.25) !important; padding-bottom: calc(var(--cv-space-unit) * 0.125) !important; }
-          .ats-cv-entry { margin-bottom: calc(var(--cv-space-unit) * 0.25); }
-          .ats-cv-entry-heading h3, .ats-cv-entry-heading strong { font-size: 7.2pt !important; line-height: 1.08 !important; }
-          .ats-cv-page p, .ats-cv-page li { margin-bottom: calc(var(--cv-space-unit) * 0.125) !important; line-height: 1.08 !important; }
-          .ats-cv-page ul { margin: calc(var(--cv-space-unit) * 0.125) 0 calc(var(--cv-space-unit) * 0.25) !important; padding-left: 0.8rem !important; }
-          .ats-cv-list, .ats-cv-skill-list { gap: calc(var(--cv-space-unit) * 0.25) !important; }
-          .ats-cv-header { margin-bottom: calc(var(--cv-space-unit) * 0.5) !important; padding-bottom: calc(var(--cv-space-unit) * 0.5) !important; }
-          .ats-cv-header h1 { font-size: 15pt !important; }
+          @page { size: A4; margin: 12mm; }
+          html, body { background: #fff !important; color: #000 !important; }
+          .cv-page { background: #fff !important; color: #000 !important; }
+          .cv-sheet, .ats-cv-page {
+            width: auto !important;
+            min-height: 0 !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            background: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            font-size: 9.5pt !important;
+            line-height: 1.25 !important;
+          }
+          .cv-sheet section, .ats-cv-section { margin-block: 7pt !important; }
+          .cv-sheet h2, .ats-cv-section h2 {
+            margin: 0 0 3pt !important;
+            font-size: 10pt !important;
+            line-height: 1.15 !important;
+            break-after: avoid !important;
+            page-break-after: avoid !important;
+          }
+          .cv-entry, .ats-cv-entry {
+            margin-bottom: 4pt !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+          .cv-sheet p, .cv-sheet li, .cv-sheet small,
+          .ats-cv-page p, .ats-cv-page li {
+            margin-top: 0 !important;
+            margin-bottom: 2pt !important;
+            font-size: 9.5pt !important;
+            line-height: 1.25 !important;
+            color: #000 !important;
+          }
+          .cv-sheet a, .ats-cv-page a { color: #000 !important; text-decoration: none !important; }
+          .cv-sheet *, .ats-cv-page * { box-shadow: none !important; text-shadow: none !important; }
+          .cv-controls, .cv-floating-actions, .no-print { display: none !important; }
+          .cv-photo { max-height: 24mm !important; width: auto !important; object-fit: cover !important; }
+          .cv-header { margin-bottom: 5pt !important; padding: 0 !important; gap: 8pt !important; }
+          .ats-cv-section, .ats-cv-compact-section {
+            margin-top: 7pt !important;
+            break-inside: auto !important;
+            page-break-inside: auto !important;
+          }
+          .ats-cv-entry-heading h3, .ats-cv-entry-heading strong {
+            font-size: 9.5pt !important;
+            line-height: 1.2 !important;
+          }
+          .ats-cv-page ul {
+            margin: 2pt 0 3pt !important;
+            padding-left: 12pt !important;
+          }
+          .ats-cv-list, .ats-cv-skill-list { gap: 4pt !important; }
+          .ats-cv-header { margin-bottom: 5pt !important; padding: 0 0 3pt !important; }
+          .ats-cv-header h1 { font-size: 16pt !important; }
         }
       `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
