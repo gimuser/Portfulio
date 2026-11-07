@@ -187,10 +187,10 @@ export const cvProjects: CvProject[] = [
     title: { en: "Islamic AI Chat", fr: "Islamic AI Chat" },
     year: "2026",
     summary: {
-      en: "AI-powered conversational application designed to answer user questions using retrieved reference content and structured response safeguards.",
-      fr: "Application conversationnelle basée sur l’IA, conçue pour répondre aux questions à partir de contenus de référence récupérés et de mécanismes de validation structurée des réponses.",
+      en: "Built a full-stack AI chat application with authentication, stored conversation history, configurable AI providers, and prompt-injection checks for a sensitive question-and-answering context.",
+      fr: "Développement d’une application full-stack de chat IA avec authentification, historique des conversations, fournisseurs IA configurables et contrôles contre les injections de prompt pour un contexte de questions-réponses sensible.",
     },
-    technologies: ["Generative AI", "RAG", "LLM Integration", "Prompt Engineering"],
+    technologies: ["TypeScript", "React", "Vite", "Node.js", "Express", "MongoDB", "OpenAI", "OpenRouter", "Ollama", "JWT"],
   },
   {
     slug: "car-price-prediction-system",
