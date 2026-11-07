@@ -2,11 +2,9 @@
 
 import { useLanguage } from "@/components/layout/language-provider";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvLanguages } from "@/data/cv";
-import { education, experience, profile } from "@/data/profile";
-import { projects } from "@/data/projects";
-import { skillGroups } from "@/data/skills";
-import type { Language, Project } from "@/types/content";
+import { atsProfessionalSummary, cvAcademicProject, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { profile } from "@/data/profile";
+import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
 
 const atsLabels = {
@@ -56,35 +54,8 @@ const atsLabels = {
   },
 } as const;
 
-const selectedProjectSlugs = [
-  "soar-rl-agent",
-  "bachelor-ai-tutor",
-  "islamic-ai-chat",
-  "car-price-prediction-system",
-];
-
-const atsSkillGroupPriority = [
-  "Generative AI and RAG",
-  "Machine Learning & AI",
-  "Data Science & Analytics",
-  "Programming",
-  "Backend and APIs",
-  "Data Management & Information Systems",
-  "Cybersecurity",
-];
-
-const atsSkillItemOverrides: Record<string, string[]> = {
-  "Generative AI and RAG": ["Retrieval-Augmented Generation (RAG)","Embeddings","Vector search","LLM integration","Prompt engineering","Ollama","OpenAI API","OpenRouter","Document processing","Structured output validation","Constrained generation","Model quantization","Document parsing"],
-  "Machine Learning & AI": ["Machine learning","Artificial intelligence","PyTorch","Deep learning","Model evaluation","Image classification"],
-  "Data Science & Analytics": ["Data cleaning","Exploratory data analysis","Feature engineering","Regression modeling","Data visualization","Scientific research","Scientific paper reading"],
-  "Programming": ["Python","SQL","TypeScript","JavaScript","C"],
-  "Backend and APIs": ["Node.js","Express","REST APIs","Next.js API routes"],
-  "Data Management & Information Systems": ["MongoDB","Mongoose","Prisma","SQLite","Database fundamentals","JSON schema validation"],
-  "Cybersecurity": ["Information systems security","Network security","Cryptography","Input validation","Rate limiting"],
-};
-
-function getAtsProjectSummary(project: Project, language: Language) {
-  return localize(project.atsSummary ?? project.cvSummary ?? project.summary, language);
+function getAtsProjectSummary(project: CvProject, language: Language) {
+  return localize(project.summary, language);
 }
 
 function formatLanguageLevel(language: Language, name: string, level: string) {
@@ -94,16 +65,11 @@ function formatLanguageLevel(language: Language, name: string, level: string) {
 export function AtsCvDocument() {
   const { language } = useLanguage();
   const labels = atsLabels[language];
-  const technicalSkillGroups = skillGroups
-    .filter((group) => Object.prototype.hasOwnProperty.call(atsSkillItemOverrides, group.title.en))
-    .map((group) => ({ ...group, items: atsSkillItemOverrides[group.title.en] }))
-    .sort((first, second) => atsSkillGroupPriority.indexOf(first.title.en) - atsSkillGroupPriority.indexOf(second.title.en));
-  const selectedProjects = selectedProjectSlugs
-    .map((slug) => projects.find((project) => project.slug === slug))
-    .filter((project): project is Project => Boolean(project));
-  const visibleEducation = education.slice(0, 3);
-  const professionalExperience = experience.filter((item) => item.title.en === "AI Engineering Intern");
-  const visibleExperience = experience.filter((item) => item.title.en === "Cybersecurity learning project");
+  const technicalSkillGroups = cvSkills;
+  const selectedProjects = cvProjects;
+  const visibleEducation = cvEducation;
+  const professionalExperience = cvProfessionalExperience;
+  const visibleExperience = [cvAcademicProject];
   const showCertifications = certifications.length > 0;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
@@ -156,6 +122,7 @@ export function AtsCvDocument() {
                 <strong>{item.period ? localize(item.period, language) : item.year}</strong>
               </div>
               <p>{localize(item.institution, language)}</p>
+              <p className="ats-cv-education-details">{localize(item.details, language)}</p>
             </div>
           ))}
         </div>
@@ -166,7 +133,7 @@ export function AtsCvDocument() {
         <div className="ats-cv-skill-list">
           {technicalSkillGroups.map((group) => (
             <p key={group.title.en}>
-              <strong>{localize(group.title, language)}:</strong> {group.items.join(", ")}
+              <strong>{localize(group.title, language)}:</strong> {localize(group.items, language)}
             </p>
           ))}
         </div>
@@ -183,7 +150,7 @@ export function AtsCvDocument() {
               </div>
               {item.organization ? <p><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
               <ul>
-                {item.bullets.slice(0, 1).map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}
+                {item.bullets.map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}
               </ul>
             </div>
           ))}
@@ -196,13 +163,13 @@ export function AtsCvDocument() {
           {selectedProjects.map((project) => (
             <div className="ats-cv-entry" key={project.slug}>
               <div className="ats-cv-entry-heading">
-                <h3>{project.title}</h3>
+                <h3>{localize(project.title, language)}</h3>
                 <strong>{project.year}</strong>
               </div>
               <p>{getAtsProjectSummary(project, language)}</p>
               <p><strong>{labels.technologies}:</strong> {project.technologies.join(", ")}</p>
-              {project.github.status === "available" && project.status.en.toLowerCase().includes("public") && !project.github.href.includes("[ADD") ? (
-                <p><strong>{labels.projectLink}:</strong> {project.github.href}</p>
+              {project.github ? (
+                <p><strong>{labels.projectLink}:</strong> {project.github}</p>
               ) : null}
             </div>
           ))}
@@ -213,19 +180,13 @@ export function AtsCvDocument() {
         <h2>{labels.sections.academicProject}</h2>
         <div className="ats-cv-list">
           {visibleExperience.map((item) => (
-            <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
-              <div className="ats-cv-entry-heading">
-                <h3>{localize(item.title, language)}</h3>
-                <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-              </div>
-              {item.location && item.duration ? (
-                <p>{localize(item.location, language)} | {localize(item.duration, language)}</p>
-              ) : null}
-              <ul>
-                {item.bullets.slice(0, 1).map((bullet) => (
-                  <li key={bullet.en}>{localize(bullet, language)}</li>
-                ))}
-              </ul>
+            <div className="ats-cv-entry ats-cv-academic-line" key={item.year + "-" + item.title.en}>
+              <p>
+                <strong>{localize(item.title, language)}</strong> | {item.period ? localize(item.period, language) : item.year}
+                {item.location ? " | " + localize(item.location, language) : ""}
+                {item.duration ? " | " + localize(item.duration, language) : ""}
+                {" — " + localize(item.bullets[0], language)}
+              </p>
             </div>
           ))}
         </div>

@@ -19,12 +19,12 @@ export async function generateMetadata({ searchParams }: CvPageProps): Promise<M
   const language = getInitialLanguage(lang);
 
   return {
-    title: language === "fr" ? "CV | AIT ALLA Oualid" : "CV | AIT ALLA Oualid",
-    keywords: ["AIT ALLA Oualid", "AI Engineering", "Generative AI", "Data Science", "Machine Learning", "Cybersecurity", "RAG"],
+    title: "Oualid_Ait_Alla_CV.pdf",
+    keywords: ["AIT ALLA Oualid", "AI Engineering", "Generative AI", "Data Science", "Machine Learning", "Cybersecurity", "RAG", "OCR", "Vector Indexing", "TensorFlow", "SPSS", "Power BI"],
     description:
       language === "fr"
-        ? "CV d’AIT ALLA Oualid en ingénierie IA, data science et cybersécurité."
-        : "AI Engineering and Data Science CV of AIT ALLA Oualid.",
+        ? "CV d’AIT ALLA Oualid en ingénierie IA, data science, IA générative et cybersécurité."
+        : "AI Engineering, Generative AI, Data Science and Cybersecurity CV of AIT ALLA Oualid.",
     openGraph: {
       locale: language === "fr" ? "fr_FR" : "en_US",
       title: language === "fr" ? "CV de AIT ALLA Oualid" : "AIT ALLA Oualid CV",

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FileText, Menu, Moon, Sun, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import en from "@/messages/en.json";
 import fr from "@/messages/fr.json";
 import { useLanguage } from "@/components/layout/language-provider";
@@ -24,7 +24,7 @@ const navItems = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
@@ -32,30 +32,26 @@ export function SiteHeader() {
   const isCvPage = pathname === "/cv" || pathname === "/ats-cv";
 
   useEffect(() => {
-    if (!isCvPage) {
-      setIsVisible(true);
-      return;
-    }
+    if (!isCvPage) return;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const previousScrollY = lastScrollY.current;
       const nearBottom =
         window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 24;
 
-      if (currentScrollY > lastScrollY && (nearBottom || currentScrollY > 160)) {
+      if (currentScrollY > previousScrollY && (nearBottom || currentScrollY > 160)) {
         setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
+      } else if (currentScrollY < previousScrollY) {
         setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isCvPage, lastScrollY]);
+  }, [isCvPage]);
 
   return (
     <header className={`site-header ${isCvPage ? (isVisible ? "is-visible" : "is-hidden") : ""}`}>
