@@ -175,8 +175,8 @@ export function CvContent({ showPhoto = false }: { showPhoto?: boolean }) {
         .cv-simple-heading { min-width: 0; flex: 1; }
         .cv-simple h1 { margin: 0 0 1mm; font-size: 19pt; line-height: 1.05; font-weight: 700; }
         .cv-simple-role { margin: 0 0 1mm; font-size: 11pt; font-weight: 700; }
-        .cv-simple-seeking { margin: 0 0 1mm; font-size: 8.8pt; }
-        .cv-simple-contact, .cv-simple-links { margin: 0 0 .5mm; font-size: 8.5pt; }
+        .cv-simple-seeking { margin: 0 0 1mm; font-size: 9pt; }
+        .cv-simple-contact, .cv-simple-links { margin: 0 0 .5mm; font-size: 9pt; }
         .cv-simple a { color: #000; text-decoration: none; }
         .cv-simple-section { margin: 2.6mm 0 0; break-inside: auto; }
         .cv-simple-summary { font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif; font-size: 9pt; line-height: 1.25; }
