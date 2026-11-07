@@ -13,7 +13,9 @@ import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
 
-function getProjectSummary(project: CvProject, language: Language) {\n  return localize(project.summary, language);\n}
+function getProjectSummary(project: CvProject, language: Language) {
+  return localize(project.summary, language);
+}
 
 function formatLanguageLevel(language: Language, name: string, level: string) {
   return language === "fr" ? name + " : " + level : name + ": " + level;
@@ -150,7 +152,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>\n                  <p>{localize(item.details, language)}</p>
+                  <p className="cv-muted">{localize(item.institution, language)}</p>
+                  <p>{localize(item.details, language)}</p>
                 </div>
               ))}
             </div>
@@ -177,7 +180,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
                   {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}{item.duration ? " | " + localize(item.duration, language) : ""}</p> : null}
-                  {item.bullets.slice(0, 1).map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
+                  {item.bullets.map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
                 </div>
               ))}
             </div>
@@ -250,6 +253,31 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         </article>
       )}
 
+      <style jsx global>{`
+        .cv-sheet, .ats-cv-page { font-family: Arial, Helvetica, sans-serif; }
+        .cv-sheet section, .ats-cv-section { margin-block: 0.38rem; }
+        .cv-sheet h2, .ats-cv-section h2 { margin: 0 0 0.16rem; font-size: 0.82rem; line-height: 1.15; break-after: avoid; page-break-after: avoid; }
+        .cv-entry, .ats-cv-entry { break-inside: avoid; page-break-inside: avoid; }
+        .cv-list, .ats-cv-list { gap: 0.22rem; }
+        @media print {
+          @page { size: A4; margin: 5mm; }
+          .cv-sheet { font-size: 7.5pt; line-height: 1.13; }
+          .cv-sheet section { margin-block: 0.24rem; }
+          .cv-sheet h2 { font-size: 8pt; margin-bottom: 0.1rem; }
+          .cv-entry { margin-bottom: 0.14rem; }
+          .cv-sheet p, .cv-sheet li, .cv-sheet small { line-height: 1.12; }
+          .ats-cv-page { width: auto; min-height: 0; height: auto; display: block; font-size: 7.2pt !important; line-height: 1.08 !important; }
+          .ats-cv-section, .ats-cv-compact-section { margin-top: 0.16rem !important; break-inside: auto; page-break-inside: auto; }
+          .ats-cv-section h2 { font-size: 7.6pt !important; margin-bottom: 0.06rem !important; padding-bottom: 0.03rem !important; }
+          .ats-cv-entry { margin-bottom: 0.07rem; }
+          .ats-cv-entry-heading h3, .ats-cv-entry-heading strong { font-size: 7.2pt !important; line-height: 1.08 !important; }
+          .ats-cv-page p, .ats-cv-page li { margin-bottom: 0.03rem !important; line-height: 1.08 !important; }
+          .ats-cv-page ul { margin: 0.02rem 0 0.04rem !important; padding-left: 0.8rem !important; }
+          .ats-cv-list, .ats-cv-skill-list { gap: 0.04rem !important; }
+          .ats-cv-header { margin-bottom: 0.16rem !important; padding-bottom: 0.14rem !important; }
+          .ats-cv-header h1 { font-size: 15pt !important; }
+        }
+      `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
         <button className="button button-secondary" type="button" onClick={() => window.print()}>
           <Download size={18} />
