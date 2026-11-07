@@ -42,7 +42,7 @@ const deugInstitution = masterInstitution;
 export const cvEducation: CvEducation[] = [
   {
     year: "2027",
-    period: { en: "Sep 2025 – Jul 2027 (expected)", fr: "Sept. 2025 – juil. 2027 (prévu)" },
+    period: { en: "Sep 2025 – Jul 2027 (expected)", fr: "Sept. 2025 – Juil. 2027 (prévu)" },
     title: {
       en: "Master’s Degree in Data Science and Information Systems Security (in progress)",
       fr: "Master en Data Science et Sécurité des Systèmes d’Information (en cours)",
@@ -55,7 +55,7 @@ export const cvEducation: CvEducation[] = [
   },
   {
     year: "2025",
-    period: { en: "2022 – 2025", fr: "2022 – 2025" },
+    period: { en: "2025", fr: "2025" },
     title: {
       en: "Bachelor’s Degree in Data Science and Information Systems Security",
       fr: "Licence en Data Science et Sécurité des Systèmes d’Information",
@@ -68,7 +68,7 @@ export const cvEducation: CvEducation[] = [
   },
   {
     year: "2024",
-    period: { en: "2022 – 2024", fr: "2022 – 2024" },
+    period: { en: "2024", fr: "2024" },
     title: {
       en: "DEUG in Mathematics and Computer Science",
       fr: "DEUG en Mathématiques et Informatique",
@@ -85,29 +85,29 @@ export const cvSkills: CvSkillGroup[] = [
   {
     title: { en: "AI and Machine Learning", fr: "IA et Machine Learning" },
     items: {
-      en: "TensorFlow, PyTorch, reinforcement learning",
-      fr: "TensorFlow, PyTorch, apprentissage par renforcement",
+      en: "Machine learning, deep learning, neural networks, model evaluation, feature engineering, optimization, exploratory data analysis (EDA), TensorFlow, PyTorch, reinforcement learning (DQN, DDQN)",
+      fr: "Machine learning, deep learning, réseaux de neurones, évaluation de modèles, feature engineering, optimisation, analyse exploratoire (EDA), TensorFlow, PyTorch, apprentissage par renforcement (DQN, DDQN)",
     },
   },
   {
     title: { en: "Generative AI and Document Processing", fr: "IA générative et traitement documentaire" },
     items: {
-      en: "RAG, LLM, OCR, vector indexing, document parsing, structured-output validation, constrained generation, quantization",
-      fr: "RAG, LLM, OCR, indexation vectorielle, analyse documentaire, validation des sorties structurées, génération contrainte, quantification",
+      en: "Prompt engineering, embeddings, LLM integration, RAG, Ollama, OpenAI API, OCR, vector indexing, document parsing, JSON Schema, structured-output validation, quantization",
+      fr: "Prompt engineering, embeddings, intégration de LLM, RAG, Ollama, API OpenAI, OCR, indexation vectorielle, analyse documentaire, JSON Schema, validation des sorties structurées, quantification",
     },
   },
   {
     title: { en: "Software Engineering", fr: "Génie logiciel" },
     items: {
-      en: "Python, TypeScript, FastAPI, React, Docker",
-      fr: "Python, TypeScript, FastAPI, React, Docker",
+      en: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose",
+      fr: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose",
     },
   },
   {
     title: { en: "Data and Databases", fr: "Données et bases de données" },
     items: {
-      en: "SQL/NoSQL, MongoDB, SPSS, Power BI",
-      fr: "SQL/NoSQL, MongoDB, SPSS, Power BI",
+      en: "SQL/NoSQL, MongoDB, Pandas, data visualization, Power BI, SPSS, Excel",
+      fr: "SQL/NoSQL, MongoDB, Pandas, visualisation de données, Power BI, SPSS, Excel",
     },
   },
   {
@@ -122,27 +122,27 @@ export const cvSkills: CvSkillGroup[] = [
 export const cvProfessionalExperience: CvExperience[] = [
   {
     year: "2026",
-    period: { en: "14 August 2026 – 14 October 2026", fr: "14 août 2026 – 14 octobre 2026" },
+    period: { en: "Aug 2026 – Oct 2026", fr: "Août 2026 – Oct. 2026" },
     title: { en: "AI Engineering Intern", fr: "Stagiaire ingénieur en intelligence artificielle" },
     organization: "SPORTScore SAS",
     location: { en: "Paris, France", fr: "Paris, France" },
-    duration: { en: "2 months", fr: "2 mois" },
+    
     bullets: [
       {
-        en: "Built a document-retrieval workflow combining OCR, parsing and indexing.",
-        fr: "Création d’un workflow de recherche documentaire combinant OCR, parsing et indexation.",
+        en: "Contributed to a document-retrieval workflow combining OCR, parsing and vector indexing.",
+        fr: "Contribution à un workflow de recherche documentaire combinant OCR, parsing et indexation vectorielle.",
       },
       {
-        en: "Validated structured outputs with JSON schema and constrained generation.",
-        fr: "Validation des sorties structurées avec JSON schema et génération contrainte.",
+        en: "Implemented structured-output validation using JSON Schema and constrained generation.",
+        fr: "Mise en œuvre de la validation des sorties structurées avec JSON Schema et génération contrainte.",
       },
       {
-        en: "Applied quantization for efficient LLM inference.",
-        fr: "Application de la quantification pour une inférence LLM efficace.",
+        en: "Applied model quantization to improve LLM inference efficiency.",
+        fr: "Application de la quantification des modèles pour améliorer l’efficacité de l’inférence LLM.",
       },
       {
-        en: "Tested pipeline outputs and independently evaluated results within the AI team.",
-        fr: "Test et évaluation autonome des résultats du pipeline au sein de l’équipe IA.",
+        en: "Evaluated pipeline outputs and documented results with the AI team.",
+        fr: "Évaluation des sorties du pipeline et documentation des résultats avec l’équipe IA.",
       },
     ],
   },
@@ -150,10 +150,10 @@ export const cvProfessionalExperience: CvExperience[] = [
 
 export const cvAcademicProject: CvExperience = {
   year: "2024",
-  period: { en: "March 2024 – May 2024", fr: "Mars 2024 – mai 2024" },
+  period: { en: "Mar 2024 – May 2024", fr: "Mars 2024 – Mai 2024" },
   title: { en: "Android Device Security Testing", fr: "Tests de sécurité d’un appareil Android" },
   location: { en: "Beni Mellal, Morocco", fr: "Béni Mellal, Maroc" },
-  duration: { en: "3 months", fr: "3 mois" },
+  
   bullets: [
     {
       en: "Tested Android device security with Kali Linux and Metasploit in an ethical lab; documented defensive findings.",
@@ -168,10 +168,10 @@ export const cvProjects: CvProject[] = [
     title: { en: "SOAR RL Agent", fr: "Agent RL pour SOAR" },
     year: "2026",
     summary: {
-      en: "Collaborative RL agent for security-alert triage and human-in-the-loop SOC workflows.",
-      fr: "Agent RL collaboratif pour le triage des alertes et les workflows SOC avec intervention humaine.",
+      en: "Collaborative reinforcement-learning project for security-alert triage in a simulated SOC: FastAPI backend, RL environment, reward system, DQN and DDQN agents, automated tests.",
+      fr: "Projet collaboratif d’apprentissage par renforcement pour le triage des alertes dans un SOC simulé : backend FastAPI, environnement RL, système de récompenses, agents DQN et DDQN, tests automatisés.",
     },
-    technologies: ["Python", "FastAPI", "RL", "SOAR", "Docker"],
+    technologies: ["Python", "FastAPI", "Reinforcement Learning", "DQN", "DDQN", "SOAR", "Docker Compose"],
     github: "https://github.com/gimuser/RL_Agent",
   },
   {
@@ -193,6 +193,7 @@ export const cvProjects: CvProject[] = [
       fr: "Chat IA full-stack avec authentification, historique, fournisseurs configurables et contrôles d’injection de prompt.",
     },
     technologies: ["TypeScript", "React", "Node.js", "MongoDB", "OpenAI", "OpenRouter", "Ollama", "JWT"],
+    github: "https://github.com/gimuser/repos-islamic_ai_chat",
   },
   {
     slug: "car-price-prediction-system",
@@ -210,10 +211,10 @@ export const cvLanguages: { name: LocalizedText; level: LocalizedText }[] = [
   { name: { en: "Arabic", fr: "Arabe" }, level: { en: "Native", fr: "langue maternelle" } },
   { name: { en: "English", fr: "Anglais" }, level: { en: "B2", fr: "B2" } },
   { name: { en: "French", fr: "Français" }, level: { en: "B2", fr: "B2" } },
-  { name: { en: "Spanish", fr: "Espagnol" }, level: { en: "Beginner", fr: "débutant" } },
+  { name: { en: "Spanish", fr: "Espagnol" }, level: { en: "Beginner", fr: "Débutant" } },
 ];
 
 export const atsProfessionalSummary: LocalizedText = {
-  en: "Master’s student in Data Science and Information Systems Security, focused on AI engineering, machine learning, generative AI and cybersecurity. Project experience in LLM/RAG and document-processing workflows.",
-  fr: "Étudiant en Master Data Science et Sécurité des Systèmes d’Information, spécialisé en ingénierie IA, machine learning, IA générative et cybersécurité. Expérience de projets en LLM/RAG et traitement documentaire.",
+  en: "AI Engineering Intern at SPORTScore SAS with experience in machine learning, generative AI and document-processing workflows. Seeking an internship in AI/ML, data science, software engineering or AI for cybersecurity.",
+  fr: "Stagiaire en ingénierie IA chez SPORTScore SAS, avec une expérience en machine learning, IA générative et traitement documentaire. Recherche un stage en IA/ML, data science, génie logiciel ou IA appliquée à la cybersécurité.",
 };
