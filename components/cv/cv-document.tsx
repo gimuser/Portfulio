@@ -29,6 +29,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
     : "Voici le " + activeCvName + " de " + profile.name + " : " + cvShareUrl;
   const encodedShareUrl = encodeURIComponent(cvShareUrl);
   const encodedShareText = encodeURIComponent(shareText);
+  const encodedShareSubject = encodeURIComponent(shareSubject);
   const copyCvLink = async () => {
     if (!navigator.clipboard) return;
     await navigator.clipboard.writeText(cvShareUrl);
