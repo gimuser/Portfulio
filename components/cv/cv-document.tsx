@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Check, Copy, Download, FileText, Mail } from "lucide-react";
 import { useState } from "react";
+import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { CvContent } from "@/components/cv/cv-content";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
@@ -53,7 +54,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         </Link>
       </div>
 
-      <CvContent showPhoto={!isAts} />
+      {isAts ? <AtsCvDocument /> : <CvContent showPhoto />}
 
 
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
