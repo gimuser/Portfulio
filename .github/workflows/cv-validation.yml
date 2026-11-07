@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - cv-professional-update
+      - cv-short-simple-final-2026-11-07
   pull_request:
     branches:
       - main
