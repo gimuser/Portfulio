@@ -172,6 +172,22 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </div>
           </section>
 
+          <section className="cv-section-education">
+            <h2>{labels.education}</h2>
+            <div className="cv-list">
+              {visibleEducation.map((item) => (
+                <div className="cv-entry" key={item.year + "-" + item.title.en}>
+                  <div className="cv-entry-heading cv-date-row">
+                    <h3>{localize(item.title, language)}</h3>
+                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+                  </div>
+                  <p className="cv-muted">{localize(item.institution, language)}</p>
+                  <p className="cv-education-details">{localize(item.details, language)}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="cv-section-projects">
             <h2>{labels.projects}</h2>
             <div className="cv-list">
@@ -186,22 +202,6 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                   {project.github ? (
                     <p><small><strong>{labels.projectLink}:</strong> {project.github}</small></p>
                   ) : null}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="cv-section-education">
-            <h2>{labels.education}</h2>
-            <div className="cv-list">
-              {visibleEducation.map((item) => (
-                <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading cv-date-row">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>
-                  <p className="cv-education-details">{localize(item.details, language)}</p>
                 </div>
               ))}
             </div>
@@ -421,7 +421,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               "header header"
               "summary summary"
               "skills experience"
-              "projects education"
+              "education projects"
               "certifications softskills"
               "languages languages" !important;
             align-content: start !important;
