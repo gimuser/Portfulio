@@ -7,8 +7,7 @@ import { useState } from "react";
 import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
-import { certifications } from "@/data/certifications";
-import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
+import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -51,7 +50,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         summary: "Profil professionnel",
         education: "Formation",
         skills: "Compétences techniques",
-        projects: "Projets professionnels",
+        projects: "Projets sélectionnés",
         professionalExperience: "Expérience professionnelle",
         certifications: "Certifications et formations",
         languages: "Langues",
@@ -67,7 +66,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         summary: "Professional Summary",
         education: "Education",
         skills: "Technical Skills",
-        projects: "Professional Projects",
+        projects: "Selected Projects",
         professionalExperience: "Professional Experience",
         certifications: "Certifications and Training",
         languages: "Languages",
@@ -88,9 +87,9 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
       { key: "phone", text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
     [
-      { key: "portfolio", text: profile.links.website.href, href: profile.links.website.href },
-      { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\//, ""), href: profile.links.linkedin.href },
-      { key: "github", text: profile.links.github.href.replace(/^https?:\/\//, ""), href: profile.links.github.href },
+      { key: "portfolio", text: profile.links.website.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.website.href },
+      { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.linkedin.href },
+      { key: "github", text: profile.links.github.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.github.href },
     ],
   ];
 
@@ -150,7 +149,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             <div className="cv-skill-grid">
               {technicalSkillGroups.map((group) => (
                 <p key={group.title.en}>
-                  <strong>{localize(group.title, language)}:</strong> {localize(group.items, language)}
+                  <strong>{localize(group.title, language)}{language === "fr" ? " :" : ":"}</strong> {localize(group.items, language)}
                 </p>
               ))}
             </div>
@@ -165,24 +164,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <h3>{localize(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                  {item.organization ? <p className="cv-muted"><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}</p> : null}
-                  {item.bullets.map((bullet) => <p key={bullet.en}>{localize(bullet, language)}</p>)}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="cv-section-education">
-            <h2>{labels.education}</h2>
-            <div className="cv-list">
-              {visibleEducation.map((item) => (
-                <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading cv-date-row">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>
-                  <p className="cv-education-details">{localize(item.details, language)}</p>
+                  {item.organization ? <p className="cv-muted"><em>{item.organization}</em>{item.location ? " | " + localize(item.location, language) : ""}</p> : null}
+                  <ul className="cv-bullets">{item.bullets.map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}</ul>
                 </div>
               ))}
             </div>
@@ -198,31 +181,26 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <strong>{project.year}</strong>
                   </div>
                   <p>{getProjectSummary(project, language)}</p>
+                  <p className="cv-technologies"><strong>{language === "fr" ? "Technologies :" : "Technologies:"}</strong> {project.technologies.join(", ")}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {certifications.length > 0 ? (
-            <section className="cv-section-certifications">
-              <h2>{labels.certifications}</h2>
-              <div className="cv-list">
-                {certifications.map((certification) => (
-                  <div className="cv-entry" key={certification.name}>
-                    <div className="cv-entry-heading cv-date-row">
-                      <h3>{certification.name}</h3>
-                      <strong>{certification.date}</strong>
-                    </div>
-                    <p>{certification.organization}</p>
+          <section className="cv-section-education">
+            <h2>{labels.education}</h2>
+            <div className="cv-list">
+              {visibleEducation.map((item) => (
+                <div className="cv-entry" key={item.year + "-" + item.title.en}>
+                  <div className="cv-entry-heading cv-date-row">
+                    <h3>{localize(item.title, language)}</h3>
+                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          <section className="cv-section-soft-skills">
-            <h2>{labels.softSkills}</h2>
-            <p>{localize(cvSoftSkills, language)}</p>
+                  <p className="cv-muted"><em>{localize(item.institution, language)}</em></p>
+                  <p className="cv-education-details">{localize(item.details, language)}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="cv-section-languages">
@@ -553,6 +531,130 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .cv-page[data-cv-variant="portfolio"] .cv-floating-actions {
             display: none !important;
           }
+        }
+
+        /* Portfolio CV layout: one readable column on screen and in print. */
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet {
+          width: min(210mm, calc(100% - 2rem)); margin: 0 auto; padding: 14mm 16mm;
+          background: #fff; color: #111; font-family: Arial, Helvetica, sans-serif;
+          font-size: 10pt; line-height: 1.3; display: block;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-header {
+          display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
+          gap: 6mm; max-height: 42mm; margin: 0 0 10pt; padding: 0; text-align: left;
+          border: 0; box-shadow: none; break-inside: avoid;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-photo {
+          display: block; flex: 0 0 30mm; width: 30mm; height: 40mm;
+          max-width: 30mm; max-height: 40mm; border-radius: 2mm;
+          object-fit: cover; object-position: center top;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-heading {
+          flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column;
+          justify-content: center; align-items: flex-start; text-align: left;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-heading h1 {
+          margin: 0 0 2pt; color: #111; font-size: 22pt; line-height: 1.08; font-weight: 700;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-role {
+          margin: 0 0 2pt; color: #111; font-size: 11pt; line-height: 1.2; font-weight: 700;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+        .cv-page[data-cv-variant="portfolio"] .cv-contact {
+          margin: 0 0 2pt; color: #111; font-size: 9.5pt; line-height: 1.2;
+          font-style: normal; text-align: left;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-contact {
+          display: flex; flex-direction: column; gap: 2pt; width: 100%;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+          display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1mm 3mm;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-contact a {
+          color: #111; text-decoration: none; overflow-wrap: anywhere;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet > section {
+          width: 100%; margin: 10pt 0 0; padding: 0; break-inside: auto;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet > section h2 {
+          margin: 0 0 4pt; padding: 0 0 2pt; color: #111; border-bottom: 0.6pt solid #444;
+          font-size: 11pt; line-height: 1.15; font-weight: 700; letter-spacing: 0.3pt;
+          text-transform: uppercase; break-after: avoid; page-break-after: avoid;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet h3 {
+          margin: 0; color: #111; font-size: 10pt; line-height: 1.25; font-weight: 700;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet p,
+        .cv-page[data-cv-variant="portfolio"] .cv-sheet li {
+          margin: 0 0 1.5pt; color: #111; font-size: 10pt; line-height: 1.3;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-muted { color: #444 !important; }
+        .cv-page[data-cv-variant="portfolio"] .cv-date-row {
+          display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; width: 100%;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-date-row h3 { flex: 1 1 auto; min-width: 0; }
+        .cv-page[data-cv-variant="portfolio"] .cv-date-row > strong {
+          flex: 0 0 auto; margin: 0; color: #444; font-size: 9pt; font-weight: 400;
+          white-space: nowrap; text-align: right;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-list {
+          display: flex; flex-direction: column; gap: 5pt;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-entry {
+          margin: 0; break-inside: avoid; page-break-inside: avoid;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-bullets {
+          margin: 1pt 0 0; padding-left: 4mm; list-style: disc;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-bullets li { margin: 0 0 1.5pt; padding: 0; }
+        .cv-page[data-cv-variant="portfolio"] .cv-skill-grid {
+          display: flex; flex-direction: column; gap: 2pt;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-skill-grid p,
+        .cv-page[data-cv-variant="portfolio"] .cv-technologies { margin: 0; }
+        @media (max-width: 680px) {
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet { width: calc(100% - 1rem); padding: 1rem; }
+          .cv-page[data-cv-variant="portfolio"] .cv-header { max-height: none; gap: 1rem; }
+          .cv-page[data-cv-variant="portfolio"] .cv-photo { width: 24mm; height: 32mm; flex-basis: 24mm; }
+          .cv-page[data-cv-variant="portfolio"] .cv-heading h1 { font-size: 18pt; }
+        }
+        @media print {
+          @page cv-portfolio { size: A4; margin: 14mm 16mm; }
+          .cv-page[data-cv-variant="portfolio"] {
+            width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet {
+            page: cv-portfolio; width: auto !important; min-height: 0 !important; height: auto !important;
+            margin: 0 !important; padding: 0 !important; box-shadow: none !important;
+            font-size: 10pt !important; line-height: 1.3 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-header {
+            max-height: 42mm !important; margin: 0 0 10pt !important; gap: 6mm !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-photo {
+            width: 30mm !important; height: 40mm !important; max-width: 30mm !important;
+            max-height: 40mm !important; object-fit: cover !important; object-position: center top !important;
+            border-radius: 2mm !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-heading { align-items: flex-start !important; text-align: left !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-heading h1 { font-size: 22pt !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-role { font-size: 11pt !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact a { font-size: 9.5pt !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet > section { margin-top: 10pt !important; break-inside: auto !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet > section h2 { margin-bottom: 4pt !important; font-size: 11pt !important; letter-spacing: 0.3pt !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet p,
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet li { font-size: 10pt !important; line-height: 1.3 !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-list { gap: 5pt !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-entry { break-inside: avoid !important; page-break-inside: avoid !important; }
+          .cv-page[data-cv-variant="portfolio"] .cv-controls,
+          .cv-page[data-cv-variant="portfolio"] .cv-floating-actions,
+          .cv-page[data-cv-variant="portfolio"] .no-print,
+          body:has(.cv-page[data-cv-variant="portfolio"]) .site-header,
+          body:has(.cv-page[data-cv-variant="portfolio"]) .footer { display: none !important; }
+          body:has(.cv-page[data-cv-variant="portfolio"]) main { margin: 0 !important; padding: 0 !important; }
+          html, body { background: #fff !important; color: #111 !important; }
         }
       `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
