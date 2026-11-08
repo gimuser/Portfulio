@@ -47,9 +47,16 @@ export function AtsCvDocument() {
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const portfolioUrl = profile.links.website.href.replace(/\/$/, "");
   const contactLines = [
-    [location, profile.email, profile.phone],
-    [portfolioUrl],
-    [profile.links.linkedin.href, profile.links.github.href],
+    [
+      { text: location },
+      { text: profile.email, href: "mailto:" + profile.email },
+      { text: profile.phone, href: "tel:" + profile.phone.replace(/\\s+/g, "") },
+    ],
+    [{ text: portfolioUrl, href: profile.links.website.href }],
+    [
+      { text: profile.links.linkedin.href.replace(/^https?:\\/\\//, ""), href: profile.links.linkedin.href },
+      { text: profile.links.github.href.replace(/^https?:\\/\\//, ""), href: profile.links.github.href },
+    ],
   ];
 
   return (
@@ -64,8 +71,8 @@ export function AtsCvDocument() {
         <h2>{t.contact}</h2>
         <div className="ats-cv-contact-block">
           {contactLines.map((line, index) => (
-            <p key={index}>{line.map((value, valueIndex) => (
-              <span key={value}>{valueIndex > 0 ? " | " : ""}{value}</span>
+            <p key={index}>{line.map((item, valueIndex) => (
+              <span key={item.text}>{valueIndex > 0 ? " | " : ""}{item.href ? <a href={item.href}>{item.text}</a> : item.text}</span>
             ))}</p>
           ))}
         </div>
@@ -118,8 +125,6 @@ export function AtsCvDocument() {
             <div className="ats-cv-entry" key={project.slug}>
               <EntryHeading title={localize(project.title, language)} date={project.year} />
               <p>{projectSummary(project, language)}</p>
-              <p><strong>{t.technologies}:</strong> {project.technologies.join(", ")}</p>
-              {project.github ? <p><strong>{t.project}:</strong> {project.github}</p> : null}
             </div>
           ))}
         </div>
