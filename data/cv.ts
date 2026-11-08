@@ -44,8 +44,8 @@ export const cvEducation: CvEducation[] = [
     year: "2027",
     period: { en: "Sep 2025 – Jul 2027 (expected)", fr: "Sept. 2025 – Juil. 2027 (prévu)" },
     title: {
-      en: "Master’s Degree in Data Science and Information Systems Security (in progress)",
-      fr: "Master en Data Science et Sécurité des Systèmes d’Information (en cours)",
+      en: "Master’s Degree in Data Science and Information Systems Security",
+      fr: "Master en Data Science et Sécurité des Systèmes d’Information",
     },
     institution: masterInstitution,
     details: {
@@ -122,7 +122,7 @@ export const cvSkills: CvSkillGroup[] = [
 export const cvProfessionalExperience: CvExperience[] = [
   {
     year: "2026",
-    period: { en: "Aug 2026 – Oct 2026", fr: "Août 2026 – Oct. 2026" },
+    period: { en: "Aug – Oct 2026", fr: "Août – Oct. 2026" },
     title: { en: "AI Engineering Intern", fr: "Stagiaire ingénieur en intelligence artificielle" },
     organization: "SPORTScore SAS",
     location: { en: "Paris, France", fr: "Paris, France" },
