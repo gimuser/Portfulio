@@ -8,7 +8,7 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvExperience, type CvProject } from "@/data/cv";
+import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -53,10 +53,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         skills: "Compétences techniques",
         projects: "Projets sélectionnés",
         professionalExperience: "Expérience professionnelle",
-        extraProject: "Projet académique complémentaire",
         certifications: "Certifications et formations",
         languages: "Langues",
-        softSkills: "Qualités professionnelles",
         technologies: "Technologies",
         projectLink: "Projet",
       }
@@ -70,10 +68,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         skills: "Technical Skills",
         projects: "Selected Projects",
         professionalExperience: "Professional Experience",
-        extraProject: "Additional Academic Project",
         certifications: "Certifications and Training",
         languages: "Languages",
-        softSkills: "Soft Skills",
         technologies: "Technologies",
         projectLink: "Project",
       };
@@ -82,7 +78,6 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   const selectedProjects = cvProjects;
   const visibleEducation = cvEducation;
   const professionalExperience = cvProfessionalExperience;
-  const visibleExperience: CvExperience[] = [];
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
     [
@@ -98,7 +93,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   ];
 
   return (
-    <div className="cv-page" id="content">
+    <div className="cv-page" id="content" data-cv-variant={isAts ? "ats" : "portfolio"}>
       <div className="cv-controls no-print">
         <button className="button" type="button" onClick={() => window.print()}>
           <Download size={18} />
@@ -119,8 +114,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               className="cv-photo"
               src="/images/oualid-ait-alla.jpg"
               alt={profile.name + " portrait"}
-              width={110}
-              height={138}
+              width={320}
+              height={400}
+              quality={100}
+              sizes="160px"
               priority
             />
             <div className="cv-heading">
@@ -141,28 +138,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </div>
           </header>
 
-          <section>
+          <section className="cv-section-summary">
             <h2>{labels.summary}</h2>
             <p>{localize(atsProfessionalSummary, language)}</p>
           </section>
 
-          <section>
-            <h2>{labels.education}</h2>
-            <div className="cv-list">
-              {visibleEducation.map((item) => (
-                <div className="cv-entry" key={item.year + "-" + item.title.en}>
-                  <div className="cv-entry-heading cv-date-row">
-                    <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
-                  </div>
-                  <p className="cv-muted">{localize(item.institution, language)}</p>
-                  <p className="cv-education-details">{localize(item.details, language)}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section>
+          <section className="cv-section-skills">
             <h2>{labels.skills}</h2>
             <div className="cv-skill-grid">
               {technicalSkillGroups.map((group) => (
@@ -173,7 +154,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </div>
           </section>
 
-          <section>
+          <section className="cv-section-experience">
             <h2>{labels.professionalExperience}</h2>
             <div className="cv-list">
               {professionalExperience.map((item) => (
@@ -189,7 +170,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </div>
           </section>
 
-          <section>
+          <section className="cv-section-projects">
             <h2>{labels.projects}</h2>
             <div className="cv-list">
               {selectedProjects.map((project) => (
@@ -208,26 +189,24 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </div>
           </section>
 
-          {visibleExperience.length > 0 ? (
-            <section>
-              <h2>{labels.extraProject}</h2>
-              <div className="cv-list">
-                {visibleExperience.map((item) => (
-                  <div key={item.year + "-" + item.title.en} className="cv-entry cv-academic-line">
-                    <div className="cv-entry-heading cv-date-row">
-                      <h3>{localize(item.title, language)}</h3>
-                      <strong>{localize(item.period, language)}</strong>
-                    </div>
-                    <p className="cv-muted">{localize(item.location ?? { en: "", fr: "" }, language)}</p>
-                    <p>{localize(item.bullets[0], language)}</p>
+          <section className="cv-section-education">
+            <h2>{labels.education}</h2>
+            <div className="cv-list">
+              {visibleEducation.map((item) => (
+                <div className="cv-entry" key={item.year + "-" + item.title.en}>
+                  <div className="cv-entry-heading cv-date-row">
+                    <h3>{localize(item.title, language)}</h3>
+                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
+                  <p className="cv-muted">{localize(item.institution, language)}</p>
+                  <p className="cv-education-details">{localize(item.details, language)}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
           {certifications.length > 0 ? (
-            <section>
+            <section className="cv-section-certifications">
               <h2>{labels.certifications}</h2>
               <div className="cv-list">
                 {certifications.map((certification) => (
@@ -243,12 +222,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             </section>
           ) : null}
 
-          <section>
-            <h2>{labels.softSkills}</h2>
-            <p>{localize(cvSoftSkills, language)}</p>
-          </section>
-
-          <section>
+          <section className="cv-section-languages">
             <h2>{labels.languages}</h2>
             <p>
               {cvLanguages
@@ -356,6 +330,172 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .ats-cv-page .ats-cv-contact-block p { margin-bottom: 1pt !important; }
           .ats-cv-page ul { margin: 0.5pt 0 1pt !important; padding-left: 9pt !important; }
           .ats-cv-page li { margin-bottom: 0 !important; }
+        }
+
+        /* Portfolio CV only: larger portrait and a compact, one-page A4 print layout. */
+        .cv-page[data-cv-variant="portfolio"] .cv-photo {
+          display: block !important;
+          width: 160px !important;
+          height: 200px !important;
+          max-width: none !important;
+          max-height: none !important;
+          aspect-ratio: 4 / 5;
+          object-fit: cover !important;
+          object-position: center;
+        }
+        body:has(.cv-page[data-cv-variant="portfolio"]) .footer {
+          display: none !important;
+        }
+        @media print {
+          @page { size: A4 portrait; margin: 5mm; }
+          body:has(.cv-page[data-cv-variant="portfolio"]) .site-header,
+          body:has(.cv-page[data-cv-variant="portfolio"]) .footer {
+            display: none !important;
+          }
+          body:has(.cv-page[data-cv-variant="portfolio"]) main {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+            grid-template-areas:
+              "header header"
+              "summary summary"
+              "skills experience"
+              "projects education"
+              "certifications languages" !important;
+            align-content: start !important;
+            align-items: start !important;
+            gap: 2.2mm 5mm !important;
+            width: 100% !important;
+            min-height: 0 !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            font-size: 9pt !important;
+            line-height: 1.12 !important;
+            break-inside: auto !important;
+            page-break-inside: auto !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-header {
+            grid-area: header;
+            display: flex !important;
+            align-items: center !important;
+            gap: 5mm !important;
+            margin: 0 0 1mm !important;
+            padding: 0 !important;
+            break-inside: avoid !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-photo {
+            width: 30mm !important;
+            height: 37.5mm !important;
+            max-width: 30mm !important;
+            max-height: 37.5mm !important;
+            aspect-ratio: 4 / 5 !important;
+            object-fit: cover !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-heading {
+            min-width: 0 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-summary { grid-area: summary; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-skills { grid-area: skills; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-experience { grid-area: experience; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-projects { grid-area: projects; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-education { grid-area: education; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-certifications { grid-area: certifications; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-languages { grid-area: languages; }
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet > section {
+            min-width: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            break-inside: auto !important;
+            page-break-inside: auto !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet h1 {
+            font-size: 15pt !important;
+            line-height: 1.05 !important;
+            margin: 0 0 1.5pt !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-role {
+            font-size: 9.5pt !important;
+            margin: 0 0 1pt !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact a {
+            font-size: 9pt !important;
+            line-height: 1.1 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 1mm 3mm !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet h2 {
+            font-size: 9.5pt !important;
+            line-height: 1.1 !important;
+            margin: 0 0 1.2pt !important;
+            padding: 0 0 0.5pt !important;
+            break-after: avoid !important;
+            page-break-after: avoid !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet h3,
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet .cv-entry-heading strong {
+            font-size: 9pt !important;
+            line-height: 1.1 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet p,
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet small,
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet li {
+            font-size: 9pt !important;
+            line-height: 1.12 !important;
+            margin-top: 0 !important;
+            margin-bottom: 1pt !important;
+            color: #000 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-entry {
+            margin: 0 0 1.3mm !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-list,
+          .cv-page[data-cv-variant="portfolio"] .cv-skill-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0 !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-entry-heading {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: baseline !important;
+            gap: 2mm !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-entry-heading strong {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] a {
+            color: #000 !important;
+            text-decoration: none !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .no-print,
+          .cv-page[data-cv-variant="portfolio"] .cv-controls,
+          .cv-page[data-cv-variant="portfolio"] .cv-floating-actions {
+            display: none !important;
+          }
         }
       `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
