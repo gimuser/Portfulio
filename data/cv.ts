@@ -219,6 +219,11 @@ export const cvSoftSkills: LocalizedText = {
   fr: "Esprit d’analyse · Résolution de problèmes · Autonomie et esprit d’initiative · Rigueur et attention aux détails · Professionnalisme · Engagement et assiduité",
 };
 
+export const cvProfessionalSummary: LocalizedText = {
+  en: "Master's student in the final year of Data Science and Information Systems Security at Sultan Moulay Slimane University. Completed a two-month AI Engineering internship at SPORTScore SAS, working on LLM-based document processing, structured-output validation and model quantization. Practical experience in machine learning, generative AI, RAG and reinforcement learning.",
+  fr: "Étudiant en dernière année de Master Data Science et Sécurité des Systèmes d’Information à l’Université Sultan Moulay Slimane. A effectué un stage de deux mois en ingénierie IA chez SPORTScore SAS, portant sur le traitement de documents avec des LLM, la validation des sorties structurées et la quantification de modèles. Expérience pratique en Machine Learning, IA générative, RAG et apprentissage par renforcement.",
+};
+
 export const atsProfessionalSummary: LocalizedText = {
   en: "Master's student in the final year of Data Science and Information Systems Security at Sultan Moulay Slimane University. Completed a two-month AI Engineering internship at SPORTScore SAS, working on LLM-based document processing, structured-output validation and model quantization. Practical experience in machine learning, generative AI, RAG and reinforcement learning. Seeking an internship in AI engineering, data science or cybersecurity.",
   fr: "Étudiant en dernière année de Master Data Science et Sécurité des Systèmes d’Information à l’Université Sultan Moulay Slimane. A effectué un stage de deux mois en ingénierie IA chez SPORTScore SAS, portant sur le traitement de documents avec des LLM, la validation des sorties structurées et la quantification de modèles. Expérience pratique en Machine Learning, IA générative, RAG et apprentissage par renforcement. À la recherche d’un stage en ingénierie IA, Data Science ou cybersécurité.",
