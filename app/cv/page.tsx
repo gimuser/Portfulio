@@ -19,7 +19,7 @@ export async function generateMetadata({ searchParams }: CvPageProps): Promise<M
   const language = getInitialLanguage(lang);
 
   return {
-    title: "Oualid_Ait_Alla_CV.pdf",
+    title: language === "fr" ? "CV | AIT ALLA Oualid – IA & Data Science" : "CV | AIT ALLA Oualid – AI & Data Science",
     keywords: ["AIT ALLA Oualid", "AI Engineering", "Generative AI", "Data Science", "Machine Learning", "Cybersecurity", "RAG", "OCR", "Vector Indexing", "TensorFlow", "SPSS", "Power BI"],
     description:
       language === "fr"
