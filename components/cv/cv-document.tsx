@@ -272,8 +272,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             background: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
-            font-size: 9pt !important;
-            line-height: 1.1 !important;
+            font-size: 10pt !important;
+            line-height: 1.15 !important;
           }
           .cv-sheet section, .ats-cv-section { margin-block: 2.5pt !important; }
           .cv-sheet h2, .ats-cv-section h2 {
@@ -292,8 +292,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .ats-cv-page p, .ats-cv-page li {
             margin-top: 0 !important;
             margin-bottom: 2pt !important;
-            font-size: 9pt !important;
-            line-height: 1.1 !important;
+            font-size: 10pt !important;
+            line-height: 1.15 !important;
             color: #000 !important;
           }
           .cv-sheet a, .ats-cv-page a { color: #000 !important; text-decoration: none !important; }
@@ -399,7 +399,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           display: none !important;
         }
         @media print {
-          @page { size: A4 portrait; margin: 5mm; }
+          @page { size: A4 portrait; margin: 6mm; }
           body:has(.cv-page[data-cv-variant="portfolio"]) .site-header,
           body:has(.cv-page[data-cv-variant="portfolio"]) .footer {
             display: none !important;
@@ -414,19 +414,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             margin: 0 !important;
             padding: 0 !important;
           }
+          /* Keep the portfolio CV in one readable vertical column. */
           .cv-page[data-cv-variant="portfolio"] > .cv-sheet {
-            display: grid !important;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-            grid-template-areas:
-              "header header"
-              "summary summary"
-              "skills experience"
-              "education projects"
-              "certifications softskills"
-              "languages languages" !important;
-            align-content: start !important;
-            align-items: start !important;
-            gap: 2.2mm 5mm !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 1.5mm !important;
             width: 100% !important;
             min-height: 0 !important;
             height: auto !important;
@@ -434,14 +427,12 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             padding: 0 !important;
             border: 0 !important;
             box-shadow: none !important;
-            font-size: 9pt !important;
-            line-height: 1.12 !important;
-            break-inside: auto !important;
-            page-break-inside: auto !important;
+            font-size: 10pt !important;
+            line-height: 1.16 !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-header {
-            grid-area: header;
             display: flex !important;
+            flex-direction: row !important;
             align-items: center !important;
             gap: 5mm !important;
             margin: 0 0 1mm !important;
@@ -449,10 +440,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             break-inside: avoid !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-photo {
-            width: 30mm !important;
-            height: 37.5mm !important;
-            max-width: 30mm !important;
-            max-height: 37.5mm !important;
+            width: 25mm !important;
+            height: 31.25mm !important;
+            max-width: 25mm !important;
+            max-height: 31.25mm !important;
             aspect-ratio: 4 / 5 !important;
             object-fit: cover !important;
           }
@@ -471,16 +462,13 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           }
           .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
             justify-content: center !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 1mm 3mm !important;
           }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-summary { grid-area: summary; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-skills { grid-area: skills; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-experience { grid-area: experience; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-projects { grid-area: projects; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-education { grid-area: education; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-certifications { grid-area: certifications; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-soft-skills { grid-area: softskills; }
-          .cv-page[data-cv-variant="portfolio"] .cv-section-languages { grid-area: languages; }
           .cv-page[data-cv-variant="portfolio"] > .cv-sheet > section {
+            display: block !important;
+            width: 100% !important;
             min-width: 0 !important;
             margin: 0 !important;
             padding: 0 !important;
@@ -488,49 +476,44 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             page-break-inside: auto !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-sheet h1 {
-            font-size: 15pt !important;
+            font-size: 17pt !important;
             line-height: 1.05 !important;
             margin: 0 0 1.5pt !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-role {
-            font-size: 9.5pt !important;
+            font-size: 10.5pt !important;
             margin: 0 0 1pt !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-tagline,
           .cv-page[data-cv-variant="portfolio"] .cv-contact,
           .cv-page[data-cv-variant="portfolio"] .cv-contact a {
-            font-size: 9pt !important;
-            line-height: 1.1 !important;
-          }
-          .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 1mm 3mm !important;
+            font-size: 9.5pt !important;
+            line-height: 1.12 !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-sheet h2 {
-            font-size: 9.5pt !important;
-            line-height: 1.1 !important;
-            margin: 0 0 1.2pt !important;
+            font-size: 11pt !important;
+            line-height: 1.12 !important;
+            margin: 0 0 1.5pt !important;
             padding: 0 0 0.5pt !important;
             break-after: avoid !important;
             page-break-after: avoid !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-sheet h3,
           .cv-page[data-cv-variant="portfolio"] .cv-sheet .cv-entry-heading strong {
-            font-size: 9pt !important;
-            line-height: 1.1 !important;
+            font-size: 10pt !important;
+            line-height: 1.12 !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-sheet p,
           .cv-page[data-cv-variant="portfolio"] .cv-sheet small,
           .cv-page[data-cv-variant="portfolio"] .cv-sheet li {
-            font-size: 9pt !important;
-            line-height: 1.12 !important;
+            font-size: 10pt !important;
+            line-height: 1.16 !important;
             margin-top: 0 !important;
-            margin-bottom: 1pt !important;
+            margin-bottom: 1.5pt !important;
             color: #000 !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-entry {
-            margin: 0 0 1.3mm !important;
+            margin: 0 0 1mm !important;
             break-inside: avoid !important;
             page-break-inside: avoid !important;
           }
