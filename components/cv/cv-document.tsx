@@ -198,10 +198,6 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                     <strong>{project.year}</strong>
                   </div>
                   <p>{getProjectSummary(project, language)}</p>
-                  <small><strong>{labels.technologies}:</strong> {project.technologies.join(", ")}</small>
-                  {project.github ? (
-                    <p><small><strong>{labels.projectLink}:</strong> {project.github}</small></p>
-                  ) : null}
                 </div>
               ))}
             </div>
