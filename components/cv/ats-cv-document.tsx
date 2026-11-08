@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/layout/language-provider";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvAcademicProject, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -12,15 +12,15 @@ const labels = {
     contact: "Contact Information", summary: "Professional Summary", education: "Education",
     skills: "Technical Skills", projects: "Selected Projects", experience: "Professional Experience",
     academic: "Additional Academic Project", certifications: "Certifications and Training",
-    languages: "Languages", technologies: "Technologies", project: "Project",
-    role: "AI / Machine Learning Engineer | Data Scientist",
+    languages: "Languages", softSkills: "Soft Skills", technologies: "Technologies", project: "Project",
+    role: "AI Engineer | Machine Learning Engineer | Data Scientist",
   },
   fr: {
     contact: "Coordonnées", summary: "Profil professionnel", education: "Formation",
     skills: "Compétences techniques", projects: "Projets sélectionnés", experience: "Expérience professionnelle",
     academic: "Projet académique complémentaire", certifications: "Certifications et formations",
-    languages: "Langues", technologies: "Technologies", project: "Projet",
-    role: "Ingénieur IA / Machine Learning | Data Scientist",
+    languages: "Langues", softSkills: "Qualités professionnelles", technologies: "Technologies", project: "Projet",
+    role: "Ingénieur IA | Ingénieur Machine Learning | Data Scientist",
   },
 } as const;
 
@@ -57,7 +57,7 @@ export function AtsCvDocument() {
       <header className="ats-cv-header">
         <h1>{profile.cvName}</h1>
         <p className="ats-cv-role">{t.role}</p>
-        <p className="ats-cv-tagline">{localize(profile.displayRole, language)}</p>
+        <p className="ats-cv-tagline">{language === "fr" ? "À la recherche d’un stage | Ingénierie IA, Data Science & Cybersécurité" : "Seeking an Internship | AI Engineering, Data Science & Cybersecurity"}</p>
       </header>
 
       <section className="ats-cv-section">
@@ -125,17 +125,6 @@ export function AtsCvDocument() {
         </div>
       </section>
 
-      <section className="ats-cv-section">
-        <h2>{t.academic}</h2>
-        <div className="ats-cv-list">
-          <div className="ats-cv-entry">
-            <EntryHeading title={localize(cvAcademicProject.title, language)} date={localize(cvAcademicProject.period, language)} />
-            <p>{localize(cvAcademicProject.location ?? { en: "", fr: "" }, language)}</p>
-            <p>{localize(cvAcademicProject.bullets[0], language)}</p>
-          </div>
-        </div>
-      </section>
-
       {certifications.length > 0 ? (
         <section className="ats-cv-section">
           <h2>{t.certifications}</h2>
@@ -149,6 +138,11 @@ export function AtsCvDocument() {
           </div>
         </section>
       ) : null}
+
+      <section className="ats-cv-section ats-cv-compact-section">
+        <h2>{t.softSkills}</h2>
+        <p>{localize(cvSoftSkills, language)}</p>
+      </section>
 
       <section className="ats-cv-section ats-cv-compact-section">
         <h2>{t.languages}</h2>

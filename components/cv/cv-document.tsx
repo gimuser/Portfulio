@@ -8,7 +8,7 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvAcademicProject, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -56,6 +56,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         extraProject: "Projet académique complémentaire",
         certifications: "Certifications et formations",
         languages: "Langues",
+        softSkills: "Qualités professionnelles",
         technologies: "Technologies",
         projectLink: "Projet",
       }
@@ -72,6 +73,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         extraProject: "Additional Academic Project",
         certifications: "Certifications and Training",
         languages: "Languages",
+        softSkills: "Soft Skills",
         technologies: "Technologies",
         projectLink: "Project",
       };
@@ -80,7 +82,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   const selectedProjects = cvProjects;
   const visibleEducation = cvEducation;
   const professionalExperience = cvProfessionalExperience;
-  const visibleExperience = [cvAcademicProject];
+  const visibleExperience: never[] = [];
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
     [
@@ -123,8 +125,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             />
             <div className="cv-heading">
               <h1>{profile.cvName}</h1>
-              <p className="cv-role">{language === "fr" ? "Ingénieur IA / Machine Learning | Data Scientist" : "AI / Machine Learning Engineer | Data Scientist"}</p>
-              <p className="cv-tagline">{localize(profile.displayRole, language)}</p>
+              <p className="cv-role">{language === "fr" ? "Ingénieur IA | Ingénieur Machine Learning | Data Scientist" : "AI Engineer | Machine Learning Engineer | Data Scientist"}</p>
+              <p className="cv-tagline">{language === "fr" ? "À la recherche d’un stage | Ingénierie IA, Data Science & Cybersécurité" : "Seeking an Internship | AI Engineering, Data Science & Cybersecurity"}</p>
               <address className="cv-contact">
                 {contactRows.map((row, rowIndex) => (
                   <span className="cv-contact-row" key={rowIndex}>
@@ -240,6 +242,11 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               </div>
             </section>
           ) : null}
+
+          <section>
+            <h2>{labels.softSkills}</h2>
+            <p>{localize(cvSoftSkills, language)}</p>
+          </section>
 
           <section>
             <h2>{labels.languages}</h2>

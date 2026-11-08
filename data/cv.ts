@@ -49,8 +49,8 @@ export const cvEducation: CvEducation[] = [
     },
     institution: masterInstitution,
     details: {
-      en: "Year 1 average: 14.54/20 (Semester 1: 15.66/20).\nGrades: Advanced ML 17.35/20; UML & Design Patterns 18/20; IoT Communication Technologies 16.65/20; Advanced Python 16.01/20; NoSQL 15.62/20.\nCoursework: Deep Learning, Reinforcement Learning, Advanced Data Analysis, Web Application Security.",
-      fr: "Moyenne de 1re année : 14,54/20 (S1 : 15,66/20).\nNotes : ML avancé 17,35/20 ; UML & Design Patterns 18/20 ; Technologies de communication IoT 16,65/20 ; Python avancé 16,01/20 ; NoSQL 15,62/20.\nCours : Deep Learning, Reinforcement Learning, analyse avancée des données, sécurité des applications web.",
+      en: "Courses & Grades: UML & Design Patterns (18/20) · Advanced Machine Learning (17.35/20) · IoT Communication Technologies (16.65/20) · Advanced Python (16.01/20) · NoSQL Databases (15.62/20).",
+      fr: "Matières & notes : UML & Design Patterns (18/20) · Machine Learning avancé (17,35/20) · Technologies de communication IoT (16,65/20) · Python avancé (16,01/20) · Bases de données NoSQL (15,62/20).",
     },
   },
   {
@@ -62,8 +62,8 @@ export const cvEducation: CvEducation[] = [
     },
     institution: masterInstitution,
     details: {
-      en: "Coursework: Cryptography, Networks and Security, Machine Learning.",
-      fr: "Cours : cryptographie, réseaux et sécurité, machine learning.",
+      en: "Relevant Coursework: Machine Learning · Feature Engineering · IoT · Information Systems Auditing · Cybersecurity · Python for Data Science.",
+      fr: "Matières principales : Machine Learning · Feature Engineering · IoT · Audit des systèmes d’information · Cybersécurité · Python pour la Data Science.",
     },
   },
   {
@@ -75,32 +75,46 @@ export const cvEducation: CvEducation[] = [
     },
     institution: deugInstitution,
     details: {
-      en: "Programming I 16.5/20, Operating Systems I 15.5/20.",
-      fr: "Programmation I 16,5/20, Systèmes d’exploitation I 15,5/20.",
+      en: "Relevant Coursework: Programming · Algorithms · Data Structures · Probability & Statistics · Operating Systems.",
+      fr: "Matières principales : Programmation · Algorithmique · Structures de données · Probabilités & Statistiques · Systèmes d’exploitation.",
     },
   },
 ];
 
 export const cvSkills: CvSkillGroup[] = [
   {
-    title: { en: "AI and Machine Learning", fr: "IA et Machine Learning" },
+    title: { en: "Generative AI", fr: "IA générative" },
     items: {
-      en: "Machine learning, deep learning, neural networks, model evaluation, feature engineering, optimization, EDA, TensorFlow, PyTorch, reinforcement learning, DQN, DDQN",
-      fr: "Machine learning, deep learning, réseaux de neurones, évaluation de modèles, feature engineering, optimisation, EDA, TensorFlow, PyTorch, apprentissage par renforcement, DQN, DDQN",
+      en: "LLMs, RAG, prompt engineering, embeddings, OCR, document processing, JSON Schema, model quantization",
+      fr: "LLM, RAG, prompt engineering, embeddings, OCR, traitement documentaire, JSON Schema, quantification de modèles",
     },
   },
   {
-    title: { en: "Generative AI and Data", fr: "IA générative et données" },
+    title: { en: "Machine Learning", fr: "Machine Learning" },
     items: {
-      en: "Prompt engineering, embeddings, LLM integration, RAG, Ollama, OpenAI API, OCR, vector indexing, document parsing, JSON Schema, structured-output validation, quantization, Pandas, SQL/NoSQL, MongoDB, data visualization, Power BI, SPSS, Excel",
-      fr: "Prompt engineering, embeddings, intégration de LLM, RAG, Ollama, API OpenAI, OCR, indexation vectorielle, analyse documentaire, JSON Schema, validation des sorties structurées, quantification, Pandas, SQL/NoSQL, MongoDB, visualisation de données, Power BI, SPSS, Excel",
+      en: "Machine Learning, Deep Learning, Reinforcement Learning (DQN, DDQN), feature engineering, model evaluation, TensorFlow, PyTorch, Scikit-learn",
+      fr: "Machine Learning, Deep Learning, apprentissage par renforcement (DQN, DDQN), feature engineering, évaluation de modèles, TensorFlow, PyTorch, Scikit-learn",
     },
   },
   {
-    title: { en: "Software Engineering and Cybersecurity", fr: "Génie logiciel et cybersécurité" },
+    title: { en: "Data Science", fr: "Data Science" },
     items: {
-      en: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose, cryptography, network security, firewalls, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
-      fr: "Python, TypeScript, Node.js, Express, FastAPI, React, Prisma, JWT, C, Docker, Docker Compose, cryptographie, sécurité réseau, pare-feu, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
+      en: "Python, Pandas, NumPy, data analysis, regression, Power BI, SPSS",
+      fr: "Python, Pandas, NumPy, analyse de données, régression, Power BI, SPSS",
+    },
+  },
+  {
+    title: { en: "Databases", fr: "Bases de données" },
+    items: {
+      en: "SQL, NoSQL, MongoDB",
+      fr: "SQL, NoSQL, MongoDB",
+    },
+  },
+  {
+    title: { en: "Cybersecurity", fr: "Cybersécurité" },
+    items: {
+      en: "Network security, web application security, cryptography, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
+      fr: "Sécurité réseau, sécurité des applications web, cryptographie, IDS/IPS, Burp Suite, Kali Linux, Metasploit",
     },
   },
 ];
@@ -165,20 +179,20 @@ export const cvProjects: CvProject[] = [
     title: { en: "BachelorAI Tutor", fr: "BachelorAI Tutor" },
     year: "2026",
     summary: {
-      en: "RAG tutor that retrieves course material by semester and module and generates source-grounded answers.",
-      fr: "Tuteur RAG qui retrouve les cours par semestre et module et génère des réponses fondées sur les sources.",
+      en: "RAG-based educational assistant providing answers grounded in academic course materials.",
+      fr: "Assistant pédagogique basé sur RAG, fournissant des réponses fondées sur les supports de cours.",
     },
-    technologies: ["Python", "LLM", "RAG", "Ollama", "React", "MongoDB"],
+    technologies: ["Python", "MongoDB", "Ollama", "RAG"],
   },
   {
     slug: "islamic-ai-chat",
     title: { en: "Islamic AI Chat", fr: "Islamic AI Chat" },
     year: "2026",
     summary: {
-      en: "Full-stack AI chat with authentication, conversation history, configurable providers and prompt-injection checks.",
-      fr: "Chat IA full-stack avec authentification, historique, fournisseurs configurables et contrôles d’injection de prompt.",
+      en: "AI chat application providing answers grounded in trusted Islamic references, with authentication and prompt-injection checks.",
+      fr: "Application de chat IA fournissant des réponses fondées sur des références islamiques fiables, avec authentification et protection contre l’injection de prompt.",
     },
-    technologies: ["TypeScript", "React", "Node.js", "MongoDB", "OpenAI", "OpenRouter", "Ollama", "JWT"],
+    technologies: ["MongoDB", "LLMs", "JWT"],
     github: "https://github.com/gimuser/repos-islamic_ai_chat",
   },
   {
@@ -186,8 +200,8 @@ export const cvProjects: CvProject[] = [
     title: { en: "Car Price Prediction System", fr: "Système de prédiction des prix des voitures" },
     year: "2025",
     summary: {
-      en: "Python regression workflow for car-price estimation, from data cleaning and feature engineering to evaluation.",
-      fr: "Workflow de régression Python pour estimer les prix, du nettoyage des données au feature engineering et à l’évaluation.",
+      en: "Machine-learning project for car price estimation using data analysis and regression.",
+      fr: "Projet de Machine Learning pour l’estimation des prix automobiles à partir de l’analyse des données et de la régression.",
     },
     technologies: ["Python", "Pandas", "Regression"],
   },
@@ -200,7 +214,12 @@ export const cvLanguages: { name: LocalizedText; level: LocalizedText }[] = [
   { name: { en: "Spanish", fr: "Espagnol" }, level: { en: "Beginner", fr: "Débutant" } },
 ];
 
+export const cvSoftSkills: LocalizedText = {
+  en: "Analytical Thinking · Problem-Solving · Autonomy & Initiative · Rigor & Attention to Detail · Professionalism · Commitment & Diligence",
+  fr: "Esprit d’analyse · Résolution de problèmes · Autonomie et esprit d’initiative · Rigueur et attention aux détails · Professionnalisme · Engagement et assiduité",
+};
+
 export const atsProfessionalSummary: LocalizedText = {
-  en: "AI Engineering Intern at SPORTScore SAS with experience in machine learning, generative AI and document-processing workflows. Seeking an internship in AI/ML, data science, software engineering or AI for cybersecurity.",
-  fr: "Stagiaire en ingénierie IA chez SPORTScore SAS, avec une expérience en machine learning, IA générative et traitement documentaire. Recherche un stage en IA/ML, data science, génie logiciel ou IA appliquée à la cybersécurité.",
+  en: "Master's student in the final year of Data Science and Information Systems Security at Sultan Moulay Slimane University. Completed a two-month AI Engineering internship at SPORTScore SAS, working on LLM-based document processing, structured-output validation and model quantization. Practical experience in machine learning, generative AI, RAG and reinforcement learning. Seeking an internship in AI engineering, data science or cybersecurity.",
+  fr: "Étudiant en dernière année de Master Data Science et Sécurité des Systèmes d’Information à l’Université Sultan Moulay Slimane. A effectué un stage de deux mois en ingénierie IA chez SPORTScore SAS, portant sur le traitement de documents avec des LLM, la validation des sorties structurées et la quantification de modèles. Expérience pratique en Machine Learning, IA générative, RAG et apprentissage par renforcement. À la recherche d’un stage en ingénierie IA, Data Science ou cybersécurité.",
 };
