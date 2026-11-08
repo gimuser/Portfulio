@@ -77,7 +77,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
       };
 
   const technicalSkillGroups = cvSkills;
-  const selectedProjects = cvProjects;
+  const selectedProjects = isAts ? cvProjects : cvProjects.filter((project) => project.slug !== "car-price-prediction-system");
   const visibleEducation = cvEducation;
   const professionalExperience = cvProfessionalExperience;
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
@@ -440,10 +440,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             break-inside: avoid !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-photo {
-            width: 25mm !important;
-            height: 31.25mm !important;
-            max-width: 25mm !important;
-            max-height: 31.25mm !important;
+            width: 30mm !important;
+            height: 37.5mm !important;
+            max-width: 30mm !important;
+            max-height: 37.5mm !important;
             aspect-ratio: 4 / 5 !important;
             object-fit: cover !important;
           }
