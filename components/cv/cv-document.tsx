@@ -8,7 +8,7 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
+import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvExperience, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -82,7 +82,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   const selectedProjects = cvProjects;
   const visibleEducation = cvEducation;
   const professionalExperience = cvProfessionalExperience;
-  const visibleExperience: never[] = [];
+  const visibleExperience: CvExperience[] = [];
   const location = language === "fr" ? "Beni Mellal, Maroc" : profile.location;
   const contactRows = [
     [
