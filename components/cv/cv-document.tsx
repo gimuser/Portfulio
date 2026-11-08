@@ -8,7 +8,7 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -55,6 +55,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         professionalExperience: "Expérience professionnelle",
         certifications: "Certifications et formations",
         languages: "Langues",
+        softSkills: "Compétences comportementales",
         technologies: "Technologies",
         projectLink: "Projet",
       }
@@ -70,6 +71,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         professionalExperience: "Professional Experience",
         certifications: "Certifications and Training",
         languages: "Languages",
+        softSkills: "Soft Skills",
         technologies: "Technologies",
         projectLink: "Project",
       };
@@ -221,6 +223,11 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               </div>
             </section>
           ) : null}
+
+          <section className="cv-section-soft-skills">
+            <h2>{labels.softSkills}</h2>
+            <p>{localize(cvSoftSkills, language)}</p>
+          </section>
 
           <section className="cv-section-languages">
             <h2>{labels.languages}</h2>
@@ -390,7 +397,8 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               "summary summary"
               "skills experience"
               "projects education"
-              "certifications languages" !important;
+              "certifications softskills"
+              "languages languages" !important;
             align-content: start !important;
             align-items: start !important;
             gap: 2.2mm 5mm !important;
@@ -445,6 +453,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .cv-page[data-cv-variant="portfolio"] .cv-section-projects { grid-area: projects; }
           .cv-page[data-cv-variant="portfolio"] .cv-section-education { grid-area: education; }
           .cv-page[data-cv-variant="portfolio"] .cv-section-certifications { grid-area: certifications; }
+          .cv-page[data-cv-variant="portfolio"] .cv-section-soft-skills { grid-area: softskills; }
           .cv-page[data-cv-variant="portfolio"] .cv-section-languages { grid-area: languages; }
           .cv-page[data-cv-variant="portfolio"] > .cv-sheet > section {
             min-width: 0 !important;
