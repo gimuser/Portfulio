@@ -8,7 +8,7 @@ import { AtsCvDocument } from "@/components/cv/ats-cv-document";
 import { useLanguage } from "@/components/layout/language-provider";
 import { SocialIcon } from "@/components/ui/social-icons";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
+import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -140,7 +140,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
           <section className="cv-section-summary">
             <h2>{labels.summary}</h2>
-            <p>{localize(atsProfessionalSummary, language)}</p>
+            <p>{localize(cvProfessionalSummary, language)}</p>
           </section>
 
           <section className="cv-section-skills">
