@@ -346,6 +346,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         body:has(.cv-page[data-cv-variant="portfolio"]) .footer {
           display: none !important;
         }
+        body:has(.cv-page[data-cv-variant="portfolio"]) .site-header .brand,
+        body:has(.cv-page[data-cv-variant="portfolio"]) .site-header .button-small {
+          display: none !important;
+        }
         @media print {
           @page { size: A4 portrait; margin: 5mm; }
           body:has(.cv-page[data-cv-variant="portfolio"]) .site-header,
