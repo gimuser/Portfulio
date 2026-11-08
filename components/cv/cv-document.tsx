@@ -16,6 +16,17 @@ function getProjectSummary(project: CvProject, language: Language) {
   return localize(project.summary, language);
 }
 
+function formatPortfolioExperiencePeriod(period: { en: string; fr: string }, language: Language) {
+  const value = localize(period, language);
+  return language === "fr"
+    ? value.replace("Août 2026 – Oct. 2026", "Août – Oct. 2026")
+    : value.replace("Aug 2026 – Oct 2026", "Aug – Oct 2026");
+}
+
+function formatPortfolioEducationTitle(title: { en: string; fr: string }, language: Language) {
+  return localize(title, language).replace(/ \((?:in progress|en cours)\)$/, "");
+}
+
 function formatLanguageLevel(language: Language, name: string, level: string) {
   return language === "fr" ? name + " : " + level : name + ": " + level;
 }
@@ -162,7 +173,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
                 <div className="cv-entry" key={item.year + "-" + item.title.en}>
                   <div className="cv-entry-heading cv-date-row">
                     <h3>{localize(item.title, language)}</h3>
-                    <strong>{item.period ? localize(item.period, language) : item.year}</strong>
+                    <strong>{item.period ? formatPortfolioExperiencePeriod(item.period, language) : item.year}</strong>
                   </div>
                   {item.organization ? <p className="cv-muted"><em>{item.organization}</em>{item.location ? " | " + localize(item.location, language) : ""}</p> : null}
                   <ul className="cv-bullets">{item.bullets.map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}</ul>
@@ -193,7 +204,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
               {visibleEducation.map((item) => (
                 <div className="cv-entry" key={item.year + "-" + item.title.en}>
                   <div className="cv-entry-heading cv-date-row">
-                    <h3>{localize(item.title, language)}</h3>
+                    <h3>{formatPortfolioEducationTitle(item.title, language)}</h3>
                     <strong>{item.period ? localize(item.period, language) : item.year}</strong>
                   </div>
                   <p className="cv-muted"><em>{localize(item.institution, language)}</em></p>
