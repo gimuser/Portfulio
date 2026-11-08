@@ -77,19 +77,6 @@ export function AtsCvDocument() {
       </section>
 
       <section className="ats-cv-section">
-        <h2>{t.education}</h2>
-        <div className="ats-cv-list">
-          {cvEducation.map((item) => (
-            <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
-              <EntryHeading title={localize(item.title, language)} date={localize(item.period, language)} />
-              <p>{localize(item.institution, language)}</p>
-              <p>{localize(item.details, language)}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="ats-cv-section">
         <h2>{t.skills}</h2>
         <div className="ats-cv-skill-list">
           {cvSkills.map((group) => (
@@ -106,6 +93,19 @@ export function AtsCvDocument() {
               <EntryHeading title={localize(item.title, language)} date={localize(item.period, language)} />
               {item.organization ? <p><strong>{item.organization}</strong>{item.location ? " | " + localize(item.location, language) : ""}</p> : null}
               <ul>{item.bullets.map((bullet) => <li key={bullet.en}>{localize(bullet, language)}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="ats-cv-section">
+        <h2>{t.education}</h2>
+        <div className="ats-cv-list">
+          {cvEducation.map((item) => (
+            <div className="ats-cv-entry" key={item.year + "-" + item.title.en}>
+              <EntryHeading title={localize(item.title, language)} date={localize(item.period, language)} />
+              <p>{localize(item.institution, language)}</p>
+              <p>{localize(item.details, language)}</p>
             </div>
           ))}
         </div>
