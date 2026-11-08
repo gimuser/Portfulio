@@ -51,7 +51,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         summary: "Profil professionnel",
         education: "Formation",
         skills: "Compétences techniques",
-        projects: "Projets sélectionnés",
+        projects: "Projets professionnels",
         professionalExperience: "Expérience professionnelle",
         certifications: "Certifications et formations",
         languages: "Langues",
@@ -66,7 +66,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         summary: "Professional Summary",
         education: "Education",
         skills: "Technical Skills",
-        projects: "Selected Projects",
+        projects: "Professional Projects",
         professionalExperience: "Professional Experience",
         certifications: "Certifications and Training",
         languages: "Languages",
@@ -333,6 +333,22 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         }
 
         /* Portfolio CV only: larger portrait and a compact, one-page A4 print layout. */
+        .cv-page[data-cv-variant="portfolio"] .cv-heading {
+          flex: 1 1 0;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-contact {
+          width: 100%;
+          text-align: center;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+          justify-content: center;
+        }
         .cv-page[data-cv-variant="portfolio"] .cv-photo {
           display: block !important;
           width: 160px !important;
@@ -408,7 +424,20 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
             object-fit: cover !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-heading {
+            flex: 1 1 0 !important;
             min-width: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-contact {
+            width: 100% !important;
+            text-align: center !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+            justify-content: center !important;
           }
           .cv-page[data-cv-variant="portfolio"] .cv-section-summary { grid-area: summary; }
           .cv-page[data-cv-variant="portfolio"] .cv-section-skills { grid-area: skills; }
