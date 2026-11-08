@@ -339,6 +339,31 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           .ats-cv-page li { margin-bottom: 0 !important; }
         }
 
+        /* Center the identity header consistently in both visual and ATS CV formats. */
+        .cv-page[data-cv-variant="ats"] .ats-cv-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+        .cv-page[data-cv-variant="ats"] .ats-cv-header p {
+          width: 100%;
+          text-align: center;
+        }
+        @media print {
+          .cv-page[data-cv-variant="ats"] .ats-cv-header {
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+          .cv-page[data-cv-variant="ats"] .ats-cv-header p {
+            text-align: center !important;
+          }
+        }
+
         /* Portfolio CV only: larger portrait and a compact, one-page A4 print layout. */
         .cv-page[data-cv-variant="portfolio"] .cv-heading {
           flex: 1 1 0;
