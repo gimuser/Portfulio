@@ -238,6 +238,17 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
       <style jsx global>{`
         :root { --cv-space-unit: 4px; }
+        /* Remove the separator beneath the CV identity header. */
+        .cv-page[data-cv-variant="portfolio"] .cv-header,
+        .cv-page[data-cv-variant="ats"] .ats-cv-header {
+          border-bottom: 0 !important;
+          box-shadow: none !important;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-header::after,
+        .cv-page[data-cv-variant="ats"] .ats-cv-header::after {
+          display: none !important;
+          content: none !important;
+        }
         .cv-sheet, .ats-cv-page {
           font-family: Arial, Helvetica, sans-serif;
           color: #000;
