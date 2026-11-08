@@ -88,7 +88,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
     ],
     [
       { key: "portfolio", text: profile.links.website.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.website.href },
-      { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.linkedin.href },
+      { key: "linkedin", text: profile.links.linkedin.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), href: profile.links.linkedin.href },
       { key: "github", text: profile.links.github.href.replace(/^https?:\/\/(www\.)?/, ""), href: profile.links.github.href },
     ],
   ];
