@@ -50,12 +50,12 @@ export function AtsCvDocument() {
     [
       { text: location },
       { text: profile.email, href: "mailto:" + profile.email },
-      { text: profile.phone, href: "tel:" + profile.phone.replace(/\\s+/g, "") },
+      { text: profile.phone, href: "tel:" + profile.phone.replace(/\s+/g, "") },
     ],
     [{ text: portfolioUrl, href: profile.links.website.href }],
     [
-      { text: profile.links.linkedin.href.replace(/^https?:\\/\\//, ""), href: profile.links.linkedin.href },
-      { text: profile.links.github.href.replace(/^https?:\\/\\//, ""), href: profile.links.github.href },
+      { text: profile.links.linkedin.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), href: profile.links.linkedin.href },
+      { text: profile.links.github.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), href: profile.links.github.href },
     ],
   ];
 
