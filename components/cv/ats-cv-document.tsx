@@ -65,18 +65,14 @@ export function AtsCvDocument() {
         <h1>{profile.cvName}</h1>
         <p className="ats-cv-role">{t.role}</p>
         <p className="ats-cv-tagline">{language === "fr" ? "À la recherche d’un stage | Ingénierie IA, Data Science & Cybersécurité" : "Seeking an Internship | AI Engineering, Data Science & Cybersecurity"}</p>
-      </header>
-
-      <section className="ats-cv-section">
-        <h2>{t.contact}</h2>
-        <div className="ats-cv-contact-block">
+        <address className="ats-cv-contact-block">
           {contactLines.map((line, index) => (
             <p key={index}>{line.map((item, valueIndex) => (
               <span key={item.text}>{valueIndex > 0 ? " | " : ""}{item.href ? <a href={item.href}>{item.text}</a> : item.text}</span>
             ))}</p>
           ))}
-        </div>
-      </section>
+        </address>
+      </header>
 
       <section className="ats-cv-section">
         <h2>{t.summary}</h2>
