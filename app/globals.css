@@ -3292,3 +3292,40 @@ img {
     text-align: center !important;
   }
 }
+
+
+/* ATS screen presentation follows the portfolio CV's clean typography and spacing. */
+.cv-page[data-cv-variant="ats"] .ats-cv-page {
+  width: min(210mm, calc(100% - 2rem));
+  padding: 14mm 16mm;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-section {
+  margin-top: 10pt;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-section h2 {
+  margin: 0 0 4pt;
+  padding: 0 0 2pt;
+  border-bottom: 0.6pt solid #444;
+  font-size: 11pt;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.3pt;
+  text-transform: uppercase;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-entry h3 {
+  font-size: 10pt;
+  line-height: 1.25;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-page p,
+.cv-page[data-cv-variant="ats"] .ats-cv-page li {
+  font-size: 10pt;
+  line-height: 1.3;
+}
+@media (max-width: 680px) {
+  .cv-page[data-cv-variant="ats"] .ats-cv-page {
+    width: calc(100% - 1rem);
+    padding: 1rem;
+  }
+}
