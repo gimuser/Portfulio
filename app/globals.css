@@ -3112,3 +3112,162 @@ img {
   font-size: 8.6pt !important;
   line-height: 1.2 !important;
 }
+
+
+/* ATS CV: centered identity header and balanced single-page A4 printing. */
+.cv-page[data-cv-variant="ats"] .ats-cv-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+.cv-page[data-cv-variant="ats"] .ats-cv-header p {
+  width: 100% !important;
+  text-align: center !important;
+}
+.cv-page[data-cv-variant="ats"] .ats-cv-page {
+  margin-inline: auto !important;
+}
+@media print {
+  @page ats-cv {
+    size: A4 portrait;
+    margin: 6mm;
+  }
+  .cv-page[data-cv-variant="ats"] {
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page {
+    page: ats-cv;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    gap: 2pt !important;
+    width: 100% !important;
+    min-height: 285mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    font-size: 8.7pt !important;
+    line-height: 1.12 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page[data-language="fr"] {
+    font-size: 8.2pt !important;
+    line-height: 1.08 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-header {
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 0 2pt !important;
+    padding: 0 0 3pt !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+  .cv-page[data-cv-variant="ats"] .ats-cv-header p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-header h1 {
+    font-size: 16pt !important;
+    line-height: 1.05 !important;
+    margin-bottom: 1pt !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-role {
+    font-size: 9pt !important;
+    line-height: 1.08 !important;
+    margin: 1pt 0 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-tagline {
+    font-size: 8pt !important;
+    line-height: 1.08 !important;
+    margin: 1pt 0 0 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-section {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-section h2 {
+    font-size: 9pt !important;
+    line-height: 1.08 !important;
+    margin: 0 0 1.5pt !important;
+    padding: 0 0 1pt !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-entry {
+    margin: 0 0 1.5pt !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-entry h3,
+  .cv-page[data-cv-variant="ats"] .ats-cv-entry strong {
+    font-size: 8.7pt !important;
+    line-height: 1.08 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page p,
+  .cv-page[data-cv-variant="ats"] .ats-cv-page li {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    margin-top: 0 !important;
+    margin-bottom: 1pt !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page ul {
+    margin: 1pt 0 1.5pt !important;
+    padding-left: 10pt !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-list,
+  .cv-page[data-cv-variant="ats"] .ats-cv-skill-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1pt !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-contact-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1pt !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-contact-block p {
+    margin: 0 !important;
+    font-size: 7.6pt !important;
+    line-height: 1.08 !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  .cv-page[data-cv-variant="ats"] .ats-cv-page * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .cv-page[data-cv-variant="ats"] .no-print,
+  .cv-page[data-cv-variant="ats"] .cv-controls,
+  .cv-page[data-cv-variant="ats"] .cv-floating-actions,
+  body:has(.cv-page[data-cv-variant="ats"]) .site-header,
+  body:has(.cv-page[data-cv-variant="ats"]) .footer {
+    display: none !important;
+  }
+  body:has(.cv-page[data-cv-variant="ats"]) main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
