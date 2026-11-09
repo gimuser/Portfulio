@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/layout/language-provider";
 import { certifications } from "@/data/certifications";
-import { atsProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
+import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperience, cvProjects, cvSkills, cvSoftSkills, type CvProject } from "@/data/cv";
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
@@ -10,14 +10,14 @@ import { localize } from "@/utils/localize";
 const labels = {
   en: {
     contact: "Contact Information", summary: "Professional Summary", education: "Education",
-    skills: "Technical Skills", projects: "Selected Projects", experience: "Professional Experience",
+    skills: "Technical Skills", projects: "Professional Projects", experience: "Professional Experience",
     academic: "Additional Academic Project", certifications: "Certifications and Training",
     languages: "Languages", softSkills: "Soft Skills", technologies: "Technologies", project: "Project",
     role: "AI Engineer | Machine Learning Engineer | Data Scientist",
   },
   fr: {
     contact: "Coordonnées", summary: "Profil professionnel", education: "Formation",
-    skills: "Compétences techniques", projects: "Projets sélectionnés", experience: "Expérience professionnelle",
+    skills: "Compétences techniques", projects: "Projets professionnels", experience: "Expérience professionnelle",
     academic: "Projet académique complémentaire", certifications: "Certifications et formations",
     languages: "Langues", softSkills: "Qualités professionnelles", technologies: "Technologies", project: "Projet",
     role: "Ingénieur IA | Ingénieur Machine Learning | Data Scientist",
@@ -80,7 +80,7 @@ export function AtsCvDocument() {
 
       <section className="ats-cv-section">
         <h2>{t.summary}</h2>
-        <p>{localize(atsProfessionalSummary, language)}</p>
+        <p>{localize(cvProfessionalSummary, language)}</p>
       </section>
 
       <section className="ats-cv-section">
@@ -121,7 +121,7 @@ export function AtsCvDocument() {
       <section className="ats-cv-section">
         <h2>{t.projects}</h2>
         <div className="ats-cv-list">
-          {cvProjects.map((project) => (
+          {cvProjects.filter((project) => project.slug !== "car-price-prediction-system").map((project) => (
             <div className="ats-cv-entry" key={project.slug}>
               <EntryHeading title={localize(project.title, language)} date={project.year} />
               <p>{projectSummary(project, language)}</p>
