@@ -668,6 +668,59 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           html, body { background: #fff !important; color: #111 !important; }
         }
       `}</style>
+            <style jsx global>{`
+        /* Center the complete identity header in visual and ATS CVs. */
+        .cv-page[data-cv-variant="portfolio"] .cv-heading {
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .cv-page[data-cv-variant="portfolio"] .cv-heading h1,
+        .cv-page[data-cv-variant="portfolio"] .cv-role,
+        .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+        .cv-page[data-cv-variant="portfolio"] .cv-contact,
+        .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+          width: 100%;
+          text-align: center !important;
+          justify-content: center !important;
+        }
+        .cv-page[data-cv-variant="ats"] .ats-cv-header {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+        }
+        .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+        .cv-page[data-cv-variant="ats"] .ats-cv-role,
+        .cv-page[data-cv-variant="ats"] .ats-cv-tagline,
+        .cv-page[data-cv-variant="ats"] .ats-cv-contact-block,
+        .cv-page[data-cv-variant="ats"] .ats-cv-contact-block p {
+          width: 100% !important;
+          text-align: center !important;
+        }
+        @media print {
+          .cv-page[data-cv-variant="portfolio"] .cv-heading {
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .cv-page[data-cv-variant="portfolio"] .cv-heading h1,
+          .cv-page[data-cv-variant="portfolio"] .cv-role,
+          .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+            text-align: center !important;
+            justify-content: center !important;
+          }
+          .cv-page[data-cv-variant="ats"] .ats-cv-header,
+          .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+          .cv-page[data-cv-variant="ats"] .ats-cv-role,
+          .cv-page[data-cv-variant="ats"] .ats-cv-tagline,
+          .cv-page[data-cv-variant="ats"] .ats-cv-contact-block,
+          .cv-page[data-cv-variant="ats"] .ats-cv-contact-block p {
+            text-align: center !important;
+          }
+        }
+      `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
         <button className="button button-secondary" type="button" onClick={() => window.print()}>
           <Download size={18} />
