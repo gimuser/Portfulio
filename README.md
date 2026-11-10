@@ -55,17 +55,11 @@ To stop the portfolio container:
 
 ## CV PDF
 
-The `/cv` page is print-friendly and supports English/French switching in the browser.
-For the public website, `/cv` is the safe default: visitors can view the CV and use browser print/save-as-PDF without needing a committed PDF file.
+The `/cv` and `/ats-cv` pages are bilingual previews. Their download buttons serve the matching precompiled PDFs directly from `public/downloads/`: the visual PDF includes the portrait, and the ATS PDF is generated from the ATS TeX source.
 
-To generate both English and French PDFs locally:
+The four downloadable files are `Oualid_Ait_Alla_CV_EN.pdf`, `Oualid_Ait_Alla_CV_FR.pdf`, `Oualid_Ait_Alla_ATS_CV_EN.pdf`, and `Oualid_Ait_Alla_ATS_CV_FR.pdf`. When updating the TeX files, recompile the matching PDFs and replace the copies in `public/downloads/` so downloads stay in sync.
 
-```bash
-npm run dev
-npm run pdf:cv:all
-```
-
-The script prints `/cv?lang=en` and `/cv?lang=fr` to local files under `public/cv/` using Chromium. These generated PDF files are ignored by Git and should stay local/private unless you intentionally decide to publish them. The default `npm run pdf:cv` command generates the English PDF.
+The `npm run pdf:cv:*` and `npm run pdf:ats:*` scripts remain available for local Chromium-generated print previews under `public/cv/`.
 
 ## Content Updates
 

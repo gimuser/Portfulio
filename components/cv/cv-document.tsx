@@ -12,6 +12,7 @@ import { cvProfessionalSummary, cvEducation, cvLanguages, cvProfessionalExperien
 import { profile } from "@/data/profile";
 import type { Language } from "@/types/content";
 import { localize } from "@/utils/localize";
+import { getCvDownloadPath } from "@/utils/cv-download";
 
 function getProjectSummary(project: CvProject, language: Language) {
   return localize(project.summary, language);
@@ -38,6 +39,7 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   const isAts = variant === "ats";
   const activeCvName = isAts ? (language === "fr" ? "CV ATS" : "ATS CV") : "CV";
   const activeCvPath = isAts ? "/ats-cv" : "/cv";
+  const cvPdfPath = getCvDownloadPath(language, isAts ? "ats" : "portfolio");
   const cvShareUrl = profile.links.website.href.replace(/\/$/, "") + activeCvPath + "?lang=" + language;
   const shareSubject = profile.name + " " + activeCvName;
   const shareText = language === "en"
@@ -55,9 +57,9 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
 
   const labels = language === "fr"
     ? {
-        print: isAts ? "Imprimer / Enregistrer" : "Imprimer / Enregistrer",
+        print: "Télécharger le PDF",
         openOther: isAts ? "Voir le CV visuel" : "Voir le CV ATS",
-        save: isAts ? "Enregistrer le CV ATS en PDF" : "Enregistrer le CV en PDF",
+        save: "Télécharger le PDF",
         contact: "Coordonnées",
         summary: "Profil professionnel",
         education: "Formation",
@@ -71,9 +73,9 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         projectLink: "Projet",
       }
     : {
-        print: "Print / Save",
+        print: "Download PDF",
         openOther: isAts ? "View visual CV" : "View ATS CV",
-        save: isAts ? "Save ATS CV as PDF" : "Save CV as PDF",
+        save: "Download PDF",
         contact: "Contact Information",
         summary: "Professional Summary",
         education: "Education",
@@ -108,10 +110,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
   return (
     <div className="cv-page" id="content" data-cv-variant={isAts ? "ats" : "portfolio"}>
       <div className="cv-controls no-print">
-        <button className="button" type="button" onClick={() => window.print()}>
+        <a className="button" href={cvPdfPath} download>
           <Download size={18} />
           {labels.print}
-        </button>
+        </a>
         <Link className="button button-ghost" href={isAts ? "/cv?lang=" + language : "/ats-cv?lang=" + language}>
           <FileText size={18} />
           {labels.openOther}
@@ -909,10 +911,10 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
         }
       `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
-        <button className="button button-secondary" type="button" onClick={() => window.print()}>
+        <a className="button button-secondary" href={cvPdfPath} download>
           <Download size={18} />
           <span>{labels.save}</span>
-        </button>
+        </a>
         <div className="cv-share-links" aria-label={language === "en" ? "Share CV links" : "Liens de partage du CV"}>
           <button
             className="cv-share-action"

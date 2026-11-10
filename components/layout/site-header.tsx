@@ -8,6 +8,7 @@ import en from "@/messages/en.json";
 import fr from "@/messages/fr.json";
 import { useLanguage } from "@/components/layout/language-provider";
 import { useTheme } from "@/components/layout/theme-provider";
+import { getCvDownloadPath } from "@/utils/cv-download";
 
 const messages = { en, fr };
 
@@ -107,10 +108,10 @@ export function SiteHeader() {
           <button className="icon-button" type="button" onClick={toggleTheme} aria-label="Toggle theme">
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <Link className="button button-small" href="/cv">
+          <a className="button button-small" href={getCvDownloadPath(language)} download>
             <FileText size={16} />
             {t.nav.downloadCv}
-          </Link>
+          </a>
         </div>
       </nav>
     </header>

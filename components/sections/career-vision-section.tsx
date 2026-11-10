@@ -18,6 +18,7 @@ import {
 } from "@/data/career-vision";
 import { profile } from "@/data/profile";
 import { localize } from "@/utils/localize";
+import { getCvDownloadPath } from "@/utils/cv-download";
 
 export function CareerVisionSection() {
   const { language } = useLanguage();
@@ -100,10 +101,10 @@ export function CareerVisionSection() {
               {localize(careerLabels.viewProjects, language)}
               <ArrowRight size={18} />
             </Link>
-            <Link className="button button-secondary" href={`/cv?lang=${language}`}>
+            <a className="button button-secondary" href={getCvDownloadPath(language)} download>
               <FileText size={18} />
               {localize(careerLabels.downloadCv, language)}
-            </Link>
+            </a>
             <Link className="button button-ghost" href="/contact">
               <Mail size={18} />
               {localize(careerLabels.contactMe, language)}
