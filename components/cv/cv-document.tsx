@@ -721,6 +721,170 @@ export function CvDocument({ variant = "portfolio" }: { variant?: "portfolio" | 
           }
         }
       `}</style>
+
+      <style jsx global>{`
+        /* Final A4 print balance: one consistent rhythm for both CV formats and languages. */
+        @media print {
+          @page cv-portfolio { size: A4 portrait; margin: 6mm; }
+          @page ats-cv { size: A4 portrait; margin: 6mm; }
+
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet,
+          .cv-page[data-cv-variant="ats"] .ats-cv-page {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            gap: 5pt !important;
+            width: 100% !important;
+            min-height: 285mm !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: visible !important;
+            box-sizing: border-box !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet {
+            page: cv-portfolio;
+            font-size: 9pt !important;
+            line-height: 1.16 !important;
+          }
+
+          .cv-page[data-cv-variant="ats"] .ats-cv-page {
+            page: ats-cv;
+            font-size: 8.7pt !important;
+            line-height: 1.14 !important;
+          }
+
+          .cv-page[data-cv-variant="ats"] .ats-cv-page[data-language="fr"] {
+            font-size: 8.3pt !important;
+            line-height: 1.12 !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet > section,
+          .cv-page[data-cv-variant="ats"] .ats-cv-section {
+            flex: 0 0 auto !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            break-inside: auto !important;
+            page-break-inside: auto !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] > .cv-sheet > section h2,
+          .cv-page[data-cv-variant="ats"] .ats-cv-section h2 {
+            margin: 0 0 2pt !important;
+            padding: 0 0 1pt !important;
+            font-size: 9pt !important;
+            line-height: 1.12 !important;
+            break-after: avoid !important;
+            page-break-after: avoid !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-entry,
+          .cv-page[data-cv-variant="ats"] .ats-cv-entry {
+            margin: 0 0 2pt !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet p,
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet li,
+          .cv-page[data-cv-variant="ats"] .ats-cv-page p,
+          .cv-page[data-cv-variant="ats"] .ats-cv-page li {
+            margin-top: 0 !important;
+            margin-bottom: 1.5pt !important;
+            font-size: inherit !important;
+            line-height: inherit !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-list,
+          .cv-page[data-cv-variant="portfolio"] .cv-skill-grid,
+          .cv-page[data-cv-variant="ats"] .ats-cv-list,
+          .cv-page[data-cv-variant="ats"] .ats-cv-skill-list {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2pt !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-entry-heading h3,
+          .cv-page[data-cv-variant="ats"] .ats-cv-entry-heading h3 {
+            font-size: 8.8pt !important;
+            line-height: 1.12 !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-entry-heading strong,
+          .cv-page[data-cv-variant="ats"] .ats-cv-entry-heading strong {
+            font-size: 8.1pt !important;
+            line-height: 1.12 !important;
+            white-space: nowrap !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-header,
+          .cv-page[data-cv-variant="ats"] .ats-cv-header {
+            flex: 0 0 auto !important;
+            margin: 0 0 2pt !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-heading,
+          .cv-page[data-cv-variant="portfolio"] .cv-heading h1,
+          .cv-page[data-cv-variant="portfolio"] .cv-role,
+          .cv-page[data-cv-variant="portfolio"] .cv-tagline,
+          .cv-page[data-cv-variant="portfolio"] .cv-contact,
+          .cv-page[data-cv-variant="ats"] .ats-cv-header,
+          .cv-page[data-cv-variant="ats"] .ats-cv-header h1,
+          .cv-page[data-cv-variant="ats"] .ats-cv-role,
+          .cv-page[data-cv-variant="ats"] .ats-cv-tagline,
+          .cv-page[data-cv-variant="ats"] .ats-cv-contact-block,
+          .cv-page[data-cv-variant="ats"] .ats-cv-contact-block p {
+            text-align: center !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-contact-row {
+            justify-content: center !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-photo {
+            max-height: 30mm !important;
+            object-fit: cover !important;
+          }
+
+          .cv-page[data-cv-variant="ats"] .ats-cv-contact-block p {
+            margin: 0 !important;
+            font-size: 7.4pt !important;
+            line-height: 1.08 !important;
+          }
+
+          .cv-page[data-cv-variant="ats"] .ats-cv-page ul,
+          .cv-page[data-cv-variant="portfolio"] .cv-bullets {
+            margin: 1pt 0 2pt !important;
+            padding-left: 10pt !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet a,
+          .cv-page[data-cv-variant="ats"] .ats-cv-page a {
+            color: #111 !important;
+            text-decoration: none !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-sheet *,
+          .cv-page[data-cv-variant="ats"] .ats-cv-page * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+          }
+
+          .cv-page[data-cv-variant="portfolio"] .cv-controls,
+          .cv-page[data-cv-variant="portfolio"] .cv-floating-actions,
+          .cv-page[data-cv-variant="ats"] .cv-controls,
+          .cv-page[data-cv-variant="ats"] .cv-floating-actions,
+          .cv-page[data-cv-variant="portfolio"] .no-print,
+          .cv-page[data-cv-variant="ats"] .no-print {
+            display: none !important;
+          }
+        }
+      `}</style>
       <div className="cv-floating-actions no-print" aria-label={activeCvName + " actions"}>
         <button className="button button-secondary" type="button" onClick={() => window.print()}>
           <Download size={18} />
